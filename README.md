@@ -1,8 +1,8 @@
 # Physics Cheat Sheets 
-Repository containing physics cheat sheets in $\LaTeX$.
+Repository containing physics cheat sheets in LaTeX.
 
 ## Requirements
-Overleaf or $\TeX$ distribution (pdfLaTeX / XeLaTeX)
+Overleaf or TeX distribution (pdfLaTeX / XeLaTeX)
 
 ## Disclaimer
 No warranties provided. While efforts were made to ensure formulaic integrity, typographical inaccuracies may exist. The author claims no responsibility for the material's suitability or correctness.
