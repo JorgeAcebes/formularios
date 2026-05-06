@@ -1,0 +1,149 @@
+% Minimal-spacing, three-column LaTeX preamble with fixed smallest font size
+
+\documentclass[8pt,a4paper,fleqn]{extarticle} % use smallest base font available
+
+% --- Geometry settings: minimal margins, landscape orientation ---
+\usepackage[landscape, top=0.01cm, left=0.1cm, right=0.1cm, bottom=0.3cm]{geometry}
+
+% --- No page numbering ---
+\pagestyle{empty}
+
+% --- Math and symbol packages with compact font style ---
+\usepackage{amssymb,amsmath,amsthm,amsfonts,bm,esint,mathtools}
+\usepackage{relsize}
+\usepackage{cancel}
+\usepackage{ytableau}
+
+% --- Multicolumn layout setup ---
+\usepackage{multicol}
+\setlength{\columnsep}{0.1cm}
+\setlength{\multicolsep}{0pt}
+
+% --- Hyperlinks set up ---
+\usepackage{xcolor, soul}
+\usepackage{hyperref}
+\definecolor{morado}{RGB}{191, 62, 255} 
+\hypersetup{colorlinks=true, linkcolor=red, urlcolor=morado}
+
+% --- Paragraph and line spacing adjustments ---
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\renewcommand{\baselinestretch}{1}
+
+% --- Enforce fixed font metrics ---
+\makeatletter
+\renewcommand\normalsize{%
+  \@setfontsize\normalsize{7}{7}%
+  \abovedisplayskip 1pt plus 1pt minus 1pt%
+  \belowdisplayskip \abovedisplayskip%
+  \abovedisplayshortskip 1pt plus 1pt%
+  \belowdisplayshortskip 1pt plus 1pt minus 1pt}
+\makeatother
+
+
+
+% --- Code structure ----
+\usepackage{fvextra}
+\fvset{
+  breaklines=true,
+  breakanywhere=true,
+  fontsize=\tiny,
+  baselinestretch=0.9
+}
+\DeclareUnicodeCharacter{251C}{\mbox{\kern.2ex\vrule height1.5ex depth.5ex width.125ex\kern-.125ex\vrule height.125ex depth0ex width.75ex\kern.2ex}}
+\DeclareUnicodeCharacter{2502}{\mbox{\kern.2ex\vrule height1.5ex depth.5ex width.125ex\kern.2ex}}
+\DeclareUnicodeCharacter{2514}{\mbox{\kern.2ex\vrule height1.5ex depth-1.375ex width.125ex\kern-.125ex\vrule height.125ex depth0ex width.75ex\kern.2ex}}
+\DeclareUnicodeCharacter{2500}{\mbox{\vrule height.125ex depth0ex width1ex}}
+
+\newcommand{\dblash}{\textbackslash\!\!\textbackslash }
+
+% --- Compact section headers ---
+\usepackage[compact]{titlesec} 
+\titlespacing{\section}{0pt}{1pt}{1pt}
+\titleformat{\section}{\normalfont\bfseries\color{magenta}}{}{0em}{}
+
+\usepackage{wasysym}
+\usepackage{booktabs}
+\setlength{\columnseprule}{0.2pt} 
+\usepackage{tabularx}
+\usepackage{lipsum}
+
+\usepackage[T1]{fontenc}% Fuente LM Roman por defecto
+\usepackage{adjustbox} % Para control total de rotación y posición
+\usepackage{amssymb} 
+\usepackage{tikz} 
+\usetikzlibrary{decorations.pathmorphing, decorations.markings, positioning, arrows.meta, calc, shapes.geometric, fit, shadows, backgrounds}
+\renewcommand{\baselinestretch}{1}
+
+\usepackage{pdfpages}
+\usepackage{braket}
+
+% --- ESTILOS DE FEYNMAN (TIKZ) ---
+\tikzset{
+    % Fermion: Línea continua con flecha en el medio
+    fermion/.style={draw=black, postaction={decorate}, decoration={markings,mark=at position .55 with {\arrow{>}}}},
+    % Antifermion: Línea continua con flecha invertida (opcional, visualmente igual pero sentido opuesto)
+    antifermion/.style={draw=black, postaction={decorate}, decoration={markings,mark=at position .55 with {\arrow{<}}}},
+    % Photon: Línea ondulada (Squiggly)
+    photon/.style={decorate, decoration={snake, amplitude=1.5pt, segment length=4pt}, draw=black},
+    % Scalar: Línea discontinua (Dashed)
+    scalar/.style={draw=black, dashed},
+    % Gluon: Línea en espiral (Curly) - Por si se necesita
+    gluon/.style={decorate, decoration={coil, amplitude=2pt, segment length=3pt}, draw=black},
+    % Vértice: Punto negro
+    vertex/.style={draw,shape=circle,fill=black,minimum size=2pt,inner sep=0pt}
+}
+
+
+
+\begin{document}
+\begin{multicols}{3}
+    \raggedright
+    \scriptsize
+
+
+\input{sections/1_Bloque/intro}
+\input{sections/1_Bloque/notions_of_rqm}
+
+\clearpage
+
+% 
+\input{sections/2_Bloque/symmetries}
+\input{sections/2_Bloque/continuous_symmetries}
+
+% \hrule
+
+\input{sections/3_Bloque/feynman}
+\input{sections/3_Bloque/interactions}
+
+% \hrule 
+
+\input{sections/4_Bloque/qcd}
+\input{sections/4_Bloque/electroweak}
+
+\input{sections/Extra/extra}
+
+
+\input{sections/acknowledgments}
+
+
+\clearpage
+
+\input{sections/General/mathematics}
+
+
+\clearpage
+
+
+\input{sections/General/draw_standard_model}
+\input{sections/General/tables}
+\input{sections/General/drawing_octetes_decuplete}
+
+
+\clearpage
+    
+\end{multicols}
+
+\includepdf[pages=1, angle=90]{pdfs/clebrpp.pdf}   
+
+\end{document}

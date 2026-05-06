@@ -1,0 +1,84 @@
+\section{GENERALIDADES DE SIMETRÍAS}
+Definición: $H$ es invariante bajo transformación $S$ si $[S, H] = 0 \iff S H S^\dagger = H$.\\
+Implica conservación de números cuánticos (Teorema de Noether para continuas).
+
+\section{PARIDAD ($P$) (REFLEXIÓN ESPACIAL) --  $J^P$ ($J\equiv$ spin, $P\equiv$ paridad )}
+Operador Unitario y Hermítico ($P^\dagger = P^{-1} = P \rightarrow P^2=\mathbb{I}$). Inversión de coords espaciales.
+ $\vec{x} \to -\vec{x},  \quad t \to t\quad \quad \vec{S} \to \vec{S}, \quad \lambda \to -\lambda \quad \vec{p} \to -\vec{p} \quad (\text{Vector}) \quad 
+      \vec{L} \to  \vec{L} \quad (\text{Pseudovector})$ \\
+$\bullet$ \textbf{Operador}: $P|a\rangle = \eta_P |a\rangle$ con $\eta_P = \pm 1$ \quad $P = \text{diag}(1,-1,-1,-1)$.
+\\$\bullet$ \textbf{Bosones}: Partícula y antipartícula tienen misma paridad. $\eta_a \eta_{\bar{a}} = +1$.\\
+$\bullet$ \textbf{Fermiones}: Partícula y antipartícula tienen paridad opuesta. $\eta_a \eta_{\bar{a}} = -1$.\\
+$\bullet$ \textbf{Conservación}: Multiplicativa. $\eta_{\text{tot}} = \prod \eta_i$. Sistemas compuestos: $\eta_{\text{tot}} = (\prod \eta_i) (-1)^L$. \\
+\textbf{En Espinores de Dirac}: Transformación del campo: $\Psi'(t, -\vec{x}) = \gamma^0 \Psi(t, \vec{x})$.
+
+\section{CONJUGACIÓN DE CARGA ($C$)}
+Operador Unitario y Hermítico ($C^\dagger = C^{-1} = C \rightarrow C^2  = \mathbb{I} $). Partícula $\leftrightarrow$ antipartícula.\\
+No afecta espín ($\vec{S}$) ni momento ($\vec{p}$), pero invierte cargas ($Q, B, L, \dots$).\\
+$\bullet$ \textbf{Operador}: $ C|p, \lambda, Q\rangle = \eta_C |p, \lambda, -Q\rangle$.\\
+$\bullet$ \textbf{Autovalores}: Solo definidos para sistemas totalmente neutros. En ese caso, $\eta_c = \pm 1.$\\
+$\bullet$ \textbf{Sistemas} $f\bar{f}$: La paridad $C$ del par es $\eta_C = (-1)^L (-1)^S$.\\
+$\bullet$ \textbf{Conservación}: Multiplicativa solo para sistemas de bosones neutros ($\eta_{\text{tot}} = \prod \eta_i$).\\
+
+\textbf{En Espinores}: Cambia helicidad y quiralidad. $\Psi^C = i\gamma^2 \gamma^0 \bar{\Psi}^T$.\\
+
+\section{OPERADOR G-paridad}
+Operador Unitario ($G^\dagger = G^{-1}$) y multiplicativo.\\
+
+ $\bullet$ \textbf{Operador}: $G = CR$ \quad $R =\exp{(i\pi I_2)}=$ antidiag$(1,-1,1)$. Conservado en strong. 
+ 
+ Para mesones neutros: $G= C(-1)^I$. 
+
+\section{INVERSIÓN TEMPORAL ($T$)}
+Operador Anti-unitario ($T^\dagger = T^{-1}$ y \,$\langle T\psi | T\phi \rangle = \langle \phi | \psi \rangle$). TMA de Kramers: $T^2 = (-1)^{2J}$.\\
+$ t \to -t, \quad \vec{x} \to \vec{x} $ \quad $ \vec{p} \to -\vec{p}, \quad \vec{S} \to -\vec{S} \quad {\lambda} \to {\lambda}$.\\
+Invariancia $T$ implica reversibilidad de las amplitudes de scattering ($\mathcal{M}_{fi} = \mathcal{M}_{i'f'}$).\\
+$\bullet$ \textbf{Operador}: $ T|p, \lambda, in\rangle = \eta_C |-p, \lambda, out\rangle$ con $|\eta_T| = 1.$  \quad $T = \text{diag}(-1,1,1,1)$.
+
+$\bullet$ \textbf{Operador}: $T = UK \quad (\text{Anti-unitario: } \langle T\psi | T\phi \rangle = \langle \phi | \psi \rangle)$ \\
+$\bullet$ \textbf{Transformación}: $T|\vec{p}, s_z\rangle = \eta_T\,  |-\vec{p}, -s_z\rangle$ \\
+$\bullet$ \textbf{Invariancia}: $\text{No genera carga multiplicativa.}$ \\
+
+\section{AUTOVALORES DE SIMETRÍA ($P$ y $C$)}
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|l|}
+\hline
+\textbf{Símbolo} & $P$ & $C$ & $G$ & \textbf{Notas} \\ \hline
+\multicolumn{5}{|c|}{\textbf{BOSONES}} \\ \hline
+$\pi^0$ & $-1$ & $+1$ & $-1$ & Pseudoescalar; $G = C(-1)^I$. \\ \hline
+$\pi^\pm$ & $-1$ & - & $-1$ & $C|\pi^\pm\rangle \propto |\pi^\mp\rangle$; $G$ es igual para el multiplete. \\ \hline
+$\gamma$ & $-1$ & $-1$ & - & Vectorial; la interacción EM rompe el isospín. \\ \hline
+$n\gamma$ & - & $(-1)^n$ & - & Teorema de Furry. \\ \hline
+\multicolumn{5}{|c|}{\textbf{FERMIONES}} \\ \hline
+$p$ & $+1$ & - & - & Convención usual; $B = 1 \implies$ no es autoestado. \\ \hline
+$\bar{p}$ & $-1$ & - & - & Opuesta al protón; $B = -1$. \\ \hline
+$n$ & $+1$ & - & - & $C|n\rangle \propto |\bar{n}\rangle$; $B = 1$. \\ \hline
+$\bar{n}$ & $-1$ & - & - & Opuesta al neutrón; $B = -1$. \\ \hline
+$u, d, \dots$ & $+1$ & - & - & Quarks; $B = 1/3$. \\ \hline
+$\bar{u}, \bar{d}, \dots$ & $-1$ & - & - & Antiquarks; $B = -1/3$. \\ \hline
+\end{tabular}
+\end{center}
+
+\section{TEOREMA CPT}
+Any local, Lorentz-invariant, Hermitian QFT is invariant under the CPT transformation.\\
+\textbf{Consecuencias partícula/antipartícula}: $m = \bar{m}$\quad $\tau = \bar{\tau}$\quad $\mu = -\bar{\mu}$.
+ $\vec{x} \to -\vec{x},  \quad t \to -t\quad \quad \vec{S} \to -\vec{S}, \quad \lambda \to -\lambda \quad \vec{p} \to \vec{p} \quad L \to R \qquad \eta_{CPT} = \eta_C \eta_P \eta_T$
+\section{VIOLACIÓN DE SIMETRÍAS DISCRETAS}
+
+{
+\centering
+    \begin{tabular}{@{}lccccc@{}}
+        \toprule
+        \textbf{Interacción} & \textbf{P} (Paridad) & \textbf{C} (Carga) & \textbf{T} (Tiempo) & \textbf{CP} & \textbf{CPT} \\ 
+        \midrule
+        Strong & Conserva & Conserva & Conserva & Conserva & Conserva \\
+        EM & Conserva & Conserva & Conserva & Conserva & Conserva \\
+        Weak & \text{Viola (Máx)} & \text{Viola (Máx)} & Viola & Viola & Conserva \\ 
+        \bottomrule
+    \end{tabular}
+$V-A \equiv \gamma^\mu(1-\gamma^5)$ fundamental en interacciones weak (viólación máxima de paridad)
+
+}
+
+

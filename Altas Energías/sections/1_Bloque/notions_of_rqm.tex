@@ -1,0 +1,306 @@
+
+\section{NOTACIÓN COVARIANTE}
+Búsqueda de lagrangianos invariantes bajo Transformaciones de Lorentz (TL).
+\\$\bullet$ \textbf{Cuadrivectores}:
+$ x^\mu = (x^0, \vec{x}) = (t, x, y, z) $ \;\;\; $ p^\mu = (p^0, \vec{p}) = (E, \vec{p}) = (E, p_x, p_y, p_z) $\\
+$\bullet$ \textbf{Métrica} ($+---$): $ g^{\mu \nu } =\eta^{\mu\nu} = \eta_{\mu\nu} = \text{diag}(1, -1, -1, -1). \quad  \eta_{\mu\nu} \eta^{\mu\nu} = \delta^\mu_\mu = 4$\\
+$\bullet$ \textbf{Subir/Bajar índices}: $A_\mu = \eta_{\mu\nu} A^\nu \implies A_\mu = (A^0, -\vec{A})\quad \quad A^\mu = \eta^{\mu \nu} A_\nu = A_\nu \eta ^{\mu \nu}$ \\
+$\bullet$ \textbf{Producto escalar}: $ A \cdot B = A^\mu B_\mu =A_\mu B^\mu = A^0 B^0 - \vec{A} \cdot \vec{B} = A_\nu B_\mu\, \eta^{\nu \mu} $\\
+$\bullet$ \textbf{Invariantes}: $x_\mu x^\mu = x^2$ \;\;\; $p_\mu p^\mu = p^2 $\;\;\; $p_\mu x^\mu=p \cdot x = Et - \vec{p}\cdot\vec{x}\quad \quad p^2 = m^2$\\
+$\bullet$ \textbf{Operadores}: $ \partial^\mu = (\partial_t, -\vec{\nabla}), \quad \partial_\mu = (\partial_t, \vec{\nabla}), \quad p^\mu =  i\partial^\mu , \quad  \Box \equiv \partial_\mu \partial^\mu = \partial_t^2 - \vec{\nabla}^2 $\\
+$\bullet$ \textbf{Sutilezas}: $\partial_\mu = \frac{\partial}{\partial x^\mu} \quad \partial^\mu = \frac{\partial }{\partial x_\mu} \quad (\gamma^\mu \partial_\mu\psi )^\dagger = (\partial_\mu \psi^\dagger)\,\gamma^{\mu \dagger} \quad \partial_\mu \partial_\nu = \partial_\nu \partial_\mu\quad$\\
+$\bullet$ \textbf{Tips}: $s_\mu \!\equiv\!$ scalar (eg $p_\mu$), $M^\kappa \!\equiv\!$ matrix (eg $\gamma^\mu$) $\Rightarrow\ M^\kappa s_\mu = s_\mu M^\kappa $\;\;$\gamma^5 \partial_\mu \psi = \partial_\mu (\gamma^5 \psi)$\\
+$\bullet$ \textbf{Tips:} $\epsilon_{\mu \nu \alpha \beta} A^{\mu}_{\rho} A^{\nu}_{\sigma} A^{\alpha}_{\lambda} A^{\beta}_{\delta} = \det(A) \epsilon_{\rho \sigma \lambda \delta} \quad \quad [\partial_\nu,\hat{A}] = [\partial_\nu , \gamma^\mu] = 0 \;\;\;(\hat{A} \neq \hat{A}(x))$
+
+
+
+\section{TRANSFORMACIONES DE LORENTZ $\dot{x}\!=\!\tfrac{dx}{dt}\; \; \dot{x}'\!=\!\tfrac{dx'}{dt'} \;\;\zeta \!=\!y,z\;\; \gamma = 1/{\sqrt{1 -\beta^2}}$} 
+\begin{align*}
+\hspace{-15pt}
+&\begin{cases} 
+x^{0'} =\gamma (x^0 -\beta x^1)
+\\
+x^{1'}=\gamma (x^1-\beta x^0)
+\\
+\zeta' \; \; = \zeta
+\end{cases}
+\hspace{-12pt}
+&\begin{cases} 
+x^{0} =\gamma (x^{0'} +\beta x^{1'})
+\\
+x^{1}=\gamma (x^{1'}+\beta x^{0'})
+\\
+\zeta \;\;= \zeta'
+\end{cases}
+\hspace{-5pt}
+&\begin{cases} 
+\dot{x}' =\tfrac{\dot{x}-v}{1-\dot{x}v/c^2 }
+\vspace{3pt} \\
+\dot{\zeta}' =\tfrac{\dot{\zeta}}{1-\dot{\zeta} v/c^2}
+\end{cases}\hspace{-16pt}
+&\begin{cases} 
+\dot{x} =\tfrac{\dot{x}'+v}{1+\dot{x}' v/c^2 }
+\vspace{1pt} \\
+\dot{\zeta} =\tfrac{\dot{\zeta}'}{1+\dot{\zeta}' v/c^2}
+\end{cases}
+\end{align*}
+\vspace{-1pt}
+\begin{align*}
+    &\hspace{10pt}
+\text{$v\equiv$ velocidad del S.R.$'$ respecto al S.R. en reposo\;\;\;\; $\beta = v/c = \tanh \phi$}
+   \\
+&\hspace{-22pt}
+\Lambda=
+    \scalebox{0.75}{$    \begin{pmatrix} \mathbb{B} & 0\;\\ 
+    0 & \mathbb{I}_2\\ 
+   \end{pmatrix}$} \; \; \;
+   \Lambda^{-1} = \scalebox{0.75}{$    \begin{pmatrix} \mathbb{B}^{-1} & 0\;\\
+    0 & \mathbb{I}_2\\ 
+   \end{pmatrix}$}\;\;\; 
+    \mathbb{B} {=} \scalebox{0.75}{$\begin{pmatrix} \gamma \hspace{-5pt}\!& \!-\gamma \beta \; \\ 
+    -\gamma\beta \hspace{-5pt}\!&\! \gamma \\ 
+    \end{pmatrix}$}{=}\scalebox{0.75}{$\begin{pmatrix} \cosh \phi \hspace{-7pt}& -\sinh\phi \; \\ 
+    -\sinh\phi \hspace{-7pt}& \cosh \phi \\ 
+    \end{pmatrix}$}\; \;\;\;  \mathbb{B}^{-1} {=} \scalebox{0.75}{$\begin{pmatrix} \gamma \hspace{-5pt}\!& \!\gamma \beta \; \\ 
+    \gamma\beta \hspace{-5pt}\!&\! \gamma \\ 
+    \end{pmatrix}$}{=}\scalebox{0.75}{$\begin{pmatrix} \cosh \phi \hspace{-7pt}& \sinh\phi \; \\ 
+    \sinh\phi \hspace{-7pt}& \cosh \phi \\ 
+    \end{pmatrix}$}\;\;\; \\
+    &
+    \quad \qquad \text{En términos de momento: } ( E' \;\;\; p'_{\parallel})^T = \Lambda \, (E \;\;\; p_{\parallel})^T\;\;\; p'_{\perp} = p_{\perp}
+\end{align*}
+% \text{Efecto Doppler: } $\omega' = \gamma  \; \omega  (1- \beta \cos \theta)\;\;\;$
+% \text{Aberración relativista: } $\tan\theta' = \frac{\sin \theta }{\gamma (\cos \theta - \beta)}$
+
+
+
+\section{FUNDAMENTOS DE RQM}
+\textbf{Hamiltoniano:} $H = H^\dagger\quad E_n \in \mathbb{R} \quad $ autovectores forman base O.N.\\ 
+\textbf{Schrödinger (No Relativista)}: $(i\partial_t + \frac{\nabla^2}{2m})\Psi = 0 \Rightarrow \Psi(x) = Ne^{ip\cdot x}=N e^{i(\vec{p}\cdot\vec{x} - Et)}$.\\
+\textbf{Klein-Gordon (Relativista)}: $ (\Box + m^2)\phi(x) = 0 $, $\phi(x) \equiv$ campo escalar (espín 0) masivo.
+\\\underline{\text{Soluciones KG}}: $\phi(x) = N e^{-ip \cdot x} \Rightarrow E_\pm = \pm\sqrt{p^2+m^2}$ (Partícula/Antipartícula).
+\\$\bullet$ \text{Corriente conservada} ($\partial_\mu J^\mu = 0$):
+$ J^\mu = i(\phi^* \partial^\mu \phi - \phi \partial^\mu \phi^*) $\\
+Para onda plana $\phi = N e^{-ipx}$: $ \rho = J^0 = 2E|N|^2, \quad \vec{J} = 2\vec{p}|N|^2 $\\
+{\centering
+\textit{Si $E < 0 \implies \rho < 0$. No puede interpretarse como densidad de probabilidad}.\\}
+
+$\bullet$ $J^\mu$ es densidad de \textbf{carga eléctrica}, no probabilidad.
+$ J^\mu_{EM} = iQ(\phi^* \partial^\mu \phi - \phi \partial^\mu \phi^*) $\\
+{
+\centering
+\textit{Permite $\rho < 0$ para carga negativa.\\}
+}
+$\bullet$ Emisión de antipartícula ($Q, E>0$) $\equiv$ Absorción de partícula ($Q, -E<0$).\\
+\textbf{TMA Noether:} Simetría continua $\leftrightarrow$ Corriente ($J_\mu$) y carga ($Q =\int J_0(x) d\vec{x} $) conservadas.
+\section{FORMALISMO LAGRANGIANO (CAMPO ESCALAR MASIVO LIBRE)}
+$\bullet$ \textbf{Densidad Lagrangiana}:
+$ \mathcal{L} = \partial_\mu \phi \partial^\mu \phi^* - m^2 \phi \phi^* $\\
+$\bullet$ \textbf{Acción}: $S = \int d^4x \mathcal{L}(x) \Rightarrow \delta S = 0. \quad$ \text{E.L.:}
+$ \frac{\partial \mathcal{L}}{\partial \phi} - \partial_\mu \left( \frac{\partial \mathcal{L}}{\partial(\partial_\mu \phi)} \right) = 0 $
+
+
+\section{ECUACIÓN DE DIRAC (FERMIONES SPIN 1/2)}
+\textbf{Motivación}: Buscar ec. relativista lineal en $\partial_t, \partial_x$ para evitar probs. negativas.\\
+\underline{Forma Hamiltoniana}: $i\partial_t \Psi = H\Psi = (\vec{\alpha} \cdot \vec{p} + \beta m)\Psi$. $\alpha_i, \beta$ deben ser matrices $N\times N, N\ge 4$.\\
+$\bullet$ \text{Álgebra}: $\{\alpha_i, \alpha_j\} = 2\delta_{ij}$, $\{\alpha_i, \beta\} = 0$, $\alpha
+_i^2\!=\!\beta^2 = \mathbb{I}$, $\alpha_i^\dagger = \alpha_i$, $\beta^\dagger = \beta$, $\text{Tr}(\alpha_i)\!=\!\text{Tr}(\beta)=0$
+\underline{Forma Covariante}:
+Def matrices Gamma: $\gamma^0 \equiv \beta$, $\vec{\gamma} \equiv \beta\vec{\alpha}\leftrightarrow \gamma^0 \gamma^i = \alpha_i\;\; \alpha_i p_i = \vec{\alpha}\cdot\vec{p}$.\\
+\textbf{Ec. Dirac}: $(i\gamma^\mu \partial_\mu - m)\Psi = 0$ o $(i\cancel{\partial} - m)\Psi = 0$\\
+\textbf{Ec. Dirac} - En espacio de momentos ($p^\mu$): $(\cancel{p} - m)\Psi = 0$.\qquad $\cancel{p}\cancel{p}=p^2$.\\
+$\bullet$ \text{Álgebra de Clifford}: $\{\gamma^\mu, \gamma^\nu\} = 2\eta^{\mu\nu}\mathbb{I} \Rightarrow \{\gamma^0, \gamma^0\}= 2\mathbb{I}, \quad \{\gamma^i, \gamma^i\} = -2\mathbb{I},$ \;\;else 0.\\
+$\bullet$ Hermiticidad: $\gamma^{\mu\dagger} = \gamma^0 \gamma^\mu \gamma^0 \Rightarrow \gamma^{0\dagger} = \gamma^0  \;\; \textbf{y}\;\; \gamma^{i\dagger} = -\gamma^i \Rightarrow \gamma^0 \gamma^0 = \mathbb{I} \;\;\textbf{y} \;\; \gamma^i\gamma^i=-\mathbb{I}$.\\
+$\bullet$ Matriz Quiral: $\gamma^5 \equiv i\gamma^0\gamma^1\gamma^2\gamma^3\;\; \{\gamma^5, \gamma^\mu\} = 0\!\leftrightarrow\!\gamma^5\gamma^\mu = - \gamma^\mu \gamma^5, \;\; \gamma^{5\dagger} = \gamma^5, \;\; \gamma^5\gamma^5 = \mathbb{I}$.\\
+$\bullet$ $\cancel{\text{Slashed notation}}:$ $\cancel{\partial} = \gamma^\mu \partial_\mu \quad \cancel{A} = \gamma^\mu A_\mu = A_\mu \gamma^\mu \qquad \bullet \gamma^\nu \gamma^\mu \partial_\nu \partial_\mu = \frac{1}{2} \{\gamma^\nu, \gamma^\mu\} \partial_\nu \partial_\mu$ 
+
+
+
+$\bullet$ $\text{Estructura Escalar}: \text{Si } \hat{\mathcal{O}} = \hat{L} \otimes \mathbb{I}, \text{ entonces } \hat{\mathcal{O}}\Psi = 0 \iff \hat{L}\psi_i = 0 \text{ para todo } i. $\\
+$\bullet$ $\text{Extensión Escalar}: r \in {m, p^2, \square, \phi(x)} \implies \hat{R} = r \mathbb{I}_{n \times n}. \text{ No acoplan componentes.} $\\
+$\bullet$ $\text{Lema de Schur}: \text{Si } [ \hat{A}, \Sigma^{\mu\nu} ] = 0 \text{ $\forall$ generadores de la representación }\implies \hat{A} = \lambda \mathbb{I}.$ \
+
+
+
+$\bullet$ \text{Trazas Básicas}: $\text{Tr}(\mathbb{I}) = 4, \quad \text{Tr}(\gamma^{\mu_1} \dots \gamma^{\mu_n}) = 0 \text{ si } n \text{ es impar} \Rightarrow \text{Tr}(\cancel{a}) = 0$. \\
+$\bullet$ \text{Traza de dos matrices}: $\text{Tr}(\gamma^\mu \gamma^\nu) = 4\eta^{\mu\nu} \Rightarrow \text{Tr}(\cancel{a}\cancel{b}) = 4(a \cdot b)$. \\
+$\bullet$ \text{Traza de cuatro matrices}: $\text{Tr}(\cancel{a}\cancel{b}\cancel{c}\cancel{d}) = 4 [(a \cdot b)(c \cdot d) - (a \cdot c)(b \cdot d) + (a \cdot d)(b \cdot c)]$. \\
+$\bullet$ \text{Traza de cuatro matrices $\gamma$:} $\text{Tr}(\gamma^\mu \gamma^\nu \gamma^\rho \gamma^\sigma) = 4 (\eta^{\mu \nu} \eta^{\rho \sigma} - \eta ^{\mu \rho} \eta ^{\nu \sigma} + \eta^{\mu \sigma} \eta^{\nu \rho})$.
+\\
+$\bullet$ $\text{Trazas con } \gamma^5: \text{Tr}(\gamma^5) = \text{Tr}(\gamma^5 \gamma^\mu \gamma^\nu) = \text{Tr}(\gamma^5 \cancel{a}\cancel{b}) = 0, \quad \text{Tr}(\gamma^5 \gamma^\mu \gamma^\nu \gamma^\rho \gamma^\sigma) = 4i \epsilon^{\mu\nu\rho\sigma}$. \\
+$\bullet$ \text{Contracción}: $\gamma_\mu \gamma^\mu = 4\mathbb{I}, \quad \gamma_\mu \cancel{a} \gamma^\mu = -2\cancel{a}, \quad \gamma_\mu \cancel{a}\cancel{b} \gamma^\mu = 4(a \cdot b)\mathbb{I}, \quad \gamma_\mu \cancel{a}\cancel{b}\cancel{c} \gamma^\mu = -2\cancel{c}\cancel{b}\cancel{a}$.\\
+$\bullet$ \text{Contracción:}
+$\gamma^\mu \gamma_\alpha \gamma_\beta \gamma_\delta \gamma_\mu = -2 \gamma_\delta \gamma_\beta \gamma_\alpha$\quad$\gamma^\mu \gamma_\alpha \gamma_\beta \gamma_\mu = 4\eta_{\alpha\beta}$\quad$\gamma^\mu \gamma_\alpha \gamma_\mu = -2\gamma_\alpha$\\
+
+% RELACIONES DE FIERZ Y BASE DE CLIFFORD
+
+% $\bullet$ \text{Base de Clifford} $\Gamma^A \in \{S, V, T, A, P\}: \{\mathbb{I}, \gamma^\mu, \sigma^{\mu\nu}, \gamma^5\gamma^\mu, \gamma^5\}$ con $\sigma^{\mu\nu} = \frac{i}{2}[\gamma^\mu, \gamma^\nu]$.\\
+% $\bullet$ \text{Relación de Completitud}: $4\delta_{\alpha\delta}\delta_{\gamma\beta} = \sum_A (\Gamma^A)_{\alpha\beta} (\Gamma_A)_{\gamma\delta} \Rightarrow \text{Tr}(\Gamma^A \Gamma_B) = 4\delta^A_B$.\\
+% $\bullet$ \text{Reordenamiento (Fermiones)}: $(\bar{\psi}_1 \Gamma^A \psi_2)(\bar{\psi}_3 \Gamma^B \psi_4) = -\sum_{C,D} \mathcal{C}_{AB}^{CD} (\bar{\psi}_1 \Gamma^C \psi_4)(\bar{\psi}_3 \Gamma^D \psi_2)$.\\
+% $\bullet$ $\text{Invariancia } V-A: [\bar{1} \gamma^\mu (1-\gamma^5) 2][\bar{3} \gamma_\mu (1-\gamma^5) 4] = [\bar{1} \gamma^\mu (1-\gamma^5) 4][\bar{3} \gamma_\mu (1-\gamma^5) 2]$.\\
+% $\bullet$ $\text{Identidad } S \times S: (\bar{1} 2)(\bar{3} 4) = -\frac{1}{4} \left[ (\bar{1} 4)(\bar{3} 2) + (\bar{1} \gamma^\mu 4)(\bar{3} \gamma_\mu 2) + \frac{1}{2}(\bar{1} \sigma^{\mu\nu} 4)(\bar{3} \sigma_{\mu\nu} 2) - (\bar{1} \gamma^\mu\gamma^5 4)(\bar{3} \gamma_\mu\gamma^5 2) + (\bar{1} \gamma^5 4)(\bar{3} \gamma^5 2) \right]$.\\
+% $\bullet$ $\text{Identidad } V \times V: (\bar{1} \gamma^\mu 2)(\bar{3} \gamma_\mu 4) = -\left[ (\bar{1} 4)(\bar{3} 2) - \frac{1}{2} (\bar{1} \gamma^\mu 4)(\bar{3} \gamma_\mu 2) - \frac{1}{2} (\bar{1} \gamma^\mu\gamma^5 4)(\bar{3} \gamma_\mu\gamma^5 2) - (\bar{1} \gamma^5 4)(\bar{3} \gamma^5 2) \right]$.
+
+\section{CORRIENTES Y ADJUNTO}
+$\bullet$ \textbf{Espinor Adjunto}: $\bar{\Psi} \equiv \Psi^\dagger \gamma^0$.
+$\rightarrow$ Ec. Adjunta: $i\partial_\mu \bar{\Psi} \gamma^\mu + m\bar{\Psi} = 0$.
+\\
+$\bullet$ \textbf{Adjunta de Matrices}: $\bar{\gamma}_\mu= \gamma _\mu \quad \bar{\gamma}_5 = - \gamma_5 \quad \overline{\gamma_\mu \gamma_5} = \gamma_\mu \gamma_5$
+\\$\bullet$ \textbf{Corriente conservada} ($\partial_\mu J^\mu = 0$): $J^\mu = \bar{\Psi} \gamma^\mu \Psi$.\\
+$\bullet$ Densidad ($J^0$): $J^0 = \Psi^\dagger \Psi = \sum |\Psi_i|^2 > 0$ (Probabilidad def. positiva).\\
+$\bullet$ Carga eléctrica: $J^\mu_{EM} = Q \bar{\Psi}\gamma^\mu \Psi, \;\;\; Q\equiv$ carga eléctrica de $\Psi$.
+
+\section{REPRESENTACIONES DE DIRAC (4x4) \normalfont{$- \;( \gamma^0=\beta , \;\,\gamma^i = \beta \alpha_i, \;\; \vec{\alpha} = \vec{\Sigma} \gamma^5, \;\; \vec{\sigma} = \sigma ^k )$}}
+\scalebox{0.8}{Matrices de Pauli: 
+$\sigma^0 = \left(\begin{smallmatrix}1&0\\0&1\end{smallmatrix}\right),\,\sigma^1 = \left(\begin{smallmatrix}0&1\\1&0\end{smallmatrix}\right),\, \sigma^2 = \left(\begin{smallmatrix}0&-i\\i&0\end{smallmatrix}\right),\, \sigma^3 = \left(\begin{smallmatrix}1&0\\0&-1\end{smallmatrix}\right), \;\;  \vec{\Sigma} =\Sigma=  \left(\begin{smallmatrix} \vec{\sigma} &0\\0&\vec{\sigma} \end{smallmatrix} \right)\;\;\;\begin{smallmatrix}\bar{\sigma}^0=\sigma^0\\\bar{\sigma}^k = - \sigma^k\end{smallmatrix}$}.
+
+\vspace{5pt}
+\scalebox{0.8}{
+\underline{1. Dirac-Pauli (Estándar)}: lím no rel:
+$\gamma^0 = \left(\begin{smallmatrix} \mathbb{I} & 0 \\ 0 & -\mathbb{I} \end{smallmatrix}\right), \vec{\gamma} = \left(\begin{smallmatrix} 0 & \vec{\sigma} \\ -\vec{\sigma} & 0 \end{smallmatrix}\right), \gamma^5 = \left(\begin{smallmatrix} 0 & \mathbb{I} \\ \mathbb{I} & 0 \end{smallmatrix}\right). \quad (\gamma^k)^T = \pm \gamma ^k \;\; \begin{array}{l}
+     + \;\; k =0,2,5\\
+     -\;\; k = 1,3
+\end{array}$}
+
+\vspace{5pt}
+\scalebox{0.8}{
+\underline{2. Weyl (Quiral)}: lím ultrarel ($m \!\to\!0$): 
+$\gamma^0 = \left(\begin{smallmatrix} 0 & \mathbb{I} \\ \mathbb{I} & 0 \end{smallmatrix}\right), \vec{\gamma} = \left(\begin{smallmatrix} 0 & \vec{\sigma} \\ -\vec{\sigma} & 0 \end{smallmatrix}\right), \gamma^\mu = \left(\begin{smallmatrix} 0 & \sigma^\mu \\ \bar{\sigma}^\mu & 0 \end{smallmatrix}\right),\gamma^5 = \left(\begin{smallmatrix} -\mathbb{I} & 0 \\ 0 & \mathbb{I} \end{smallmatrix}\right)$, \quad $\Psi = \left(\begin{smallmatrix}
+    \psi_L\\
+    \psi_R
+\end{smallmatrix}\right)$}. 
+
+\vspace{5pt}
+\scalebox{0.8}{
+\underline{3. Majorana}: 
+$\gamma^0 = \left(\begin{smallmatrix} 0 & \sigma^2 \\ \sigma^2 & 0\end{smallmatrix}\right), \gamma^1 = \left(\begin{smallmatrix}- i\sigma^3 & 0 \\ 0 & -i\sigma^3\end{smallmatrix}\right), \gamma^2 = \left(\begin{smallmatrix} 0 & \sigma^2 \\ -\sigma^2 & 0\end{smallmatrix}\right), \gamma^3 = \left(\begin{smallmatrix} i\sigma^1 & 0 \\ 0 & i\sigma^1\end{smallmatrix}\right)$, $\gamma^5 = \left(\begin{smallmatrix} -\sigma^2 & 0 \\0& \sigma^2\end{smallmatrix}\right)$}.
+
+
+\section{SOLUCIONES ECUACIÓN DE DIRAC: ONDA PLANA \normalfont{$-$ representación Pauli-Dirac}}
+Ansatz: $\Psi(x) = u(p) e^{-ip\cdot x}$. Ec. Espinor: $(\cancel{p} - m)u(p) = 0$.\\
+\underline{A. Sistema en Reposo ($\vec{p}=0$)}: $H u = \beta m u$. Exsiten 4 autoestados de $H$ independientes: \\
+$\bullet$ $E=m$ (partículas): $\quad \quad \;\, u^{(1)}=(1,0,0,0)^T$ spin $\uparrow$, $u^{(2)}=(0,1,0,0)^T$ spin $\downarrow$.\\
+$\bullet$ $E=-m$ (antipartículas): $u^{(3)}=(0,0,1,0)^T$ spin $\uparrow$, $u^{(4)}=(0,0,0,1)^T$ spin $\downarrow$.\\ 
+\underline{B. Sistema General ($\vec{p} \neq 0$)} $Hu = (\vec{\alpha} \cdot \vec{p} + \beta m)u$:\\
+Operador Helicidad: $\hat{h} = \frac{1}{2} \vec{\Sigma} \cdot \vec{\hat{p}}\;\; \vec{\hat{p}} \equiv \frac{\vec{p}}{|\vec{p}|} \;\;\; \vec{\Sigma} = \left(\begin{smallmatrix} \vec{\sigma} &0\\0&\vec{\sigma} \end{smallmatrix} \right)= I_{2 \times 2} \otimes \vec{\sigma} \;\;\;\frac{1}{2} \vec{\sigma} \, \vec{\hat{p}}\, \chi^{(\scalebox{0.8}{$\genfrac{}{}{0pt}{}{1}{2}$})} =\pm \frac{1}{2} \chi^{(\scalebox{0.8}{$\genfrac{}{}{0pt}{}{1}{2}$})}$.\\
+Espinores base $\chi_z^{(1)}=\binom{1}{0}$, helicidad $h=+\frac{1}{2}$, $\chi_z^{(2)}=\binom{0}{1}$, helicidad $h=-\frac{1}{2}$. $\quad [H, \hat{h}] = 0$.\\
+$\bullet$ \textbf{Partícula ($E>0$)}:
+$ \quad\; u^{(s)} = N $
+\scalebox{0.8}{$
+\left(\begin{smallmatrix} \chi^{(s)} \\ \frac{\vec{\sigma}\cdot\vec{p}}{E+m}\chi^{(s)} \end{smallmatrix}\right)$}$\quad 
+\begin{array}{cc}
+      s=1 \rightarrow  h=\tfrac{1}{2}\\
+      s=2 \rightarrow h =-\tfrac{1}{2}      
+\end{array}
+$ $N=\sqrt{|E|+m}$\\
+$\bullet$ \textbf{Antipart ($E<0$)}:
+$u^{(s+2)} = N $
+\scalebox{0.8}{$
+\left(\begin{smallmatrix} \frac{-\vec{\sigma}\cdot\vec{p}}{|E|+m}\chi^{(s)} \\ \chi^{(s)} \end{smallmatrix}\right)
+$}$
+\quad \begin{array}{cc}
+      s=1 \rightarrow  h=\tfrac{1}{2}\\
+      s=2 \rightarrow h =-\tfrac{1}{2}      
+\end{array} 
+$ $N=\sqrt{|E|+m}$\\
+Interpretación de soluciones de energía negativa $u^{(3,4)}$ como antiparts de energía positiva.\\
+$\bullet$ \textbf{Definición}: $v^{(s)}(p)$ es el espinor de un antifermión con momento físico $p$ y espín $s$.\\
+$\bullet$ \textbf{Relación}: $v^{(1)}(p) \equiv u^{(4)}(-p)\;\;\;$ spin $\downarrow, \, h =+\tfrac{1}{2}$ , $v^{(2)}(p) \equiv u^{(3)}(-p)\;\;\;$ spin $\uparrow, \, h =+\tfrac{1}{2}$.\\
+\textbf{Transformación} $C$: $u \leftrightarrow v$. Cambia spin y momento, helicidad no cambia.\\
+$\bullet$ \textbf{Ecs. de Dirac}: $(\cancel{p} - m)u(p) = 0$ \;\;\;\; $(\cancel{p} + m)v(p) = 0$.\\
+$\bullet$ \textbf{Ecs. Adjunta}:\,\;\ $\bar{u}(p)(\cancel{p} - m) = 0$ \;\;\;\; $\bar{v}(p)(\cancel{p} + m) = 0$. \quad $\bar{u} \equiv u^\dagger \gamma^0 \quad \bar{v} \equiv v^\dagger \gamma^0$
+
+$\bullet$ \textbf{Espinores}: $\bar{u}^{(s)}u^{(r)}\!=\!-\bar{v}^{(s)}v^{(r)} \!=\! 2m\delta_{sr}$,\;\;${u}^{(s)\dagger}u^{(r)} \!=\! {v}^{(s)\dagger}v^{(r)} \!=\! 2E\delta_{sr}$ \;\; $\bar{u}v \!=\! \bar{v}u \!=\! 0$\\
+$\bullet$ \textbf{Completitud}: $ \sum_{s=1,2} u^{(s)}(p)\bar{u}^{(s)}(p) = \cancel{p} + m $ \quad  $ \sum_{s=1,2} v^{(s)}(p)\bar{v}^{(s)}(p) = \cancel{p} - m $
+
+
+\section{REGLAS DE FEYNMAN (PATAS EXTERNAS)}
+Flujo de momento ($p$) (flecha encima de la línea). Flujo de fermión (flecha en la línea).\\
+\textit{Initial}: se dirige a un vértice. \quad \textit{Final}: sale de un vértice.\\
+\textbf{Fermión Entrante} (Initial): \quad \quad $u(p) \;\rightrightarrows.$\quad
+\textbf{Fermión Saliente} (Final):\quad \;\;\; $\bar{u}(p) \; .\rightrightarrows$\\
+ \textbf{Antifermión Entrante} (Initial): $\bar{v}(p)\; \rightleftarrows.$\quad \textbf{Antifermión Saliente} (Final): $v(p)\;\; .\rightleftarrows
+$\\
+\textbf{Fotón entrante} (Initial):\;  \;\ $\varepsilon_\mu (k)$ \gluon \, $\cdot$\ \;\;\;\textbf{Fotón saliente} (Final): \; $\varepsilon^*_\mu (k)$ \,$\cdot$\,\gluon
+
+\section{HELICIDAD ($h$ o $\lambda$) Y QUIRALIDAD}
+\textbf{Helicidad}: proyección del espín en la dirección del movimiento. Buen número cuántico.
+
+\textbf{Quiralidad}: medida de lateralidad. Si $m=0$ o $E\gg m$, quirality y helicity son iguales.
+
+$\bullet$ Definida por $\gamma^5 \equiv i\gamma^0\gamma^1\gamma^2\gamma^3 = -\frac{i}{4!} \epsilon_{\mu\nu\rho \sigma}\gamma^\mu \gamma^\nu \gamma^\rho \gamma^\sigma$.\\
+$\bullet$ Proyectores: $P_L = \frac{1}{2}(1-\gamma^5)$ (Levógiro), $P_R = \frac{1}{2}(1+\gamma^5)$ (Dextrógiro). $\quad\text{Nota: } 1 \equiv \mathbb{I} $\\
+$\bullet$ Propiedades: $P_{L,R}^2 = P_{L,R}$, $\quad P_L P_R = 0$, $\quad P_L + P_R = \mathbb{I}$, $\quad \gamma^\mu P_L= P_R\gamma^\mu$.\\
+$\bullet$ Descomposición: $\Psi = \Psi_L + \Psi_R$ donde $\Psi_L = P_L \Psi$, $\Psi_R = P_R \Psi$.\\
+    $\bullet$ \textbf{No es buen número cuántico} si $m \neq 0$ pues $[\gamma^5, H] \neq 0 \Rightarrow [P_{L,R}, H] \neq 0$.\\
+\textbf{1. Masa nula} ($m=0$): $\Psi_L \to h=-1/2$, $\Psi_R \to h=+1/2$.\\
+
+\textbf{2. Ultrarelativista ($E \gg m$)}: $\Psi_L \approx h(-1/2)$, $\Psi_R \approx h(+1/2)$.
+
+
+\section{BOOST Y PROYECTORES $\Lambda$}
+$\bullet$ \textbf{Boost $M(\Lambda)$:} Lleva desde $p=0$ hasta cuadrimomento $p^\mu$\qquad$u_{p\neq 0}^{(s)} = M(\Lambda) u_{p=0}^{(s)}$.\\
+$\bullet$ \textbf{Dirac-Pauli:}
+\scalebox{0.85}{$M(\Lambda)=\left(\begin{smallmatrix} \sqrt{\frac{p_\mu \sigma^\mu}{m}} & 0 \\ 0 & \sqrt{\frac{p_\mu \bar{\sigma}^\mu}{m}} \end{smallmatrix}\right)$}\quad
+$\bullet$ \textbf{Weyl:}
+\scalebox{0.85}{
+$M(\Lambda)=\left(\begin{smallmatrix} \sqrt{\frac{E+m}{2m}} & \hat{p}\vec{\sigma}\sqrt{\frac{E-m}{2m}} \\ \hat{p}\vec{\sigma}\sqrt{\frac{E-m}{2m}} & \sqrt{\frac{E+m}{2m}} \end{smallmatrix}\right)$
+}\\
+$\bullet$ \textbf{Proyectores $\Lambda$:} $\Lambda_+=\frac{\cancel{p}+m}{2m}$ (estados $E>0$) \quad $\Lambda_-=\frac{-\cancel{p}+m}{2m}$ (estados $E<0$).\\
+$\bullet$ \textbf{Propiedades:} $\Lambda_{\pm}^2 = \Lambda_{\pm}$, $\quad \Lambda_{+}+ \Lambda_- = 1$.\\
+
+
+
+\section{CONJUGACIÓN DE CARGA ($C$) y CONJUGACIÓN DE CAMBIO ($\hat{C}$)}
+En fermiones, operador de conjugación de carga NO coincide con operador de cambio.\\
+$\bullet$ $C$:  $\Psi \xrightarrow{C} C\Psi \!\Rightarrow$\! invierte n$^\text{os}$ cuánticos de carga. No cambia helicidad ni quiraldidad.\\
+$\bullet$ \textbf{Representación Dirac-Pauli}: ${C} = i\gamma^2\gamma^0 \Rightarrow$ anti-diag$(-1, 1, -1,1)$\\
+$\bullet$ $\hat{C}$:  $\Psi \xrightarrow{\hat{C}} \hat{C}\Psi = \Psi^C = C\bar{\Psi} ^{T}\quad$ $\Psi_R \rightarrow (\Psi_R)^C = (\Psi^C)_L \quad$ $\Psi_L \rightarrow (\Psi_L)^C = (\Psi^C)_R$\\
+$\hat{C}$ transforma partícula ($u$) $\leftrightarrow$ antipartícula ($v$). Invierte carga, helicidad y quiralidad.\\
+$\bullet$ \textbf{Propiedades}: $\hat{C} \gamma^{\mu T} \hat{C}^{-1} = -\gamma^\mu$, $\hat{C} \gamma^{5 T} \hat{C}^{-1} = \gamma^5,$ \quad $\hat{C}^\dagger=  \hat{C}^T = -\hat{C}, \quad \hat{C}^\dagger = \hat{C}^{-1}$\\
+$\bullet$ \textbf{Sobre espinores}: $\psi^c = \hat{C}\bar{\psi}^T, \quad \bar{\psi}^c = -\psi^T \hat{C}^{-1}$, \quad $\hat{C} (\sigma^{\mu\nu})^T \hat{C}^{-1} = -\sigma^{\mu\nu}$\\
+
+\section{TRANSFORMACIÓN DE LORENZ ($\Lambda$) $-\;\; \Lambda^\alpha_{\ \mu} \Lambda_\alpha^{\ \nu} = \delta_\mu^{\ \nu}$}
+$\bullet$ \textbf{4-vectores:} $a'^\mu = \Lambda^\mu_{\ \nu} a^\nu, \quad a'_\mu = \Lambda_\mu^{\ \nu} a_\nu \;\Rightarrow \;a^\mu = \Lambda_\nu^{\ \mu} a'^\nu, \quad a_\mu = \Lambda^\nu_{\ \mu} a'_\nu$\\
+$\bullet$ \textbf{Espinores:} $\psi'(\Lambda x) = S(\Lambda) \psi(x)$ \\
+$\bullet$ \textbf{Espinores autoadjuntos:} $\bar{\psi}'(\Lambda x) = \bar{\psi}(x) S^{-1}(\Lambda)$\\
+$\bullet$ \textbf{Matriz} $S(\Lambda)$: 
+$S \gamma^\mu S^{-1} = \Lambda_\nu^{\ \mu} \gamma^\nu$ $\Leftrightarrow$ $S^{-1} \gamma^\mu S = \Lambda^\mu_{\ \nu} \gamma^\nu$ \quad $S ^\dagger \gamma^0 = \gamma^0 S^{-1}$\\
+$\bullet$ \textbf{Tips:} $[\gamma^5, S]= 0 \Rightarrow S^{-1}\gamma^5S = \gamma^5$ \quad $\det \Lambda = 1$
+
+
+\section{INVERSIÓN DE PARIDAD ($P: \vec{x} \to -\vec{x}$)}
+$\bullet$ \textbf{Transformación espinor: }$\Psi'(t, -\vec{x}) = \gamma^0 \Psi(t, \vec{x})$.\\
+$\bullet$ \textbf{Transformación espinor autoadjunto:} $\bar{\Psi}'(t, -\vec{x}) = \bar{\Psi}(t, \vec{x})\gamma^0 $
+
+
+\section{COVARIANTES BILINEALES ($\bar{\Psi} \Gamma \Psi$)}
+Clasificación según transformación bajo Lorentz y Paridad: 
+\begin{center}
+\begin{tabular}{|l|c|c|c|}
+\hline
+Objeto & $\Gamma$ & Lorentz ($\Lambda$) & Paridad ($P$) \\ \hline
+Escalar ($S$) & $\mathbb{I}$ & $1$ & $+1$ (Par) \\
+Pseudoescalar ($P$) & $\gamma^5$ & $1$ & $-1$ (Impar) \\
+Vector ($V$) & $\gamma^\mu$ & Vector & $\epsilon_\mu$ \\
+Axial-Vector ($A$) & $\gamma^\mu \gamma^5$ & Vector & $-\epsilon_\mu$ \\
+Tensor ($T$) & $\sigma^{\mu\nu}$ & Tensor & Tensor \\ \hline
+\end{tabular}\\
+ $\epsilon_\mu = (+1, -1, -1, -1)$\\
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+$\times$ & \textbf{S} & \textbf{P} & \textbf{V} & \textbf{A} & \textbf{T} \\
+\hline\textbf{S} & S & P & V & A & T \\
+\hline
+\textbf{P} & P & S & A & V & T$^*$ \\
+\hline
+\textbf{V} & V & A & S, T & P, T$^*$ & V, A \\
+\hline
+\textbf{A} & A & V & P, T$^*$ & S, T & V, A \\
+\hline
+\textbf{T} & T & T$^*$ & V, A & V, A & S, P, T \\
+\hline
+\end{tabular}
+\end{center}
+
+

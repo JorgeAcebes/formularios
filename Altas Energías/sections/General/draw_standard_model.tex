@@ -1,0 +1,142 @@
+
+\vspace*{0.05cm}
+\begin{adjustbox}{rotate=90, center, width=0.99\linewidth} 
+\begin{tikzpicture}[ 
+% --- CONFIGURACIÓN DE ESTILOS --- 
+node distance=1.5cm and 1.0cm, 
+% Fuente base
+% font=\rmfamily,
+% Cajas principales 
+box/.style={ draw=black, thick, fill=white, rounded corners=3pt, align=center, inner sep=3pt, font=\rmfamily\tiny\bfseries }, 
+% Cajas de partículas específicas
+particle/.style={ draw=black, thin, fill=white, minimum width=0.5cm, minimum height=0.4cm, align=center, font=\rmfamily\footnotesize }, 
+% Notas y propiedades (texto lateral) 
+note/.style={ draw=none, fill=none, align=left, font=\rmfamily\scriptsize\itshape, text width=2.5cm, inner sep=2pt }, 
+% Estilo para las interacciones (fuerzas) 
+force/.style={ draw=black, densely dashed, fill=white!95!black, rounded corners=2pt, align=center, font=\rmfamily\tiny, minimum width=0.8cm, inner sep=3pt },
+% Conectores 
+line/.style={-Stealth, thick, draw=black!80}, connector/.style={-Stealth, thin, draw=black!60}, labelline/.style={midway, fill=white, font=\rmfamily\tiny, inner sep=1.5pt} ]
+
+% =============================================
+% NIVEL 0: RAÍZ
+% =============================================
+
+\node[box, text width=4cm, font=\rmfamily\small\bfseries] (root) {PARTÍCULAS ELEMENTALES};
+
+% =============================================
+% NIVEL 1: CLASIFICACIÓN POR ESPÍN
+% =============================================
+\node[box, below left=0.2cm and 2.0cm of root, text width=2cm] (fermiones) {FERMIONES\\ \normalfont\scriptsize(Materia)};
+\node[box, below right=0.2cm and 2.0cm of root, text width=2.5cm] (bosones) {BOSONES\\ \normalfont\scriptsize(Portadores de Fuerza)};
+
+\draw[line] (root) -| node[labelline] {Espín semi-entero} (fermiones);
+\draw[line] (root) -| node[labelline] {Espín entero} (bosones);
+
+% --- Notas de Estadística ---
+\node[note, left=0.5cm of fermiones, align=center] (stat_fermi) {Obedecen PPO de\\Exclusión Pauli};
+\node[note, right=0.5cm of fermiones, align=center] (stat_fermi_2) {No sufren\\interacción fuerte};
+\node[note, right=0.2cm of bosones, align=center] (stat_bose) {Pueden ocupar el mismo estado cuántico.};
+
+\draw[dotted, thin] (fermiones) -- (stat_fermi);
+\draw[dotted, thin] (fermiones) -- (stat_fermi_2);
+\draw[dotted, thin] (bosones) -- (stat_bose);
+
+
+% =============================================
+% NIVEL 2: FAMILIAS DE FERMIONES
+% =============================================
+\node[box, below left=1.5cm and 0.25cm of fermiones] (leptones) {LEPTONES};
+\node[box, below right=1.5cm and 0.25cm of fermiones] (quarks) {QUARKS};
+
+\draw[line] (fermiones) -- node[labelline] {$Q_e \in \mathbb{N}$} (leptones);
+\draw[line] (fermiones) -- node[labelline] {$Q_e =\{\frac{1}{3}, \tfrac{2}{3}\}$} (quarks);
+
+% --- Notas Leptones/Quarks ---
+\node[note, left=0.5cm of leptones, align=right, text width=2cm] (prop_lept) {Pueden vivir aislados};
+
+\draw[dotted, thin] (leptones) -- (prop_lept);
+
+% =============================================
+% NIVEL 3: GENERACIONES (Matrices de Partículas)
+% =============================================
+
+% --- MATRIZ LEPTONES ---
+% Generación 1, 2, 3
+\node[particle, below=0.5cm of leptones, xshift=-0.65cm] 
+(e) {$e$};
+\node[particle, right=0.1 of e] (mu) {$\mu$};
+\node[particle, right=0.1cm of mu] (tau) {$\tau$};
+
+\node[particle, below=0.1cm of e] (nue) {$\nu_e$};
+\node[particle, right=0.1cm of nue] (numu) {$\nu_\mu$};
+\node[particle, right=0.1cm of numu] (nutau) {$\nu_\tau$};
+
+\node[fit=(e)(nutau), draw=black!20, dashed, inner sep=5pt, label={[font=\tiny]below:Neutrinos solo sufren interacción débil}] (box_lept) {};
+\draw[connector] (leptones) -- (box_lept);
+
+% --- MATRIZ QUARKS ---
+\node[particle, below=0.5cm of quarks, xshift=-0.60cm] (u) {$u$};
+\node[particle, right=0.1cm of u] (c) {$c$};
+\node[particle, right=0.1cm of c] (t) {$t$};
+
+\node[particle, below=0.1cm of u] (d) {$d$};
+\node[particle, right=0.1cm of d] (s) {$s$};
+\node[particle, right=0.1cm of s] (b) {$b$};
+
+\node[fit=(u)(b), draw=black!20, dashed, inner sep=5pt, label={[font=\tiny]below:Energía unida a gluones}] (box_quark) {};
+\draw[connector] (quarks) -- (box_quark);
+
+% =============================================
+% NIVEL 2.5: HADRONES (Derivado de Quarks)
+% =============================================
+% 1. Definimos el nodo Hadrones a la derecha
+\node[box, right=2cm of quarks, text width=2cm, scale=1] (hadrones) {HADRONES\\ \normalfont\tiny(Compuestos)};
+\draw[line, dotted, ->] (quarks.east) -- (hadrones.west) 
+    node[midway, above, font=\scriptsize] {confinados};
+
+\node[particle, below=0.5cm of hadrones, xshift=-0.7cm, minimum width=1.2cm] (bariones) {Bariones\\($qqq$)};
+\node[particle, below=0.5cm of hadrones, xshift=0.7cm, minimum width=1.2cm] (mesones) {Mesones\\($q\bar{q}$)};
+
+\draw[connector] (hadrones) -- (bariones);
+\draw[connector] (hadrones) -- (mesones);
+\node[note, below=0.2cm of bariones, text width=1.2cm, align=center] {Protones\\Neutrones};
+\node[note, below=0.2cm of mesones, text width=1.2cm, align=center] {Piones\\Kaones};
+
+% =============================================
+% NIVEL 3: BOSONES GAUGE (Fuerzas)
+% =============================================
+
+% Dividimos bosones en Gauge y Escalar
+\node[particle, below=1.5cm of bosones, xshift=-1.75cm] (gluon) {$g$\\Gluón};
+\node[particle, right=0.75cm of gluon] (photon) {$\gamma$\\Fotón};
+\node[particle, right=0.75cm of photon] (wz) {$W^\pm, Z^0$\\Bosones Débiles};
+
+% Bosón de Higgs aparte
+\node[particle, right=1cm of wz] (higgs) {$H^0$\\Higgs};
+
+\draw[line] (bosones) -- (gluon);
+\draw[line] (bosones) -- (photon);
+\draw[line] (bosones) -- (wz);
+\draw[line] (bosones) -- (higgs);
+
+% =============================================
+% NIVEL 4: INTERACCIONES FUNDAMENTALES
+% =============================================
+\node[force, below=0.5cm of gluon] (f_fuerte) {STRONG};
+\node[force, below=0.5cm of photon] (f_em) {E.M.};
+\node[force, below=0.5cm of wz] (f_debil) {WEAK};
+
+\draw[connector] (gluon) -- (f_fuerte);
+\draw[connector] (photon) -- (f_em);
+\draw[connector] (wz) -- (f_debil);
+
+% Unificación Electrodébil
+\node[draw, dotted, fit=(f_em)(f_debil), label={[font=\tiny]below:Unificación Electrodébil}] {};
+
+% =============================================
+% CONEXIONES CRUZADAS (Física Rigurosa)
+% =============================================
+\draw[line, dash dot] (bosones.west) to node[labelline, rotate=55, anchor=south] {(no portadores de fuerza)} (mesones.east);
+
+\end{tikzpicture}
+\end{adjustbox}

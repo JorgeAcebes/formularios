@@ -1,0 +1,222 @@
+\section{LAGRANGIANO DE QED}
+Construcción mínima invariante $U(1)_{\text{EM}}$ y Lorentz:
+$$\mathcal{L}_{QED} = \mathcal{L}_{\text{Dirac}} + \mathcal{L}_{\text{Maxwell}} + \mathcal{L}_{\text{int}}$$
+$$\mathcal{L}_{\text{Dirac}}=  \bar{\psi} (i \cancel{\partial} - m) \psi \qquad \mathcal{L}_{\text{Maxwell}} = -\frac{1}{4} F_{\mu \nu }F^{\mu \nu} \qquad \mathcal{L}_{\text{int}} =-J_\mu^\psi A^\mu \;\;\; J_\mu^\psi = eQ\bar{\psi}\gamma^\mu\psi$$
+$$\mathcal{L}_{QED} = \bar{\psi}(i\cancel{D} - m)\psi - \frac{1}{4}F_{\mu\nu}F^{\mu\nu}$$
+$\bullet$ \textbf{Ecuaciones de Movimiento}:
+Dirac: $(i\cancel{D} - m)\psi = 0$.
+Maxwell: $\partial_\nu F^{\nu\mu} = J^\mu$.
+
+
+\section{INVARIANCIA GAUGE U(1)}
+\textbf{Global}: $\psi \to e^{-iQ\theta}\psi$ \;\; $\bar{\psi} \to \bar{\psi}e^{+iQ\theta}$\;\;$\partial_\mu\psi \to e^{-iQ\theta}\partial_\mu\psi$ ($\theta = \text{cte}$). $\mathcal{L}_{\text{Dirac}}$ es invariante.\\
+\textbf{Local}: $\psi \to e^{-iQ\theta(x)}\psi$. Requiere introducir campo gauge $A_\mu$.\\
+$\bullet$ \textbf{Derivada Covariante}: $ D_\mu = \partial_\mu + ieQA_\mu$
+\\Transformación del campo gauge para mantener invarianza:
+$A_\mu \to A_\mu + \frac{1}{e}\partial_\mu \theta(x)$\\
+
+$\bullet$ \textbf{Tensor de Campo}: $F_{\mu\nu} = \partial_\mu A_\nu - \partial_\nu A_\mu$. Es invariante gauge ($F'_{\mu\nu} = F_{\mu\nu}$).
+
+
+
+
+\section{VECTORES DE POLARIZACIÓN $\varepsilon^\mu (q)$ \qquad $k = q \equiv$ momento del fotón}
+
+\textbf{Condición Lorentz}: $\partial_\mu A^\mu \!= \!0 \!\Rightarrow \!A^\mu = \varepsilon^\mu (q) \, e^{-iq\cdot x}$\quad$q_\mu \varepsilon^\mu(q)\!=\!0\quad k^2\!=\! 0\Leftrightarrow$ fotón real
+
+
+$\bullet$ \textbf{Suma de Polarizaciones} (Completitud): $ \sum_{\lambda=1,2} \varepsilon_\mu^{(\lambda)} (q) \varepsilon_\nu^{(\lambda)*}(q) = -g_{\mu\nu} $\\
+
+$\bullet$ dof = 2. \quad Dado $q^\mu = (E, 0,0,|q|) \Rightarrow E = |q|$ y las polarizaciones son: \\$$\varepsilon^{(\lambda=+1)}_\mu(q) = \frac{1}{\sqrt{2}}(0,1,+i,0) \qquad \varepsilon_\mu^{(\lambda=-1)}(q) = -\frac{1}{\sqrt{2}}(0,1,-i,0)$$
+
+Vector de polarización $\epsilon^\mu$: Codifica la orientación espacial del espín de la partícula, describiendo físicamente cómo se proyecta su momento angular intrínseco (helicidad) a lo largo de su trayectoria.
+
+\section{FIJACIÓN DE GAUGE ($R_\xi$)}
+Se debe introducir  $ \mathcal{L}_{GF} = -\frac{1}{2\xi}(\partial_\mu A^\mu)^2,\;\ \xi \in \mathbb{R}$
+en $\mathcal{L}_{QED}$ para fijar el Gauge.\\
+
+$\bullet$ Modifica las ecuaciones de movimiento pero hace el propagador invertible.\\ 
+$\bullet$ \textbf{Observables}: Independientes del parámetro $\xi$.
+
+$\bullet$ \textbf{Propagador del Fotón}: Obtenido invirtiendo el operador cinético cuadrático.
+$$i\Delta_{\mu\nu}(k) = \frac{-i}{k^2 + i\epsilon} \left[ g_{\mu\nu} + (\xi - 1)\frac{k_\mu k_\nu}{k^2} \right]$$
+
+$\cdot$ \textbf{Feynman-'t Hooft} ($\xi = 1$):
+   $\Delta_{\mu\nu} \propto \frac{g_{\mu\nu}}{k^2} $ \quad $\cdot$ \textbf{Landau} ($\xi = 0$):
+   $\Delta_{\mu\nu} \propto \frac{g_{\mu\nu} - k_\mu k_\nu/k^2}{k^2}$
+
+
+
+\section{ANÁLISIS DIAGRAMAS DE FEYNMAN}
+\textbf{1. Asignar momentos:} A cada partícula se le asigna un momento $p_i$.\\
+\textbf{2. Dibujar diagramas:} Se dibujan todos los posibles diagramas (canal $s$, $t$ y $u$). \\
+Descarta aquellos diagramas que no conserven las cantidades de la tabla:
+
+{
+\centering
+\begin{center}
+\begin{tabular}{|l|c|c|c|}
+\hline
+\textbf{Cantidad} & \textbf{Fuerte} & \textbf{Electromagnética} & \textbf{Débil} \\ \hline
+Energía/Momento ($p^\mu$) & Sí & Sí & Sí \\ \hline
+Momento angular total & Sí & Sí & Sí \\ \hline
+
+Carga Eléctrica ($Q$) & Sí & Sí & Sí \\ \hline
+Carga de Color & Sí & --- & --- \\ \hline
+Sabor (Quarks) & Sí & Sí & No (vía $W^\pm$) \\ \hline
+Paridad ($P$) & Sí & Sí & No \\ \hline
+Conjugación de Carga ($C$) & Sí & Sí & No \\ \hline
+G-Paridad ($G$) & Sí & No & No \\ \hline
+Simetría $CP$ & Sí & Sí & No (violación) \\ \hline
+Isospin ($I$) & Sí & No & No \\ \hline
+3ª Componente Isospin ($I_3$) & Sí & Sí & No \\ \hline
+\end{tabular}
+\end{center}
+
+}
+
+
+\textbf{3. Aplicar Feynman Rules:} Se leen los diagramas de Feynmann aplicando FR. Tips:\\
+$\vdash$ Vértices distintos tienen índices distintos.\\
+$\vdash$ Partícula \textit{ingoing} con momento $p$ $\;\; \equiv \;\; $ Antipartícula \textit{outgoing} con momento $-p$.\\
+$\vdash$ Si dos diagramas son idénticos salvo por el intercambio de dos \underline{fermiones} externos, se multiplica por $(-1)$ una de las dos amplitudes invariantes.\\
+$\vdash$ Las líneas \underline{fermiónicas} se leen al revés.
+
+\textbf{4. Cálculo $|F|^2$ y $|\bar{F}|^2$:} Se calcula $|F|^2 = F\cdot F^*$. Nota: $F$ y $F^*$ con distintos 
+índices.\\
+
+\textbf{5.} Producto espacio espinorial, relaciones de completitud y expresarlo en términos de trazas.\\
+
+\textbf{6. Cálculo de trazas:} Se calculan trazas, y se contraen con $\eta_{\mu_\mu} \eta ^{\rho \sigma}$.\\
+
+$\bullet$ Crossing: $s\leftrightarrow t \;\;\Leftrightarrow \;\;p_3 \leftrightarrow -p_2 \; \& \; m_3 \leftrightarrow m_2$ (evitas recalcular $|\bar{F}|^2$ si consigues $\textit{isomorfear}$ a un diagrama equivalente). Ídem para $s\leftrightarrow u$ y $t \leftrightarrow u$.
+
+
+\textbf{7.} Cálculo de la sección eficaz.
+
+
+
+
+
+\section{PROCESO DE ANIQUILACIÓN ($e^- e^+ \to \mu^- \mu^+$)}
+
+\textbf{Amplitud ($F_s$):}
+Lectura del diagrama (recordar sentido opuesto a flechas fermiónicas):
+$$ -iF = [\bar{u}(p_3) (ie\gamma^\mu) v(p_4)] \frac{-ig_{\mu\nu}}{s} [\bar{v}(p_2) (ie\gamma^\nu) u(p_1)] $$
+Simplificación ($m_e \approx 0$ frente a $m_\mu$ o energías altas):
+$$ F = \frac{e^2}{s} [\bar{u}_3 \gamma^\mu v_4] [\bar{v}_2 \gamma_\mu u_1] $$
+
+\textbf{Cuadrado de Amplitud Promediada:}
+$$ |\overline{F}|^2 = \frac{e^4}{4s^2} \text{Tr}[(\cancel{p}_3+m_\mu)\gamma^\mu(\cancel{p}_4-m_\mu)\gamma^\nu] \text{Tr}[(\cancel{p}_2-m_e)\gamma_\mu(\cancel{p}_1+m_e)\gamma_\nu] $$
+Resultado exacto (con masas):
+$$ |\overline{F}|^2 = \frac{2e^4}{s^2} \{ (p_1 \cdot p_3)(p_2 \cdot p_4) + (p_1 \cdot p_4)(p_2 \cdot p_3) + m_\mu^2(p_1 \cdot p_2) \} $$
+Límite Ultra-Relativista (UR, $m \to 0$):
+$$ |\overline{F}|^2_{UR} = \frac{2e^4}{s^2} [t^2 + u^2] = 2e^4 \left( \frac{t^2+u^2}{s^2} \right) $$
+
+\textbf{Sección Eficaz (CM):}
+$$ \frac{d\sigma}{d\Omega}_{CM} = \frac{\alpha^2}{4s} (1 + \cos^2\theta) \qquad \sigma_{tot} = \frac{4\pi\alpha^2}{3s} $$
+
+\textbf{Crossing Symmetry:}
+Este proceso está relacionado con $e^- \mu^- \to e^- \mu^-$ (scattering) mediante:
+$\bullet$ $p_3 \leftrightarrow -p_2$ (intercambio momento saliente $\mu$ con entrante $e^+$).
+$\bullet$ Implica $s \leftrightarrow t$.
+
+\section{MØLLER SCATTERING ($e^- e^- \to e^- e^-$)}
+
+\textbf{Amplitud Total:}
+$$ F = F_t - F_u $$
+Signo relativo (-) por estadística Fermi (intercambio fermiones idénticos finales $p_3 \leftrightarrow p_4$).
+$$ -iF_t = [\bar{u}_3 (ie\gamma^\mu) u_1] \frac{-ig_{\mu\nu}}{t} [\bar{u}_4 (ie\gamma^\nu) u_2] \qquad -iF_u = [\bar{u}_4 (ie\gamma^\mu) u_1] \frac{-ig_{\mu\nu}}{u} [\bar{u}_3 (ie\gamma^\nu) u_2] $$
+
+\textbf{Cuadrado de Amplitud Promediada (con Interferencia):}
+$$ |\overline{F}|^2 = \frac{1}{4} \sum |F|^2 = \frac{1}{4} \sum (|F_t|^2 + |F_u|^2 + 2\text{Re}(F_t F_u^*)) $$
+Estructura del resultado ($A, B, C$ son funciones de trazas):
+$$ |\overline{F}|^2 = \frac{e^4}{4} \left\{ \frac{A}{t^2} + \frac{B}{u^2} + \frac{C}{ut} \right\} $$
+Donde los términos cinemáticos (variables de Mandelstam) son:\\
+$\bullet$ Término directo $t$ ($A$): $\propto s^2 + u^2 + \dots$\\
+$\bullet$ Término cruzado $u$ ($B$): $\propto s^2 + t^2 + \dots$ (obtenido por crossing $t \leftrightarrow u$).\\
+$\bullet$ Interferencia ($C$): Término mixto negativo y complejo.
+
+\textbf{Límite No-Relativista (NR):}
+Condición: $|\vec{p}| \ll m_e \implies E \approx m_e, s \approx 4m_e^2$.
+$$ \text{Fórmula de Mott: }\frac{d\sigma}{d\Omega}_{NR} = \frac{m_e^2 \alpha^2}{16|\vec{p}|^4} \left\{ \frac{1}{\sin^4(\theta/2)} + \frac{1}{\cos^4(\theta/2)} - \frac{1}{\sin^2(\theta/2)\cos^2(\theta/2)} \right\} $$
+$\bullet$ El primer término recupera Rutherford. El tercer término es cuántico (interferencia).
+
+\textbf{Límite Ultra-Relativista (UR):}
+Condición: $|\vec{p}| \gg m_e \implies m_e \to 0$.
+$$ \{A\} \approx 8[s^2+u^2], \quad \{B\} \approx 8[s^2+t^2], \quad \{C\} \approx 16s^2 $$
+$$ |\overline{F}|^2_{UR} = 2e^4 \left\{ \frac{s^2+u^2}{t^2} + \frac{s^2+t^2}{u^2} + \frac{2s^2}{ut} \right\} $$
+Sección eficaz diferencial (Møller, 1932):
+$$ \frac{d\sigma}{d\Omega}_{UR} = \frac{\alpha^2}{4s} \left\{ \frac{1}{\sin^4(\theta/2)} + \frac{1}{\cos^4(\theta/2)} + 1 \right\} $$
+$\bullet$ Nota: El término $+1$ proviene de la interferencia y simetría en el límite UR.
+
+
+
+\textbf{Interferencia Cuántica:}\\
+$\bullet$ Esencial en Møller (partículas idénticas).\\
+$\bullet$ $\overline{F_t F_u^*} \neq 0$.\\
+$\bullet$ Contribuye significativamente a la sección eficaz, diferenciando QED clásica de cuántica.
+
+
+\section{BHABHA SCATTERING ($e^- e^+ \to e^- e^+$)}
+\textbf{Cuadrado del Promedio de Amplitud (Límite UR):}
+Despreciando masas ($m_e \to 0$):\\
+$$ |\overline{\mathcal{M}}|^2 = 2e^4 \left\{ \frac{s^2+u^2}{t^2} + \frac{u^2+t^2}{s^2} + \frac{2u^2}{st} \right\} $$
+
+\textbf{Sección Eficaz Diferencial (CM):}\\
+En el centro de masas, usando $\alpha = e^2/4\pi$:
+$$ \frac{d\sigma}{d\Omega}_{CM} = \frac{\alpha^2}{8s} \left\{ \frac{1+\cos^4(\theta/2)}{\sin^4(\theta/2)} + \frac{1+\cos^2\theta}{2} - \frac{2\cos^4(\theta/2)}{\sin^2(\theta/2)} \right\} $$
+
+\section{COMPTON SCATTERING ($\gamma e^- \to \gamma e^-$)}
+
+\textbf{Amplitudes:}
+$$ -i\mathcal{M}_s = \bar{u}(p') (ie\gamma^\nu) \epsilon_\nu^*(k') \frac{i(\cancel{p}+\cancel{k} + m)}{s-m^2} (ie\gamma^\mu) \epsilon_\mu(k) u(p) $$
+$$ -i\mathcal{M}_u = \bar{u}(p') (ie\gamma^\mu) \epsilon_\mu(k) \frac{i(\cancel{p}-\cancel{k}' + m)}{u-m^2} (ie\gamma^\nu) \epsilon_\nu^*(k') u(p) $$
+
+\textbf{Simplificación de Propagadores (UR):} En el límite ultrarelativista ($m \to 0$):
+$$ \frac{i(\cancel{p}+\cancel{k})}{s}, \quad \frac{i(\cancel{p}-\cancel{k}')}{u} $$
+
+\textbf{Cálculo de la Traza (Canal $s$):}\\
+$\bullet$ Promedio sobre polarizaciones iniciales (fotón $\times 2$, electrón $\times 2$) $\to$ factor $1/4$.\\
+$$ |\overline{\mathcal{M}_s}|^2 = \frac{e^4}{4s^2} \text{Tr}[\cancel{p}' \gamma^\alpha (\cancel{p}+\cancel{k}) \gamma^\mu \cancel{p} \gamma_\mu (\cancel{p}+\cancel{k}) \gamma_\alpha] $$
+$\bullet$ Usando identidades de trazas y $p^2=k^2=0$:
+$$ |\overline{\mathcal{M}_s}|^2 = \frac{e^4}{4s^2} 32 [(p'\cdot k)(p\cdot k)] $$
+$\bullet$ En variables de Mandelstam UR ($s \approx 2p\cdot k$, $u \approx -2p' \cdot k$):
+$$ |\overline{\mathcal{M}_s}|^2 = 2e^4 \left( -\frac{u}{s} \right) $$
+
+\textbf{Resultado Final (Suma de canales):}\\
+$\bullet$ Considerando $\mathcal{M}_u$ y términos de interferencia:
+$$ |\overline{\mathcal{M}}|^2 = 2e^4 \left( -\frac{u}{s} - \frac{s}{u} \right) $$
+$\bullet$ Notar: $-u/s$ y $-s/u$ son positivos en región física ($s>0, u<0$).
+
+\textbf{Sección Eficaz (CM):}
+$$ \frac{d\sigma}{d\Omega}_{CM} = \frac{1}{64\pi^2 s} |\overline{\mathcal{M}}|^2 = \frac{e^4}{32\pi^2 s} \left( -\frac{u}{s} - \frac{s}{u} \right) $$
+
+\section{QUARKS EN QED}
+\textbf{Proceso $e^- q \to e^- q$:}\\
+$\bullet$ Análogo a $e^- \mu^- \to e^- \mu^-$ (t-channel dominante).\\
+$\bullet$ \textbf{Vértice Quark:} Se sustituye $ie\gamma^\mu$ por $-ie Q_q \gamma^\mu$ (donde $Q_q$ es la carga fraccionaria).
+
+\textbf{Factor de Color ($F_C$):}\\
+$\bullet$ Se debe promediar sobre colores iniciales y sumar sobre finales.
+$$ F_C = \frac{1}{3} \sum_{i,j} \delta_{ij} \delta_{ij}^* = \frac{1}{3} \sum_i \delta_{ii} = \frac{3}{3} = 1 $$
+$\bullet$ Resultado amplitud $e^- q$:
+$$ |\overline{\mathcal{M}}|^2 = 2e^4 Q_q^2 F_C \frac{s^2+u^2}{t^2} $$
+
+\section{CROSSING SYMMETRY \& OTROS PROCESOS}
+Aplicación de simetría de cruce para obtener $|\overline{\mathcal{M}}|^2$ de nuevos procesos a partir de previos.
+
+\textbf{1. $e^- e^+ \to q \bar{q}$ (Creación de pares hadrónicos):}\\
+$\bullet$ Crossing desde $e^- q \to e^- q$.\\
+$\bullet$ Factor de color: No se promedia color inicial (leptones), se suma final.\\
+$\bullet$ $F_C = \sum \delta_{ij}\delta_{ij} = 3$.\\
+$\bullet$ Resultado: $|\overline{\mathcal{M}}|^2 = \frac{e^4}{s^2} Q_q^2 (3) [t^2+u^2]$.
+
+\textbf{2. $q \bar{q} \to \gamma \gamma$ (Aniquilación):}\\
+$\bullet$ Crossing desde Compton ($e^- \gamma \to e^- \gamma$).\\
+$\bullet$ Requiere reevaluar factor de color (promedio inicial de quarks).\\
+$\bullet$ Resultado: $|\overline{\mathcal{M}}|^2 \propto Q_q^4 F_C (-u/s - s/u)$.
+
+\textbf{3. $q \bar{q} \to g g$ (QCD):}\\
+$\bullet$ Análogo a aniquilación en dos fotones pero con vértices de color y gluones.
+

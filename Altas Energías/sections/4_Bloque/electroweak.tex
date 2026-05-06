@@ -1,0 +1,140 @@
+
+
+\section{FAMILIAS DE FERMIONES}
+
+{
+\centering
+\begin{tabular}{c|c|c}
+\textbf{1ª familia} & \textbf{2ª familia} & \textbf{3ª familia} \\
+\hline
+$\binom{\nu_{eL}}{e_L^-}, e_R^-$ & $\binom{\nu_{\mu L}}{\mu_L^-}, \mu_R^-$ & $\binom{\nu_{\tau L}}{\tau_L^-}, \tau_R^-$ \\
+$\binom{u_L}{d_L}, u_R, d_R$ & $\binom{c_L}{s_L}, c_R, s_R$ & $\binom{t_L}{b_L}, t_R, b_R$
+\end{tabular}
+
+\vspace{5pt}
+
+\begin{tabular}{c|c|c|c|c|c|c|c}
+\hline
+& $u_R$ & $u_L$ & $d_R$ & $d_L$ & $\nu_{eL}$ & $e_R$ & $e_L$ \\
+\hline
+$Y$ & $4/3$ & $1/3$ & $-2/3$ & $1/3$ & $-1$ & $-2$ & $-1$ \\
+\hline
+$T_3$ & $0$ & $1/2$ & $0$ & $-1/2$ & $1/2$ & $0$ & $-1/2$ \\
+\hline
+$Q$ & $2/3$ & $2/3$ & $-1/3$ & $-1/3$ & $0$ & $-1$ & $-1$
+\end{tabular}
+
+\vspace{3pt}
+
+}
+
+Para la 2ª y 3ª familia es idéntico, con: $[u, \, d,\, e, \, \nu_e] \to [c, \, s, \, \mu, \nu_\mu] \to [t, \, b, \, \tau, \, \nu_\tau] $
+
+
+
+\section{SIMETRÍA ELECTRODÉBIL (SM-EW): $SU(2)_L \times U(1)_Y$}
+$\bullet$ \textbf{Quiralidad}: $\Psi_{L,R} = P_{L,R}\Psi$, con proyectores $P_{L,R} = \frac{1 \mp \gamma_5}{2}$. % [cite: 27]
+\\ $\bullet$ \textbf{Generadores}: Para $SU(2)_L$, $T_i = \frac{\sigma_i}{2}$ (Isospín débil). Para $U(1)_Y$, hipercarga débil $Y$. % [cite: 52, 60]
+\\ $\bullet$ \textbf{Fermiones}: Agrupados en dobletes levógiros $L$ y singletes dextrógiros $R$.
+\\ $\bullet$ \textbf{Carga eléctrica}: Relaciones: $Q = T_3 + \frac{Y}{2} \quad J_{\rm EM }^\mu = J_3 ^\mu + \frac{1}{2} J_{\rm Y}^\mu$.\\
+
+
+$\bullet$ \textbf{Derivada covariante:} $D_\mu = \partial_\mu - igT_a W_\mu^a - ig'\frac{Y}{2}B_\mu$\\
+$\bullet$ $W_\mu^a$ ($a=1,2,3$) bosones de gauge de $SU(2)_L$ con acoplo $g$. % [cite: 92, 95]
+\\ $\bullet$ $B_\mu$ bosón de gauge de $U(1)_Y$ con acoplo $g'$. % [cite: 92, 100]
+\\ $\bullet$ \textbf{Bosones físicos}: Mezcla de $W_\mu^3$ y $B_\mu$ parametrizada por el ángulo débil $\theta_w$. % [cite: 102, 103]
+$$W_\mu^\pm = \frac{1}{\sqrt{2}}(W_\mu^1 \mp iW_\mu^2) \quad Z_\mu = W_\mu^3\cos\theta_w - B_\mu\sin\theta_w \quad A_\mu = W_\mu^3\sin\theta_w + B_\mu\cos\theta_w$$ % [cite: 105]
+$\bullet$ \textbf{Unificación}: $e = g \sin\theta_w = g' \cos\theta_w$. Para $Q^2= M_Z^2: e = 0.31, \, g = 0.65, \, g' =0.35$ % [cite: 107, 108]
+\\ $\bullet$ \textbf{Masas}: Mecanismo de Higgs $M_Z = \frac{M_W}{\cos\theta_w}$; Constante de Fermi $\frac{G_F}{\sqrt{2}} = \frac{g^2}{8M_W^2}$. % [cite: 151, 152]
+
+\section{LAGRANGIANO ELECTRODÉBIL}
+$$\mathcal{L}_{EW} = \sum_f \bar{\Psi}i\cancel{D}\Psi - \frac{1}{4}W_{\mu\nu}^a W_a^{\mu\nu} - \frac{1}{4}B_{\mu\nu}B^{\mu\nu}\;\;\;\;f \equiv \rm fermiones$$ % 
+$$W_{\mu\nu}^a = \partial_\mu W_\nu^a - \partial_\nu W_\mu^a + g\epsilon^{abc}W_\mu^b W_\nu^c \qquad B_{\mu\nu} = \partial_\mu B_\nu - \partial_\nu B_\mu$$ % [cite: 146]
+
+\section{REGLAS DE FEYNMAN (VÉRTICES)}
+$\bullet$ \textbf{Corriente cargada ($W^\pm$)}: Interacciona solo con fermiones $L$. $W^\pm \rightarrow f \bar{f}': \;\; \frac{ig}{\sqrt{2}}\gamma^\mu P_L$ % [cite: 190]
+\\$\bullet$ Vértices con quarks: multiplica por elemento matriz CKM ($U_{ij}$) y tensor de color. 
+
+$U_{\text{CKM}} = 
+\begin{pmatrix}
+V_{ud} & V_{us} & V_{ub} \\
+V_{cd} & V_{cs} & V_{cb} \\
+V_{td} & V_{ts} & V_{tb}
+\end{pmatrix}
+=
+\begin{pmatrix}
+0.974 & 0.224 & 0.00365 \\
+0.224 & 0.973 & 0.0421 \\
+0.00896 & 0.0413 & 0.999
+\end{pmatrix}
+\approx \mathbb{I} + 
+\begin{array}{cc}
+\text{correcciones}  \\
+\text{pequeñas} 
+\end{array}
+$\\
+$\bullet$ \textbf{Corriente neutra ($Z^0$)}: Interacciona con $L$ y $R$. $Z^0 \rightarrow f \bar{f}:\;\; \frac{ig}{\cos\theta_w}\gamma^\mu (g_L P_L + g_R P_R)$\\
+$\bullet$ Vértices con neutrinos: multiplica por $\frac{1}{2}$ y elimina la parte entre paréntesis.
+\\$\bullet$ Vértices con quarks: multiplica por el tensor de color.
+
+$\bullet$ \textbf{Acoplos quirales del $Z$}: $g_L = T_3 - Q\sin^2\theta_w$, $g_R = -Q\sin^2\theta_w$. 
+
+\section{PROPAGADORES Y ESTADOS EXTERNOS}
+$\bullet$ \textbf{Propagador fermión}: $\frac{i(\cancel{p}+m)}{p^2-m^2}$ (multiplicado por el tensor de color para quakrs). % [cite: 297]
+\\ $\bullet$ \textbf{Propagador bosón $V$ ($W, Z$)}: $\frac{-i(g_{\mu\nu} - k_\mu k_\nu/M_V^2)}{k^2-M_V^2}$. % [cite: 300]
+\\ $\bullet$ \textbf{Completitud}: Bosones masivos ($k^2 = M_V^2$) con 3 estados de polarización ($\lambda=\pm 1, 0$): % [cite: 320]
+$$\sum_{\lambda} \epsilon_\mu^{(\lambda)}(k) \epsilon_\nu^{(\lambda)*}(k) = -g_{\mu\nu} + \frac{k_\mu k_\nu}{M_V^2} \epsilon_\mu(k) k^\mu = 0$$ % [cite: 287]
+
+\section{CÁLCULO DE AMPLITUDES (TRAZAS)}
+$\bullet$ Amplitud cuadrada promediada: $|\overline{\mathcal{M}}|^2 = \frac{1}{\prod s_{in}} \sum |\mathcal{M}|^2$. % [cite: 419]
+\\ $\bullet$ \textbf{Propiedades trazas}: $P_L P_R = 0$, $P_L^2 = P_L$, $\gamma^\mu P_L = P_R \gamma^\mu$. % [cite: 366]
+$$\text{Tr}\{\gamma^\mu \gamma^\nu \gamma^\rho \gamma^\sigma\} = 4(g^{\mu\nu}g^{\rho\sigma} - g^{\mu\rho}g^{\nu\sigma} + g^{\mu\sigma}g^{\nu\rho}) \qquad \text{Tr}\{\gamma^\mu \gamma^\nu \gamma^\rho \gamma^\sigma \gamma_5\} = -4i\epsilon^{\mu\nu\rho\sigma}$$ % [cite: 382]
+$\bullet$ Contracción de tensores de Levi-Civita: $\epsilon_{\alpha\beta\mu\nu}\epsilon^{\rho\sigma\mu\nu} = -2(\delta_\alpha^\rho\delta_\beta^\sigma - \delta_\alpha^\sigma\delta_\beta^\rho)$ % [cite: 386]
+
+\section{CINEMÁTICA Y TASAS DE DESINTEGRACIÓN}
+$\bullet$ Anchura parcial para desintegración $1 \rightarrow 2$: $\Gamma = \int \frac{1}{2M_W} |\overline{\mathcal{M}}|^2 d\text{Lips}(M_W; p_1, p_2)$\\
+$\int d\text{Lips} = \frac{\sqrt{(M^2 - (m_1+m_2)^2)(M^2 - (m_1-m_2)^2)}}{8\pi M^2}$ \;\;si $m_1, m_2 \rightarrow 0 \Rightarrow \int d\text{Lips} = \frac{1}{8\pi}$. % [cite: 432]
+\\ $\bullet$ \textbf{Sección eficaz}: $\frac{d\sigma}{d\Omega_{cm}} = \frac{1}{64\pi^2 s} |\overline{\mathcal{M}}|^2 \frac{|\mathbf{p}_f|}{|\mathbf{p}_i|}$. % [cite: 391]
+
+
+\section{ANCHURAS DE DESINTEGRACIÓN (W y Z)}
+\textbf{Decaimiento del Bosón W:} % [cite: 19]
+\\ $\bullet$ $\Gamma(W^- \to d\bar{u}) = 3 |V_{ud}|^2 \Gamma(W^- \to e^- \bar{\nu}_e) = 3 |V_{ud}|^2 ( g^2 M_W / 48\pi ) \;\;\; V_{ud} \overset{U_{CKM\approx 1}}{\approx} 1$
+\\ $\bullet$ Factor de color: $F_c = \sum \delta_{ij}\delta_{ij}^* = 3$
+
+
+\textbf{Decaimiento del Bosón Z:} % [cite: 53]
+\\ $\bullet$ Anchura a neutrinos: $\Gamma(Z \to \nu_e \bar{\nu}_e) = g^2 M_Z/96\pi \cos^2\theta_w$ % [cite: 68]
+\\ $\bullet$ \textbf{Branching Ratios (BR)} aproximados: % [cite: 79]
+\\  Invisible ($Z \to \nu\bar{\nu}$): $\sim 20\%$ \;  Hadrónico ($Z \to q\bar{q}$): $\sim 70\%$ \; Leptónico ($Z \to l^+l^-$): $\sim 10\%$ % [cite: 80]
+
+\section{NARROW WIDTH APPROXIMATION (NWA)}
+\textbf{Modificación del Propagador:} Para partículas inestables en canales $s$. % [cite: 88]
+$$ \frac{1}{k^2 - M^2} \longrightarrow \frac{1}{k^2 - M^2 + i\Gamma M} $$ % [cite: 90]
+\textbf{Límite NWA ($\Gamma \ll M$):} Sustitución de la resonancia por la delta de Dirac. % [cite: 96]
+$$ \frac{1}{(s - M^2)^2 + M^2 \Gamma^2} \longrightarrow \frac{\pi}{M\Gamma} \delta(s - M^2) $$ % [cite: 100]
+\\ $\bullet$ \textbf{Factorización de la Sección Eficaz:} Válido on-shell. % [cite: 105]
+$$ \sigma(A+B \to C+D) \approx \sigma(A+B \to X) \cdot \text{BR}(X \to C+D) $$ % [cite: 106]
+
+\section{REGLAS DE FEYNMAN: BOSONES EW}
+\textbf{Autointeracciones (Vértices de 3 y 4 puntos):}
+
+Generados por términos de Yang-Mills $-\frac{1}{4}W_{\mu\nu}W^{\mu\nu} - \frac{1}{4}B_{\mu\nu}B^{\mu\nu}$. % [cite: 147]
+\\ $\bullet$ Vértice $W^+ W^- \gamma$: %
+$$ -ie \left[ (k_1-k_2)_\lambda g_{\mu\nu} + (k_2-k_3)_\mu g_{\nu\lambda} + (k_3-k_1)_\nu g_{\lambda\mu} \right] $$ % [cite: 152]
+\\ $\bullet$ Estructura tensorial vértices de 4 puntos: % [cite: 158]
+$$ S_{\mu\nu,\lambda\rho} \equiv 2g_{\mu\nu}g_{\lambda\rho} - g_{\mu\lambda}g_{\nu\rho} - g_{\mu\rho}g_{\nu\lambda} $$ % [cite: 161]
+\\ $\bullet$ Vértice $W^+ W^- \gamma \gamma$: $-i e^2 S_{\mu\nu,\lambda\rho}$ % [cite: 167]
+
+\section{BOSÓN DE HIGGS}
+Escalar (Spin = 0), neutro, sin color. Propagador: $\frac{i}{p^2 - M_H^2}$ % [cite: 272]
+
+\textbf{Vértices de Interacción:} Los acoplamientos crecen con la masa de la partícula. % [cite: 312]
+\\ $\bullet$ $H W^+ W^-$: $ig M_W g_{\mu\nu}$ \qquad $\bullet$ $H Z Z$: $\frac{ig M_Z}{\cos\theta_w} g_{\mu\nu}$ \qquad $\bullet$ $H f \bar{f}$ (Fermiones): $-i \frac{g}{2} \frac{m_f}{M_W} \delta_{ij}$ % [cite: 310]
+
+\textbf{Desintegración a Fermiones ($H \to f\bar{f}$):} % [cite: 329]
+\\ $\bullet$ Amplitud promediada (ej. $H \to b\bar{b}$): $|\overline{F}|^2 = 3 \frac{g^2 m_b^2}{4 M_W^2} \text{Tr}[(p_1+m_b)(p_2-m_b)]$ % [cite: 351]
+\\ $\bullet$ Anchura parcial dominante ($H \to b\bar{b}$): % [cite: 357]
+$$ \Gamma = \frac{3}{32\pi} \frac{g^2 m_b^2 M_H}{M_W^2} \left(1 - \frac{4m_b^2}{M_H^2}\right)^{3/2} $$ % [cite: 356]
+\\ $\bullet$ Branching Ratio principal: $\text{BR}(H \to b\bar{b}) \approx 60\%$ % [cite: 358]
+

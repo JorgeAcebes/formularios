@@ -1,0 +1,384 @@
+\hrule
+
+\section{CINEMÁTICA Y DISPERSIÓN \normalfont{\quad $E^2 = p^2 + m^2, \quad p^2 = \vec{p}\cdot\vec{p}, \quad p_i^2 = m_i^2$}}
+$\bullet$ \textbf{Desintegración $A \rightarrow B+C$ en CM} -- Condición: $m_A \geq m_B + m_C$\\
+$|\vec{p}_B|^2\!= \!|\vec{p}_C|^2\! = \!|\vec{p}_f|^2 \!=\! \frac{m_A^2+m_B^2 +m_C^2 - 2m_A^2m_B^2 - 2m_A^2 m_C^2 - 2m_B^2 m_C^2}{4m_A^2}\!\! = \!\!\frac{\lambda(m_A, m_B, m_C)}{4m_A^2}$\\
+$\lambda:$ Función de Källén \quad $E_B = \frac{m_A^2 + m_B^2 - m_C^2}{2m_A}$ \quad $E_C = \frac{m_A^2 + m_C^2 - m_B^2}{2m_A}$\\
+$$ \textbf{Anchura de Desintegración Diferencial:}  \quad d \Gamma = \frac{1}{2m_A} |\bar{F}|^2 \, d{Lips}(m_A^2, p_B, p_C) $$
+$$ d{Lips}(m_A^2, p_B, p_C) = (2\pi)^4 \delta^4(p_A - p_B - p_C) \frac{d^3\vec{p}_B}{(2\pi)^3 2E_B} \frac{d^3\vec{p}_C}{(2\pi)^3 2E_C} = \frac{1}{16\pi^2} \frac{|\vec{p}_f|}{m_A} d\Omega $$
+$$ \textbf{Promedio de spin:}\quad|\bar{F}|^2 = \frac{1}{2S_A+1} \sum_{s_A, s_B, s_C} |F|^2 $$
+$$ \frac{d\Gamma}{d\Omega} = \frac{1}{32\pi^2} \frac{|\vec{p}_f|}{m_A^2} |\bar{F}|^2 $$
+\\
+$\cdot$ If {$m_B = m_C = m$} $\rightarrow$ $m_A \eqqcolon M$ \quad $|\vec{p}_f|^2 = \frac{M^2}{4} \left(1-\frac{4m^2}{M^2}\right)$ \quad $E_f = \frac{M}{2}$
+
+$\bullet$ \textbf{Desintegración $1+2 \rightarrow 3+4$ en CM (en canal $s$)} -- Conditions: \hspace{-5pt}$\begin{array}{cc}
+     \sqrt{s} \!=\!E_{\rm CM}\!\geq\! m_1 \!+\!m_2 \\
+      \sqrt{s} \!=\!E_{\rm CM} \!\geq \!m_3 \!+\! m_4
+\end{array}$\\
+
+$$|\vec{p}_i| = \frac{\sqrt{\lambda (s, m_1^2, m_2^2)}}{2\sqrt{s}} \qquad |\vec{p}_f| = \frac{\sqrt{\lambda (s, m_2^3, m_4^2)}}{2\sqrt{s}}  \quad m_1 =m_3 \;\; \& \;\; m_2=m_4 \Rightarrow |\vec{p}_i| = |\vec{p}_f| $$
+
+$$E_1 = \frac{s + m_1^2 - m_2^2}{2\sqrt{s}} \quad  E_2 = \frac{s + m_2^2 - m_1^2}{2\sqrt{s}} \quad E_3= \frac{s + m_3^2 - m_4^2}{2\sqrt{s}} \quad E_4 = \frac{s + m_4^2 - m_3^2}{2\sqrt{s}} \quad $$
+
+ $\bullet$ \textbf{Ataque $1$ contra $2\rightarrow 3+4$}: $s_{\min} = (m_3 +m_4)^2$ \; i.e. salida en reposo\\
+$\cdot$ \textbf{LAB}: $E_{\text{lab}} = E_1 = \frac{s-m_1^2 - m_2^2}{2m_2}\quad p_\text{lab} = \frac{\sqrt{\lambda(s,m_1^2, m_2^2)}}{2m_2}$ \\
+ $\cdot$ \textbf{CM}:\, \, $E_{1,2} = \frac{m_{1,2}^2+m_2\cdot E_{\text{lab}} }{\sqrt{s}}\quad\; p_{1,2} = p_{\text{lab}}\frac{m_2}{\sqrt{s}}$
+
+
+
+\section{PROBABLIDAD DE TRANSICIÓN Y BRANCHING RATIO}
+$\bullet$ \textbf{Probabilidad de Transición:} $\mathcal{P}_{i \to f}(t) = \left| \langle \psi_f | \hat{U}(t, 0) | \psi_i \rangle \right|^2$
+
+ $\bullet$ $\hat{U}(t, 0) \equiv$ operador de evolución temporal. Si $\hat{H} \neq \hat{H}(t) \Rightarrow \hat{U}(t, 0) = e^{-i \hat{H} t}$.
+
+
+$\bullet$ \textbf{Branching Ratio:} Let $A \rightarrow bc$, $BR \,(A\rightarrow bc)= \frac{\Gamma(A\rightarrow bc)}{\Gamma_{\rm tot} (A)}$, $\Gamma\equiv$ anchura desintegración. 
+
+$\bullet$ $BR \,(A\rightarrow bc):$ probabilidad de $A$ de decaer a $bc$.
+
+$\bullet$ En el límite de conservación exacta de I: $\Gamma(A \rightarrow bc) \propto |\langle A|bc \rangle| ^2  = C.G.^2$
+
+\section{ISOSPIN SU(2) EN FORMA MATRICIAL}
+
+\section*{Rep. Fundamental ($I=1/2$) -- \normalfont{Base:  $\{\ket{\frac{1}{2}, \frac{1}{2}} , \ket{\frac{1}{2}, -\frac{1}{2}}\}$. $I_a = \frac{\sigma_a}{2}$ }  = $\{\left(\begin{smallmatrix}
+    1\\
+    0
+\end{smallmatrix}\right), \left(\begin{smallmatrix}
+    0\\
+    1
+\end{smallmatrix}\right)\} $}
+$
+I_1 = \frac{1}{2} \left(\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}\right) \quad
+    I_2 = \frac{1}{2} \left(\begin{smallmatrix} 0 & -i \\ i & 0 \end{smallmatrix}\right) \quad
+    I_3 = \frac{1}{2} \left(\begin{smallmatrix} 1 & 0 \\ 0 & -1 \end{smallmatrix}\right) \quad
+    I_+ = \left(\begin{smallmatrix} 0 & 1 \\ 0 & 0 \end{smallmatrix}\right) \quad
+    I_- = \left(\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}\right)
+$
+
+
+\section*{Rep. Adjunta ($I=1$) -- \normalfont{Base: $\{\ket{1, 1}, \ket{1, 0}, \ket{1, -1}\}$ = $\{\left(\begin{smallmatrix}
+    1\\
+    0\\
+    0
+\end{smallmatrix}\right), \left(\begin{smallmatrix}
+    0\\
+    1\\
+    0
+\end{smallmatrix}\right),
+\left(\begin{smallmatrix}
+    0\\
+    0\\
+    1
+\end{smallmatrix}\right)\}$}}
+$
+    I_1 \!=\! \frac{1}{\sqrt{2}} \left(\begin{smallmatrix} 0 & 1 & 0 \\ 1 & 0 & 1 \\ 0 & 1 & 0 \end{smallmatrix}\right) \;
+    I_2 \!=\! \frac{1}{\sqrt{2}} \left(\begin{smallmatrix} 0 & -i & 0 \\ i & 0 & -i \\ 0 & i & 0 \end{smallmatrix}\right) \;
+     I_3 \!=\! \left(\begin{smallmatrix} 1 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & -1 \end{smallmatrix}\right)  \;
+     I_+ \!=\! \sqrt{2} \left(\begin{smallmatrix} 0 & 1 & 0 \\ 0 & 0 & 1 \\ 0 & 0 & 0 \end{smallmatrix}\right) \;
+    I_- \!=\! \sqrt{2} \left(\begin{smallmatrix} 0 & 0 & 0 \\ 1 & 0 & 0 \\ 0 & 1 & 0 \end{smallmatrix}\right)
+$
+
+
+
+\section{ACOPLAMIENTO DE ISOSPINES}
+$\bullet$ \underline{Degeneración:} Sistema $N\geq 3$ partículas, $(I, I_3)$ degenerados $\rightarrow$ especifica acoplamientos intermedios (ej. $I_{12}$ para el subsistema $1+2$), y $\langle I_{12}; I, I_3 | I'_{12}; I, I_3 \rangle = \delta_{I_{12} I'_{12}}$ 
+
+
+$\bullet$ \underline{Regla de Selección si $I_3 = 0$:}
+$\langle i_1, 0; i_2, 0 | I, 0 \rangle = 0 \quad \text{si } (i_1 + i_2 - I) \text{  impar.}$
+
+$\therefore$ Si 2 partículas $=$ multiplete ($i_1 = i_2 = i$) $\Rightarrow$ $I \in 2 k, \,\; k \in \mathbb{N}$.
+
+$\therefore$ Si conservación isospín $\Rightarrow$ $I$ inicial impar: prohibido decay en 2 partículas con $I_3 = 0$.
+
+$\bullet$ \underline{Elemento neutro:}  $|0, 0\rangle$: $|j, m\rangle \otimes |0, 0\rangle = |j, m\rangle$ 
+
+
+\section{CRITERIOS EXTRA CONSERVACIÓN}
+$\bullet$ Los sistemas de partículas deben cumplir la antisimetría fermiónica o simetría bosónica iff todas las partículas son idénticas. En caso contrario, no están constreñidas por simetría.
+
+$\bullet$ \textbf{Teorema Landau-Yang}: Partícula vectorial (spin = 1) no puede decaer a 2$\gamma$ o 2 gluones.
+
+$\bullet$ $L \in \mathbb{N} \;\; \forall$ sistema de partículas. 
+
+
+
+
+
+
+
+\hypertarget{quarks_table}{\section{QUARKS (CHARM, BOTTOM, TOP)}}
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
+\hline
+\textbf{q} & \textbf{$Q$} & \textbf{$T_3$} & \textbf{$Y$}  & \textbf{$C$} & \textbf{$\scalebox{0.80}{${\tilde{B}}$}$} & \textbf{$T$} & \textbf{$B$} & \textbf{spin}\\ \hline
+$c$ & $+2/3$ & $0$ & $+4/3$  & $+1$ & $0$ & $0$ & $1/3$ & $1/2$ \\ \hline
+$b$ & $-1/3$ & $0$ & $-2/3$  & $0$ & $-1$ & $0$ & $1/3$ & $1/2$ \\ \hline
+$t$ & $+2/3$ & $0$ & $+4/3$  & $0$ & $0$ & $+1$ & $1/3$ & $1/2$ \\ \hline
+\end{tabular}\\[2pt]
+Antiquarks: todos los números $Q, T_3, Y,  C, \tilde{B}, T, B$ opuestos.
+\end{center}
+
+
+\section{EXPRESIONES ÚTILES y CRITERIOS EN QED}
+$dLIPS$ carece de sentido fuera de una integral. La delta de Dirac consume un diferencial para devolver el valor de la función en el punto de la ligadura:$$\int f(\vec{p}_4) \delta^{(3)}(\vec{p}_{\rm total} - \vec{p}_3 - \vec{p}_4) d^3 p_4 = f(\vec{p}_{\rm total} - \vec{p}_3)$$
+
+
+$\bullet$ Diffs: $d^3 p_k \!=\! d^3 |\vec{p}_k|\!=\!|\vec{p}_k|^2\, d|\vec{p}_k| \, d\Omega\quad d\Omega \!=\! d(\cos\theta)d\varphi\quad \Omega \!=\! \int_{0}^{2\pi} \int_{0}^{\pi} \sin \theta \, d\theta \, d\varphi\! =\! 4\pi$
+\vspace{4pt}
+
+En el caso $1+2 \rightarrow 3+4, \;\; \theta \equiv$ ángulo entre 1 y 3. \qquad $dt = 2 |\vec{p}_{\rm in}||\vec{p}_{\rm out}| d(\cos \theta)$
+
+$\bullet$ Källen: $\lambda(x,y,z) = x^2+y^2+z^2-2xy-2xz-2yz \quad \lambda(A,B,B)=A(A-4B^2)$
+
+
+\textbf{CÁLCULO AMPLITUD (VERSIÓN EXTENDIDA)}
+
+\underline{\textit{1. Patas Externas}}: Líneas externas con cuadrimomento $p$ y espín/helicidad $s$ o $\lambda$.
+
+{
+
+\centering
+\begin{tabular}{llcc}
+\hline
+\textbf{Partícula} & \textbf{Espín} & \textbf{Entrante} & \textbf{Saliente} \\
+\hline
+Escalar       & 0   & $1$                        & $1$                         \\
+Fermión       & 1/2 & $u(p,s)$                   & $\bar{u}(p,s)$              \\
+Antifermión   & 1/2 & $\bar{v}(p,s)$             & $v(p,s)$                    \\
+Fotón         & 1   & $\epsilon^\mu(p,\lambda)$  & $\epsilon^{*\mu}(p,\lambda)$\\
+\hline
+\end{tabular}
+
+
+}
+
+\vspace{2pt}
+
+\underline{\textit{2. Propagadores (Líneas Internas)}}: Líneas que transportan un cuadrimomento $q$. 
+
+\textit{Nota sobre el término $+i\epsilon$:} La prescripción $+i\epsilon$ desplaza los polos fuera del eje real para respetar la causalidad al integrar sobre $d^4q$. En diagramas a nivel árbol, $q$ está unívocamente determinado por la conservación en los vértices, no hay integración, y el término $+i\epsilon$ se puede omitir. En diagramas de lazos, es estrictamente necesario.
+\vspace{-0.5mm}
+{
+$$\begin{array}{ccc}
+\hline
+\text{Escalar} & \text{Fermión de Dirac} & \text{Fotón (Gauge de Feynmann, } q=k) \\
+\hline
+\frac{i}{q^2 - m^2 + i\epsilon} & \frac{i(\cancel{q} + m)}{q^2 - m^2 + i\epsilon} & \frac{-ig_{\mu\nu}}{q^2 + i\epsilon} \\
+\hline
+\end{array}$$
+
+}
+\vspace{2pt}
+\underline{\textit{3. Vértices de Interacción}}
+Cada vértice impone conservación de cuadrimomento y acopla las partículas. Los índices libres del vértice ($\mu, \nu$) deben estar arriba o abajo indistintamente, pero su contracción con el propagador fotónico ($g_{\mu\nu}$) asegurará la invariancia Lorentz final. Cada vértice tiene índices distintos. ($\phi\equiv $ Escalar)
+
+{
+
+\centering
+\begin{tabular}{lc}
+\hline
+\textbf{Interacción} & \textbf{Vértice} \\[2pt]
+$l\bar{l}\gamma$ (QED espinorial, leptones) & $-ieQ_l\gamma^\mu$      \\[2pt]
+$q\bar{q}\gamma$ (QED, quarks) & $-iQ_q e\gamma^\mu\delta_{ab}$ \\[2pt]
+$\phi\phi\gamma$ (QED escalar). $Q_\phi$ carga de partícula $p_{\rm in}$ & $-iQ_\phi(p_{\text{in}} + p_{\text{out}})^\mu $\\[2pt]
+$\phi\phi\gamma\gamma$ (QED escalar) & $2iq^2 g^{\mu\nu}$  \\[2pt]
+$\phi^4$ (Autointeracción escalar) & $-i\lambda$ \\[2pt]
+$\bar{\psi}\psi\phi$ (Interacción de Yukawa) & $-iy$ \\[2pt]
+$q\bar{q}g$ (QCD, interacción no abeliana) & $-ig_s \gamma^\mu (t^c)_{ab}$ \\[2pt]
+$f\bar{f}Z$ (Electrodébil, corriente neutra leptones) & $\frac{-ig_w}{2\cos\theta_W}\gamma^\mu(c_V - c_A\gamma^5)$ \\[2pt]
+$q\bar{q}Z$ (Electrodébil, corriente neutra quarks) & $\frac{-ig_w}{2\cos\theta_W}\gamma^\mu(c_V^q - c_A^q\gamma^5)\delta_{ab}$ \\[2pt]
+$f\bar{f}'W^\pm$ (Electrodébil, corriente cargada leptones)& $\frac{-ig_w}{2\sqrt{2}}\gamma^\mu(1 - \gamma^5)$ \\[2pt]
+$u_i\bar{d}_jW^\pm$ (Electrodébil, corriente cargada quarks) & $\frac{-i g_w}{2\sqrt{2}} V_{ij} \gamma^\mu (1 - \gamma^5) \delta_{ab}$ \\
+\hline
+\end{tabular}
+
+}
+
+
+\underline{\textit{4. Algoritmo Paso a Paso para Construir $-i\mathcal{M}=-iF$}}
+
+\textbf{1. Líneas Fermiónicas (Lectura Inversa):} Recorre las líneas fermiónicas continuas \textbf{en sentido opuesto a las flechas} (el flujo de número fermiónico).
+
+$-$ Inicia con el estado saliente (ej. $\bar{u}$ o $\bar{v}$, vector fila $1 \times 4$).
+
+$-$ Multiplica por los vértices ($\gamma^\mu$) y propagadores ($\cancel{q}+m$) en el orden en que aparecen al ir hacia atrás (matrices $4 \times 4$).
+
+$-$ Termina en el estado entrante (ej. $u$ o $v$, vector columna $4 \times 1$).
+
+\textbf{2. Líneas Bosónicas:}  Las contribuciones de fotones y escalares son escalares tensoriales o números (en sQED todo conmuta). Multiplica los factores correspondientes a estas líneas tras cerrar las cadenas fermiónicas.
+
+\textbf{3. Índices y Conservación:} 
+    Asegúrate de que cada propagador fotónico interno contraiga los índices de los vértices que conecta. Impón la conservación del cuadrimomento global ($p_{\text{iniciales}} = p_{\text{finales}}$) si no se ha cancelado previamente por la regla de oro de Fermi.
+
+\underline{\textit{5. Trucos para manipular $-i \mathcal{M}$ (variables de Mandelstam)}}
+
+$$P \!=\! p_1 + p_2 \!=\! p_3 + p_4  \!\Rightarrow\! P^2 \!=\!s \quad Q \!=\! p_1 - p_3 \!=\! p_4 - p_2  \!\Rightarrow\! Q^2 \!=\! t\quad R \!=\! p_1 - p_4 \!=\! p_3 - p_2  \!\Rightarrow\! R^2 \!=\! u$$
+\vspace{-0.5mm}
+$$(p_1+p_3) \cdot (p_2+p_4) \!=\! (P+R) \cdot (P-R) \!=\! P^2 - R^2 \!=\! s - u$$$$(p_1+p_4) \cdot (p_2+p_3) \!=\! (P+Q) \cdot (P-Q) \!=\! P^2 - Q^2 \!=\! s - t$$$$(p_1-p_2) \cdot (p_4-p_3) \!=\! (Q+R) \cdot (Q-R) \!=\! Q^2 - R^2 \!=\! t - u$$
+\vspace{-0.5mm}
+$$\text{A saber: }\quad (A+B)_\mu (A-B)^\mu =  (A+B) \cdot (A-B) = A^2 - B^2$$
+\vspace{-0.5mm}
+\text{El resto de combinaciones, que no son} $(A+B)(A-B),$ \text{ no dan una diferencia pura:}\vspace{1.5mm}
+$p_1 \cdot p_2 = \frac{1}{2}(s - m_1^2 - m_2^2) \;\;\; p_1 \cdot p_3 = \frac{1}{2}(m_1^2 + m_3^2 - t)\;\;\; p_1 \cdot p_4 = \frac{1}{2}(m_1^2 + m_4^2 - u)$
+
+$p_3 \cdot p_4 = \frac{1}{2}(s - m_3^2 - m_4^2) \;\;\; p_2 \cdot p_4 = \frac{1}{2}(m_2^2 + m_4^2 - t)\;\;\;  p_2 \cdot p_3 = \frac{1}{2}(m_2^2 + m_3^2 - u)$
+\vspace{1.5mm}
+
+
+
+\underline{\textit{6. Promedio}} $|\overline{\mathcal{M}}|^2 = \left( \prod_{i \in \text{iniciales}} \frac{1}{g_{\text{espín}, i} \cdot g_{\text{color}, i}} \right) \sum_{\text{all external states}} |\mathcal{M}|^2$
+
+{
+
+\centering
+\renewcommand{\arraystretch}{0.5}
+\setlength{\tabcolsep}{2pt} 
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Partícula} & \textbf{Espín ($S$)} & \textbf{Estados Espín ($g_{\text{espín}}$)} & \textbf{Estados Color ($g_{\text{color}}$)} \\
+\midrule
+Escalar (ej. Higgs) & $0$ & $1$ & $1$  \\
+Leptón ($e, \mu, \tau$) & $1/2$ & $2$ & $1$  \\
+Neutrino ($\nu$)* & $1/2$ & $1$ (levógiro) & $1$  \\
+Quark ($u, d, c, s, t, b$) & $1/2$ & $2$ & $3$  \\
+Fotón ($\gamma$) & $1$ & $2$ (masa nula) & $1$  \\
+Gluón ($g$) & $1$ & $2$ (masa nula) & $8$  \\
+Bosones $W^\pm, Z^0$ & $1$ & $3$ (masivos) & $1$ \\
+Gravitón ($G$) & $2$ & $2$ (masa nula) & $1$ \\
+\bottomrule
+\end{tabular}
+
+}
+
+$- $ En vértices E.M., $\gamma$ no transfiere color $\Rightarrow$ suma sobre estados color quarks: $\sum_{i,j} \delta_{ij} = 3$.
+
+$- $ Para desarrollar $|\mathcal{M}|^2$, usa Trucos de Casimir y $\text{Tr}\{\cancel{a} \gamma^\mu \cancel{b} \gamma^\nu\} = a_\alpha b_\beta \text{Tr}\{\gamma^\alpha \gamma^\mu \gamma^\beta \gamma^\nu\}=$ \\
+$\quad= 4 (a^\mu b^\nu + a^\nu b^\mu - a\cdot b \, \,\eta^{\mu \nu} )$. Si índices iniciales abajo, resultado índices abajo.
+
+$-$ Cuando multipliques los resultados de las trazas, debes emplear mismo índice.
+
+$- $ Analiza las divergencias (denominador se anula). Busca relación con $\theta$ (Mandelstam).
+
+$ - $ Expresa todo en función de la carga de cada partícula $Q_p$. Útil comparación de procesos.
+
+
+\newcolumn
+
+\section{REPRESENTACIONES Y REGLAS DE YOUNG}
+\hypertarget{young}{En} $SU(3)$, una representación irreducible se etiqueta según sus números de Dynkin $(p,q)$, donde $p$ es el nº de columnas con una sola caja y $q$ es el nº de columnas con dos cajas.
+
+\begin{tabular}{l c c c}
+    \textbf{Nombre} & \textbf{Dim} ${(p,q)}$ & \textbf{Diagrama de Young} & \textbf{Índices Tensoriales} \\
+    \hline
+    Singlete & $\mathbf{1} \ (0,0)$ & $\cdot$ (o columna de 3) & Escalar \\
+    Fundamental & $\mathbf{3} \ (1,0)$ & \scalebox{0.6}{$\ydiagram{1}$} & $\psi^i$ (Quark) \\
+    Antifundamental & $\bar{\mathbf{3}} \ (0,1)$ & \scalebox{0.6}{$\ydiagram{1,1}$} & $\psi_i \sim \epsilon_{ijk}\psi^{jk}$ (Antiquark) \\
+    Simétrica & $\mathbf{6} \ (2,0)$ & \scalebox{0.6}{$\ydiagram{2}$} & $T^{(ij)}$ \\
+    Adjunta (Octete) & $\mathbf{8} \ (1,1)$ & \scalebox{0.6}{$\ydiagram{2,1}$} & $A^i_j$ (traceless) \\
+    Decuplete & $\mathbf{10} \ (3,0)$ & \scalebox{0.6}{$\ydiagram{3}$} & $T^{(ijk)}$ \\
+    \hline
+\end{tabular}
+
+\section{Cálculo de Dimensiones}
+
+Para $SU(3)$, la dimensión de una representación $(p,q)$ viene dada por la fórmula:
+$$    \text{Dim}(p,q) = \frac{1}{2}(p+1)(q+1)(p+q+2) $$
+
+
+Alternativamente, usando método de factores sobre el diagrama:
+$ \text{Dim} = \prod_{\text{cajas}} \frac{D_N(\text{caja})}{h(\text{caja})} $
+
+$D_N = N + (\text{col} - \text{fila})$ y $h=$ longitud gancho $= 1 + (\text{celdas a la derecha}) + (\text{celdas debajo})
+$.
+
+\section{Reglas del Producto Tensorial (Littlewood-Richardson) para computar $A \otimes B$:}
+1. Dibuja el diagrama $A$.
+
+2. Llenar las cajas del diagrama $B$ con letras: `a' en la \textit{primera} fila, `b' en la \textit{segunda}, etc.
+
+3. Añadir las cajas de $B$ al diagrama $A$ siguiendo este orden riguroso:
+
+$\bullet$ Añadir todas las `a', luego todas las `b', etc.
+
+$\bullet$ \text{Regla de Simetría:} No puede haber dos letras iguales en la misma \textit{columna}.
+
+$\bullet$ \text{Regla de Forma:} El resultado debe ser siempre un diagrama de Young válido. Sea $\lambda_i$ el número de cajas en la fila $i$, $\lambda_i \ge \lambda_{i+1}$.
+
+$\bullet$ \text{Regla de Permutación de Red (Lattice):} Leyendo las letras añadidas de derecha a izquierda y de arriba a abajo (estilo hebreo), en cualquier punto de la lectura, el número de `a' leídas debe ser $\ge$ número de `b' $\ge$ número de `c'.
+
+4. Eliminar cualquier columna completa de altura $N=3$ (corresponden al singlete antisimétrico $\epsilon_{ijk}$). Eliminar cualquier columna de altura mayor a $N=3$, el diagrama es nulo y se descarta de la suma directa. Si tienes diagramas idénticos (con mismas letras en las mismas cajas) solo se cuenta uno de ellos.
+
+
+\section*{1. Vértices Elementales del Modelo Estándar}
+\begin{tabular}{@{}lll@{}}
+\textbf{Sector} & \textbf{Vértice (Interacción)} & \textbf{Mediador(es)} \\
+\midrule
+\textbf{QED} & $f + \bar{f} \leftrightarrow \gamma$ & Fotón ($\gamma$) \\
+\midrule
+\textbf{Débil (CC)} & $f_u + \bar{f}_d \leftrightarrow W^+$ & Bosón $W^\pm$  \\
+\textbf{Débil (NC)} & $f + \bar{f} \leftrightarrow Z^0$ & Bosón $Z^0$  \\
+\midrule
+\textbf{QCD} & $q + \bar{q} \leftrightarrow g$ & Gluón ($g$) \\
+\textbf{QCD (3-pt)} & $g + g \leftrightarrow g$ & Gluón ($g$)  \\
+\textbf{QCD (4-pt)} & $g + g \leftrightarrow g + g$ & Gluón ($g$)  \\
+\midrule
+ \textbf{EW Gauge (3-pt)} & $W^+ + W^- \leftrightarrow \gamma$ / $W^+ + W^- \leftrightarrow Z^0$ & $\gamma$, $Z^0$ \\
+\textbf{EW Gauge (4-pt)} & $W^+ + W^- \leftrightarrow W^+ + W^-$ & $W^\pm$ \\
+ & $W^+ + W^- \leftrightarrow Z^0 + Z^0$ / $W^+ + W^- \leftrightarrow \gamma + \gamma$ & $W^\pm$, $Z^0$, $\gamma$  \\
+ & $W^+ + W^- \leftrightarrow Z^0 + \gamma$ & $W^\pm$, $Z^0$, $\gamma$ \\
+\midrule
+\textbf{Yukawa} & $f + \bar{f} \leftrightarrow H$ & Higgs ($H$) \\
+\midrule
+\textbf{Higgs-Gauge (3-pt)} & $W^+ + W^- \leftrightarrow H$ / $Z^0 + Z^0 \leftrightarrow H$ & $W^\pm$, $Z^0$  \\
+\textbf{Higgs-Gauge (4-pt)} & $W^+ + W^- \leftrightarrow H + H$ / $Z^0 + Z^0 \leftrightarrow H + H$ & $W^\pm$, $Z^0$ \\
+\midrule
+\textbf{Higgs (Auto)} & $H + H \leftrightarrow H$ & Higgs ($H$) \\
+\textbf{Higgs (Auto)} & $H + H \leftrightarrow H + H$ & Higgs ($H$) \\
+\end{tabular}
+
+
+
+\section*{2. Procesos de Dispersión $2 \to 2$ (Canales $s, t, u$ dominantes a nivel árbol)}
+
+
+{
+
+
+\centering
+\setlength{\tabcolsep}{2pt} 
+\begin{tabular}{@{}lllll@{}}
+\textbf{Sector / Proceso} & \textbf{Reacción} & \textbf{Fuerza} & \textbf{Mediador} & \textbf{Canales} \\
+\midrule
+\textbf{Leptónico Puro} \\
+Disp de Møller & $e^- + e^- \to e^- + e^-$ & EM, Débil & $\gamma$, $Z^0$ & $t, u$ \\
+Disp de Bhabha & $e^+ + e^- \to e^+ + e^-$ & EM, Débil & $\gamma$, $Z^0$ & $s, t$ \\
+Aniq. a Leptones & $e^+ + e^- \to \mu^+ + \mu^-$ & EM, Débil & $\gamma$, $Z^0$ & $s$ \\
+Disp Compton & $e^- + \gamma \to e^- + \gamma$ & EM & $e^-$ (fermión) & $s, u$ \\
+Aniq. a Fotones & $e^+ + e^- \to \gamma + \gamma$ & EM & $e^-$ (fermión) & $t, u$ \\
+Disp $\nu_\mu$-$e$ & $\nu_\mu + e^- \to \nu_\mu + e^-$ & Débil (NC) & $Z^0$ & $t$ \\
+Disp $\nu_e$-$e$ & $\nu_e + e^- \to \nu_e + e^-$ & Débil & $Z^0$, $W^\pm$ & $t$ ($Z$), $u$ ($W$) \\
+\midrule
+\textbf{Semileptónico} \\
+Disp Inelástica & $e^- + q \to e^- + q$ & EM, Débil & $\gamma$, $Z^0$ & $t$ \\
+Drell-Yan & $q + \bar{q} \to l^+ + l^-$ & EM, Débil & $\gamma$, $Z^0$ & $s$ \\
+Decay Inverso & $\mu^- + \nu_e \to e^- + \nu_\mu$ & Débil (CC) & $W^\pm$ & $u$ \\
+\midrule
+\textbf{Fuertes (QCD)} \\
+Disp ($\neq$ sabor) & $q + q' \to q + q'$ & Fuerte & $g$ & $t$ \\
+Disp ($=$ sabor) & $q + q \to q + q$ & Fuerte & $g$ & $t, u$ \\
+Aniq. ($\neq$ sabor) & $q + \bar{q} \to q' + \bar{q}'$ & Fuerte & $g$ & $s$ \\
+Disp Bhabha QCD & $q + \bar{q} \to q + \bar{q}$ & Fuerte & $g$ & $s, t$ \\
+Aniq. a Gluones & $q + \bar{q} \to g + g$ & Fuerte & $q$ (fermión) & $t, u$ \\
+Producción de pares & $g + g \to q + \bar{q}$ & Fuerte & $q$ ($t, u$), $g$ ($s$) & $s, t, u$ \\
+Disp Compton QCD & $q + g \to q + g$ & Fuerte & $q$ ($s, u$), $g$ ($t$) & $s, t, u$ \\
+Auto-Disp Gluónica & $g + g \to g + g$ & Fuerte & $g$, contacto $4g$ & $s, t, u$ \\
+\midrule
+\textbf{Sector de Higgs} \\
+Higgsstrahlung & $f + \bar{f} \to V + H$ & Débil & $V$ ($W^\pm, Z^0$) & $s$ \\
+Fus. de Bosones & $q + q' \to q + q' + H$ & Débil & $V$ ($W^\pm, Z^0$) & $t, u$ ($V \to H$) \\
+Fus. de Gluones & $g + g \to H$ & Fuerte, Yukawa & Quarks Top & Efectivo $s$ \\
+\end{tabular}
+
+
+}
