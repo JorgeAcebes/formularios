@@ -146,9 +146,12 @@ $\bullet$ Källen: $\lambda(x,y,z) = x^2+y^2+z^2-2xy-2xz-2yz \quad \lambda(A,B,B
 Escalar       & 0   & $1$                        & $1$                         \\
 Fermión       & 1/2 & $u(p,s)$                   & $\bar{u}(p,s)$              \\
 Antifermión   & 1/2 & $\bar{v}(p,s)$             & $v(p,s)$                    \\
-Fotón         & 1   & $\epsilon^\mu(p,\lambda)$  & $\epsilon^{*\mu}(p,\lambda)$\\
+Fotón         & 1   & $\epsilon_\mu(p,\lambda)$  & $\epsilon^*_{\mu}(p,\lambda)$\\
+Gluón/Bosones $W,Z$ & 1 & $\epsilon_\mu^{a}$ & $\epsilon_{ \mu}^{* a}$\\
 \hline
-\end{tabular}
+\end{tabular}\\
+El color de la pata externa del gluon no afecta al cálculo de $F_C$. $W,Z$ no tienen color. 
+
 
 
 }
@@ -160,11 +163,11 @@ Fotón         & 1   & $\epsilon^\mu(p,\lambda)$  & $\epsilon^{*\mu}(p,\lambda)$
 \textit{Nota sobre el término $+i\epsilon$:} La prescripción $+i\epsilon$ desplaza los polos fuera del eje real para respetar la causalidad al integrar sobre $d^4q$. En diagramas a nivel árbol, $q$ está unívocamente determinado por la conservación en los vértices, no hay integración, y el término $+i\epsilon$ se puede omitir. En diagramas de lazos, es estrictamente necesario.
 \vspace{-0.5mm}
 {
-$$\begin{array}{ccc}
+$$\begin{array}{ccccc}
 \hline
-\text{Escalar} & \text{Fermión de Dirac} & \text{Fotón (Gauge de Feynmann, } q=k) \\
+\text{Escalar} & \text{Fermión de Dirac} & \text{Fotón } (q=k) & \text{Gluón } (q=k) & \text{EW}\\
 \hline
-\frac{i}{q^2 - m^2 + i\epsilon} & \frac{i(\cancel{q} + m)}{q^2 - m^2 + i\epsilon} & \frac{-ig_{\mu\nu}}{q^2 + i\epsilon} \\
+\frac{i}{q^2 - m^2 + i\epsilon} & \frac{i(\cancel{q} + m)}{q^2 - m^2 + i\epsilon} (\cdot \delta_{ij} \; \text{if quark}) & \frac{-ig_{\mu\nu}}{q^2 + i\epsilon} & -i \eta_{\mu \nu} \frac{\delta^{ab}}{q^2+i\epsilon}& \text{Next Page}\\
 \hline
 \end{array}$$
 
@@ -181,15 +184,15 @@ Cada vértice impone conservación de cuadrimomento y acopla las partículas. Lo
 \textbf{Interacción} & \textbf{Vértice} \\[2pt]
 $l\bar{l}\gamma$ (QED espinorial, leptones) & $-ieQ_l\gamma^\mu$      \\[2pt]
 $q\bar{q}\gamma$ (QED, quarks) & $-iQ_q e\gamma^\mu\delta_{ab}$ \\[2pt]
-$\phi\phi\gamma$ (QED escalar). $Q_\phi$ carga de partícula $p_{\rm in}$ & $-iQ_\phi(p_{\text{in}} + p_{\text{out}})^\mu $\\[2pt]
+$\phi\phi\gamma$ (QED escalar). & $-iQ_\phi(p_{\text{in}} + p_{\text{out}})^\mu $\\[2pt]
 $\phi\phi\gamma\gamma$ (QED escalar) & $2iq^2 g^{\mu\nu}$  \\[2pt]
 $\phi^4$ (Autointeracción escalar) & $-i\lambda$ \\[2pt]
 $\bar{\psi}\psi\phi$ (Interacción de Yukawa) & $-iy$ \\[2pt]
 $q\bar{q}g$ (QCD, interacción no abeliana) & $-ig_s \gamma^\mu (t^c)_{ab}$ \\[2pt]
-$f\bar{f}Z$ (Electrodébil, corriente neutra leptones) & $\frac{-ig_w}{2\cos\theta_W}\gamma^\mu(c_V - c_A\gamma^5)$ \\[2pt]
-$q\bar{q}Z$ (Electrodébil, corriente neutra quarks) & $\frac{-ig_w}{2\cos\theta_W}\gamma^\mu(c_V^q - c_A^q\gamma^5)\delta_{ab}$ \\[2pt]
-$f\bar{f}'W^\pm$ (Electrodébil, corriente cargada leptones)& $\frac{-ig_w}{2\sqrt{2}}\gamma^\mu(1 - \gamma^5)$ \\[2pt]
-$u_i\bar{d}_jW^\pm$ (Electrodébil, corriente cargada quarks) & $\frac{-i g_w}{2\sqrt{2}} V_{ij} \gamma^\mu (1 - \gamma^5) \delta_{ab}$ \\
+$f\bar{f}Z$ (EW, corriente neutra leptones) & $\frac{-ig_w}{\cos\theta_W}\gamma^\mu (g^f_L P_L + g^f_R P_R)$, $g^f \in \mathbb{R}$ \\[2pt]
+$q\bar{q}Z$ (EW, corriente neutra quarks) & $\frac{-ig_w}{\cos\theta_W}\gamma^\mu (g^q_L P_L + g^q_R P_R)\delta_{ab}$ , $g^q \in \mathbb{R}$\\[2pt]
+$f\bar{f}'W^\pm$ (EW, corriente cargada leptones)& $\frac{-ig_w}{2\sqrt{2}}\gamma^\mu(1 - \gamma^5)$ \\[2pt]
+$q_i\bar{q}_jW^\pm$ (EW, corriente cargada quarks) & $\frac{-i g_w}{2\sqrt{2}} V_{ij} \gamma^\mu (1 - \gamma^5) \delta_{ab}$ \\
 \hline
 \end{tabular}
 
@@ -245,7 +248,6 @@ Quark ($u, d, c, s, t, b$) & $1/2$ & $2$ & $3$  \\
 Fotón ($\gamma$) & $1$ & $2$ (masa nula) & $1$  \\
 Gluón ($g$) & $1$ & $2$ (masa nula) & $8$  \\
 Bosones $W^\pm, Z^0$ & $1$ & $3$ (masivos) & $1$ \\
-Gravitón ($G$) & $2$ & $2$ (masa nula) & $1$ \\
 \bottomrule
 \end{tabular}
 
@@ -253,10 +255,7 @@ Gravitón ($G$) & $2$ & $2$ (masa nula) & $1$ \\
 
 $- $ En vértices E.M., $\gamma$ no transfiere color $\Rightarrow$ suma sobre estados color quarks: $\sum_{i,j} \delta_{ij} = 3$.
 
-$- $ Para desarrollar $|\mathcal{M}|^2$, usa Trucos de Casimir y $\text{Tr}\{\cancel{a} \gamma^\mu \cancel{b} \gamma^\nu\} = a_\alpha b_\beta \text{Tr}\{\gamma^\alpha \gamma^\mu \gamma^\beta \gamma^\nu\}=$ \\
-$\quad= 4 (a^\mu b^\nu + a^\nu b^\mu - a\cdot b \, \,\eta^{\mu \nu} )$. Si índices iniciales abajo, resultado índices abajo.
-
-$-$ Cuando multipliques los resultados de las trazas, debes emplear mismo índice.
+$- $ Para $|\mathcal{M}|^2$ usa Trucos Casimir y trazas. Si índices iniciales abajo, resultado índices abajo.
 
 $- $ Analiza las divergencias (denominador se anula). Busca relación con $\theta$ (Mandelstam).
 
@@ -265,120 +264,147 @@ $ - $ Expresa todo en función de la carga de cada partícula $Q_p$. Útil compa
 
 \newcolumn
 
-\section{REPRESENTACIONES Y REGLAS DE YOUNG}
-\hypertarget{young}{En} $SU(3)$, una representación irreducible se etiqueta según sus números de Dynkin $(p,q)$, donde $p$ es el nº de columnas con una sola caja y $q$ es el nº de columnas con dos cajas.
+% \section{REPRESENTACIONES Y REGLAS DE YOUNG}
+% \hypertarget{young}{En} $SU(3)$, una representación irreducible se etiqueta según sus números de Dynkin $(p,q)$, donde $p$ es el nº de columnas con una sola caja y $q$ es el nº de columnas con dos cajas.
 
-\begin{tabular}{l c c c}
-    \textbf{Nombre} & \textbf{Dim} ${(p,q)}$ & \textbf{Diagrama de Young} & \textbf{Índices Tensoriales} \\
-    \hline
-    Singlete & $\mathbf{1} \ (0,0)$ & $\cdot$ (o columna de 3) & Escalar \\
-    Fundamental & $\mathbf{3} \ (1,0)$ & \scalebox{0.6}{$\ydiagram{1}$} & $\psi^i$ (Quark) \\
-    Antifundamental & $\bar{\mathbf{3}} \ (0,1)$ & \scalebox{0.6}{$\ydiagram{1,1}$} & $\psi_i \sim \epsilon_{ijk}\psi^{jk}$ (Antiquark) \\
-    Simétrica & $\mathbf{6} \ (2,0)$ & \scalebox{0.6}{$\ydiagram{2}$} & $T^{(ij)}$ \\
-    Adjunta (Octete) & $\mathbf{8} \ (1,1)$ & \scalebox{0.6}{$\ydiagram{2,1}$} & $A^i_j$ (traceless) \\
-    Decuplete & $\mathbf{10} \ (3,0)$ & \scalebox{0.6}{$\ydiagram{3}$} & $T^{(ijk)}$ \\
-    \hline
-\end{tabular}
+% \begin{tabular}{l c c c}
+%     \textbf{Nombre} & \textbf{Dim} ${(p,q)}$ & \textbf{Diagrama de Young} & \textbf{Índices Tensoriales} \\
+%     \hline
+%     Singlete & $\mathbf{1} \ (0,0)$ & $\cdot$ (o columna de 3) & Escalar \\
+%     Fundamental & $\mathbf{3} \ (1,0)$ & \scalebox{0.6}{$\ydiagram{1}$} & $\psi^i$ (Quark) \\
+%     Antifundamental & $\bar{\mathbf{3}} \ (0,1)$ & \scalebox{0.6}{$\ydiagram{1,1}$} & $\psi_i \sim \epsilon_{ijk}\psi^{jk}$ (Antiquark) \\
+%     Simétrica & $\mathbf{6} \ (2,0)$ & \scalebox{0.6}{$\ydiagram{2}$} & $T^{(ij)}$ \\
+%     Adjunta (Octete) & $\mathbf{8} \ (1,1)$ & \scalebox{0.6}{$\ydiagram{2,1}$} & $A^i_j$ (traceless) \\
+%     Decuplete & $\mathbf{10} \ (3,0)$ & \scalebox{0.6}{$\ydiagram{3}$} & $T^{(ijk)}$ \\
+%     \hline
+% \end{tabular}
 
-\section{Cálculo de Dimensiones}
+% \section{Cálculo de Dimensiones}
 
-Para $SU(3)$, la dimensión de una representación $(p,q)$ viene dada por la fórmula:
-$$    \text{Dim}(p,q) = \frac{1}{2}(p+1)(q+1)(p+q+2) $$
-
-
-Alternativamente, usando método de factores sobre el diagrama:
-$ \text{Dim} = \prod_{\text{cajas}} \frac{D_N(\text{caja})}{h(\text{caja})} $
-
-$D_N = N + (\text{col} - \text{fila})$ y $h=$ longitud gancho $= 1 + (\text{celdas a la derecha}) + (\text{celdas debajo})
-$.
-
-\section{Reglas del Producto Tensorial (Littlewood-Richardson) para computar $A \otimes B$:}
-1. Dibuja el diagrama $A$.
-
-2. Llenar las cajas del diagrama $B$ con letras: `a' en la \textit{primera} fila, `b' en la \textit{segunda}, etc.
-
-3. Añadir las cajas de $B$ al diagrama $A$ siguiendo este orden riguroso:
-
-$\bullet$ Añadir todas las `a', luego todas las `b', etc.
-
-$\bullet$ \text{Regla de Simetría:} No puede haber dos letras iguales en la misma \textit{columna}.
-
-$\bullet$ \text{Regla de Forma:} El resultado debe ser siempre un diagrama de Young válido. Sea $\lambda_i$ el número de cajas en la fila $i$, $\lambda_i \ge \lambda_{i+1}$.
-
-$\bullet$ \text{Regla de Permutación de Red (Lattice):} Leyendo las letras añadidas de derecha a izquierda y de arriba a abajo (estilo hebreo), en cualquier punto de la lectura, el número de `a' leídas debe ser $\ge$ número de `b' $\ge$ número de `c'.
-
-4. Eliminar cualquier columna completa de altura $N=3$ (corresponden al singlete antisimétrico $\epsilon_{ijk}$). Eliminar cualquier columna de altura mayor a $N=3$, el diagrama es nulo y se descarta de la suma directa. Si tienes diagramas idénticos (con mismas letras en las mismas cajas) solo se cuenta uno de ellos.
+% Para $SU(3)$, dim. de repr. $(p,q)$:
+% $\text{Dim}(p,q) = \frac{1}{2}(p+1)(q+1)(p+q+2) $
 
 
-\section*{1. Vértices Elementales del Modelo Estándar}
-\begin{tabular}{@{}lll@{}}
-\textbf{Sector} & \textbf{Vértice (Interacción)} & \textbf{Mediador(es)} \\
-\midrule
-\textbf{QED} & $f + \bar{f} \leftrightarrow \gamma$ & Fotón ($\gamma$) \\
-\midrule
-\textbf{Débil (CC)} & $f_u + \bar{f}_d \leftrightarrow W^+$ & Bosón $W^\pm$  \\
-\textbf{Débil (NC)} & $f + \bar{f} \leftrightarrow Z^0$ & Bosón $Z^0$  \\
-\midrule
-\textbf{QCD} & $q + \bar{q} \leftrightarrow g$ & Gluón ($g$) \\
-\textbf{QCD (3-pt)} & $g + g \leftrightarrow g$ & Gluón ($g$)  \\
-\textbf{QCD (4-pt)} & $g + g \leftrightarrow g + g$ & Gluón ($g$)  \\
-\midrule
- \textbf{EW Gauge (3-pt)} & $W^+ + W^- \leftrightarrow \gamma$ / $W^+ + W^- \leftrightarrow Z^0$ & $\gamma$, $Z^0$ \\
-\textbf{EW Gauge (4-pt)} & $W^+ + W^- \leftrightarrow W^+ + W^-$ & $W^\pm$ \\
- & $W^+ + W^- \leftrightarrow Z^0 + Z^0$ / $W^+ + W^- \leftrightarrow \gamma + \gamma$ & $W^\pm$, $Z^0$, $\gamma$  \\
- & $W^+ + W^- \leftrightarrow Z^0 + \gamma$ & $W^\pm$, $Z^0$, $\gamma$ \\
-\midrule
-\textbf{Yukawa} & $f + \bar{f} \leftrightarrow H$ & Higgs ($H$) \\
-\midrule
-\textbf{Higgs-Gauge (3-pt)} & $W^+ + W^- \leftrightarrow H$ / $Z^0 + Z^0 \leftrightarrow H$ & $W^\pm$, $Z^0$  \\
-\textbf{Higgs-Gauge (4-pt)} & $W^+ + W^- \leftrightarrow H + H$ / $Z^0 + Z^0 \leftrightarrow H + H$ & $W^\pm$, $Z^0$ \\
-\midrule
-\textbf{Higgs (Auto)} & $H + H \leftrightarrow H$ & Higgs ($H$) \\
-\textbf{Higgs (Auto)} & $H + H \leftrightarrow H + H$ & Higgs ($H$) \\
-\end{tabular}
+% Alternativamente, usando método de factores sobre el diagrama:
+% $ \text{Dim} = \prod_{\text{cajas}} \frac{D_N(\text{caja})}{h(\text{caja})} $
+
+% $D_N = N + (\text{col} - \text{fila})$ y $h=$ longitud gancho $= 1 + (\text{celdas a la derecha}) + (\text{celdas debajo})
+% $.
+
+% \section{Reglas del Producto Tensorial (Littlewood-Richardson) para computar $A \otimes B$:}
+% 1. Dibuja el diagrama $A$.
+
+% 2. Llenar las cajas del diagrama $B$ con letras: `a' en la \textit{primera} fila, `b' en la \textit{segunda}, etc.
+
+% 3. Añadir las cajas de $B$ al diagrama $A$ siguiendo este orden riguroso:
+
+% $\bullet$ Añadir todas las `a', luego todas las `b', etc.
+
+% $\bullet$ \text{Regla de Simetría:} No puede haber dos letras iguales en la misma \textit{columna}.
+
+% $\bullet$ \text{Regla de Forma:} El resultado debe ser siempre un diagrama de Young válido. Sea $\lambda_i$ el número de cajas en la fila $i$, $\lambda_i \ge \lambda_{i+1}$.
+
+% $\bullet$ \text{Regla de Permutación de Red (Lattice):} Leyendo las letras añadidas de derecha a izquierda y de arriba a abajo (estilo hebreo), en cualquier punto de la lectura, el número de `a' leídas debe ser $\ge$ número de `b' $\ge$ número de `c'.
+
+% 4. Eliminar cualquier columna completa de altura $N=3$ (corresponden al singlete antisimétrico $\epsilon_{ijk}$). Eliminar cualquier columna de altura mayor a $N=3$, el diagrama es nulo y se descarta de la suma directa. Si tienes diagramas idénticos (con mismas letras en las mismas cajas) solo se cuenta uno de ellos.
 
 
 
-\section*{2. Procesos de Dispersión $2 \to 2$ (Canales $s, t, u$ dominantes a nivel árbol)}
 
 
 {
-
-
 \centering
-\setlength{\tabcolsep}{2pt} 
-\begin{tabular}{@{}lllll@{}}
-\textbf{Sector / Proceso} & \textbf{Reacción} & \textbf{Fuerza} & \textbf{Mediador} & \textbf{Canales} \\
+\scriptsize
+\setlength{\tabcolsep}{3pt} 
+\renewcommand{\arraystretch}{0.95}
+\begin{tabular}{@{}llll@{}}
+\textbf{Proceso} & \textbf{Reacción} & \textbf{Mediador} & \textbf{Canal} \\
 \midrule
-\textbf{Leptónico Puro} \\
-Disp de Møller & $e^- + e^- \to e^- + e^-$ & EM, Débil & $\gamma$, $Z^0$ & $t, u$ \\
-Disp de Bhabha & $e^+ + e^- \to e^+ + e^-$ & EM, Débil & $\gamma$, $Z^0$ & $s, t$ \\
-Aniq. a Leptones & $e^+ + e^- \to \mu^+ + \mu^-$ & EM, Débil & $\gamma$, $Z^0$ & $s$ \\
-Disp Compton & $e^- + \gamma \to e^- + \gamma$ & EM & $e^-$ (fermión) & $s, u$ \\
-Aniq. a Fotones & $e^+ + e^- \to \gamma + \gamma$ & EM & $e^-$ (fermión) & $t, u$ \\
-Disp $\nu_\mu$-$e$ & $\nu_\mu + e^- \to \nu_\mu + e^-$ & Débil (NC) & $Z^0$ & $t$ \\
-Disp $\nu_e$-$e$ & $\nu_e + e^- \to \nu_e + e^-$ & Débil & $Z^0$, $W^\pm$ & $t$ ($Z$), $u$ ($W$) \\
+\multicolumn{4}{l}{\textbf{Leptónico Puro}} \\
+Møller & $e^- e^- \to e^- e^-$ & $\gamma, Z^0$ & $t, u$ \\
+Bhabha & $e^+ e^- \to e^+ e^-$ & $\gamma, Z^0$ & $s, t$ \\
+Aniq. a $l^+l^-$ & $e^+ e^- \to l^+ l^-$ & $\gamma, Z^0$ & $s$ \\
+Aniq. a $\nu\bar{\nu}$ & $e^+ e^- \to \nu \bar{\nu}$ & $Z^0 (s), W^\pm (t) \; [t\iff\nu_e] $ & $s, t$ \\
+Compton & $e^- \gamma \to e^- \gamma$ & $e^-$ & $s, u$ \\
+Aniq. a $\gamma\gamma$ & $e^+ e^- \to \gamma \gamma$ & $e^-$ & $t, u$ \\
+Disp. $\nu_\mu e$ & $\nu_\mu e^- \to \nu_\mu e^-$ & $Z^0$ & $t$ \\
+Disp. $\nu_e e$ & $\nu_e e^- \to \nu_e e^-$ & $Z^0 (t), W^- (u)$ & $t, u$ \\
+Decay Inv. $\mu$ & $\nu_\mu e^- \to \mu^- \nu_e$ & $W^-$ & $t$ \\
+Decay $\mu^-$ & $\mu^- \to e^- \bar{\nu}_e \nu_\mu$ & $W^-$ & Dec. \\
+Prod. $W^+W^-$ & $e^+ e^- \to W^+ W^-$ & $\gamma, Z^0 (s), \nu_e (t)$ & $s, t$ \\
+Prod. $Z^0Z^0$ & $e^+ e^- \to Z^0 Z^0$ & $e^-$ & $t, u$ \\
 \midrule
-\textbf{Semileptónico} \\
-Disp Inelástica & $e^- + q \to e^- + q$ & EM, Débil & $\gamma$, $Z^0$ & $t$ \\
-Drell-Yan & $q + \bar{q} \to l^+ + l^-$ & EM, Débil & $\gamma$, $Z^0$ & $s$ \\
-Decay Inverso & $\mu^- + \nu_e \to e^- + \nu_\mu$ & Débil (CC) & $W^\pm$ & $u$ \\
+\multicolumn{4}{l}{\textbf{Semileptónico}} \\
+DIS ($eq$, NC)             & $e^- q \to e^- q$                   & $\gamma, Z^0$        & $t$ \\
+DIS ($eq$, NC vía $H^*$)$\color{blue}^\dagger\color{black}$  & $l\, q \to l\, q$          & $H^*$                & $t$ \\
+DIS ($e^-q$, CC)           & $e^- q^+ \to \nu_e\, q^-$           & $W^-$                & $t$ \\
+DIS ($e^+q$, CC)           & $e^+ q^- \to \bar{\nu}_e\, q^+$     & $W^+$                & $t$ \\
+Disp. $\nu q$ (NC)         & $\nu\, q \to \nu\, q$               & $Z^0$                & $t$ \\
+Disp. $\nu q$ (CC)         & $\nu_l\, q^- \to l^-\, q^+$         & $W^+$                & $t$ \\
+Disp. $\bar{\nu}q$ (CC)    & $\bar{\nu}_l\, q^+ \to l^+\, q^-$  & $W^-$                & $t$ \\
+Aniq. $l\bar{l}$ vía $H^*$$\color{blue}^\dagger\color{black}$ & $l^+ l^- \to q \bar{q}$   & $H^*$                & $s$ \\
+Prod. $W^*\!\to l\nu$      & $q^+\bar{q}^- \to l^+\, \nu_l$     & $W^+$                & $s$ \\
+Drell-Yan                  & $q \bar{q} \to l^+ l^-$             & $\gamma, Z^0$        & $s$ \\
+Prod. $W/Z$                & $q \bar{q}' \to W^\pm / Z^0$        & $W^\pm, Z^0$         & $s$ \\
+Decay $\beta$              & $q^- \to q^+\, l^-\, \bar{\nu}_l$  & $W^-$                & Dec. \\
 \midrule
-\textbf{Fuertes (QCD)} \\
-Disp ($\neq$ sabor) & $q + q' \to q + q'$ & Fuerte & $g$ & $t$ \\
-Disp ($=$ sabor) & $q + q \to q + q$ & Fuerte & $g$ & $t, u$ \\
-Aniq. ($\neq$ sabor) & $q + \bar{q} \to q' + \bar{q}'$ & Fuerte & $g$ & $s$ \\
-Disp Bhabha QCD & $q + \bar{q} \to q + \bar{q}$ & Fuerte & $g$ & $s, t$ \\
-Aniq. a Gluones & $q + \bar{q} \to g + g$ & Fuerte & $q$ (fermión) & $t, u$ \\
-Producción de pares & $g + g \to q + \bar{q}$ & Fuerte & $q$ ($t, u$), $g$ ($s$) & $s, t, u$ \\
-Disp Compton QCD & $q + g \to q + g$ & Fuerte & $q$ ($s, u$), $g$ ($t$) & $s, t, u$ \\
-Auto-Disp Gluónica & $g + g \to g + g$ & Fuerte & $g$, contacto $4g$ & $s, t, u$ \\
+\multicolumn{4}{l}{\textbf{Fuertes (QCD)}} \\
+Disp. $q_i q_j$ ($i \neq j$) & $q_i q_j \to q_i q_j$ & $g$ & $t$ \\
+Disp. $q_i \bar{q}_j$ ($i \neq j$) & $q_i \bar{q}_j \to q_i \bar{q}_j$ & $g$ & $t$ \\
+Disp. $q_i q_i$ & $q_i q_i \to q_i q_i$ & $g$ & $t, u$ \\
+Aniq. $q_i\bar{q}_i$ ($i \neq j$) & $q_i \bar{q}_i \to q_j \bar{q}_j$ & $g$ & $s$ \\
+Bhabha QCD & $q_i \bar{q}_i \to q_i \bar{q}_i$ & $g$ & $s, t$ \\
+Aniq. a $gg$ & $q_i \bar{q}_i \to g g$ & $q_i$ & $t, u$ \\
+Prod. $q_i\bar{q}_i$ & $g g \to q_i \bar{q}_i$ & $g (s), q_i (t, u)$ & $s, t, u$ \\
+Compton QCD & $q_i g \to q_i g$ & $q_i (s, u), g (t)$ & $s, t, u$ \\
+Auto-disp. $g$ & $g g \to g g$ & $g (s, t, u), 4g (\text{cont.})$ & $s, t, u, \text{cont.}$ \\
 \midrule
-\textbf{Sector de Higgs} \\
-Higgsstrahlung & $f + \bar{f} \to V + H$ & Débil & $V$ ($W^\pm, Z^0$) & $s$ \\
-Fus. de Bosones & $q + q' \to q + q' + H$ & Débil & $V$ ($W^\pm, Z^0$) & $t, u$ ($V \to H$) \\
-Fus. de Gluones & $g + g \to H$ & Fuerte, Yukawa & Quarks Top & Efectivo $s$ \\
+\multicolumn{4}{l}{\textbf{Producción de Quarks Pesados}} \\
+Prod. $t\bar{t}$ ($gg$) & $g g \to t \bar{t}$ & $g (s), t (t, u)$ & $s, t, u$ \\
+Prod. $t\bar{t}$ ($q\bar{q}$) & $q_i \bar{q}_i \to t \bar{t}$ & $g$ & $s$ \\
+Top único ($t$) & $q b \to q' t$ & $W^\pm$ & $t$ \\
+Top único ($s$) & $q \bar{q}' \to t \bar{b}$ & $W^\pm$ & $s$ \\
+Top único ($tW$) & $g b \to t W^-$ & $b (s), t (t)$ & $s, t$ \\
+\midrule
+\multicolumn{4}{l}{\textbf{Mixto / EW Bosónico}} \\
+Fotón Dir. & $q g \to q \gamma$ & $q$ & $s, u$ \\
+Aniq. Mixta & $q \bar{q} \to g \gamma$ & $q$ & $t, u$ \\
+Fusión $\gamma g$ & $\gamma g \to q \bar{q}$ & $q$ & $t, u$ \\
+Prod. Dibosón ($WW$) & $q \bar{q} \to W^+ W^-$ & $\gamma/Z^0 (s), q (t, u)$ & $s, t, u$ \\
+Prod. Dibosón ($ZZ$) & $q \bar{q} \to Z^0 Z^0$ & $q$ & $t, u$ \\
+Prod. Dibosón ($WZ$) & $q \bar{q}' \to W^\pm Z^0$ & $W^\pm (s), q (t, u)$ & $s, t, u$ \\
+Prod. $V\gamma$ & $q \bar{q}^{(')} \to V \gamma$ & $W^\pm (s \iff V=W), q (t, u)$ & $s, t, u$ \\
+Colisión $\gamma\gamma$ & $\gamma \gamma \to W^+ W^-$ & $W^\pm (t, u), 4V (\text{cont.})$ & $t, u, \text{cont.}$ \\
+VBS ($WW$) & $W^+ W^- \to W^+ W^-$ & $\gamma, Z^0, H (s, t), 4W (\text{cont.})$ & $s, t, \text{cont.}$ \\
+Decay $Z^0 \to f\bar{f}$ & $Z^0 \to l^+ l^- / \nu \bar{\nu} / q \bar{q}$ & Interacción Débil (NC) & Dec. \\
+Decay $W^\pm \to f\bar{f}'$ & $W^+ \to l^+ \nu_l / q \bar{q}'$ & Interacción Débil (CC) & Dec. \\
+\midrule
+\multicolumn{4}{l}{\textbf{Sector de Higgs}} \\
+Higgsstrahlung & $f \bar{f} \to V H$ & $W^\pm, Z^0$ & $s$ \\
+VBF & $q q' \to q q' H$$\color{blue}^\ddagger\color{black}$ & $W^\pm, Z^0$ & $t, u$ \\
+Decay $H \to f\bar{f}$ & $H \to f \bar{f}$ & Yukawa & Dec. \\
+Decay $H \to VV$ & $H \to W^+W^- / Z^0Z^0$ & $W^\pm, Z^0$ & Dec. \\
+Fusión $gg$* & $g g \to H$ & Loop $t (s)$ & Efect. $s$ \\
+Prod. $t\bar{t}H$ & $g g / q \bar{q} \to t \bar{t} H$$\color{blue}^\ddagger\color{black}$ & $g, t$ (vía radiación de $H$) & $s, t, u$ \\
+\midrule
+\multicolumn{4}{l}{\textbf{Electrodébil y Higgs de Quarks}} \\
+Disp. EW (NC) & $q_i q_j \to q_i q_j$ & $\gamma, Z^0$ & $t$ \\
+Disp. EW (NC) & $q_i q_i \to q_i q_i$ & $\gamma, Z^0$ & $t, u$ \\
+Bhabha EW (NC) & $q_i \bar{q}_i \to q_i \bar{q}_i$ & $\gamma, Z^0$ & $s, t$ \\
+Aniq. EW (NC) & $q_i \bar{q}_i \to q_j \bar{q}_j$ & $\gamma, Z^0$ & $s$ \\
+Disp. EW (CC) & $q_i q_j \to q_k q_l$ & $W^\pm$ & $t, u$ \\
+Aniq. EW (CC) & $q_i \bar{q}_j \to q_k \bar{q}_l$ & $W^\pm$ & $s$ \\
+Disp. $qq$ vía $H$$\color{blue}^\dagger\color{black}$ & $q_i q_j \to q_i q_j$ & $H$ & $t$ \\
+Disp. $qq$ vía $H$$\color{blue}^\dagger\color{black}$ & $q_i q_i \to q_i q_i$ & $H$ & $t, u$ \\
+Bhabha vía $H$$\color{blue}^\dagger\color{black}$ & $q_i \bar{q}_i \to q_i \bar{q}_i$ & $H$ & $s, t$ \\
+Aniq. $q\bar{q}$ vía $H$$\color{blue}^\dagger\color{black}$ & $q_i \bar{q}_i \to q_j \bar{q}_j$ & $H$ & $s$ \\
+\bottomrule
 \end{tabular}
-
+\vspace{0.1cm}
+\color{blue}$\dagger$\color{black}: Procesos de escasa relevancia fenomenológica.\\
+\color{blue}$\ddagger$\color{black}: En procesos $2 \to 3$, la notación $t, u$ indica la topología del intercambio bosónico; el canal $u$ solo aplica si existe un estado de quarks idénticos ($q = q'$).\\
+\textbf{Prima ($'$):} Grado lib. de sabor o estado cinemático indep. de la part. sin prima.\\
+\textbf{Índices latinos ($i, j, k, l$):} Indican sabor específico. Par $q_i \bar{q}_i$: aniquilación canal $s$ para bosones neutros ($\gamma, Z^0, H, g$). Par $q_i \bar{q}_j$, con $i \neq j$: aniquilación canal $s$ exclusiva para bosones cargados ($W^\pm$).\\
+\textbf{Signos ($\pm$):} Componente superior de isospín ($u, \nu$) = $+$; componente inferior ($d, l$) = $-$.
 
 }

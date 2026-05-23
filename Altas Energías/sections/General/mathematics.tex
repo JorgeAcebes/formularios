@@ -119,8 +119,116 @@ Para salvar la divergencia en $\cos \theta = 1$, se integra de $-1 + \epsilon$ a
 
 \color{cyan} ¡Estás integrando con $d(\cos\theta) \Rightarrow$ variable a sustituir según $\lim$s integración es $\cos\theta$, no $\theta$! \color{black}
 
-$$\int \frac{f(\cos\theta)}{1-\cos\theta} d(\cos\theta)$$
+$$\int(\frac{1+x}{1-x} + \frac{1-x}{1+x}) \, dx = \int \frac{1+x^2}{1-x^2}\, dx = -x+2 \,\mathrm{ arctanh} (x) \quad [\text{Integrando par y } \rm arctanh(0)=0]$$  
 
+
+
+$$\int \frac{(1+x)^2}{(1-x)^2}dx= x - \frac{4}{x - 1} + 4 \ln\left(\left|x - 1\right|\right)\qquad \int \frac{\left( 1 - x\right)^{2}}{\left( x + 1\right)^{2}} dx = -4 \ln\left(\left| x + 1 \right|\right) - \frac{4}{x + 1} + x$$\\ $$ \int \frac{1}{(1-x)^2}dx=\frac{1}{1 - x}\;\;\; \int \frac{1}{\left(x + 1\right)^{2}}dx = -\frac{1}{x + 1}$$
+
+
+\hrule
+
+
+
+\section*{Desintegraciones Exactas con Masas Finitas}
+
+\textbf{Quark Top a Bosón W Real ($t \to qW^+$)}
+
+
+La anchura de desintegración exacta a nivel árbol (sin límite $m_q \to 0$):
+$$\Gamma(t \to qW^+) = \frac{G_F m_t^3}{8\pi\sqrt{2}} |V_{tq}|^2 \lambda^{1/2}(1, x_W, x_q) \left[ (1-x_q)^2 + x_W(1+x_q) - 2x_W^2 \right]$$
+
+Donde:
+
+  - $x_i = m_i^2/m_t^2$ son las fracciones de masa al cuadrado.
+  
+- $\lambda(a,b,c) = a^2 + b^2 + c^2 - 2ab - 2ac - 2bc$ es la función cinemática de Källén.
+
+
+\textbf{Bosón de Higgs a Bosones Vectoriales ($H \to VV$)}
+
+Para bosones vectoriales masivos ($V = W^\pm, Z^0$) con masa $m_V < m_H/2$ y $x_V = m_V^2/m_H^2$:
+$$\Gamma(H \to W^+W^-) = \frac{G_F m_H^3}{8\pi\sqrt{2}} \sqrt{1 - 4x_W} (1 - 4x_W + 12x_W^2)$$
+$$\Gamma(H \to ZZ) = \frac{G_F m_H^3}{16\pi\sqrt{2}} \sqrt{1 - 4x_Z} (1 - 4x_Z + 12x_Z^2)$$
+
+\textit{Nota:} El factor diferencial $1/2$ en el canal $ZZ$ proviene de los bosones finales idénticos.
+
+
+\section*{Fenomenología de Interacciones Fuertes y Simetrías}
+
+\textbf{Escalado del Espacio de Fases (Branching Ratios)}
+
+Para calcular la relación entre anchuras parciales $\Gamma_i$ asumiendo simetría de isospín exacta, la dependencia cinemática está dominada por el momento en el centro de masas $p_c$ y el momento angular orbital relativo $L$ del estado final:
+$$\Gamma \propto |\mathcal{M}|^2 \, p_c^{2L+1}$$
+
+- \textbf{Onda S ($L=0$):} Típico en $0^+ \to 0^- + 0^-$. Escala linealmente: $\Gamma \propto p_c$.
+  
+    - \textbf{Onda P ($L=1$):} Típico en $1^- \to 0^- + 0^-$. Escala al cubo: $\Gamma \propto p_c^3$.
+
+
+Cálculo de $p_c$ para $M \to m_1 + m_2$: $p_c = \frac{\lambda^{1/2}(M^2, m_1^2, m_2^2)}{2M}$.
+
+
+
+\textbf{Estadística de Bose-Einstein (Estados Finales Idénticos)}
+
+Un estado final de dos bosones idénticos (e.g., $\pi^0\pi^0$) requiere una función de onda total \textbf{estrictamente simétrica} ante el intercambio de las partículas.
+
+  
+  - Simetría Espacial: Dictada por $(-1)^L$.
+ 
+  
+  - Simetría de Isospín: Acoplo de dos isospines idénticos $I_1 \otimes I_1 = I_{tot}$. 
+
+
+- \textbf{Regla Crítica:} Para un estado $\pi\pi$ ($1 \otimes 1 \to 0 \oplus 1 \oplus 2$), los subestados con $I_{tot} = 0, 2$ son simétricos, mientras que $I_{tot} = 1$ es antisimétrico. Si una resonancia con $I=1$ y paridad tal que $L$ es par decae a dos piones neutros, \textbf{está rigurosamente prohibida}.
+
+
+\section*{Física de Colisionadores Hadrónicos}
+
+\textbf{Topologías Tevatron ($p\bar{p}$) vs LHC ($pp$)}
+
+Diferencia fundamental en la composición de los Partones (PDFs) incidentes:
+
+    
+    - \textbf{Tevatron ($p\bar{p}$):} Interacciones como $u\bar{d} \to \dots$ o $q\bar{q} \to \dots$ proceden dominantemente mediante \textbf{quarks de valencia}. Ambos partones tienen fracciones de momento de Bjorken altas ($x \sim 1/3$).
+    
+    
+    - \textbf{LHC ($pp$):} Cualquier proceso de dispersión aniquilación que requiera un antiquark ($\bar{q}$) inicial, exige que éste provenga del \textbf{mar de quarks (sea quarks)}. La PDF asociada $f_{\bar{q}/p}(x)$ cae exponencialmente con $x$, suprimiendo fuertemente la sección eficaz a altas transferencias de momento en comparación con procesos inducidos por gluones ($gg \to \dots$).
+
+
+% \section*{Extra}
+
+% \textbf{Supresión de Helicidad en el Pion ($\pi^- \to \ell^- \bar{\nu}_\ell$)}
+
+% Aunque cinemáticamente el decaimiento al electrón ($m_e \approx 0.5$ MeV) posee mucho más espacio de fases que al muón ($m_\mu \approx 105.7$ MeV), el pion decae al muón el $99.99\%$ de las veces.
+
+    
+%     - \textbf{Causa:} El pion tiene espín 0. Por conservación de momento angular, el leptón y el antineutrino (helicidad $+\frac{1}{2}$ estricta) deben emitirse con la misma quiralidad.
+    
+%      - El acoplo V-A de la interacción débil fuerza al fermión masivo a adoptar la quiralidad "equivocada" (diestra). Esta penalización es proporcional a $m_\ell^2$. Como $m_\mu \gg m_e$, el canal muónico es el dominante.
+    
+%     - $\frac{\Gamma(\pi \to e\nu)}{\Gamma(\pi \to \mu\nu)} = \left(\frac{m_e}{m_\mu}\right)^2 \left( \frac{m_\pi^2 - m_e^2}{m_\pi^2 - m_\mu^2} \right)^2 \approx 1.2 \times 10^{-4}$.
+
+
+% \textbf{Paridad G en Sistemas Multipion}
+
+
+% La Paridad G ($G = C e^{i\pi I_2}$) es una simetría conservada estrictamente por la fuerza fuerte.
+% Para un sistema de $n$ piones, la paridad G es \textbf{multiplicativa}:
+% $$G(n\pi) = (-1)^n$$
+% \textbf{Aplicación directa:} 
+
+% - Mesón $\rho$ ($I^G = 1^+$): Decae a $2\pi$ (permitido, $(-1)^2 = +1$), pero no a $3\pi$ (prohibido, $(-1)^3 = -1$).
+ 
+% - Mesón $\omega$ ($I^G = 0^-$): Decae a $3\pi$ (permitido), pero no a $2\pi$ (prohibido).
+
+
+% \textbf{Narrow Width Approximation en el Pico de Resonancia}
+
+% Para un scattering partónico $ab \to X \to cd$ a energías de centro de masas exactamente en el polo de la resonancia ($\sqrt{s} = m_X$), la sección eficaz se simplifica analíticamente sin integración usando Branching Ratios:
+% $$\sigma_{peak}(ab \to cd) \approx \frac{16\pi}{m_X^2} \, \frac{(2J_X + 1)}{(2S_a + 1)(2S_b + 1)} \, \frac{C_X}{C_a C_b} \, \text{BR}(X \to ab) \, \text{BR}(X \to cd)$$
+% Donde $S_i$ son los espines y $C_i$ son los grados de libertad de color de las partículas.
 
 \newcolumn
 
@@ -243,3 +351,344 @@ $D_s^*(2112), B_s^*(5415)$ & $0(1^-)$ \\
 \end{tabular}
 
 }
+
+
+% =====================================================================
+% DERIVACIÓN GENERAL DE PDFs TIPO DELTA (MODELO ESTÁTICO DE QUARKS)
+% =====================================================================
+\section*{Derivación General de PDFs de Valencia}
+
+Sea un hadrón $H$ definido exclusivamente por su contenido de valencia, compuesto por un número total de $N$ quarks constituyentes. Definimos $n_q$ como el número neto de quarks de un sabor específico $q$ presentes en el hadrón ($\sum_{q} n_q = N$).
+
+La función de distribución: 
+$$f_q(x) = n_q \delta\left(x - \frac{1}{N}\right)$$
+
+
+\section*{LIPS para calcular Anchuras $\Gamma$}
+
+Para el caso general de dos partículas finales con masas distintas $m_1 \neq m_2$ en el sistema de referencia del centro de masas (donde la energía total es $E_{\text{CM}} = M$), el módulo del trimomento final $|\mathbf{p}_f|$ viene determinado por la función de Källén:$|\mathbf{p}_f| = \frac{\sqrt{\lambda(M^2, m_1^2, m_2^2)}}{2M}$
+
+Así, integrando sobre $d\Omega$: 
+$$\int d\text{LIPS}_2 = \frac{1}{8\pi} \sqrt{1 - 2\frac{m_1^2 + m_2^2}{M^2} + \frac{(m_1^2 - m_2^2)^2}{M^4}}$$
+
+Ojo, asegura siempre que $M > m_1 + m_2$
+
+% =====================================================================
+
+\clearpage
+
+
+    
+ÚLTIMAS PINCELADAS: 
+
+Al calcular $|\mathcal{M}|^2$ (o $F_C$), aplica $\dagger$ y luego \underline{debes} cambiar los índices correspondientes a índices mudos (todo lo que no sea índices de las patas externas). Los índices asociados a patas externas deben mantenerse fijos.
+
+$$\text{Tip Casimir}: \quad  \sum_{s_1, s_2} \left[ \bar{v}_1 \Gamma_1 u_2 \right] \left[ \bar{u}_2 \Gamma_2 v_1 \right] = \text{Tr} \left[ \cancel{p}_1 \Gamma_1 \cancel{p}_2  \Gamma_2 \right]$$
+
+
+Para un producto: 
+
+$$\sum_{\text{spin}}
+\underbrace{[\bar{u}_1 \,\Gamma_1\, u_2]}_{\text{escalar}}
+\underbrace{[\bar{u}_3 \,\Gamma_2\, u_4]}_{\text{escalar}}
+\underbrace{[\bar{u}_2 \,\bar{\Gamma}_1\, u_1]}_{\text{escalar}}
+\underbrace{[\bar{u}_4 \,\bar{\Gamma}_2\, u_3]}_{\text{escalar}} =$$
+
+
+$$ = \sum_{\text{spin}}
+[\bar{u}_1 \,\Gamma_1\, u_2][\bar{u}_2 \,\bar{\Gamma}_1\, u_1]
+\times
+[\bar{u}_3 \,\Gamma_2\, u_4][\bar{u}_4 \,\bar{\Gamma}_2\, u_3]=$$
+$$ =\text{Tr}\!\left[\Gamma_1\,(\not{p}_2 + m_2)\,\bar{\Gamma}_1\,(\not{p}_1 + m_1)\right]
+\times
+\text{Tr}\!\left[\Gamma_2\,(\not{p}_4 + m_4)\,\bar{\Gamma}_2\,(\not{p}_3 + m_3)\right]$$
+
+
+
+
+
+
+\vspace{2pt}
+En caso U.R., en el CM siempre se cumple $|\vec{p}_i| = |\vec{p}_f|$
+
+
+\vspace{2pt}
+
+Al calcular la sección eficaz, si las dos partículas finales son indistinguibles (la misma), se multiplica por $1/2$ para no doblecontar.
+
+\vspace{2pt}
+
+
+Calcula cada peso de color (el $F_C$ de un canal particular o interferencia de ellos): 
+
+$$F_{ab} = \frac{1}{N_{in}} \sum C_a C_b^{*}$$
+$\bullet$ No se suman los distintos ``pesos'' de color entre sí! 
+
+$\bullet$ No necesariamente igual interferencia a-b que b-a
+
+$\bullet$ Si la estructura del factor de color es igual en varios canales $\rightarrow$ Mismo $F_C$ para ellos (incluso sus interferencias)
+
+
+
+
+
+\vspace{2pt}
+
+$$(a^\mu b^\nu)(c_\mu d_\nu) = (a\cdot c) (b\cdot d ) \qquad g_{\mu \nu} a^\mu b^\nu = a\cdot b$$
+$$(a g^{\mu\nu})(bg_{\mu\nu}) =ab g^{\mu \nu}g_{\mu \nu} =a b \cdot D\quad \text{D}\equiv\text{dim espacio}$$ 
+
+
+\begin{center}
+    
+\boxed{
+$$S^{\mu\nu}(k_1, k_2) = k_1^\mu k_2^\nu + k_1^\nu k_2^\mu - g^{\mu\nu}(k_1 \cdot k_2)$$
+}
+
+\boxed{
+$$S^{\mu\nu}(p_1, p_2) S_{\mu\nu}(p_3, p_4) = 2 \left[ (p_1 \cdot p_3)(p_2 \cdot p_4) + (p_1 \cdot p_4)(p_2 \cdot p_3) \right]$$
+}
+
+
+ \boxed{$$\varepsilon^{\mu\nu\rho\sigma} p_{i\rho} p_{j\sigma} \varepsilon_{\mu\nu\alpha\beta} p_k^\alpha p_l^\beta = -2 \left[ (p_i \cdot p_k)(p_j \cdot p_l) - (p_i \cdot p_l)(p_j \cdot p_k) \right]$$}
+\end{center}
+
+\vfill
+
+\vspace{2pt}
+
+
+
+$$\renewcommand{\arraystretch}{1.75}
+\begin{array}{|l|}
+\hline
+\multicolumn{1}{|c|}{\textbf{EW: Álgebra Quiral y Proyectores}} \\
+\hline
+P_{L,R} = \tfrac{1\mp\gamma^5}{2},\quad P_{L,R}^2 = P_{L,R},\quad P_L P_R = 0 \\
+P_L + P_R = 1,\quad \text{Tr}[P_{L,R}] = 2 \\
+\gamma^\mu P_{L,R} = P_{R,L}\gamma^\mu,\quad P_{L,R}\cancel{a} = \cancel{a}P_{R,L} \\
+\hline
+\multicolumn{1}{|c|}{\textbf{EW: Identidades de Contracción}} \\
+\hline
+\gamma^\mu \gamma^5 \gamma_\mu = -4\gamma^5 \\
+\gamma^\mu(1\mp\gamma^5)\gamma_\mu = 4(1\pm\gamma^5) \\
+\gamma^\mu(1\mp\gamma^5)\cancel{a}\gamma_\mu = -2\cancel{a}(1\mp\gamma^5) \\
+\gamma^\mu(1\mp\gamma^5)\cancel{a}\cancel{b}\gamma_\mu = 4(a\cdot b)(1\pm\gamma^5) \\
+\gamma^\mu(1\mp\gamma^5)\cancel{a}\cancel{b}\cancel{c}\gamma_\mu = -2\cancel{c}\cancel{b}\cancel{a}(1\mp\gamma^5) \\
+\hline
+\multicolumn{1}{|c|}{\textbf{EW: Trazas de Dirac}} \\
+\hline
+\text{Tr}\big[\gamma^\mu\gamma^\nu\gamma^\rho\gamma^\sigma\big] = 4(g^{\mu\nu}g^{\rho\sigma} - g^{\mu\rho}g^{\nu\sigma} + g^{\mu\sigma}g^{\nu\rho}) \\
+\text{Tr}\big[\gamma^\mu\gamma^\nu\gamma^\rho\gamma^\sigma\gamma^5\big] = 4i\varepsilon^{\mu\nu\rho\sigma} \\
+\hline
+\text{Tr}\big[\gamma^\mu(1\mp\gamma^5)\cancel{p}_1\gamma^\nu(1\mp\gamma^5)\cancel{p}_2\big] = \\
+\quad 8\big[p_1^\mu p_2^\nu + p_2^\mu p_1^\nu - g^{\mu\nu}(p_1{\cdot}p_2) \mp i\varepsilon^{\mu\alpha\nu\beta}p_{1\alpha}p_{2\beta}\big] \\
+\hline
+\text{Tr}\big[\gamma^\mu(1\mp\gamma^5)\cancel{a}\gamma^\nu(1\pm\gamma^5)\cancel{b}\big] = \\
+\quad 8\big[a^\mu b^\nu + b^\mu a^\nu - g^{\mu\nu}(a{\cdot}b) \pm i\varepsilon^{\mu\alpha\nu\beta}a_{\alpha}b_{\beta}\big] \\
+\hline
+\text{Tr}\big[\gamma^\mu(1-\gamma^5)\cancel{p}_1\gamma^\nu(1+\gamma^5)\cancel{p}_2\big] = 0 \quad (\text{ortog.}) \\
+\hline
+\text{Tr}\big[\gamma^\mu(1-\gamma^5)\cancel{p}_1 (1+\gamma^5)\gamma^\nu\cancel{p}_2\big] = 8\big[p_1^\mu p_2^\nu + p_2^\mu p_1^\nu - g^{\mu\nu}(p_1{\cdot}p_2) + i\varepsilon^{\mu\alpha\nu\beta}(p_1)_{\alpha}(p_2)_{\beta}\big] \\
+\hline
+\text{Tr}\big[\gamma^\mu(1-\gamma^5)\cancel{p}_1 (1-\gamma^5)\gamma^\nu\cancel{p}_2\big] = 0 \\
+\hline
+\text{Tr}\big[\cancel{p}_1\gamma_\mu(g_L P_L + g_R P_R)\cancel{p}_2(g_L P_R + g_R P_L)\gamma_\nu\big] =\\
+\quad \text{Tr}\big[\cancel{p}_1\gamma_\mu \cancel{p}_2(g_L P_L + g_R P_R)^2\gamma_\nu\big] =\\
+\quad 2(g_L^2+g_R^2)\big[p_{1\mu}p_{2\nu}+p_{2\mu}p_{1\nu}-g_{\mu\nu}(p_1{\cdot}p_2)\big] +\\
+\quad 2i(g_R^2-g_L^2)\varepsilon^{\rho\mu\sigma\nu}p_{1\rho}p_{2\sigma} \\
+\hline
+\text{Tr}\big[\gamma^\mu(g_V - g_A\gamma^5)\cancel{p}_1\gamma^\nu(g_V-g_A\gamma^5)\cancel{p}_2\big] = \\
+\quad 4(g_V^2+g_A^2)\big[p_1^\mu p_2^\nu+p_2^\mu p_1^\nu-g^{\mu\nu}(p_1{\cdot}p_2)\big] \\
+\quad - 8ig_V g_A\varepsilon^{\mu\alpha\nu\beta}p_{1\alpha}p_{2\beta} \\
+\hline
+\text{Tr}\big[\gamma^\mu(g_V-g_A\gamma^5)\gamma^\nu(g_V-g_A\gamma^5)\big] = 4(g_V^2-g_A^2)g^{\mu\nu} \\
+\hline
+\text{Tr}\big[(\cancel{p}_1+m_1)\gamma^\mu(g_V-g_A\gamma^5)(\cancel{p}_2-m_2)\gamma^\nu(g_V-g_A\gamma^5)\big] = \\
+\quad 4(g_V^2+g_A^2)\big[p_1^\mu p_2^\nu+p_2^\mu p_1^\nu-g^{\mu\nu}(p_1{\cdot}p_2)\big] \\
+\quad - 8ig_Vg_A\varepsilon^{\mu\alpha\nu\beta}p_{1\alpha}p_{2\beta} - 4m_1m_2(g_V^2-g_A^2)g^{\mu\nu} \\
+\hline
+\end{array}$$
+
+\newcolumn
+
+
+
+\begin{center}
+    PROPIEDAD CÍCLICA TRAZA: $\operatorname{Tr}\{\cancel{a}\gamma^\mu\cancel{b}\gamma^\nu\} = \operatorname{Tr}\{\gamma^\nu \cancel{a}\gamma^\mu\cancel{b}\}$
+\end{center}
+
+$$\renewcommand{\arraystretch}{1.5}
+\begin{array}{|l|l|}
+\hline
+\textbf{Expresión / Traza} & \textbf{Resultado} \\
+\hline
+\multicolumn{2}{|c|}{\textbf{QED: Identidades de Contracción}} \\
+\hline
+\gamma^\mu \gamma_\mu & 4 \\
+\gamma^\mu \cancel{a} \gamma_\mu & -2\cancel{a} \\
+\gamma^\mu \cancel{a} \cancel{b} \gamma_\mu & 4(a \cdot b) \\
+\gamma^\mu \cancel{a} \cancel{b} \cancel{c} \gamma_\mu & -2\cancel{c}\cancel{b}\cancel{a} \\
+\hline
+\multicolumn{2}{|c|}{\textbf{QED: Trazas de Dirac}} \\
+\hline
+\text{Tr}[\mathbf{1}] & 4 \\
+\text{Tr}[\gamma^{\mu_1} \dots \gamma^{\mu_{2n+1}}] & 0 \\
+\text{Tr}[\cancel{a}\cancel{b}] & 4(a \cdot b) \\
+\text{Tr}[\cancel{a}\cancel{b}\cancel{c}\cancel{d}] & 4[(a \cdot b)(c \cdot d) - (a \cdot c)(b \cdot d) + (a \cdot d)(b \cdot c)] \\
+\text{Tr}[\gamma^5] & 0 \\
+\text{Tr}[\gamma^5 \cancel{a}\cancel{b}] & 0 \\
+\text{Tr}[\gamma^5 \cancel{a}\cancel{b}\cancel{c}\cancel{d}] & -4i\epsilon_{\mu\nu\rho\sigma} a^\mu b^\nu c^\rho d^\sigma \\
+\text{Tr}[\gamma_\mu \cancel{a} \gamma^\mu \cancel{b}] & -8(a \cdot b) \\
+\text{Tr}[\gamma_\mu \cancel{a} \cancel{b} \gamma^\mu \cancel{c} \cancel{d}] & 16(a \cdot b)(c \cdot d) \\
+\text{Tr}[\gamma_\mu (\cancel{a} - \cancel{b}) \cancel{a} (\cancel{a} - \cancel{b}) \gamma^\mu \cancel{c}] & -16(a \cdot b)(b \cdot c) \quad (a^2=b^2=0) \\
+\text{Tr}[\cancel{c} \gamma^\mu (\cancel{a} - \cancel{b}) \gamma^\nu \cancel{a} \gamma_{\color{magenta}\nu \color{black}}(\cancel{a} - \cancel{\color{magenta}b\color{black}}) \gamma_{\color{magenta}\mu\color{black}}] & 32(a \cdot b)(b \cdot c) \quad (a^2=b^2=0) \\
+\text{Tr}[\cancel{c} \gamma^\mu (\cancel{a} - \cancel{b}) \gamma^\nu \cancel{a} \gamma_{\color{magenta}\nu\color{black}} (\cancel{a} - \cancel{\color{magenta}d\color{black}}) \gamma_{\color{magenta}\mu\color{black}}] & 16 [ (a \cdot b)(c \cdot d) - (a \cdot c)(b \cdot d) + (a \cdot d)(b \cdot c)] \\\text{Tr}[\cancel{c} \gamma^\mu (\cancel{a} - \cancel{b}) \gamma^\nu \cancel{a} \gamma_{\color{magenta}\mu\color{black}} (\cancel{a} - \cancel{\color{magenta}b\color{black}}) \gamma_{\color{magenta}\nu\color{black}}] &  64(a \cdot b)(a \cdot c) \quad (a^2=b^2=0)\\
+\text{Tr}[\cancel{c} \gamma^\mu (\cancel{a} - \cancel{b}) \gamma^\nu \cancel{a} \gamma_{\color{magenta}\mu\color{black}} (\cancel{a} - \cancel{\color{magenta}d\color{black}}) \gamma_{\color{magenta}\nu\color{black}}] &   32(a \cdot c)(a \cdot b + a \cdot d - b \cdot d)\quad (a^2=b^2=0)\\
+
+\hline
+\multicolumn{2}{|c|}{\textbf{QCD: Álgebra de Color } SU(3) \textbf{ } (t^a = \lambda^a/2)} \\
+\hline
+\text{Tr}[t^a] & 0 \\
+\text{Tr}[t^a t^b] & T_R \delta^{ab} \quad (T_R = 1/2) \\
+\text{Tr}[t^a t^b t^c] & \frac{1}{4} (d^{abc} + i f^{abc}) \\
+\text{Tr}[t^a t^b t^a t^c] & -\frac{1}{12} \delta^{bc} \\
+t^a t^a & C_F \mathbf{1}_{3\times3} \quad (C_F = 4/3) \\
+f^{acd} f^{bcd} & C_A \delta^{ab} \quad (C_A = 3) \\
+\text{Tr}[t^a t^b] \text{Tr}[t^a t^c] & \frac{1}{4} \delta^{bc} \\
+\text{Tr}[t^a t^b t^c] \text{Tr}[t^a t^b t^d] & \frac{2}{3} \delta^{cd} \\
+\hline
+\end{array}$$
+
+
+
+
+\begin{center}
+    $$(\bar{\psi}_1 \Gamma \psi_2)^\dagger = \bar{\psi}_2 \overline{\Gamma} \psi_1\qquad \bar{\bar{\Gamma}} =\Gamma$$
+\end{center}
+
+
+$$\renewcommand{\arraystretch}{1.8}
+\begin{array}{|l|l|l|}
+\hline
+\textbf{Operador } \Gamma & \textbf{Estructura / Corriente} & \textbf{Adjunto } \bar{\Gamma} \\
+\hline
+I & \text{Escalar } (S) & I \\
+\hline
+\gamma^\mu & \text{Vectorial } (V) & \gamma^\mu \\
+\hline
+\sigma^{\mu\nu} = \frac{i}{2}[\gamma^\mu, \gamma^\nu] & \text{Tensorial } (T) & \sigma^{\mu\nu} \\
+\hline
+\gamma^\mu \gamma^5 & \text{Axial } (A) & \gamma^\mu \gamma^5 \\
+\hline
+\gamma^5 & \text{Pseudoescalar } (P) & -\gamma^5 \\
+\hline
+\cancel{p} = p_\mu \gamma^\mu & \text{Momento (con } p_\mu \in \mathbb{R} \text{)} & \cancel{p} \\
+\hline
+P_R = \frac{1 + \gamma^5}{2} & \text{Proyector Quiralidad Right} & P_L = \frac{1 - \gamma^5}{2} \\
+\hline
+P_L = \frac{1 - \gamma^5}{2} & \text{Proyector Quiralidad Left} & P_R = \frac{1 + \gamma^5}{2} \\
+\hline
+\gamma^\mu (g_L^e P_L + g^e_R P_R)&\text{Comb. lineal de proyectores}& (g_L^e P_R + g^e_R P_L)\gamma^\mu\\
+\hline
+\gamma^\mu (1 \mp \gamma^5) & \text{Vértice V$\mp$A (Corriente Débil)} & \gamma^\mu (1 \mp \gamma^5) \\
+\hline
+\cancel{a}\cancel{b} & \text{Producto par de momentos} & \cancel{b}\cancel{a} \\
+\hline
+\cancel{a}\cancel{b}\cancel{c} & \text{Producto impar de momentos} & \cancel{c}\cancel{b}\cancel{a} \\
+\hline
+\gamma^\mu \cancel{a} \gamma^\nu & \text{Vértice generalizado} & \gamma^\nu \cancel{a} \gamma^\mu \\
+\hline
+\gamma^\mu (\cancel{p}_1 + m) \gamma^\nu & \text{Propagador flanqueado} & \gamma^\nu (\cancel{p}_1 + m) \gamma^\mu \\
+\hline
+c \Gamma & \text{Operador con constante } c \in \mathbb{C} & c^* \bar{\Gamma} \\
+\hline
+\Gamma_1 \Gamma_2 \dots \Gamma_n & \text{Cadena general} & \bar{\Gamma}_n \dots \bar{\Gamma}_2 \bar{\Gamma}_1 \\
+\hline
+\end{array}$$
+
+
+\begin{center}
+    
+ÍNDICES DE COLOR EN QCD:
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.}
+\begin{tabular}{|p{0.9cm}|p{1.3cm}|p{2cm}|p{3.5cm}|}
+\hline
+\textbf{Elem.} & \textbf{Cuándo} & \textbf{Dónde} & \textbf{Índice y Criterio} \\ \hline
+\textbf{Ext.} & Reales (in/out) & Extremo libre & $q$: Fund. ($i \in \{1,2,3\}$) \newline $g$: Adj. ($a \in \{1,\dots,8\}$) \\ \hline
+\textbf{Int.} & Virtuales (prop.) & Ambos extremos & $q$: Fundamentales ($i, j$) \newline $g$: Adjuntos ($a, b$) \\ \hline
+\textbf{Nodo} & Vértices QCD & Hereda de líneas (No olvidar índices griegos de vértice) & $q$: $T^a_{ij}$ (Saliente $\rightarrow$ Entrante) \newline $g$: $f^{abc}$ (Antihorario) \\ \hline
+\end{tabular}
+
+\end{center}
+
+ \newcolumn
+
+
+{
+\centering
+
+
+\begin{tabular}{cccc}
+\toprule
+\textbf{Partícula} & \textbf{Símbolo} & \textbf{Tipo de campo} & \textbf{Propagador Explícito} \\ \midrule
+Fotón & $\gamma$ & Vectorial ($M=0$) & $\displaystyle \frac{-i g_{\mu\nu}}{k^2 + i\epsilon}$ \\ \addlinespace[0.3cm]
+Bosón $Z$ & $Z^0$ & Vectorial masivo & $\displaystyle \frac{-i \left(g_{\mu\nu} - \frac{k_\mu k_\nu}{M_Z^2}\right)}{k^2 - M_Z^2 + iM_Z\Gamma_Z}$ \\ \addlinespace[0.3cm]
+Bosón $W$ & $W^\pm$ & Vectorial masivo & $\displaystyle \frac{-i \left(g_{\mu\nu} - \frac{k_\mu k_\nu}{M_W^2}\right)}{k^2 - M_W^2 + iM_W\Gamma_W}$ \\ \addlinespace[0.3cm]
+Bosón de Higgs & $h^0$ & Escalar masivo & $\displaystyle \frac{i}{k^2 - M_h^2 + iM_h\Gamma_h}$ \\ \bottomrule
+\end{tabular}
+
+}
+
+
+
+\begin{itemize}
+    \item \textbf{\color{red}Desaparición de la anchura en el propagador SI EN CANAL $t$ Y $u$ ($\Gamma_V \to 0$):} 
+    \[ \frac{1}{t - M_V^2} \quad \text{ó} \quad \frac{1}{u - M_V^2} \]
+
+    \item \textbf{Si término $W$ o $Z$ como pata externa, introduces $\epsilon$. Relación importante:}
+    $$\sum_{\lambda=1}^3 \varepsilon_Z^\mu(p, \lambda) \varepsilon_Z^{*\nu}(p, \lambda) = -g^{\mu\nu} + \frac{p_Z^\mu p_Z^\nu}{M_Z^2}$$
+
+
+    \item \textbf{Límite de bajas energías (Teoría de Fermi):} A energías muy inferiores a la masa del bosón ($|t|, |u| \ll M_V^2$), el momento de la partícula virtual es despreciable frente a su masa. El propagador pierde su dependencia dinámica con el momento y colapsa en una interacción de contacto constante:
+    \[ \frac{-i g_{\mu\nu}}{t - M_V^2} \xrightarrow{|t| \ll M_V^2} \frac{i g_{\mu\nu}}{M_V^2} \]
+    Este es el fundamento del acoplamiento efectivo de la teoría de Fermi para corrientes cargadas, donde se define $\frac{G_F}{\sqrt{2}} = \frac{g_w^2}{8M_W^2}$.
+
+    \item \textbf{Límite ultrarelativista ($m_f \to 0$):} Al contraer los propagadores vectoriales masivos con corrientes fermiónicas conservadas, el término quiral $\propto k_\mu k_\nu / M_V^2$ es proporcional a la masa del fermión externo por la ecuación de Dirac ($k_\mu J^\mu \propto m_f$). En el límite de altas energías ($E \gg m_f$), este término se anula estrictamente, reduciendo el numerador a $-i g_{\mu\nu}$.
+    \item \textbf{Prescripción de Feynman vs. Anchura de Breit-Wigner:} El término $+i\epsilon$ en el fotón desplaza analíticamente los polos fuera del contorno de integración real. Para los bosones masivos, la sustitución $M^2 \to M^2 - iM\Gamma$ (obtenida mediante la resumación Dyson de la auto-energía a todos los órdenes) es obligatoria únicamente en procesos de tipo canal $s$ donde la energía en el centro de masas $\sqrt{s}$ se aproxima a la masa de la resonancia. En canales $t$ y $u$, dado que $k^2 < 0$, el polo físico nunca se alcanza y se puede aproximar $\Gamma \to 0$ manteniendo la prescripción $+i\epsilon$.
+\end{itemize}
+
+Si tengo neutrinos...
+
+\begin{itemize}
+    \item \textbf{Anulación de $k_\mu k_\nu$ (Exacta):} Dado que $m_\nu \to 0$, el término $\frac{k_\mu k_\nu}{M_V^2} \to 0$ de forma exacta. El numerador del propagador masivo se reduce a $-ig_{\mu\nu}$.
+
+    \item \textbf{Acoplamientos quirales ($Z^0\nu\bar{\nu}$):} Al ser el neutrino neutro ($Q=0$) y con isospín $T^3 = \frac{1}{2}$:
+    \[ g_R = -Q \sin^2\theta_W = 0, \quad g_L = T^3 - Q \sin^2\theta_W = \frac{1}{2} \]
+    El vértice de corriente neutra se reduce a una estructura puramente levógira (left-handed):
+    \[ \frac{-ig_w}{2\cos\theta_W} \gamma^\mu P_L \]
+    
+    \item \textbf{Base V-A pura:} Por la ausencia de carga ($Q=0$), los acoplamientos vectorial y axial se igualan:
+    \[ c_V = T^3 - 2Q\sin^2\theta_W = \frac{1}{2}, \quad c_A = T^3 = \frac{1}{2} \]
+    La corriente neutra toma la forma operacional $\gamma^\mu(1-\gamma^5)$, idéntica a la interacción cargada del $W^\pm$, maximizando la simplificación del álgebra de trazas de Dirac.
+
+
+    $$\text{\textbf{Contracción Trazas}: }$$
+    
+    $$(\text{Sim} + \text{Antisim}) \times (\text{Sim} + \text{Antisim}) \longrightarrow (\text{Sim} \times \text{Sim}) + (\text{Antisim} \times \text{Antisim})$$
+
+
+$$\varepsilon^{\mu\nu\alpha\beta} \varepsilon_{\mu\nu\rho\sigma} = -2(g^\alpha_\rho g^\beta_\sigma - g^\alpha_\sigma g^\beta_\rho)$$
+% \item \textbf{Acoplamientos quirales ($Z^0\nu\bar{\nu}$):} Al ser el neutrino neutro ($Q=0$) y con isospín $T^3 = \frac{1}{2}$:
+    % \[ g_R = -Q \sin^2\theta_W = 0, \quad g_L = T^3 - Q \sin^2\theta_W = \frac{1}{2} \]
+    % El vértice de corriente neutra se reduce a una estructura puramente levógira (left-handed):
+    % \[ \frac{-ig_w}{2\cos\theta_W} \gamma^\mu P_L \]
+    
+    % \item \textbf{Base V-A pura:} Por la ausencia de carga ($Q=0$), los acoplamientos vectorial y axial se igualan:
+    % \[ c_V = T^3 - 2Q\sin^2\theta_W = \frac{1}{2}, \quad c_A = T^3 = \frac{1}{2} \]
+    % La corriente neutra toma la forma operacional $\gamma^\mu(1-\gamma^5)$, idéntica a la interacción cargada del $W^\pm$, maximizando la simplificación del álgebra de trazas de Dirac.
+\end{itemize}
+
+
+
+
