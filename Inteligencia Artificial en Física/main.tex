@@ -1,0 +1,1782 @@
+\documentclass[8pt,a4paper,landscape,fleqn]{extarticle}
+
+
+% --- Paquetes y Geometría ---
+\usepackage[top=0.1cm, left=0.1cm, right=0.3cm, bottom=0.3cm]{geometry}
+\usepackage{lmodern} 
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amssymb,amsmath,amsthm,amsfonts,bm,mathtools}
+\usepackage{multicol}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usetikzlibrary{positioning, arrows.meta, calc, shapes.geometric, shapes.multipart, babel}
+\usepackage[compact]{titlesec}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true, % colorea el texto del enlace (en vez de un recuadro)
+  linkcolor=magenta, % enlaces internos (índice, refs, etc.)
+  urlcolor=magenta,  % URLs
+  citecolor=magenta, % citas (opcional)
+}
+\decimalpoint
+\usepackage{datetime2}
+\makeatletter
+\renewcommand{\today}{%
+  \number\day\,%
+  \@shortmonth{\month} %
+  \number\year
+}
+\newcommand{\@shortmonth}[1]{%
+  \ifcase#1\or Jan\or Feb\or Mar\or Apr\or May\or Jun%
+  \or Jul\or Aug\or Sep\or Oct\or Nov\or Dec\fi
+}
+\makeatother
+
+% --- Configuración de Estilo ---
+\makeatletter
+\g@addto@macro\normalsize{%
+  \setlength\abovedisplayskip{0.5pt}%
+  \setlength\belowdisplayskip{0.5pt}%
+  \setlength\abovedisplayshortskip{0pt}%
+  \setlength\belowdisplayshortskip{0pt}%
+}
+\makeatother
+
+\pagestyle{empty}
+\setlength{\columnsep}{0.4cm}
+\setlength{\columnseprule}{0.1pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{2pt}
+\setlength{\topskip}{0pt}
+
+
+\titlespacing{\section}{0pt}{0pt}{0pt}
+\titleformat{\section}{\normalfont\bfseries\color{magenta}\vspace{2pt}}{}{0em}{\MakeUppercase}
+
+
+
+\setlist[itemize]{leftmargin=*, nosep, label=$\bullet$}
+\raggedright
+
+
+\begin{document}
+\begin{multicols*}{3}
+\scriptsize
+
+\section{I. BIG PICTURE Y FLUJO DE TRABAJO}
+
+\textbf{JERARQUÍA Y DEFINICIONES}\\
+$\bullet$ \textbf{Inteligencia Artificial (AI):} Agentes racionales que mapean perceptos a acciones.\\
+$\bullet$ \textbf{Machine Learning (ML):} Aprendizaje estadístico sin programación explícita de reglas.\\
+$\bullet$ \textbf{Deep Learning (DL):} Redes neuronales (ANN). A diferencia del ML clásico, no satura su rendimiento al escalar los datos.\\
+$\bullet$ \textbf{Stack Tecnológico:} DL requiere alta paralelización (multiplicaciones matriciales). Algoritmo (PyTorch) $\to$ Grafo Computacional $\to$ API (CUDA) $\to$ Hardware (GPU).
+
+\textbf{TAXONOMÍA DEL APRENDIZAJE}\\
+$\bullet$ \textbf{Supervisado:} Dataset etiquetado $\mathcal{D} = \{(x_i, y_i)\}$. Busca $f(x) \approx y$. \textit{Clasificación} (salida discreta) y \textit{Regresión} (salida continua).\\
+$\bullet$ \textbf{No Supervisado:} Dataset sin etiquetas $\mathcal{D} = \{x_i\}$. Extrae estructura latente. \textit{Clustering} y \textit{Reducción de Dimensionalidad} (PCA).\\
+$\bullet$ \textbf{Refuerzo (RL):} Optimiza política $\pi(a|s)$ iterando Agente $\to$ Entorno $\to$ Reward $R$.
+
+\textbf{ML WORKFLOW (7 PASOS)}\\
+1) \textbf{Definición:} Establecer meta y requerimientos físicos.\\
+2) \textbf{Colección y Reducción:} Filtrado de ruido, homogeneización.\\
+3) \textbf{Data Split:} Partición en Train, Validation y Test.\\
+4) \textbf{Selección de Modelo:} Inducción del sesgo algorítmico adecuado.\\
+5) \textbf{Entrenamiento y Evaluación:} Optimización de pesos.\\
+6) \textbf{Tuning:} Ajuste de hiperparámetros con el set de validación.\\
+7) \textbf{Análisis Final:} Evaluación de generalización en Test Set.
+
+\section{II. MAXIMUM LIKELIHOOD ESTIMATION (MLE)}
+
+El estimador analítico Ordinary Least Squares (OLS) minimiza $\sum (y-\hat{y})^2$. \textit{Limitaciones:}\\
+1) \textbf{Alta dimensión:} Si $d \gg N$, existen infinitas soluciones equivalentes (matriz singular).\\
+2) \textbf{Multicolinealidad:} Variables correlacionadas inflan la varianza de los coeficientes.\\
+3) \textbf{Overfitting:} Síntoma: Coeficientes $\bm{w}$ enormes y erráticos.
+
+\textbf{MÁXIMA VEROSIMILITUD (MLE)}\\
+Asumiendo datos i.i.d. (\textit{Independent and Identically Distributed}), la versoimilitud $\mathcal{L}$ es la probabilidad conjunta de las osbervaciones dado el parámetro $\theta$. Para maximizar la verosimiltud, se minimiza la \textit{Negative Log-Likelihood} (NLL): $$\mathcal{L}(\bm{\theta}) = \prod_{i=1}^{N} p(y_i | \bm{x}_i; \bm{\theta})\;\;\;\implies \;\; \; \bm{\theta}^*_{MLE} = \arg\min_{\bm{\theta}} \sum_{i=1}^{N} -\ln p(y_i | \bm{x}_i; \bm{\theta})$$
+
+
+Regresión lineal: if ruido Gaussiano $\epsilon \sim \mathcal{N}(0, \sigma^2)$: $\arg\max \mathcal{L}\equiv \text{MSE}$.
+
+
+Regresión logística $y \in\{0,1\}$: if $y_i\!\sim \!\text{Bernoulli}(\hat{y}_i= \sigma(\bm{w}^T\bm{x}_i))$: $\arg\max \mathcal{L} \equiv \arg\min \text{BCE}$
+
+
+\section{III. LA NEURONA Y OPTIMIZACIÓN}
+
+\textbf{ARQUITECTURA DE LA NEURONA}\\
+Mapeo afín seguido de activación no lineal. Sin $f(z)$, la red colapsa a una regresión lineal.
+$$
+    z_j = \sum_{i} w_{ij} x_i + b_j = \bm{w}_j^T \bm{x} + b_j \quad \Rightarrow \quad a_j = f(z_j)
+$$
+\textbf{FUNCIONES DE ACTIVACIÓN $f(z)$}\\
+$\bullet$ \textbf{Sigmoide:} $\sigma(z) = (1+e^{-z})^{-1} \in (0,1)$, $ \sigma ' = \sigma(1-\sigma)$. \textit{Defecto:} $|z| \to \infty \Rightarrow \sigma' \to 0$, causando \textit{Vanishing Gradient}. No está centrada en cero (oscilaciones en SGD).\\
+$\bullet$ \textbf{Tanh:} $\tanh(z) \in (-1,1)$, $\tanh'(z) = 1-\tanh^2(z)$. Centrada en 0 (convergencia más rápida), pero mantiene saturación hiperbólica.\\
+$\bullet$ \textbf{ReLU:} $\max(0,z)$. Estándar DL. Computación trivial, previene desvanecimiento para $z>0$, induce \textit{sparsity}. \textit{Defecto:} Dead ReLU si cae en $z \le 0 \Rightarrow \nabla=0$.\\
+$\bullet$ \textbf{Softmax:} Generalización para $K$ clases. Convierte un vector de \textit{logits} en una distribución de probabilidad normalizada $\sum p_j = 1$.
+\begin{center}
+\begin{tikzpicture}[x=0.28cm, y=0.45cm, font=\tiny, >=Stealth]
+% --- 1. SIGMOIDE ---
+\begin{scope}[shift={(0,0)}]
+    \node[font=\tiny\bfseries] at (0,1.8) {Sigmoide};
+    \draw[->] (-3.5,0) -- (3.5,0) node[right=-1pt] {$z$};
+    \draw[->] (0,-0.2) -- (0,1.5);
+    \draw[dashed, gray!60] (-3,1) node[left, black] {1} -- (3,1);
+    \node[left, xshift=-1pt] at (0,0.5) {0.5};
+    \draw[blue, thick, smooth, domain=-3.2:3.2, samples=30] plot (\x, {1/(1+exp(-\x))});
+    \node[below, gray] at (-3,0) {-3}; \node[below, gray] at (3,0) {3};
+\end{scope}
+
+% --- 2. TANH ---
+\begin{scope}[shift={(8.5,0)}]
+    \node[font=\tiny\bfseries] at (0,1.8) {Tanh};
+    \draw[->] (-3.5,0) -- (3.5,0) node[right=-1pt] {$z$};
+    \draw[->] (0,-1.3) -- (0,1.5);
+    \draw[dashed, gray!60] (-3,1) node[left, black] {1} -- (3,1);
+    \draw[dashed, gray!60] (-3,-1) node[left, black] {-1} -- (3,-1);
+    \draw[red, thick, smooth, domain=-2.8:2.8, samples=30] plot (\x, {tanh(\x)});
+    \node[below, gray] at (-3,0) {-3}; \node[below, gray] at (3,0) {3};
+\end{scope}
+
+% --- 3. RELU ---
+\begin{scope}[shift={(17,0)}]
+    \node[font=\tiny\bfseries] at (-1.7,1.8) {ReLU};
+    \draw[->] (-3.5,0) -- (3.5,0) node[right=-1pt] {$z$};
+    \draw[->] (0,-0.2) -- (0,2.2);
+    \draw[green!60!black, thick] (-3,0) -- (0,0) -- (2,2) node[right, black] {2};
+    \node[below, gray] at (-3,0) {-3}; \node[below, gray] at (2,0) {2};
+\end{scope}
+
+% --- 4. SOFTMAX ---
+\begin{scope}[shift={(25.5,0.4)}]
+    \node[font=\tiny\bfseries] at (0,1.4) {Softmax};
+    \node[draw, rounded corners=1pt, fill=gray!5, inner sep=2pt, scale=1] (box) at (0,0) {$\frac{e^{z_i}}{\sum e^{z_j}}$};
+    \draw[<-] (box.west) -- +(-0.8,0) node[left, scale=1] {$\vec{z}$};
+    \draw[->] (box.east) -- +(0.8,0) node[right, scale=1, blue] {$\vec{p}$};
+    \node[below, scale=1] at (0,-0.8) {$\sum p_i = 1$};
+\end{scope}
+
+\end{tikzpicture}
+\end{center}
+
+
+\textbf{FUNCIONES DE PÉRDIDA ($\mathcal{L}$)}\\
+Definen la topología de la superficie de error a optimizar.\\
+$\bullet$ \textbf{MSE:} $\frac{1}{N}\sum (y_i - \hat{y}_i)^2$. Regresión. Sensible a outliers.\\
+$\bullet$ \textbf{MAE:} $\frac{1}{N}\sum |y_i - \hat{y}_i|$. Regresión. Geometría robusta a outliers.\\
+$\bullet$ \textbf{MRE (Error Relativo):} $\frac{1}{N}\sum \frac{|y_i - \hat{y}_i|}{|y_i|}$. Adimensional.\\
+$\bullet$ \textbf{BCE:} $-\frac{1}{N}\sum [y_i \ln(\hat{y}_i) + (1-y_i)\ln(1-\hat{y}_i)]$. Clasificación binaria.\\
+$\bullet$ \textbf{CCE:} $-\sum y_c \ln(\hat{y}_c)$. Clasificación multiclase con One-Hot Encoding.
+
+\textbf{STOCHASTIC GRADIENT DESCENT (SGD) Y BACKPROPAGATION}\\
+$\bullet$ \textbf{Gradient Descent}: $\bm{\theta}_{t+1} = \bm{\theta}_t - \eta \nabla_{\bm{\theta}} \mathcal{L}$, $\eta \equiv$ learning rate.\\
+$\bullet$ \textbf{Mini-batch SGD:} Promedia $\nabla \mathcal{L}$ en un subconjunto aleatorio (batch). Suaviza la trayectoria, paraleliza matrices en GPU y evade mínimos locales.\\
+$\bullet$ \textbf{Backpropagation:} Diferenciación algorítmica. El error $\bm{\delta}^{(l)}$ de la capa $l$ se calcula retropropagando el error de la capa posterior $l+1$:
+$$ \bm{\delta}^{(l)} = \left( (\bm{W}^{(l+1)})^T \bm{\delta}^{(l+1)} \right) \odot f'(\bm{z}^{(l)}) \implies \nabla_{\bm{W}^{(l)}}\mathcal{L} = \bm{\delta}^{(l)} (\bm{a}^{(l-1)})^T, \quad \nabla_{\bm{b}^{(l)}}\mathcal{L} = \bm{\delta}^{(l)} $$
+$\bullet$ \textbf{Problema de Alta Dimensión:} Los puntos de silla ($\nabla \mathcal{L}=0$ con curvatura mixta) son más probables que los mínimos locales. El SGD requiere inercia (\textit{momentum}) para escapar.
+
+$\bullet$ \textbf{Adam (Adaptive Moment Estimation):} Mejora el SGD al combinar \textit{momentum} con una tasa de aprendizaje dinámica e independiente para cada parámetro. Esto estabiliza las oscilaciones y acelera la convergencia en topologías complejas de alta dimensión.
+
+\section{IV. REGULARIZACIÓN Y EVALUACIÓN}
+
+\textbf{COMPROMISO SESGO-VARIANZA}\\
+Error $= \text{Bias}^2 + \text{Var} + \text{Ruido}$. Regularizar aumenta el sesgo para hundir la varianza, alcanzando el error de generalización mínimo.\\
+$\bullet$ \textbf{Underfitting (Sesgo):} Modelo rígido. Error train alto.\\
+$\bullet$ \textbf{Overfitting (Varianza):} Memoriza ruido. Divergencia $\mathcal{L}_{train} \to 0$, $\mathcal{L}_{test} \gg 0$.
+
+\textbf{REGULARIZACIÓN GEOMÉTRICA ($\Omega$)}\\
+Restricción del espacio de fases de los pesos $\mathcal{L}_{\text{reg}} = \mathcal{L} + \alpha \Omega(\bm{w})$.\\
+$\bullet$ \textbf{L2 (Ridge):} $\Omega(\bm{w}) = ||\bm{w}||_2^2$. Contrae coeficientes proporcionalmente (suaviza). Espacio de restricción: \textbf{Esfera}. Maneja bien señales distribuidas y multicolinealidad.\\
+$\bullet$ \textbf{L1 (Lasso):} $\Omega(\bm{w}) = ||\bm{w}||_1$. Induce \textbf{Sparsity} (fuerza pesos a exactamente 0). Espacio de restricción: \textbf{Rombo/Diamante}. Las curvas de error suelen colisionar en los vértices del rombo, anulando ejes (selección de variables automática).\\
+$\bullet$ \textbf{Elastic Net:} Combinación $\alpha_1 ||\bm{w}||_1 + \alpha_2 ||\bm{w}||_2^2$.
+
+\textbf{TÉCNICAS ESTRUCTURALES}\\
+$\bullet$ \textbf{Dropout:} Probabilidad $p$ de silenciar neuronas en \textit{forward}. Simula un ensamblado de $2^N$ sub-redes. Evita la co-adaptación de neuronas. Convergencia lenta.\\
+$\bullet$ \textbf{Early Stopping:} Detiene optimización si $\mathcal{L}_{val}$ se satura o diverge.
+
+\textbf{DATA LEAKAGE (FUGA DE INFORMACIÓN)}\\
+El peor error en ML. Contaminar el entrenamiento con estadísticas del test.\\
+$\bullet$ \textbf{Pecados:} \\1) Normalizar usando $\mu, \sigma$ globales antes del split. \\2) Seleccionar features o PCA globalmente. \\3) Tuning abusivo mirando el test set. \\4) Filas correlacionadas físicamente  $\Rightarrow$ Solución: \texttt{GroupShuffleSplit} o \texttt{GroupKFold}.
+
+\textbf{PROTOCOLOS DE PARTICIÓN}\\
+$\bullet$ \textbf{Train Set (60-80\%):} Optimización exclusiva de los tensores paramétricos.\\
+$\bullet$ \textbf{Validation Set (10-20\%):} Ajuste de hiperparámetros ($\eta, \alpha$, $p$). Proxy del test.\\
+$\bullet$ \textbf{Test Set (10-20\%):} Evaluación de generalización única y final.\\
+$\bullet$ \textbf{K-Fold CV:} Partición en $K$ pliegues iterativos. Reduce la varianza en la estimación del rendimiento para datasets reducidos.\\
+$\bullet$ \textbf{Group Split:} Imprescindible si los datos físicos no son i.i.d. Agrupa por identificador de muestra para asegurar independencia total.
+
+\textbf{MÉTRICAS DE CLASIFICACIÓN Y MATRIZ DE CONFUSIÓN}\\
+El error 0/1 no es diferenciable, se optimiza NLL pero se reportan métricas duras.\\
+Aciertos: True Positive/Negative (TP, TN). Errores: False Positive/Negative (FP, FN).\\
+$\bullet$ \textbf{Matriz:} Prediction vs Actual value. Aciertos en la diagonal principal.\\
+$\bullet$ \textbf{Accuracy:} $(TP+TN)/Total$. Inválida en \textit{Imbalanced Data}.\\
+$\bullet$ \textbf{Recall (Sensibilidad):} $TP/(TP+FN)$. De los positivos reales, ¿cuántos cazo?\\
+$\bullet$ \textbf{Especificidad:} $TN/(TN+FP)$. De los negativos reales, ¿cuántos descarto?\\
+$\bullet$ \textbf{Precisión:} $TP/(TP+FP)$. Probabilidad de que mi alerta positiva sea real.\\
+$\bullet$ \textbf{ROC-AUC:} Área bajo la curva (AUC) de ROC (sensibilidad frente a 1$-$especificidad). Mide la capacidad de separar clases. AUC = 1: Clasificador perfecto.
+
+\section{V. MÉTODOS ESTADÍSTICOS Y PCA}
+
+\textbf{PRINCIPAL COMPONENT ANALYSIS (PCA)}\\
+Transformación lineal ortogonal no supervisada que proyecta $X \to Z = X W_k$. Reduce multicolinealidad, filtra ruido y permite visualización.\\
+$\bullet$ \textbf{Preprocesado Crítico:} Centrar $\mu=0$ y Escalar $\sigma=1$ (\texttt{StandardScaler}).\\
+$\bullet$ \textbf{Covarianza y Autovectores:} La matriz de pesos de proyección $W_k$ está formada por los $k$ autovectores principales de la matriz de covarianza $\Sigma = \frac{1}{N} X^T X$.\\
+$\bullet$ \textbf{Cálculo SVD:} $X = U S V^T$. Computacionalmente estable. Los ejes principales son las columnas de $V$. Los autovalores $\lambda_j$ relacionan los valores singulares: $\lambda_j = \sigma_j^2 / N$.\\
+$\bullet$ \textbf{Varianza Explicada ($r_j$):} Fracción de variabilidad retenida $r_j = \lambda_j / \sum \lambda_i$. Se elige $k$ truncando la varianza acumulada al 90-95\%.
+
+\textbf{k-NEAREST NEIGHBORS (k-NN)}\\
+\begin{minipage}{0.9\columnwidth}
+Algoritmo no paramétrico (\textit{lazy learning}) con coste de inferencia $\mathcal{O}(nd)$. Requiere estructuras espaciales (\texttt{KD-tree, Ball-tree}) para acelerar.\\
+$\bullet$ \textbf{Distancias ($L_p$):} Minkowski, Euclídea, $\dots$ Exige estandarización dimensional.\\
+$\bullet$ \textbf{Altas dimensiones $d$:} Las distancias colapsan y la métrica pierde su poder discriminativo. Requiere PCA previo.
+\end{minipage}
+\begin{minipage}{0.09\columnwidth}
+\hspace{4pt} \vspace{4pt}
+\begin{tikzpicture}[scale=0.40, font=\tiny]
+    \draw[dashed, gray!80] (0,0) circle (1.2cm);
+    \fill[blue] (0.3, 0.4) circle (1.5pt); \fill[blue] (-0.3, 0.5) circle (1.5pt);
+    \fill[red] (0.4, -0.4) circle (1.5pt); \fill[blue] (1.1, 0.2) circle (1.5pt);
+    \fill[red] (-0.6, -0.8) circle (1.5pt); \fill[red] (0.9, -0.9) circle (1.5pt);
+    \node[star, star points=5, star point ratio=2.2, fill=yellow, draw=orange, inner sep=1.5pt] (q) at (0,0) {};
+    \draw[->, thin] (0,0) -- (0.84, 0.84);
+\end{tikzpicture}
+\end{minipage}%
+\\
+$\bullet$ \textbf{Geometría y Sesgo-Varianza:}
+$k=1$ (Altamente no lineal, varianza máxima).\\
+$k$ grande (Fronteras de decisión promediadas, máximo sesgo predictivo).
+
+\section{VI. ARQUITECTURAS NEURONALES AVANZADAS}
+
+\textbf{1. EL PERCEPTRÓN Y LA LÓGICA}
+
+El perceptrón divide el espacio con un hiperplano $\bm{w}^T \bm{x} + b = 0$. 
+
+\textbf{2. MULTILAYER PERCEPTRON (MLP)}
+
+Arquitectura \textit{feedforward} (flujo unidireccional de información) compuesta de capas totalmente conectadas (\textit{fully connected}). Conocidas como Redes Neuronales Densas.
+\vspace{-8pt}
+\begin{center}
+\begin{tikzpicture}[x=1.75cm, y=0.65cm, >=stealth]
+    % Estilos compactos y con etiquetas dentro
+    \tikzset{
+        neuron/.style={circle, draw, thick, minimum size=0.5cm, inner sep=0pt, font=\tiny},
+        input/.style={neuron, fill=green!20},
+        hidden/.style={neuron, fill=red!20},
+        output/.style={neuron, fill=blue!20},
+        weight/.style={->, draw=gray!60, thin}
+    }
+
+    % Capa de Entrada (3 neuronas) - Etiqueta x
+    \foreach \i in {1,2,3} {
+        \node[input] (I-\i) at (0, 2-\i) {$x_\i$};
+    }
+    \node[above=0.2cm of I-1, font=\tiny\bfseries] {Input Layer};
+
+    % Primera Capa Oculta (4 neuronas) - Etiqueta H1
+    \foreach \i in {1,2,3,4} {
+        \node[hidden] (H1-\i) at (1, 2.5-\i) {$H^1_\i$};
+    }
+    \node[above=0.2cm of H1-1, font=\tiny\bfseries] {Hidden 1};
+
+    % Segunda Capa Oculta (4 neuronas) - Etiqueta H2
+    \foreach \i in {1,2,3,4} {
+        \node[hidden] (H2-\i) at (2, 2.5-\i) {$H^2_\i$};
+    }
+    \node[above=0.2cm of H2-1, font=\tiny\bfseries] {Hidden 2};
+
+    % Capa de Salida (2 neuronas) - Etiqueta y
+    \foreach \i in {1,2} {
+        \node[output] (O-\i) at (3, 1.5-\i) {$y_\i$};
+    }
+    \node[above=0.2cm of O-1, font=\tiny\bfseries] {Output Layer};
+
+    % Conexiones (Full Connected)
+    \foreach \i in {1,2,3} \foreach \j in {1,2,3,4} \draw[weight] (I-\i) -- (H1-\j);
+    \foreach \i in {1,2,3,4} \foreach \j in {1,2,3,4} \draw[weight] (H1-\i) -- (H2-\j);
+    \foreach \i in {1,2,3,4} \foreach \j in {1,2} \draw[weight] (H2-\i) -- (O-\j);
+
+\end{tikzpicture}
+\end{center}
+
+
+
+
+
+$\bullet$ \textbf{Teorema de Aproximación Universal:} Una ANN (\textit{artificial neural network}) con 1 capa oculta (ancho ilimitado) y activación no polinómica puede mapear con precisión arbitraria cualquier función continua $\phi: \mathbb{R}^n \to \mathbb{R}^m$.
+$$ \bm{h} = f(\bm{W}^{(1)}\bm{x} + \bm{b}^{(1)}) \quad \to \quad \hat{y} = g(\bm{W}^{(2)}\bm{h} + \bm{b}^{(2)}) $$
+
+\textbf{3. CONVOLUTIONAL NEURAL NETWORKS (CNN)}\\
+Arquitecturas diseñadas para invarianzas topológicas en mallas de datos (Grid).
+% \begin{center}
+% \begin{tikzpicture}[x=0.55cm, y=0.55cm, >=Stealth, font=\tiny]
+%     \draw[fill=blue!5, step=1cm] (0,0) grid (3,3) rectangle (0,0);
+%     \draw[fill=red!20, opacity=0.8] (1,1) rectangle (3,3); % Filtro
+%     \draw[->, thin] (3.2,1.5) -- (4.3,1.5) node[midway, above] {$\bm{W} * \bm{X}$};
+%     \draw[fill=green!5, step=1cm] (4.5,0.5) grid (6.5,2.5) rectangle (4.5,0.5);
+%     \draw[->, thin] (6.7,1.5) -- (7.8,1.5) node[midway, above] {Pool};
+%     \draw[fill=orange!20] (8.0,1) rectangle (9.0,2);
+%     \node[above] at (1.5,3) {Entrada ($W_{in}$)}; \node[above] at (5.5,2.5) {Feature Map};
+% \end{tikzpicture}
+% \end{center}
+
+\shorthandoff{<>} % Desactiva caracteres activos de Babel Spanish
+\begin{minipage}{9.9cm}
+    \centering
+    
+    % --- DIAGRAMA 1: ARQUITECTURA GLOBAL ---
+    \resizebox{9.5cm}{!}{
+        \begin{tikzpicture}[x={(1cm,0cm)}, y={(0.5cm,0.4cm)}, z={(0cm,1cm)}]
+
+            % MACRO: Generador de Tensores (etiquetas desplazadas hacia abajo en Z)
+            \newcommand{\layerplanes}[8]{
+                \foreach \c in {#5,...,1} {
+                    \pgfmathsetmacro{\ypos}{(\c-1)*#6}
+                    \draw[fill=#7, draw=black!70, thick, join=round] 
+                        (#1, \ypos, #2) -- (#1+#3, \ypos, #2) -- (#1+#3, \ypos, #2+#4) -- (#1, \ypos, #2+#4) -- cycle;
+                }
+                \node[anchor=north, align=center, font=\LARGE, text=black] at (#1+#3/2, 0, #2 - 0.9) {#8};
+            }
+
+            % --- ARQUITECTURA DE TENSORES (Espaciado dilatado) ---
+
+            % 1. ENTRADA
+            \layerplanes{0}{-1.75}{3.5}{3.5}{1}{0}{white}{Entrada\\$28\times 28$}
+            \draw[line width=3pt, black, join=round, cap=round] 
+                (2.75, 0, 1.0) .. controls (1.25, 0, 1.0) and (0.75, 0, -1.0) .. (1.75, 0, -1.0)
+                .. controls (2.75, 0, -1.0) and (2.75, 0, 0.0) .. (1.75, 0, 0.0)
+                .. controls (1.05, 0, 0.0) and (0.75, 0, -0.5) .. (1.75, 0, -1.0);
+
+            % 2. CONV 1 (Separado para evitar solapamiento)
+            \layerplanes{5.5}{-1.4}{2.8}{2.8}{4}{0.2}{gray!15}{Conv 1\\$24\times 24 \times 32$}
+
+            % 3. POOL 1
+            \layerplanes{10.5}{-0.7}{1.4}{1.4}{4}{0.2}{gray!15}{Pool 1\\$12\times 12 \times 32$}
+
+            % 4. CONV 2
+            \layerplanes{14.0}{-0.5}{1.0}{1.0}{6}{0.15}{gray!15}{Conv 2\\$8\times 8 \times 64$}
+
+            % 5. POOL 2
+            \layerplanes{17.0}{-0.25}{0.5}{0.5}{6}{0.15}{gray!15}{Pool 2\\$4\times 4 \times 64$}
+
+            % 6. FLATTEN (Array 1D explícito)
+            \draw[fill=green!15, draw=black!70, thick] (19.5, 0, -1.5) rectangle (19.7, 0, 1.5);
+            \foreach \z in {-1.3, -1.1, -0.9, -0.7, -0.5, -0.3, -0.1, 0.1, 0.3, 0.5, 0.7, 0.9, 1.1, 1.3} {
+                \draw[black!50] (19.5, 0, \z) -- (19.7, 0, \z);
+            }
+            \node[anchor=north, align=center, font=\LARGE] at (19.6, 0, -1.8) {Flatten\\$1$D};
+
+            % 7. FULLY CONNECTED
+            \draw[fill=blue!10, draw=black!70, thick, rounded corners=2pt] (21.5, 0, -1.0) rectangle (22.0, 0, 1.0);
+            \node[anchor=north, align=center, font=\LARGE] at (21.75, 0, -1.3) {Fully\\Connected};
+
+            % 8. OUTPUT
+            \node[font=\Huge\bfseries, text=black] at (24.0, 0, 0) {6};
+
+
+            % --- OPERADORES Y PROYECCIONES ---
+
+            % A. PROYECCIÓN CONVOLUCIONAL 1
+            \draw[red, thick, fill=red!20, fill opacity=0.6] (0.5, 0, 0.2) rectangle (1.1, 0, 0.8);
+            \draw[red] (0.8, 0, 0.2) -- (0.8, 0, 0.8);
+            \draw[red] (0.5, 0, 0.5) -- (1.1, 0, 0.5);
+            
+            \filldraw[red] (6.0, 0, 0.5) circle (1.5pt);
+            \draw[red, thick, dashed] (0.5, 0, 0.2) -- (6.0, 0, 0.5);
+            \draw[red, thick, dashed] (1.1, 0, 0.2) -- (6.0, 0, 0.5);
+            \draw[red, thick, dashed] (0.5, 0, 0.8) -- (6.0, 0, 0.5);
+            \draw[red, thick, dashed] (1.1, 0, 0.8) -- (6.0, 0, 0.5);
+            \node[red, font=\Large, anchor=south] at (4.25, 0, 0.55) {$\{W, b\}$};
+
+            % B. PROYECCIÓN POOLING 1
+            \draw[blue, thick, fill=blue!20, fill opacity=0.6] (7.0, 0, -0.8) rectangle (7.4, 0, -0.4);
+            \draw[blue] (7.2, 0, -0.8) -- (7.2, 0, -0.4);
+            \draw[blue] (7.0, 0, -0.6) -- (7.4, 0, -0.6);
+            
+            \draw[blue, thick, fill=blue!20, fill opacity=0.6] (10.7, 0, -0.5) rectangle (10.9, 0, -0.3);
+            \draw[blue, thick, dashed] (7.0, 0, -0.8) -- (10.7, 0, -0.5);
+            \draw[blue, thick, dashed] (7.4, 0, -0.8) -- (10.9, 0, -0.5);
+            \draw[blue, thick, dashed] (7.0, 0, -0.4) -- (10.7, 0, -0.3);
+            \draw[blue, thick, dashed] (7.4, 0, -0.4) -- (10.9, 0, -0.3);
+
+            % C. PROYECCIÓN CONVOLUCIONAL 2
+            \draw[red, thick, fill=red!20, fill opacity=0.6] (11.4, 0, 0.2) rectangle (11.7, 0, 0.5);
+            \draw[red] (11.55, 0, 0.2) -- (11.55, 0, 0.5);
+            \draw[red] (11.4, 0, 0.35) -- (11.7, 0, 0.35);
+            
+            \filldraw[red] (14.3, 0, 0.35) circle (1.2pt);
+            \draw[red, thick, dashed] (11.4, 0, 0.2) -- (14.3, 0, 0.35);
+            \draw[red, thick, dashed] (11.7, 0, 0.2) -- (14.3, 0, 0.35);
+            \draw[red, thick, dashed] (11.4, 0, 0.5) -- (14.3, 0, 0.35);
+            \draw[red, thick, dashed] (11.7, 0, 0.5) -- (14.3, 0, 0.35);
+            \node[red, font=\large, anchor=south] at (12.8, 0, 0.45) {$\{W, b\}$};
+
+            % D. PROYECCIÓN POOLING 2
+            \draw[blue, thick, fill=blue!20, fill opacity=0.6] (14.6, 0, -0.3) rectangle (14.8, 0, -0.1);
+            \draw[blue] (14.7, 0, -0.3) -- (14.7, 0, -0.1);
+            \draw[blue] (14.6, 0, -0.2) -- (14.8, 0, -0.2);
+            
+            \draw[blue, thick, fill=blue!20, fill opacity=0.6] (17.1, 0, -0.15) rectangle (17.2, 0, -0.05);
+            \draw[blue, thick, dashed] (14.6, 0, -0.3) -- (17.1, 0, -0.15);
+            \draw[blue, thick, dashed] (14.8, 0, -0.3) -- (17.2, 0, -0.15);
+            \draw[blue, thick, dashed] (14.6, 0, -0.1) -- (17.1, 0, -0.05);
+            \draw[blue, thick, dashed] (14.8, 0, -0.1) -- (17.2, 0, -0.05);
+
+            % E. PROYECCIÓN FLATTEN
+            \draw[green!60!black, thick, dashed] (17.5, 0, 0.25) -- (19.5, 0, 1.5);
+            \draw[green!60!black, thick, dashed] (17.5, 0, -0.25) -- (19.5, 0, -1.5);
+
+            % F. FLUJO DENSO FINAL
+            \draw[->, thick, draw=black!70] (19.7, 0, 0.8) -- (21.5, 0, 0.5);
+            \draw[->, thick, draw=black!70] (19.7, 0, -0.8) -- (21.5, 0, -0.5);
+            \draw[->, thick, draw=black!70] (19.7, 0, 0) -- (21.5, 0, 0);
+            
+            \draw[->, thick, draw=black!70] (22.0, 0, 0) -- (23.5, 0, 0);
+
+        \end{tikzpicture}
+    }
+    \vspace{2pt}
+    
+    % --- DIAGRAMA 2: MECÁNICA LOCAL (CONV VS POOL) ---
+    \resizebox{6.5cm}{!}{
+        \begin{tikzpicture}[font=\small, >=stealth]
+        
+            % --- IZQUIERDA: CONVOLUCIÓN ---
+            \node[font=\small\bfseries] at (3.05, 3.0) {Convolución};
+            
+            \begin{scope}[shift={(0,0)}]
+                % Matriz de Entrada (4x4)
+                \draw[step=0.6cm, gray, thick] (0,0) grid (2.4,2.4);
+                \draw[thick] (0,0) rectangle (2.4,2.4);
+                
+                % Kernel resaltado (2x2)
+                \draw[red, very thick, fill=red!10] (0, 1.2) rectangle (1.2, 2.4);
+                \node[red, font=\small] at (0.6, 2.7) {Filtro $\mathbf{W}$};
+                
+                % Valores de ejemplo (Campo Escalar)
+                \node[font=\small] at (0.3, 2.1) {1}; \node[font=\normalsize] at (0.9, 2.1) {2};
+                \node[font=\normalsize] at (0.3, 1.5) {3}; \node[font=\normalsize] at (0.9, 1.5) {4};
+            \end{scope}
+            
+            % Flecha de proyección (Producto Interno)
+            \draw[->, red, thick] (1.3, 1.8) -- (3.3, 1.8) node[midway, above, font=\normalsize, fill=white, inner sep=1pt] {$\mathbf{W}\cdot \mathbf{x} + b$};
+            
+            \begin{scope}[shift={(3.4, 0.3)}]
+                % Matriz de Salida (3x3 - Stride 1)
+                \draw[step=0.6cm, gray, thick] (0,0) grid (1.8, 1.8);
+                \draw[thick] (0,0) rectangle (1.8, 1.8);
+                
+                % Píxel resultante
+                \draw[red, very thick, fill=red!30] (0, 1.2) rectangle (0.6, 1.8);
+                \node[font=\normalsize\bfseries] at (0.3, 1.5) {5};
+            \end{scope}
+            
+            
+            % --- DERECHA: POOLING ---
+            \node[font=\small\bfseries] at (9.5, 3.0) {Max Pooling};
+            
+            \begin{scope}[shift={(6.8, 0)}]
+                % Matriz de Entrada (4x4)
+                \draw[step=0.6cm, gray, thick] (0,0) grid (2.4,2.4);
+                \draw[thick] (0,0) rectangle (2.4,2.4);
+                
+                % Regiones 2x2 (Stride 2) mapeando Valores
+                \draw[blue, very thick, fill=blue!10] (0, 1.2) rectangle (1.2, 2.4);
+                \node[font=\normalsize] at (0.3, 2.1) {1}; \node[font=\normalsize] at (0.9, 2.1) {3};
+                \node[font=\normalsize] at (0.3, 1.5) {4}; \node[font=\normalsize\bfseries] at (0.9, 1.5) {8};
+                
+                \draw[green!60!black, very thick, fill=green!10] (1.2, 1.2) rectangle (2.4, 2.4);
+                \node[font=\normalsize] at (1.5, 2.1) {2}; \node[font=\normalsize] at (2.1, 2.1) {1};
+                \node[font=\normalsize] at (1.5, 1.5) {0}; \node[font=\normalsize\bfseries] at (2.1, 1.5) {5};
+                
+                \draw[orange, very thick, fill=orange!10] (0, 0) rectangle (1.2, 1.2);
+                \node[font=\normalsize] at (0.3, 0.9) {2}; \node[font=\normalsize] at (0.9, 0.9) {0};
+                \node[font=\normalsize] at (0.3, 0.3) {1}; \node[font=\normalsize\bfseries] at (0.9, 0.3) {3};
+                
+                \draw[purple, very thick, fill=purple!10] (1.2, 0) rectangle (2.4, 1.2);
+                \node[font=\normalsize] at (1.5, 0.9) {1}; \node[font=\normalsize\bfseries] at (2.1, 0.9) {6};
+                \node[font=\normalsize] at (1.5, 0.3) {4}; \node[font=\normalsize] at (2.1, 0.3) {2};
+            \end{scope}
+            
+            % Flecha de Operador No Lineal
+            \draw[->, blue, thick] (9.3, 1.2) -- (10.5, 1.2) node[midway, above, font=\normalsize] {$\max(\mathbf{x})$};
+            
+            \begin{scope}[shift={(10.6, 0.6)}]
+                % Matriz de Salida (2x2)
+                \draw[step=0.6cm, gray, thick] (0,0) grid (1.2, 1.2);
+                \draw[thick] (0,0) rectangle (1.2, 1.2);
+                
+                % Mapeo de Supremos 
+                \draw[blue, very thick, fill=blue!30] (0, 0.6) rectangle (0.6, 1.2); 
+                \node[font=\normalsize\bfseries] at (0.3, 0.9) {8};
+                
+                \draw[green!60!black, very thick, fill=green!30] (0.6, 0.6) rectangle (1.2, 1.2); 
+                \node[font=\normalsize\bfseries] at (0.9, 0.9) {5};
+                
+                \draw[orange, very thick, fill=orange!30] (0, 0) rectangle (0.6, 0.6); 
+                \node[font=\normalsize\bfseries] at (0.3, 0.3) {3};
+                
+                \draw[purple, very thick, fill=purple!30] (0.6, 0) rectangle (1.2, 0.6); 
+                \node[font=\normalsize\bfseries] at (0.9, 0.3) {6};
+            \end{scope}
+
+        \end{tikzpicture}
+    }
+
+\end{minipage}
+\shorthandon{<>}
+
+$\bullet$ Convolución: Operador lineal local que desliza un filtro $\mathbf{W} \in \mathbb{R}^{f \times f \times C_{in}}$ sobre un tensor $\mathbf{X}$. Compuesto por $C_{in}$ kernels $\mathbf{K}$ (uno por canal). Impone localidad y estacionariedad (pesos compartidos), reduciendo la complejidad paramétrica.
+
+$\bullet$ \textbf{Pooling (submuestreo determinista):} Operador de proyección espacial sin parámetros aprendibles. Ejemplos: \texttt{Max Pooling}, \texttt{Average Pooling}, \dots
+
+$\bullet$ \textbf{Dimensionalidad:} Para dimensión de entrada $W_{in}$, el tamaño del kernel $f$, padding $p$ (completado periférico) y stride $s$ (paso de desplazamiento):
+$$ W_{out} = \lfloor \frac{W_{in} - f + 2p}{s} \rfloor + 1 $$
+
+
+\textbf{6. RECURRENT NEURAL NETWORKS (RNN)}\\
+Topologías con inercia para series temporales y procesamiento secuencial (NLP). Proyectan $\bm{x}_t$ y un vector de memoria interna $\bm{h}_t$.
+\vspace{-2pt}
+\begin{center}
+\begin{tikzpicture}[->, >=Stealth, auto, node distance=0.8cm, font=\tiny]
+    \node[draw, fill=blue!10, minimum size=0.5cm] (h1) {$H_{t-1}$};
+    \node[draw, fill=blue!10, minimum size=0.5cm, right=1.2cm of h1] (h2) {$H_t$};
+    \node[draw, fill=blue!10, minimum size=0.5cm, right=1.2cm of h2] (h3) {$H_{t+1}$};
+    \node[below=0.4cm of h1] (x1) {$x_{t-1}$}; \node[below=0.4cm of h2] (x2) {$x_t$}; \node[below=0.4cm of h3] (x3) {$x_{t+1}$};
+    \node[above=0.4cm of h1] (y1) {$\hat{y}_{t-1}$}; \node[above=0.4cm of h2] (y2) {$\hat{y}_t$}; \node[above=0.4cm of h3] (y3) {$\hat{y}_{t+1}$};
+    \draw (x1)--(h1); \draw (x2)--(h2); \draw (x3)--(h3);
+    \draw (h1)--(y1); \draw (h2)--(y2); \draw (h3)--(y3);
+    \draw (h1)--(h2) node[midway, above] {$W_{hh}$}; \draw (h2)--(h3) node[midway, above] {$W_{hh}$};
+\end{tikzpicture}
+\end{center}
+\vspace{-2mm}
+$\bullet$ \textbf{Topologías Típicas:}\textit{Seq-to-vec} (Clasificación/Forecasting de series temporales), \textit{Vec-to-seq} (Generación de texto), \textit{Seq-to-seq} (Traducción).
+\vspace{-5pt}
+\begin{center}
+\begin{tikzpicture}[->, >=Stealth, auto, node distance=0.4cm, font=\tiny]
+    % Seq-to-Vec
+    \begin{scope}
+        \node[draw, fill=blue!10, minimum size=0.4cm] (h1) {};
+        \node[draw, fill=blue!10, minimum size=0.4cm, right=0.3cm of h1] (h2) {};
+        \node[draw, fill=blue!10, minimum size=0.4cm, right=0.3cm of h2] (h3) {};
+        \node[below=0.2cm of h1] (x1) {$x_1$}; \node[below=0.2cm of h2] (x2) {$x_2$}; \node[below=0.2cm of h3] (x3) {$x_t$};
+        \node[above=0.2cm of h3] (y) {$\hat{y}$};
+        \draw (x1)--(h1); \draw (x2)--(h2); \draw (x3)--(h3);
+        \draw (h1)--(h2); \draw (h2)--(h3); \draw (h3)--(y);
+        \node[below=0.6cm of h2] {\textbf{Seq-to-Vec}};
+    \end{scope}
+    % Vec-to-Seq
+    \begin{scope}[xshift=2.6cm]
+        \node[draw, fill=blue!10, minimum size=0.4cm] (h1) {};
+        \node[draw, fill=blue!10, minimum size=0.4cm, right=0.3cm of h1] (h2) {};
+        \node[draw, fill=blue!10, minimum size=0.4cm, right=0.3cm of h2] (h3) {};
+        \node[below=0.2cm of h1] (x) {$x$};
+        \node[above=0.2cm of h1] (y1) {$\hat{y}_1$}; \node[above=0.2cm of h2] (y2) {$\hat{y}_2$}; \node[above=0.2cm of h3] (y3) {$\hat{y}_t$};
+        \draw (x)--(h1); \draw (h1)--(h2); \draw (h2)--(h3);
+        \draw (h1)--(y1); \draw (h2)--(y2); \draw (h3)--(y3);
+        \node[below=0.6cm of h2] {\textbf{Vec-to-Seq}};
+    \end{scope}
+    % Seq-to-Seq
+    \begin{scope}[xshift=5.2cm]
+        \node[draw, fill=blue!10, minimum size=0.4cm] (h1) {};
+        \node[draw, fill=blue!10, minimum size=0.4cm, right=0.3cm of h1] (h2) {};
+        \node[draw, fill=red!10, minimum size=0.4cm, right=0.4cm of h2] (h3) {};
+        \node[draw, fill=red!10, minimum size=0.4cm, right=0.3cm of h3] (h4) {};
+        \node[below=0.2cm of h1] (x1) {$x_1$}; \node[below=0.2cm of h2] (x2) {$x_t$};
+        \node[above=0.2cm of h3] (y1) {$\hat{y}_1$}; \node[above=0.2cm of h4] (y2) {$\hat{y}_{t'}$};
+        \draw (x1)--(h1); \draw (x2)--(h2);
+        \draw (h1)--(h2); \draw (h2)--(h3) node[midway, above] {$z$}; \draw (h3)--(h4);
+        \draw (h3)--(y1); \draw (h4)--(y2);
+        \node[below=0.6cm of h2, xshift=0.35cm] {\textbf{Seq-to-Seq (Enc-Dec)}};
+    \end{scope}
+\end{tikzpicture}
+\end{center}
+\vspace{-2mm}
+$\bullet$ \textbf{Backpropagation Through Time (BPTT):}
+El gradiente temporal se desenrolla, mostrando inestabilidad intrínseca por la propagación encadenada sobre $\bm{W}_{hh}$.
+\vspace{-2pt}
+\begin{center}
+    \begin{minipage}{0.15\textwidth}
+        \centering
+        \begin{tikzpicture}[>=Stealth, font=\tiny, x=1.5cm, y=1cm, scale=0.85, transform shape]
+            \foreach \t in {1, 2, 3} {
+                \node[draw, fill=blue!10, minimum width=0.6cm] (h\t) at (\t, 0) {$\bm{H}_{\t}$};
+                \node (x\t) at (\t, -1) {$\bm{x}_{\t}$};
+                \node (L\t) at (\t, 1) {$\mathcal{L}_{\t}$};
+                \draw[->] (x\t) -- (h\t);
+                \draw[->] (h\t) -- (L\t);
+            }
+            \draw[->] (h1) -- (h2) node[midway, above] {$\bm{W}_{hh}$};
+            \draw[->] (h2) -- (h3) node[midway, above] {$\bm{W}_{hh}$};
+            \draw[<-, red, dashed, thin] (h1.south east) to[bend right=20] node[midway, below] {$\nabla \bm{W}$} (h2.south west);
+            \draw[<-, red, dashed, thin] (h2.south east) to[bend right=20] node[midway, below] {$\nabla \bm{W}$} (h3.south west);
+        \end{tikzpicture}
+    \end{minipage}
+    \begin{minipage}{0.15\textwidth}
+        \centering
+        $$ \frac{\partial \mathcal{L}}{\partial \bm{h}_t} = \sum_{i=t}^T (\bm{W}_{hh}^T)^{T-i} \bm{W}_{qh}^T \frac{\partial \mathcal{L}}{\partial \bm{o}_{T+t-i}} $$
+    \end{minipage}
+\end{center}
+
+\vspace{-2mm}
+
+\textbf{Problema:} Las potencias sucesivas de matrices $\bm{W}_{hh}$ provocan inestabilidad de Liapunov. 
+
+Si $\lambda_{max} > 1$, la explosión del gradiente destroza la red.  Se realiza un recorte radial mediante \textbf{Gradient Clipping}: $ \bm{g} \leftarrow \min\left(1, \theta /{||\bm{g}||}\right) \cdot \bm{g} $
+
+Si $\lambda_{max} < 1$, el \textit{Vanishing Gradient} causa amnesia en el tiempo. Requiere \textbf{Gating}.
+
+\mbox{\textbf{LONG SHORT-TERM MEMORY (LSTM) \!\&\! GATED RECURRENT UNIT (GRU)}}
+
+Arquitecturas Gated. Aseguran estabilidad del gradiente mediante operadores de saturación ($\sigma \in [0,1]$) que regulan el transporte aditivo de información, impidiendo la contracción exponencial de la norma en el espacio de estados durante BPTT.
+
+
+$\bullet$ \textbf{LSTM:} Desacopla la memoria latente ($C_t$) del estado observable ($H_t$), permitiendo una regulación asíncrona de la persistencia mediante una puerta de olvido dedicada.
+\begin{center}
+
+\begin{tikzpicture}[>=Stealth, font=\tiny, x=0.9cm, y=0.9cm, thin]
+    % Contenedor celular (ancho 5cm)
+    \draw[rounded corners=4pt, fill=cyan!5] (0.3, -0.6) rectangle (5.2, 2.7);
+
+    % Estilos compactos
+    \tikzstyle{b} = [draw, fill=cyan!40, minimum width=0.4cm, minimum height=0.35cm, inner sep=1pt]
+    \tikzstyle{o} = [draw, circle, fill=cyan!40, inner sep=0.5pt, minimum size=0.25cm]
+
+    % Estados
+    \node[left] at (0, 2.3) {$\bm{C}_{t-1}$};
+    \node[right] at (5.4, 2.3) {$\bm{C}_t$};
+    \node[left] at (0, 0) {$\bm{H}_{t-1}$};
+    \node[right] at (5.4, 0) {$\bm{H}_t$};
+    \node[below] at (0.6, -0.6) {$\bm{X}_t$};
+
+    % Puertas lógicas
+    \node[b] (f) at (1.1, 0.8) {$\sigma$};
+    \node[b] (i) at (2.0, 0.8) {$\sigma$};
+    \node[b] (c) at (2.8, 0.8) {$\tanh$};
+    \node[b] (o) at (4.5, 0.8) {$\sigma$};
+
+    % Identificadores
+    \node[left=0pt of f] {$\bm{F}_t$};
+    \node[left=0pt of i] {$\bm{I}_t$};
+    \node[right=0pt of c] {$\tilde{\bm{C}}_t$};
+    \node[left=0pt of o] {$\bm{O}_t$};
+
+    % Operadores algebraicos
+    \node[o] (m1) at (1.1, 2.3) {$\odot$};
+    \node[o] (add) at (2.4, 2.3) {$\oplus$};
+    \node[o] (m2) at (2.4, 1.5) {$\odot$};
+    \node[o] (m3) at (4.5, 1.5) {$\odot$};
+    \node[b, rounded corners=2pt] (t2) at (3.6, 1.9) {$\tanh$};
+
+    % Bus C (Superior)
+    \draw[->] (0, 2.3) -- (m1);
+    \draw[->] (m1) -- (add);
+    \draw[->] (add) -- (5.4, 2.3);
+
+    % Bus H (Inferior) e Ingesta
+    \draw (0,0) -- (4.5,0);
+    \draw[->] (0.6, -0.6) -- (0.6, 0);
+
+    % Alimentación de puertas
+    \draw[->] (1.1, 0) -- (f);
+    \draw[->] (2.0, 0) -- (i);
+    \draw[->] (2.8, 0) -- (c);
+    \draw[->] (4.5, 0) -- (o);
+
+    % Acoplamientos
+    \draw[->] (f) -- (m1);
+    \draw[->, rounded corners=2pt] (i) |- (m2);
+    \draw[->, rounded corners=2pt] (c) |- (m2);
+    \draw[->] (m2) -- (add);
+
+    % Proyección de estado y salida
+    \draw[->, rounded corners=2pt] (3.6, 2.3) -- (t2);
+    \draw[->, rounded corners=2pt] (t2) |- (m3);
+    \draw[->] (o) -- (m3);
+    \draw[->, rounded corners=2pt] (m3) -- (5.0, 1.5) -- (5.0, 0) -- (5.4, 0);
+
+\end{tikzpicture}
+\end{center}
+
+\vspace{-2mm}
+$\dashv$ \textbf{Ecuaciones de LSTM:} (Interacción de Estado Oculto $\bm{H}_t$ y Celda de Estado $\bm{C}_t$).
+\begin{align*}
+    F_t &= \sigma(\bm{X}_t \bm{W}_{xf} + \bm{H}_{t-1} \bm{W}_{hf} + \bm{b}_f) \quad \text{(Forget Gate)} \\
+    I_t &= \sigma(\bm{X}_t \bm{W}_{xi} + \bm{H}_{t-1} \bm{W}_{hi} + \bm{b}_i) \quad \text{(Input Gate)} \\
+    \bm{C}_t &= F_t \odot \bm{C}_{t-1} + I_t \odot \tanh(\bm{X}_t \bm{W}_{xc} + \bm{H}_{t-1} \bm{W}_{hc} + \bm{b}_c) \quad \text{(Celda)} \\
+    O_t &= \sigma(\bm{X}_t \bm{W}_{xo} + \bm{H}_{t-1} \bm{W}_{ho} + \bm{b}_o) \quad \text{(Output Gate)} \\
+    \bm{H}_t &= O_t \odot \tanh(\bm{C}_t) \quad \text{(Hidden State)}
+\end{align*}
+$\bullet$ \textbf{GRU:} Reducción dimensional del LSTM. Fusiona la celda y elimina la compuerta de salida, operando directamente sobre tensores de \textbf{Reset} ($R_t$) y \textbf{Update} ($Z_t$):
+$$ \bm{H}_t = Z_t \odot \bm{H}_{t-1} + (1-Z_t) \odot \tilde{\bm{H}}_t $$
+\vspace{-2pt}
+\begin{center}
+    \begin{tikzpicture}[>=Stealth, font=\tiny, x=1cm, y=1cm, thin]
+    % Contenedor celular (ancho ~5cm)
+    \draw[rounded corners=4pt, fill=cyan!5] (0.2, -0.6) rectangle (5.2, 2.7);
+
+    % Estilos compactos
+    \tikzstyle{b} = [draw, fill=cyan!40, minimum width=0.4cm, minimum height=0.35cm, inner sep=1pt]
+    \tikzstyle{o} = [draw, circle, fill=cyan!40, inner sep=0.5pt, minimum size=0.25cm]
+    \tikzstyle{o_wide} = [draw, circle, fill=cyan!40, inner sep=0.5pt, minimum size=0.3cm]
+
+    % Estados de entrada y salida
+    \node[left] at (0, 2.3) {$\bm{H}_{t-1}$};
+    \node[right] at (5.4, 2.3) {$\bm{H}_t$};
+    \node[below] at (0.8, -0.6) {$\bm{X}_t$};
+
+    % Puertas lógicas
+    \node[b] (r) at (1.8, 0.8) {$\sigma$};
+    \node[b] (z) at (3.0, 0.8) {$\sigma$};
+    \node[b, rounded corners=2pt] (h) at (4.4, 0.8) {$\tanh$};
+
+    % Identificadores
+    \node[right=0pt of r] {$\bm{R}_t$};
+    \node[right=0pt of z] {$\bm{Z}_t$};
+
+    % Operadores algebraicos
+    \node[o] (m_r) at (1.1, 1.5) {$\odot$};
+    \node[o] (m_z1) at (3.0, 2.3) {$\odot$};
+    \node[o_wide] (oneminus) at (3.7, 1.5) {$1-$};
+    \node[o] (m_z2) at (4.4, 1.5) {$\odot$};
+    \node[o] (add) at (4.4, 2.3) {$\oplus$};
+
+    % Bus Principal (Superior)
+    \draw[->] (0, 2.3) -- (m_z1);
+    \draw[->] (m_z1) -- (add);
+    \draw[->] (add) -- (5.4, 2.3);
+
+    % Derivaciones de H_{t-1}
+    \draw[->, rounded corners=2pt] (0.5, 2.3) -- (0.5, 0.2) -| (1.7, 0.63);
+    \draw[->, rounded corners=2pt] (0.5, 0.2) -| (2.9, 0.63);
+    \draw[->, rounded corners=2pt] (1.1, 2.3) -- (m_r);
+
+    % Ingesta X_t
+    \draw[->, rounded corners=2pt] (0.8, -0.6) -- (0.8, 0) -| (1.9, 0.63);
+    \draw[->, rounded corners=2pt] (0.8, 0) -| (3.1, 0.63);
+    \draw[->, rounded corners=2pt] (0.8, 0) -| (4.5, 0.63);
+
+    % Acoplamientos de la puerta de reseteo
+    \draw[->, rounded corners=2pt] (r.north) |- (m_r.east);
+    \draw[->, rounded corners=2pt] (m_r) -- (1.1, 0.4) -| (4.3, 0.63);
+
+    % Acoplamientos de actualización e interpolación
+    \draw[->] (z) -- (m_z1);
+    \draw[->, rounded corners=2pt] (3.0, 1.5) -- (oneminus);
+    \draw[->] (oneminus) -- (m_z2);
+    \draw[->] (h) -- (m_z2);
+    \draw[->] (m_z2) -- (add);
+
+    % Candidato H_t
+    \draw[dashed, ->] (h) -- (5.4, 0.8) node[right, align=left] {Candidate \\ $\tilde{\bm{H}}_t$};
+
+\end{tikzpicture}
+\end{center}
+
+
+\vspace{-2mm}
+\textbf{TOPOLOGÍAS RECURRENTES AVANZADAS}\\
+$\bullet$ \textbf{Recurrent Dropout:} Previene el sobreajuste preservando el flujo continuo de información de BPTT. Fija estocásticamente la \textit{misma máscara} binaria de anulación para todos los timesteps $t$ sobre el tensor recurrente.\\
+$\bullet$ \textbf{RNNs Bidireccionales:} Procesamiento acausal de secuencias. Acopla una barrida cronológica ($\vec{\bm{H}}_t$) y otra anticronológica ($\overleftarrow{\bm{H}}_t$), resultando en $\bm{H}_t = [\vec{\bm{H}}_t ; \overleftarrow{\bm{H}}_t] \in \mathbb{R}^{n \times 2h}$.\\
+$\bullet$ \textbf{Deep RNNs (Stacked):} Apilamiento espacial de la memoria temporal. La dinámica oculta de la capa inferior actúa como vector de entrada para la capa superior dentro del mismo estado temporal $t$: $\bm{x}_t^{(l)} \equiv \bm{H}_t^{(l-1)}$.
+\vspace{-15pt}
+\begin{center}
+\begin{tikzpicture}[->, >=Stealth, 
+    block/.style={draw, fill=#1, minimum size=0.5cm, font=\tiny, inner sep=1pt, text height=1.2ex, text depth=0.2ex},
+    label_node/.style={font=\tiny},
+    caption/.style={font=\tiny\bfseries}]
+
+    % --- 1. Recurrent Dropout ---
+    \begin{scope}[local bounding box=dropout]
+        \node[block=blue!10] (h1) at (0,0) {$\bm{H}_{t-1}$};
+        \node[block=blue!10] (h2) at (1.5,0) {$\bm{H}_t$};
+        \node[label_node] (x1) at (0,-0.8) {$\bm{x}_{t-1}$}; 
+        \node[label_node] (x2) at (1.5,-0.8) {$\bm{x}_t$};
+        
+        \draw[red, dashed, thick] (h1) -- node[midway, above, yshift=0.3cm, font=\fontsize{5}{5}\selectfont] {Máscara $M_h$} (h2);
+        \draw[red, dashed, thick] (x1) -- node[midway, left, font=\fontsize{5}{5}\selectfont] {$M_x$} (h1);
+        \draw[red, dashed, thick] (x2) -- node[midway, right, font=\fontsize{5}{5}\selectfont] {$M_x$} (h2);
+    \end{scope}
+    \node[caption] at (0.75, -1.5) {Recurrent Dropout};
+
+    % --- 2. Bidireccional ---
+    \begin{scope}[xshift=3.2cm, local bounding box=bidi]
+        \node[block=blue!10] (hf1) at (0,0.4) {$\vec{\bm{H}}_{t-1}$};
+        \node[block=blue!10] (hf2) at (1.2,0.4) {$\vec{\bm{H}}_t$};
+        \node[block=red!10] (hb1) at (0,-0.4) {$\overleftarrow{\bm{H}}_{t-1}$};
+        \node[block=red!10] (hb2) at (1.2,-0.4) {$\overleftarrow{\bm{H}}_t$};
+        
+        \node[label_node] (x) at (1.2,-1.1) {$\bm{x}_t$}; 
+        \node[label_node] (y) at (1.2,1.1) {$\hat{\bm{y}}_t$};
+        
+        \draw (hf1) -- (hf2); 
+        \draw (hb2) -- (hb1);
+        \draw (x) -- (hf2); 
+        \draw (x) -- (hb2);
+        \draw (hf2) -- (y); 
+        \draw (hb2) -- (y);
+        \node[block=blue!10] (hf2) at (1.2,0.4) {$\vec{\bm{H}}_t$};
+       \node[block=red!10] (hb2) at (1.2,-0.4) {$\overleftarrow{\bm{H}}_t$};
+    \end{scope}
+    \node[caption] at (3.8, -1.5) {Bidireccional};
+
+
+    % --- 3. Deep RNN ---
+    \begin{scope}[xshift=6.2cm, yshift=-0.4cm, local bounding box=deep]
+        \node[block=blue!10] (h11) at (0,0) {$\bm{H}_{t-1}^{(1)}$};
+        \node[block=blue!10] (h12) at (1.2,0) {$\bm{H}_t^{(1)}$};
+        \node[block=green!10] (h21) at (0,0.8) {$\bm{H}_{t-1}^{(2)}$};
+        \node[block=green!10] (h22) at (1.2,0.8) {$\bm{H}_t^{(2)}$};
+        
+        \node[label_node] (x) at (1.2,-0.7) {$\bm{x}_t$}; 
+        \node[label_node] (y) at (1.2,1.6) {$\hat{\bm{y}}_t$};
+        
+        \draw (h11) -- (h12); 
+        \draw (h21) -- (h22);
+        \draw (x) -- (h12); 
+        \draw (h12) -- (h22); 
+        \draw (h22) -- (y);
+    \end{scope}
+    \node[caption] at (6.8, -1.5) {Deep RNN};
+
+\end{tikzpicture}
+\end{center}
+
+
+
+\section{VII. NLP: PREPROCESAMIENTO Y TOKENIZACIÓN}
+\textbf{PIPELINE DE TEXTO (REDUCCIÓN DEL ESPACIO DE ESTADOS)}\\
+$\bullet$ \textbf{Estandarización:} Eliminación de acentos, mayúsculas y ruido sintáctico para reducir la dimensionalidad cruda del espacio lingüístico antes de la vectorización.\\
+$\bullet$ \textbf{Estrategias de partición (Tokenización):}
+
+ \textit{Caracteres:} Vocabulario mínimo ($|V| \sim 80$). Problema: Las secuencias se alargan demasiado, haciendo inviable el cómputo de la atención.
+ 
+ \textit{Palabras:} Secuencias cortas. Problema: El vocabulario explota ($|V| \to \infty$). Falla con palabras no vistas (OOV), exigiendo el uso del token destructivo \texttt{[UNK]}.
+ 
+ \textit{Subpalabras} o \textit{Tokens}: Se obtienen mediante BPE (Byte-Pair Encoding), algoritmo \textit{greedy} que fusiona iterativamente los pares de bytes/caracteres más frecuentes. Elimina la necesidad de \texttt{[UNK]} y acota la longitud de los tensores.
+
+$\bullet$ \textbf{Tokens de control:} Delimitadores lógicos como \texttt{[START]} y \texttt{[END]}. El token \texttt{[PAD]} actúa como relleno escalar para homogeneizar dimensiones, permitiendo apilar arrays en matrices densas para \textit{batching}.
+  
+
+
+\textbf{FASE 1: REPRESENTACIÓN DISCRETA (MODELOS BASADOS EN SETS)}\\
+
+$\bullet$ \textbf{Bag-of-Words (BoW):} Proyección \textit{multi-hot} en $\mathbb{R}^{|V|}$ (vector con 1 en índices de todas palabras presentes en $V$, 0 elsewhere). Genera matrices extremadamente dispersas (\textit{sparse}). Es un modelo invariante ante permutaciones; destruye por completo el orden secuencial de la frase.\\
+$\bullet$ \textbf{N-gramas:} Captura el orden local tomando ventanas de radio $n$. La frecuencia de aparición de los n-gramas decae bruscamente siguiendo la Ley de Zipf ($f \propto 1/k$). Genera matrices de transición inestables por escasez de datos (maldición de la dimensionalidad).
+\vspace{-2pt}
+\begin{center}
+\begin{tikzpicture}[>=Stealth, font=\tiny, x=1cm, y=0.75cm, thin]
+    % BoW
+    \begin{scope}
+        \node[draw, rounded corners, fill=blue!10] (t1) at (0,1.5) {el};
+        \node[draw, rounded corners, fill=blue!10] (t2) at (1.2,1.5) {gato};
+        \node[draw, rounded corners, fill=blue!10] (t3) at (2.4,1.5) {ve};
+
+        \node[draw, ellipse, minimum width=3cm, minimum height=0.5cm, dashed, fill=gray!5] (bag) at (1.2, 0.4) {};
+        \node at (0.4, 0.3) {ve}; \node at (1.2, 0.5) {el}; \node at (2.0, 0.4) {gato};
+
+        \draw[->, gray] (t1) -- (bag); \draw[->, gray] (t2) -- (bag); \draw[->, gray] (t3) -- (bag);
+    
+        % Dictionary and Vector representation (Base ordenada)
+        \node[draw=black!50, fill=yellow!5, rounded corners, inner sep=1pt] (dict) at (1.25, -0.8) {
+            \setlength{\tabcolsep}{2pt}
+            \begin{tabular}{rccccl}
+                \tiny Base $V=$ & \tiny (gato, & \tiny el, & \tiny perro, & \tiny ve)& \\
+                & \tiny $\downarrow$ & \tiny $\downarrow$ & \tiny $\downarrow$ & \tiny $\downarrow$& \\
+                $\vec{v}=$ & $[1,$ & $1,$ & $0,$ & $1$&\!\!\!\!\!\!$]^T$
+            \end{tabular}
+        };
+        \draw[->, thick, gray, dashed] (bag) -- (dict);
+        
+        \node at (1.2, -1.8) {\textbf{BoW} (Invariante)};
+
+    \end{scope}
+    
+    % N-gramas
+      \begin{scope}[xshift=4.8cm]
+        \node (w1) at (0,1.5) {el};
+        \node (w2) at (1.2,1.5) {gato};
+        \node (w3) at (2.4,1.5) {ve};
+
+        \draw[red, rounded corners, dashed, thick] (-0.3, 1.2) rectangle (1.6, 1.8);
+        \node[draw, rounded corners, fill=red!10] (b1) at (0.3, 0.5) {(el, gato)};
+        \draw[->, red] (0.6, 1.2) -- (b1);
+
+        \draw[blue, rounded corners, dashed, thick] (0.9, 1.1) rectangle (2.7, 1.9);
+        \node[draw, rounded corners, fill=blue!10] (b2) at (2.1, 0.5) {(gato, ve)};
+        \draw[->, blue] (1.8, 1.1) -- (b2);
+
+        \node[draw=gray, fill=yellow!5, rounded corners, inner sep=1pt] (dict2) at (1.2, -0.8) {
+            \setlength{\tabcolsep}{2pt}
+            \begin{tabular}{rcccl}
+                Base $V_2=$ & (el gato, & gato ve, & ve perro) \\
+                & $\downarrow$ & $\downarrow$ & $\downarrow$ & \\
+                $\vec{v}=$ & $[1,$ & $1,$ & $0$ &\!\!\!\!\!\!\!\!\!\!\!\!$]^T$
+            \end{tabular}
+        };
+        \draw[->, dashed, gray] (1.2, 0.2) -- (dict2);
+
+        \node at (1.2, -1.8) {\textbf{N-gramas} ($n=2$)};
+    \end{scope}
+\end{tikzpicture}%
+\end{center}
+
+
+
+
+\textbf{FASE 2: ESPACIOS CONTINUOS (WORD EMBEDDINGS)}\\
+$\bullet$ \textbf{CBOW:} Arquitectura algorítmica utilizada empíricamente para pre-entrenar la matriz de embedding $W$. Desliza una ventana continua sobre todo el texto del dataset, intentando adivinar la palabra central que falta basándose en el contexto directo a su izquierda y derecha. Al forzar a la red a predecir repetidamente el target $y_t\in V$ usando el promedio de las proyecciones $\bm{x}_{t \pm i}$, los tensores convergen iterativamente hacia un rico hiperespacio semántico de forma autosupervisada.
+
+$\bullet$ \textbf{Embedding}: Mapeo paramétrico que proyecta un vocabulario discreto a un espacio denso continuo: $|V| \to \mathbb{R}^d$ (dimensión de la matriz de embedding: $W \in \mathbb{R}^{V \times d}$). La métrica de similitud colapsa en el producto interno vectorial, erradicando la ortogonalidad estricta del BoW (\textit{obsérvese la similitud entre} gato \textit{y} perro). Limitación: El mapeo es estático y biunívoco; independiente de su posición temporal en una nueva frase.
+\vspace{-2mm}
+\begin{center}
+\begin{tikzpicture}[>=Stealth, font=\tiny, scale=0.8, transform shape]
+    % CBOW con ejemplo físico-semántico
+    \begin{scope}[xshift=-6.5cm, yshift=1.2cm, scale = 1.05]
+        \node[draw, fill=blue!10, rounded corners, align=center] (x1) at (0, 1.5) {``el''\\$x_{t-2}$}; 
+        \node[draw, fill=blue!10, rounded corners, align=center] (x2) at (1.2, 1.5) {``duro''\\$x_{t-1}$};
+        \node[draw, fill=blue!10, rounded corners, align=center] (x3) at (3.2, 1.5) {``del''\\$x_{t+1}$}; 
+        \node[draw, fill=blue!10, rounded corners, align=center] (x4) at (4.8, 1.5) {``aguacate''\\$x_{t+2}$};
+        
+        \node[draw, fill=orange!20, rounded corners, minimum width=5.5cm] (sum) at (2.4, 0.5) {Suma de Contexto ($\bm{v}_c = \sum v_{\text{ctx}}$)};
+        \node[draw, fill=green!20, rounded corners] (y) at (2.4, -0.3) {``hueso'' (Target $\hat{y}_t$)};
+        
+        \draw[->] (x1) -- (x1 |- sum.north); 
+        \draw[->] (x2) -- (x2 |- sum.north); 
+        \draw[->] (x3) -- (x3 |- sum.north); 
+        \draw[->] (x4) -- (x4 |- sum.north);
+        \draw[->] (sum) -- (y);
+        
+        \node[above] at (2.4, 2.2) {\textbf{CBOW (Continuous Bag of Words)}};
+    \end{scope}
+
+        % Dense Vectors 
+    \begin{scope}[xshift=0.5cm, yshift=0.6cm, scale=1.2]
+        \foreach \x/\vA/\vB/\vC/\vD/\vE/\vF/\vG/\vH/\vI in {
+            0/20/30/90/20/80/10/95/60/15,
+            0.45/80/10/25/95/10/90/10/90/80,
+            0.90/95/40/90/35/10/65/90/30/85,
+            1.35/25/40/90/10/95/10/95/70/35
+        } {
+            \draw[fill=black!\vA, draw=gray, very thin] (\x, 0.00) rectangle (\x+0.35, 0.25);
+            \draw[fill=black!\vB, draw=gray, very thin] (\x, 0.25) rectangle (\x+0.35, 0.50);
+            \draw[fill=black!\vC, draw=gray, very thin] (\x, 0.50) rectangle (\x+0.35, 0.75);
+            \draw[fill=black!\vD, draw=gray, very thin] (\x, 0.75) rectangle (\x+0.35, 1.00);
+            \draw[fill=black!\vE, draw=gray, very thin] (\x, 1.00) rectangle (\x+0.35, 1.25);
+            \draw[fill=black!\vF, draw=gray, very thin] (\x, 1.25) rectangle (\x+0.35, 1.50);
+            \draw[fill=black!\vG, draw=gray, very thin] (\x, 1.50) rectangle (\x+0.35, 1.75);
+            \draw[fill=black!\vH, draw=gray, very thin] (\x, 1.75) rectangle (\x+0.35, 2.00);
+            \draw[fill=black!\vI, draw=gray, very thin] (\x, 2.00) rectangle (\x+0.35, 2.25);
+        }
+        \node[below] at (0.148, 0) {gato};
+        \node[below] at (0.635, 0) {el};
+        \node[below] at (1.05, -0.03) {ve};
+        \node[below] at (1.55, -0.03) {perro};
+        \node[above] at (0.85, 2.4) {\textbf{Vectores Densos} $(\mathbf{v}_i \in \mathbb{R}^9)$};
+    \end{scope}
+    
+\end{tikzpicture}
+\end{center}
+\vspace{-2mm}
+
+
+
+\textbf{FASE 3: OPERADOR DINÁMICO TEMPORAL (RNN Seq2Seq)}\\
+El modelo Sequence-to-Sequence (Seq2Seq) establece un mapeo asimétrico entre una serie temporal de entrada y otra de salida ($T_{\rm in} \neq T_{\rm out}$). Opera mediante el acoplamiento de un Encoder, que comprime la información, y un Decoder, que la expande.
+
+$\bullet$ \textbf{Compresión del Espacio Latente (Encoder):} Lee la serie fuente $\bm{x} = (x_1, \cdots, x_{T_{\rm in}})$ de manera secuencial. En cada instante temporal $t$, el estado oculto $\bm{h}_t$ se actualiza integrando el token actual y la memoria del estado previo: $\bm{h}_t = f(x_t, \bm{h}_{t-1})$.
+
+Una vez asimilada la secuencia completa, la serie de datos colapsa en un vector de contexto singular $\bm{c} = \bm{h}_{T_{\rm in}}$. Este vector asume la responsabilidad matemática de representar toda la semántica y sintaxis de $\bm{x}$. 
+
+$\bullet$ \textbf{Inferencia Estocástica Autoregresiva (Decoder):} Generador estocástico, donde la probabilidad conjunta de la trayectoria se descompone asumiendo que el futuro no influye en el presente: $P(\hat{y}_1 \dots \hat{y}_{T_{\rm out}}) = \prod P(\hat{y}_t | \hat{y}_{<t}, \bm{c})$. El procedimiento es el siguiente:
+
+1. Utiliza el vector $\bm{c}$ como condición inicial ($\bm{s}_0 = \bm{c}$) para un nuevo proceso markoviano.
+
+2. En cada instante $t$, el sistema acopla el token generado en el paso anterior con la memoria actual para actualizar el estado del sistema ($\mathbf{s}_t$).
+
+3. El sistema proyecta hiperespacialmente su estado continuo hacia la dimensionalidad del vocabulario para obtener la probabilidad del siguiente token: $P (\hat{y}_t) \!=\!\text{Softmax}(\bm{W}_{ho} \bm{s}_{t-1})$
+
+4. Se extrae el token observable $\hat{y}_t$ (mediante la máxima probabilidad o muestreo sobre $P(\hat{y}_t)$). El token predicho $\hat{y}_t$ se retroinyecta inmediatamente en el sistema como entrada para calcular el instante $t+1$, formando un bucle cerrado. 
+\vspace{-2mm}
+\begin{center}
+\begin{tikzpicture}[->, >=Stealth, font=\tiny, scale=0.85, transform shape]
+    % Encoder
+    \node[draw, fill=blue!10, minimum size=0.4cm] (e1) at (0,0) {$\bm{h}_1$};
+    \node[draw, fill=blue!10, minimum size=0.4cm] (e2) at (1,0) {$\bm{h}_2$};
+    \node[draw, fill=blue!10, very thick, minimum size=0.4cm] (e3) at (2,0) {$\bm{c}$};
+    \node (x1) at (0,-0.8) {$x_1$}; \node (x2) at (1,-0.8) {$x_2$}; \node (x3) at (2,-0.8) {$x_{in}$};
+    \draw (x1)--(e1); \draw (x2)--(e2); \draw (x3)--(e3); \draw (e1)--(e2); \draw (e2)--(e3);
+    
+    % Decoder
+    \node[draw, fill=red!10, minimum size=0.4cm] (d1) at (4,0) {$\bm{s}_1$};
+    \node[draw, fill=red!10, minimum size=0.4cm] (d2) at (5,0) {$\bm{s}_2$};
+    \node (y0) at (4,-0.8) {\texttt{[S]}}; \node (y1) at (5,-0.8) {$\hat{y}_1$};
+    \node (o1) at (4,0.8) {$\hat{y}_1$}; \node (o2) at (5,0.8) {$\hat{y}_2$};
+    
+    \draw[thick, dashed, blue] (e3) -- node[above]{$\bm{h}_0 = \bm{c}$} (d1);
+    \draw (y0)--(d1); \draw (d1)--(o1); \draw (d1)--(d2); \draw (y1)--(d2); \draw (d2)--(o2);
+    \draw[red, dashed] (o1) to[out=0, in=90] (4.5, 0.4) to[out=-90, in=180] (y1);
+\end{tikzpicture}
+\end{center}
+\vspace{-2mm}
+
+
+$\bullet$ \textbf{LIMITACIONES DEL Seq2Seq:}
+
+$-$ \textit{Bottleneck}: Toda la información de la secuencia de entrada colapsa en el vector $\bm{c} \in \mathbb{R}^d$. A medida que $T_{in}$ crece, la entropía de la secuencia excede la capacidad de representación de un vector de dimensión fija y forzando al modelo a comprimir con pérdidas.
+
+$-$ \textit{Amnesia Temporal}: Debido a la multiplicación recursiva de matrices de peso en la RNN a través del tiempo, los gradientes tienden a desvanecerse, atenuando exponencialmente la influencia del pasado distante.
+
+
+\section{VIII. TRANSFORMERS Y MECANISMO DE ATENCIÓN}
+
+\textbf{SCALED DOT-PRODUCT SELF-ATTENTION}\\
+Sustituye la recurrencia (aunque comenzó como Seq2Seq con pesos a las $h_i$ que crean $c$). Compara un vector de consulta (\textit{Query}, $\bm{Q}$) con claves (\textit{Keys}, $\bm{K}$) para asignar pesos a los valores (\textit{Values}, $\bm{V}$). Término $1/\sqrt{\smash[b]{D_K}}$ previene saturación en Softmax y gradientes nulos.
+% \vspace{-2mm}
+\begin{center}
+\begin{tikzpicture}[>=Stealth, font=\tiny, scale=0.8, transform shape]
+
+    \begin{scope}[xshift=2cm, yshift=1cm, ->, >=Stealth, font=\tiny, thin, scale=1, transform shape]
+    \node (X) at (2, -0.6) {Input $\bm{X}$};
+    \node[draw, fill=blue!10, rounded corners=2pt] (Wq) at (0, 0) {$\bm{W}^{(q)}$};
+    \node[draw, fill=blue!10, rounded corners=2pt] (Wk) at (2, 0) {$\bm{W}^{(k)}$};
+    \node[draw, fill=blue!10, rounded corners=2pt] (Wv) at (4, 0) {$\bm{W}^{(v)}$};
+    \node (Q) at (0, 0.8) {$\bm{Q}$}; \node (K) at (2, 0.8) {$\bm{K}$}; \node (V) at (4, 0.8) {$\bm{V}$};
+    \node[draw, fill=orange!20, rounded corners=2pt, minimum width=2.5cm] (matmul1) at (1, 1.6) {MatMul ($\bm{Q}\bm{K}^T$)};
+    \node[draw, fill=yellow!20, rounded corners=2pt, minimum width=2.5cm] (scale) at (1, 2.4) {Scale ($/\sqrt{\smash[b]{D_k}}$)};
+    \node[draw, fill=green!20, rounded corners=2pt, minimum width=2.5cm] (soft) at (1, 3.2) {Softmax};
+    \node[draw, fill=orange!20, rounded corners=2pt, minimum width=4.5cm] (matmul2) at (2.5, 4.0) {MatMul (con $\bm{V}$)};
+    \node (Y) at (2.5, 4.8) {Salida $\bm{Y}$};
+    \draw (X) -- (Wq); \draw (X) -- (Wk); \draw (X) -- (Wv);
+    \draw (Wq) -- (Q); \draw (Wk) -- (K); \draw (Wv) -- (V);
+    \draw (Q) -- (matmul1); \draw (K) -- (matmul1);
+    \draw (matmul1) -- (scale); \draw (scale) -- (soft);
+    \draw (soft) -- (matmul2.south -| soft); \draw (V) -- (matmul2.south -| V);
+    \draw (matmul2) -- (Y);
+    \end{scope}
+
+    \node at (9.5, 3) {$\text{Attention}(\bm{Q}, \bm{K}, \bm{V}) = \text{Softmax}\left(\frac{\bm{Q}\bm{K}^T}{\sqrt{\smash[b]{D_K}}}\right) \bm{V}$};
+    \node at (9.5, 2.25) {$D_K\equiv$dimensiones \textit{keys}};
+
+
+\end{tikzpicture}
+\end{center}
+
+
+$\bullet$ \textbf{Multi-Head Attention:} Paraleliza $H$ proyecciones lineales independientes para capturar subespacios ortogonales correlacionados:
+$$\text{MultiHead}(\bm{Q},\bm{K},\bm{V}) = \text{Concat}(\text{head}_1, \dots, \text{head}_H)\bm{W}^O$$
+$$\text{where } \text{head}_i = \text{Attention}(\bm{Q}\bm{W}_i^Q, \bm{K}\bm{W}_i^K, \bm{V}\bm{W}_i^V)$$
+
+
+{
+
+\centering
+\begin{tikzpicture}[
+    >={Stealth[scale=0.5]},
+    % Ajuste para ocupar aproximadamente ~8.5 cm de ancho total
+    node distance=0.7cm and 2.5cm, 
+    token/.style={
+        rectangle split,
+        rectangle split parts=4,
+        draw=black!80,
+        thick,
+        align=center,
+        rounded corners,
+        font=\footnotesize,
+        scale=0.8
+    },
+    label_font/.style={font=\scriptsize, align=center},
+    h1/.style={->, thick, blue!80},
+    h2/.style={->, thick, red!80},
+    h3/.style={->, thick, green!50!black}
+]
+
+% Red 2x2 - Fila 1
+\node[token] (duro) {
+    \textbf{duro}
+    \nodepart{two} $Q: \langle \text{req\_sust} \rangle$
+    \nodepart{three} $K: \langle \text{adjetivo} \rangle$
+    \nodepart{four} $V: [\text{rigidez}]$
+};
+
+\node[token, right=of duro] (hueso) {
+    \textbf{hueso}
+    \nodepart{two} $Q: \langle \text{req\_mod} \rangle$
+    \nodepart{three} $K: \langle \text{núcleo} \rangle$
+    \nodepart{four} $V: [\text{semilla}]$
+};
+
+% Red 2x2 - Fila 2
+\node[token, below=of duro] (del) {
+    \textbf{del}
+    \nodepart{two} $Q: \langle \text{req\_rel} \rangle$
+    \nodepart{three} $K: \langle \text{enlace} \rangle$
+    \nodepart{four} $V: [\text{propiedad}]$
+};
+
+\node[token, right=of del] (aguacate) {
+    \textbf{aguacate}
+    \nodepart{two} $Q: \langle \text{req\_parte} \rangle$
+    \nodepart{three} $K: \langle \text{entidad} \rangle$
+    \nodepart{four} $V: [\text{fruto}]$
+};
+
+% Topología de Atención (Multi-head)
+% H1: duro -> hueso (Sintaxis)
+\draw[h1, bend left=20] (duro.north east) to node[above, label_font] {$H_1$ (Sintaxis)} (hueso.north west);
+
+% H2: hueso -> aguacate (Semántica)
+\draw[h2, bend left=20] (hueso.south) to node[right, label_font] {$H_2$ (Semántica)} (aguacate.north);
+
+% H3: del -> hueso / del -> aguacate (Gramática)
+% Corrección de solapamiento ajustando 'pos' y los anclajes
+\draw[h3, bend left=20] (del.north) to node[left, label_font, pos=0.2] {$H_3$ (Gram)} (hueso.south west);
+\draw[h3, bend right=20] (del.east) to node[below, label_font] {$H_3$ (Gram)} (aguacate.west);
+
+\end{tikzpicture}
+
+
+}
+
+
+\textbf{LA TOPOLOGÍA SISTÉMICA DEL TRANSFORMER}\\
+Bloques acoplados de \textit{multi-head attention} mediante normalización de capa (\textit{LayerNorm}) y conexiones residuales que protegen el flujo hiperespacial del gradiente.
+\vspace{-2mm}
+\begin{center}
+
+\begin{tikzpicture}[>={Stealth[scale=0.5]}, font=\tiny, scale=0.8, transform shape]
+    \tikzstyle{bl} = [draw, fill=white, minimum width=1.8cm, minimum height=0.45cm, rounded corners=1pt]
+    \tikzstyle{enc} = [bl, fill=blue!5] \tikzstyle{dec} = [bl, fill=red!5] \tikzstyle{norm} = [bl, fill=green!10]
+
+    % ENCODER BLOCK
+    \node[enc] (e1) at (0,0) {Multi-Head Attn}; \node[norm] (n1) at (0,0.6) {Add \& Norm};
+    \node[enc] (e2) at (0,1.2) {Feed Forward}; \node[norm] (n2) at (0,1.8) {Add \& Norm};
+    \draw[gray, thick] (-1.1,-0.4) rectangle (1.1,2.2); \node[left] at (-1.1, 0.9) {Enc $\times N$};
+    \draw[->] (e1)--(n1); \draw[->] (n1)--(e2); \draw[->] (e2)--(n2);
+
+    % DECODER BLOCK
+    \begin{scope}[xshift=3.2cm]
+        \node[dec] (d1) at (0,-0.6) {Masked M-H Attn}; \node[norm] (dn1) at (0,0) {Add \& Norm};
+        \node[dec] (d2) at (0,0.6) {M-H Cross-Attn}; \node[norm] (dn2) at (0,1.2) {Add \& Norm};
+        \node[dec] (d3) at (0,1.8) {Feed Forward}; \node[norm] (dn3) at (0,2.4) {Add \& Norm};
+        \draw[gray, thick] (-1.1,-1.0) rectangle (1.1,2.8); \node[right] at (1.1, 0.9) {Dec $\times N$};
+        \draw[->] (d1)--(dn1); \draw[->] (dn1)--(d2); \draw[->] (d2)--(dn2); \draw[->] (dn2)--(d3); \draw[->] (d3)--(dn3);
+    \end{scope}
+
+    % CROSS ATTENTION KEY/VALUE
+    \draw[->, blue, dashed, thick] (n2.east) -- ++(0.4,0) -- node[midway, right, text=black]{$\bm{K}, \bm{V}$} ++(0,-0.6) -- (d2.west);
+    
+    % I/O
+    \node (in) at (0,-0.8) {Input $\bm{X}$}; \draw[->] (in)--(e1);
+    \node (out_in) at (3.2,-1.4) {Target (S-R)}; \draw[->] (out_in)--(d1);
+    \node[draw, fill=yellow!10] (soft) at (3.2,3.4) {Linear + Softmax}; \draw[->] (dn3)--(soft);
+\end{tikzpicture}
+\end{center}
+\vspace{-2mm}
+\textbf{POSITIONAL ENCODING Y ROPE}\\
+Al procesar conjuntos (sets) de vectores de forma paralela $\mathcal{O}(1)$, el orden topológico secuencial debe inyectarse explícitamente.\\
+$\bullet$ \textbf{Sinusoidal:} Suma estática al embedding base: $\tilde{\bm{x}}_n = \bm{x}_n + \text{PE}(n)\equiv$ \textit{positional encoding}.\\
+$\bullet$ \textbf{Positional Embedding Aprendido:} Se aprende una matriz de pesos $\bm{W}_{\text{pos}}$, pero no generaliza bien a secuencias más largas que las vistas en el entrenamiento y no es invariante ante permutaciones (PE sí lo es). 
+
+
+
+
+% ================================================================
+\section{IX. TRANSFORMERS: CROSS-ATT., GPT Y BERT}
+% ================================================================
+ 
+\textbf{1. CROSS-ATTENTION (SEQ2SEQ)}\\
+El Decoder necesita consultar la salida del Encoder $\bm{Z}$. La \textit{cross-attention} es idéntica a la self-attention salvo que $\bm{Q}$ proviene del Decoder mientras que $\bm{K}, \bm{V}$ provienen de $\bm{Z}$:
+$$\text{CrossAttn}(\bm{Q}_{dec},\bm{K}_{enc},\bm{V}_{enc}) = \text{Softmax}\!\left(\frac{\bm{Q}_{dec}\bm{K}_{enc}^T}{\sqrt{\smash[b]{D_K}}}\right)\!\bm{V}_{enc}$$
+Esto permite al Decoder ``consultar'' libremente cualquier posición de la secuencia fuente en cada paso generativo, resolviendo el bottleneck del Seq2Seq clásico.
+ 
+\textbf{CAUSAL MASK (TRANSFORMER DECODER)}\\
+La atención es inherentemente bidireccional. Para generación autoregresiva se aplica máscara triangular \textit{upper} que bloquea posiciones futuras: el token $i$ solo atiende $j \leq i$.
+\vspace{-2mm}
+\begin{center}
+\begin{tikzpicture}[font=\tiny, scale=0.95]
+    % Causal mask matrix 5x5
+    \foreach \i in {0,...,4} {
+        \foreach \j in {0,...,4} {
+            \ifnum\j>\i
+                \fill[red!25] (\j*0.42, \i*-0.42+1.68) rectangle (\j*0.42+0.40, \i*-0.42+2.08);
+                \node[font=\tiny, gray] at (\j*0.42+0.20, \i*-0.42+1.88) {0};
+            \else
+                \fill[green!20] (\j*0.42, \i*-0.42+1.68) rectangle (\j*0.42+0.40, \i*-0.42+2.08);
+                \node[font=\tiny] at (\j*0.42+0.20, \i*-0.42+1.88) {1};
+            \fi
+            \draw[gray!60, very thin] (\j*0.42, \i*-0.42+1.68) rectangle (\j*0.42+0.40, \i*-0.42+2.08);
+        }
+    }
+    % Column labels (inputs)
+    \foreach \j/\w in {0/$t_1$, 1/$t_2$, 2/$t_3$, 3/$t_4$, 4/$t_5$}
+        \node[font=\tiny, above] at (\j*0.42+0.20, 2.10) {\w};
+    % Row labels (outputs)
+    \foreach \i/\w in {0/$t_1$, 1/$t_2$, 2/$t_3$, 3/$t_4$, 4/$t_5$}
+        \node[font=\tiny, left] at (-0.02, \i*-0.42+1.88) {\w};
+    % Legend
+    \fill[green!20] (2.5, 1.2) rectangle (2.9, 1.55); \node[right, font=\tiny] at (2.9, 1.38) {Atiende};
+    \fill[red!25]   (2.5,0.8) rectangle (2.9, 1.15); \node[right, font=\tiny] at (2.9,0.98) {Bloqueado};
+    \node[font=\tiny\bfseries] at (1.05, -0.3) {\texttt{torch.triu(..., diagonal=1)} $\to$ \texttt{True = bloqueado}};
+\end{tikzpicture}
+\end{center}
+ 
+\textbf{2. GPT: DECODER-ONLY TRANSFORMER}\\
+Modelo autoregresivo puro: solo Decoder con masked self-attention. Aprende sin supervisión $P(x_n | x_1, \dots, x_{n-1})$ sobre cualquier texto plano. Sin encoder, no puede hacer cross-attention, por lo que combina contexto y respuesta en una \textbf{única secuencia}.
+ 
+$\dashv$ \textit{Ventaja:} Escalable a la totalidad de Internet sin curación de pares.\\
+$\dashv$ \textit{Limitación:} Flujo unidireccional incluso para el contexto de entrada (vs. BERT).
+ 
+\textbf{Warmup Schedule:} Para evitar explosión del gradiente al inicializar un Transformer profundo, el learning rate se incrementa linealmente durante $N_{\rm warm\,up}$ pasos antes de mantenerse constante (o decaer):
+$$\eta_t = \eta_{\max} \cdot \min\!\left(\frac{t}{N_{\rm warm\, up}},\; 1\right)$$
+\textit{Key-Value Caching:} Técnica de inferencia que almacena los tensores $\bm{K}, \bm{V}$ calculados en pasos anteriores, evitando recomputarlos en cada nuevo token generado. Reduce el coste de generación de $\mathcal{O}(T^2)$ a $\mathcal{O}(T)$ por token.
+ 
+% \textbf{ESCALADO HISTÓRICO DE GPT}
+% \vspace{-3pt}
+% \begin{center}
+% \begin{tikzpicture}[>=Stealth, font=\tiny, scale=0.88]
+%     % Timeline
+%     \draw[thick, ->] (0,0) -- (7.8,0);
+%     % Points
+%     \foreach \x/\yr/\name/\p/\tok/\feat in {
+%         0.5/2018/GPT-1/117M/1B/{Preentrenamiento generativo},
+%         2.5/2019/GPT-2/1.5B/10B/{Few-shot emergente},
+%         4.5/2020/GPT-3/175B/500B/{Zero-shot con prompt},
+%         6.7/2022+/ChatGPT/$>$1T/—/{RLHF + asistente}
+%     }{
+%         \draw[thick] (\x, -0.1) -- (\x, 0.1);
+%         \node[above, font=\tiny\bfseries, magenta] at (\x, 0.12) {\name};
+%         \node[below, font=\tiny] at (\x, -0.15) {\yr};
+%         \node[below, font=\tiny, blue] at (\x, -0.45) {\p params};
+%         \node[below, font=\tiny, gray] at (\x, -0.72) {\tok tokens};
+%     }
+%     \node[below right, font=\tiny, text=green!60!black, align=left] at (1.5, -1.1) 
+%         {\textit{Propiedad emergente} $\uparrow$ con escala};
+% \end{tikzpicture}
+% \end{center}
+ 
+\textbf{ESTRATEGIAS DE MUESTREO (DECODING)}\\
+Dado $P(\hat{y}_t | \hat{y}_{<t}) \in \mathbb{R}^{|V|}$, hay varias estrategias:
+ 
+$\bullet$ \textbf{Greedy:} $\hat{y}_t = \arg\max P$. Determinista, rápido, puede quedar en soluciones subóptimas.
+ 
+$\bullet$ \textbf{Beam Search} (ancho $B$): Mantiene las $B$ hipótesis de mayor probabilidad acumulada. Normaliza la prob. por longitud para evitar sesgo hacia secuencias cortas: $\log P / |y|$.
+ 
+$\bullet$ \textbf{Temperatura $T$:} Reescala los logits antes del Softmax: $y_i = \exp(a_i/T)/\Sigma_j \exp(a_j/T)$ 
+
+$T{\to}0$: greedy. $T{=}1$: Softmax estándar. $T{\gg}1$: distribución uniforme.
+ 
+$\bullet$ \textbf{Top-K:} Muestrea solo entre los $K$ tokens de mayor probabilidad (trunca la distribución). Beam Search + Top-K + $T<1$ es la combinación estándar en producción.
+% \vspace{-3pt}
+% \begin{center}
+% \begin{tikzpicture}[font=\tiny, scale=0.65]
+%     \draw[->] (-2.1,0) -- (2.2,0) node[right] {token rank};
+%     \draw[->] (-2.1,0) -- (-2.1,1.5) node[above] {$P$};
+%     % T=0.5 peaked
+%     \draw[blue, thick, smooth] plot coordinates {(-1.8,0.04)(-1.2,0.08)(-0.6,0.18)(0,1.15)(0.6,0.14)(1.2,0.06)(1.8,0.02)};
+%     % T=2 flat
+%     \draw[red, thick, dashed, smooth] plot coordinates {(-1.8,0.22)(-1.2,0.32)(-0.6,0.46)(0,0.58)(0.6,0.50)(1.2,0.36)(1.8,0.26)};
+%     % Top-K region
+%     \draw[green!60!black, thick] (-0.31,0) -- (-0.31,0.5);
+%     \draw[green!60!black, thick] (0.31,0) -- (0.31,0.5);
+%     \fill[green!20, opacity=0.4] (-0.31,0) rectangle (0.31,0.5);
+%     \node[blue, right] at (0.4,1.1) {$T{=}0.5$};
+%     \node[red, right] at (0.4,0.7) {$T{=}2$};
+%     \node[green!60!black, below] at (0,-0.12) {Top-K};
+% \end{tikzpicture}
+% \end{center}
+%  \vspace{-2mm}
+\textbf{3. BERT: ENCODER TRANSFORMER}\\
+Pre-entrenamiento bidireccional sobre corpus masivo, luego fine-tuning supervisado para tareas downstream con pocos datos (\textit{transfer learning}).
+ 
+\textit{Tareas de pre-entrenamiento (autosupervisadas):}
+ 
+$\bullet$ \textbf{MLM (Masked Language Modeling):} 15\% de tokens se enmascaran. La red predice el token original usando \textbf{contexto bidireccional} (izquierda y derecha). Análogo a CBOW pero a nivel profundo de representación.
+ 
+$\bullet$ \textbf{NSP (Next Sentence Prediction):} Clasifica si la frase B sigue naturalmente a la frase A. Captura coherencia discursiva.
+ 
+\textit{Fine-tuning:} Se añade una cabeza (\textit{head}) de salida específica a la tarea. El token especial \texttt{[CLS]} acumula la representación global de la secuencia para clasificación.
+\begin{center}
+\begin{tikzpicture}[>={Stealth[scale=0.5]}, font=\tiny, scale=1]
+    % Token inputs
+    \foreach \i/\w in {0/[CLS], 1/el, 2/[M], 3/salta, 4/[SEP]} {
+        \node[draw, fill=blue!10, rounded corners=1pt, minimum width=0.9cm, 
+              minimum height=0.35cm] (t\i) at (\i*1.05, 0) {\w};
+    }
+    
+    % BERT block
+    \draw[fill=red!8, draw=red!60, rounded corners=3pt, thick]
+        (-0.55, 0.4) rectangle (4.75, 1.0);
+    \node[font=\tiny\bfseries] at (2.1, 0.7) {BERT Encoder (Bidireccional, $L$ capas)};
+    \foreach \i in {0,1,2,3,4} \draw[->,gray] (t\i.north) -- +(0,0.4);
+    
+    % Outputs
+    \foreach \i/\w/\col in {0/C/orange, 1/$y_1$/gray, 2/gato/green!60!black, 3/$y_3$/gray, 4/$y_4$/gray} {
+        \node[draw, fill=\col!15, rounded corners=1pt, minimum width=0.9cm, 
+              minimum height=0.35cm] (o\i) at (\i*1.05, 1.4) {\w};
+        \draw[->, gray] (\i*1.05, 1.0) -- (o\i.south);
+    }
+    
+    % Annotations
+    \draw[->, orange, thick] (o0.north) -- +(0, 0.25) node[above, font=\tiny, orange] {Clasificación};
+    \draw[->, green!60!black, thick] (o2.north) -- +(0, 0.25) node[above, font=\tiny, green!60!black] {Pred. [MASK]};
+\end{tikzpicture}
+\end{center}
+
+\textbf{GPT vs BERT: Resumen comparativo}
+\vspace{-2mm}
+\begin{center}
+\begin{tikzpicture}[font=\tiny, scale=0.9]
+    % Headers
+    \node[font=\tiny\bfseries] at (3.1, 0.55) {GPT};
+    \node[font=\tiny\bfseries] at (5.6, 0.55) {BERT};
+    \draw[thick] (0, 0.4) -- (7.4, 0.4);
+    
+    % Rows (Protegidas con llaves donde hay conflicto de caracteres)
+    \foreach \y/\label/\gpt/\bert in {
+        0.15/Arquitectura/Decoder-only/Encoder-only,
+        -0.15/Atención/Unidireccional/Bidireccional,
+        -0.45/Entrenamiento/Next-token pred./{MLM + NSP},
+        -0.75/Uso ideal/Generación/{Clasificación / NER},
+        -1.05/Ejemplos/{ChatGPT, GPT-4}/{RoBERTa, SciBERT}
+    }{
+        \node[right, font=\tiny] at (0.1, \y) {\label};
+        \node[font=\tiny, blue] at (3.1, \y) {\gpt};
+        \node[font=\tiny, red] at (5.6, \y) {\bert};
+        \draw[gray!30, thin] (0, \y-0.15) -- (7.4, \y-0.15);
+    }
+    
+    % Borders
+    \draw[thick] (0, 0.4) rectangle (7.4, -1.2);
+    \draw[thick] (2.0, 0.4) -- (2.0, -1.2);
+    \draw[thick] (4.2, 0.4) -- (4.2, -1.2);
+\end{tikzpicture}
+
+NER: Named Entity Recognition [Euler nació en Suiza $\rightarrow$ Euler: \textit{persona}, Suiza: \textit{lugar}]
+\end{center}
+
+% ================================================================
+\section{X. LLMs: ENTRENAMIENTO Y FINE-TUNING}
+% ================================================================
+ 
+\textbf{PIPELINE DE PRE-ENTRENAMIENTO}\\
+Preparación del corpus antes de entrenar el LLM fundacional:
+\vspace{-2pt}
+\begin{center}
+\begin{tikzpicture}[>={Stealth[scale=0.5]}, font=\tiny, scale=1,
+    block/.style={draw, fill=#1, rounded corners=1pt, minimum height=0.38cm, 
+                  minimum width=1.1cm, align=center, font=\tiny}]
+    \node[block=gray!10] (raw) at (0,0)    {Corpus\\crudo};
+    \node[block=blue!10] (filt) at (1.5,0) {Filtrado\\calidad};
+    \node[block=orange!10] (dedup) at (3.0,0) {De-duplic.};
+    \node[block=red!10] (pii) at (4.5,0)  {Privac.\\(PII)};
+    \node[block=green!10] (tok) at (6.0,0) {Token.\\(BPE)};
+    \foreach \a/\b in {raw/filt, filt/dedup, dedup/pii, pii/tok}
+        \draw[->] (\a) -- (\b);
+    \node[below, font=\tiny, gray] at (1.5,-0.3) {idioma, \$\%\&\#...};
+    \node[below, font=\tiny, gray] at (4.5,-0.3) {anonimizar};
+    \node[below, font=\tiny, gray] at (6.0,-0.3) {SentencePiece};
+\end{tikzpicture}
+\vspace{-2mm}
+\end{center}
+ 
+\textbf{POST-TRAINING: 3 ETAPAS DE ALINEACIÓN}
+\vspace{-2pt}
+\begin{center}
+\begin{tikzpicture}[ >={Stealth[scale=0.5]}, font=\tiny, scale=0.85,
+    block/.style={draw, fill=#1, rounded corners=2pt, minimum width=1.5cm, 
+                  minimum height=0.65cm, align=center}]
+    \node[block=blue!15]   (pt) at (0,0)   {\textbf{1.}\\\textbf{Pre-Train}\\masivo};
+    \node[block=orange!15] (it) at (2.4,0) {\textbf{2. Inst.}\\Fine-Tuning\\pairs (Q,A)};
+    \node[block=red!15]    (rl) at (4.8,0) {\textbf{3. RLHF}\\/ DPO\\Alineación};
+    \foreach \a/\b in {pt/it, it/rl} \draw[->, thick] (\a) -- (\b);
+    \node[below, font=\tiny, gray, align=center] at (0,-0.45)   {``parlotea''\\sobre todo};
+    \node[below, font=\tiny, gray, align=center] at (2.4,-0.45) {sigue\\instrucciones};
+    \node[below, font=\tiny, gray, align=center] at (4.8,-0.45) {preferencias\\humanas};
+\end{tikzpicture}
+\end{center}
+\vspace{-2mm} 
+\textbf{INSTRUCTION FINE-TUNING}\\
+Se entrena sobre pares $(\text{instrucción}, \text{respuesta})$ multi-tarea. Generaliza a tareas no vistas. Variante: \textbf{Chain-of-Thought FT} $\rightarrow$ incluye razonamiento paso a paso en la respuesta.
+ 
+\textbf{PARAMETER-EFFICIENT FINE-TUNING (PEFT)}\\
+Fine-tuning completo de LLMs ($>$10B params): inviable en hardware convencional porque las redes son sobreparametrizadas: las actualizaciones $\Delta W$ tienen \textit{rango intrínseco bajo}. PEFT actualiza solo un subconjunto de parámetros $\ll$ parámetros totales (eg. LoRA).
+ 
+% $\bullet$ \textbf{LoRA (Low-Rank Adaptation):} Congela $\bm{W} \in \mathbb{R}^{d \times d}$ e inyecta $\Delta\bm{W} = \bm{B}\bm{A}$ con $\bm{A} \in \mathbb{R}^{d \times r}$, $\bm{B} \in \mathbb{R}^{r \times d}$, $r \ll d$. La salida final es: $\bm{h} = \bm{W}\bm{x} + \frac{\alpha}{r}\bm{B}\bm{A}\bm{x}$. $\bm{B}$ inicializada a $\bm{0}$, $\bm{A} \sim \mathcal{N}(0, \sigma^2)$. El hiperparámetro $r$ controla capacidad vs. eficiencia. Reducción típica de parámetros entrenables: $\sim$1000$\times$.
+ 
+\vspace{-2pt}
+
+ 
+\textbf{RLHF (Reinforcement Learning from Human Feedback)}\\
+Pipeline de 3 pasos para alinear el LLM con preferencias humanas:
+ 
+1. \textbf{SFT:} Fine-tune supervisado sobre demostraciones de alta calidad.
+
+2. \textbf{Reward Model $r_\theta$:} Red entrenada sobre comparaciones humanas entre pares de respuestas para el mismo prompt (ranking relativo / ELO).
+
+3. \textbf{Optimización RL con PPO:} El LLM (política $\pi$) maximiza la recompensa esperada con penalización KL para no alejarse del SFT:
+
+ 
+$\bullet$ \textbf{DPO (Direct Preference Optimization):} Elimina el modelo de recompensa explícito. Optimiza directamente sobre pares de preferencias con una pérdida de clasificación binaria, extrayendo la política óptima en forma cerrada. El LLM es implícitamente el modelo de recompensa. Más simple y estable que RLHF.
+ 
+
+ 
+\textbf{PROPIEDADES EMERGENTES y TÉCNICAS DE PROMPTING}\\
+
+ 
+$\bullet$ \textbf{Zero-Shot:} Solo instrucción textual. Requiere modelos grandes con instruction-tuning.\\
+$\bullet$ \textbf{Few-Shot:} $k$ ejemplos $(Q,A)$ como demostración implícita de formato y tarea.\\
+$\bullet$ \textbf{CoT Prompting:} Few-shot con razonamiento explícito: ``\textit{First, X. Then, Y. Therefore, Z.}''.\\
+$\bullet$ \textbf{RAG (Retrieval-Augmented Generation):} Recupera documentos relevantes de una base de datos vectorial (\textit{embedding search}) para enriquecer el contexto antes de inferencia. Mitiga alucinaciones y el límite de conocimiento temporal (\textit{knowledge cutoff}).   
+
+
+
+
+\section{XI. MODELOS GENERATIVOS: GAN Y VAE}
+
+\textbf{BIG PICTURE GENERATIVO}\\
+A diferencia del aprendizaje discriminativo, los modelos generativos aprenden y modelan la topología estadística del \textit{espacio latente}. Permiten muestrear trayectorias en este subespacio continuo para proyectar nuevos tensores artificiales que respeten la distribución original $p_{\text{data}}$.
+
+\textbf{1. GENERATIVE ADVERSARIAL NETWORKS (GAN)}\\
+Aproximación estocástica basada en un juego minimax de suma cero. Dos redes neuronales acopladas compiten hacia un Equilibrio de Nash:\\
+$\bullet$ \textbf{Discriminador ($D$):} Clasificador binario $D: \mathbb{R}^n \to (0,1)$. Maximiza la probabilidad de separar datos reales ($\bm{x}$) de ficticios ($G(\bm{z})$). Equivalente a minimizar la BCE.\\
+$\bullet$ \textbf{Generador ($G$):} Mapea ruido latente $\bm{z} \sim \mathcal{N}(\bm{0},\bm{I})$ (discreto) al espacio físico $\hat{\bm{x}} = G(\bm{z})$. Su objetivo es maximizar la tasa de fallo del Discriminador.
+$$\min_{G} \max_{D} \mathcal{V}(D, G) = \mathbb{E}_{\bm{x}} [\log D(\bm{x})] + \mathbb{E}_{\bm{z}} [\log(1 - D(G(\bm{z})))]$$
+\vspace{-2mm}
+\begin{center}
+\begin{tikzpicture}[ >={Stealth[scale=0.5]}, font=\tiny, scale=0.85, transform shape]
+    % GAN Architecture
+    \node[draw, fill=gray!10, rounded corners] (z) at (0, 0) {Ruido $\bm{z}$};
+    \node[draw, fill=green!20, rounded corners, minimum height=0.6cm] (G) at (2, 0) {Generador $G$};
+    \node[draw, fill=orange!20, rounded corners] (fake) at (4, 0) {Fake $\hat{\bm{x}} = G(\bm{z})$};
+    \node[draw, fill=blue!10, rounded corners] (real) at (4, 1.5) {Real $\bm{x} \sim p_{\text{data}}$};
+    \node[draw, fill=red!20, rounded corners, minimum height=0.6cm] (D) at (6.5, 0.75) {Discriminador $D$};
+    \node[draw, fill=yellow!20, rounded corners] (out) at (9, 0.75) {Prob. Real/Fake};
+
+    \draw[->] (z) -- (G);
+    \draw[->] (G) -- (fake);
+    \draw[->] (fake.east) -- (D.south west);
+    \draw[->] (real.east) -- (D.north west);
+    \draw[->] (D) -- (out);
+
+    \draw[->, dashed, red!80!black, thick] (out.south) to[bend left=25] node[midway, below] {$\nabla \mathcal{L}_D$ (Maximizar error de $G$)} (D.south);
+    \draw[->, dashed, blue!80!black, thick] (out.north) to[bend right=18] node[pos=0.3, above] {$\nabla \mathcal{L}_G$ (Engañar a $D$)} (G.north);
+\end{tikzpicture}
+\end{center}
+\vspace{-2mm}
+
+
+\textbf{UPSAMPLING Y ARQUITECTURA ESPACIAL}\\
+Para transformar el escalar latente $\bm{z}$ en mallas espaciales (imágenes), el Generador sustituye el \textit{pooling} convencional por operadores de expansión métrica:\\
+$\bullet$ \textbf{Transpose Convolution:} Proyecta escalares a parches matriciales deslizando un filtro. Soluciona los artefactos de tablero de ajedrez (\textit{checkerboard}) si el tamaño del \textit{kernel} es múltiplo exacto del \textit{stride}.\\
+$\bullet$ \textbf{Max Unpooling:} Revierte el submuestreo de forma determinista, recolocando los tensores en los índices espaciales originales memorizados durante el \textit{MaxPool}.\\
+$\bullet$ \textbf{U-Net (Segmentación):} Red \textit{Encoder-Decoder} simétrica. Integra conexiones residuales (\textit{Copy and Crop}) que acoplan mapas de características del encoder directamente al decoder, preservando la información espacial de alta frecuencia que fue destruida en el colapso latente.
+
+\vspace{-4mm}
+\begin{center}
+\begin{tikzpicture}[ >={Stealth[scale=0.5]}, font=\tiny, scale=0.6, transform shape]
+    % U-Net Architecture
+    \node[above] at (-0.3, 2) {Input $\bm{x}$};
+    \node[above] at (7.3, 2) {Output $\hat{\bm{y}}$};
+
+    % Encoder
+    \draw[fill=blue!20, draw=black] (0, 0) rectangle (0.6, 2);
+    \draw[fill=blue!30, draw=black] (1.2, 0.3) rectangle (1.8, 1.7);
+    \draw[fill=blue!40, draw=black] (2.4, 0.6) rectangle (3.0, 1.4);
+    
+    % Bottleneck
+    \draw[fill=gray!30, draw=black] (3.35, 0.8) rectangle (3.65, 1.2);
+
+    % Decoder
+    \draw[fill=red!40, draw=black] (4.0, 0.6) rectangle (4.6, 1.4);
+    \draw[fill=red!30, draw=black] (5.2, 0.3) rectangle (5.8, 1.7);
+    \draw[fill=red!20, draw=black] (6.4, 0) rectangle (7.0, 2);
+
+    % Forward paths
+    \draw[->, thick] (0.6, 1) -- (1.2, 1);
+    \draw[->, thick] (1.8, 1) -- (2.4, 1);
+    \draw[->, thick] (3.0, 1) -- (3.35, 1);
+    \draw[->, thick] (3.65, 1) -- (4.0, 1);
+    \draw[->, thick] (4.6, 1) -- (5.2, 1);
+    \draw[->, thick] (5.8, 1) -- (6.4, 1);
+
+    % Skip Connections
+    \draw[->, dashed, thick, green!50!black] (0.3, 2) to[out=90, in=90] node[midway, above] {Skip Connection (Copy \& Crop)} (6.7, 2);
+    \draw[->, dashed, thick, green!50!black] (1.5, 1.7) to[out=90, in=90] (5.5, 1.7);
+    \draw[->, dashed, thick, green!50!black] (2.7, 1.4) to[out=90, in=90] (4.3, 1.4);
+\end{tikzpicture}
+\end{center}
+\vspace{-2mm}
+\textbf{TOPOLOGÍA DE ENTRENAMIENTO (DCGAN)}\\
+Requiere inducción de sesgos arquitectónicos muy rígidos para converger:\\
+$\bullet$ \textbf{Activaciones:} Generador remata con \texttt{Tanh} (fuerzando output $\in [-1,1]$). Las capas ocultas exigen \texttt{LeakyReLU} ($\approx 1\text{E-}2 \cdot x$ si $x<0$) en lugar de \texttt{ReLU}, previniendo el colapso del flujo del gradiente (\textit{sparse gradients}).\\
+$\bullet$ \textbf{Batch Normalization:} Obligatorio. Mitiga el \textit{Internal Covariate Shift} forzando $\mu \approx 0, \sigma \approx 1$ localmente en los minibatches, estabilizando la dinámica de pesos.\\
+$\bullet$ \textbf{Optimizador Adam:} Crítico restringir la inercia. Usar $\beta_1 = 0.5$ (frente al $0.9$ estándar) acorta la memoria del gradiente de primer orden, frenando oscilaciones divergentes sobre el óptimo dinámico.\\
+$\bullet$ \textbf{Estocasticidad:} Inyectar ruido gaussiano en $\bm{z}$, usar \texttt{Dropout} en $D$ o introducir ruido en las etiquetas previene el sobreajuste rápido de $D$ que aniquilaría la actualización de $G$.
+
+\textbf{2. VARIATIONAL AUTOENCODERS (VAE)}\\
+Un Autoencoder determinista colapsa $\bm{x}$ en un punto $\bm{z}$ arbitrario (generando un espacio latente fragmentado y discontinuo). Un VAE impone restricciones topológicas bayesianas, forzando a que la codificación describa los estadísticos de una distribución normal multivariada ($\bm{\mu}, \bm{\sigma}$).\\
+$\bullet$ \textbf{Reparameterization Trick:} Para que el grafo sea puramente diferenciable, el muestreo estocástico se externaliza a un nodo de ruido residual $\bm{\epsilon} \sim \mathcal{N}(\bm{0},\bm{I})$:
+$$\bm{z} = \bm{\mu} + \exp(\bm{\sigma}_{\log}) \odot \bm{\epsilon}$$
+$\bullet$ \textbf{Superficie de Pérdida:} Minimiza la \textit{Reconstruction Loss} (fidelidad predictiva) penalizada por \textit{Regularization Loss} (reduce \textit{overfitting} + espacios latentes compactos).\\
+$\bullet$ \textbf{Vectores de Concepto:} Al garantizar un hiperespacio topológicamente continuo y densamente estructurado, la traslación vectorial $\bm{z}' = \bm{z} + \bm{v}$ induce cambios directos en propiedades físicas o semánticas aisladas (ej. la transición de una cara seria a una sonriente).
+
+\vspace{-2mm}
+\begin{center}
+\begin{tikzpicture}[>=Stealth, font=\tiny, scale=0.9, transform shape]
+    % VAE Architecture & Reparameterization
+    \node (x) at (0, 0) {Input $\bm{x}$};
+    \node[draw, fill=blue!10, rounded corners, minimum height=0.9cm] (enc) at (1.6, 0) {Encoder};
+    
+    \node[draw, fill=green!10, minimum width=0.6cm] (mu) at (3.2, 0.4) {$\bm{\mu}$};
+    \node[draw, fill=green!10, minimum width=0.6cm] (sigma) at (3.2, -0.4) {$\bm{\sigma}_{\log}$};
+    
+    \node[draw, circle, fill=orange!20, inner sep=1pt] (mul) at (4.5, -0.4) {$\times$};
+    \node[draw, circle, fill=orange!20, inner sep=1pt] (add) at (4.5, 0.4) {$+$};
+    \node (eps) at (4.5, -1.2) {$\bm{\epsilon} \sim \mathcal{N}(\bm{0},\bm{I})$};
+    
+    \node[draw, fill=red!10, minimum size=0.4cm] (z) at (5.7, 0.4) {$\bm{z}$};
+    \node[draw, fill=blue!10, rounded corners, minimum height=0.9cm] (dec) at (7.3, 0) {Decoder};
+    \node (xhat) at (8.8, 0) {Output $\hat{\bm{x}}$};
+
+    \draw[->] (x) -- (enc);
+    \draw[->] (enc.east) -- (mu.west);
+    \draw[->] (enc.east) -- (sigma.west);
+    
+    \draw[->] (eps) -- (mul);
+    \draw[->] (sigma) -- node[above, font=\fontsize{4}{4}\selectfont] {$\exp$} (mul);
+    \draw[->] (mul) -- (add);
+    \draw[->] (mu) -- (add);
+    
+    \draw[->] (add) -- (z);
+    \draw[->] (z) -- (dec.west);
+    \draw[->] (dec.east) -- (xhat);
+    
+    \node[above, font=\tiny\bfseries] at (4.5, 1.0) {Reparameterization Trick};
+\end{tikzpicture}
+\end{center}
+\vspace{-2mm}
+
+
+% \textbf{3. APLICACIONES FÍSICAS (HR-AFM)}\\
+% Análisis de topología química mediante redes convolucionales y CGANs.\\
+% $\bullet$ \textbf{Mapeo Interdominio (CGAN):} Transformación de campos tensoriales continuos de Microscopía de Fuerza Atómica (HR-AFM) a grafos de estructura molecular discreta (\textit{Ball-and-Stick}). El modelo decodifica campos escalares acoplados a interacciones de van der Waals, resolviendo degeneraciones ligadas a la torsión diédrica conformacional y al apantallamiento de sustratos metálicos (ej. Ag(111)).\\
+% $\bullet$ \textbf{Regularización Invariante (IDG):} Aumentación de datos mediante simetrías continuas espaciales (rotación $\pm 180^\circ$, cizalladura $\pm 20\%$) para evitar el colapso del modelo (evidenciado en sobreajuste de filtros base en la red VGG16 pura).\\
+% $\bullet$ \textbf{VAEs en Data Augmentation:} La inyección de apenas un $0.17\%$ de tensores sintéticos ``pseudo-experimentales'' generados por un VAE eleva de forma crítica la asintota de convergencia y robustez del modelo frente al ruido empírico de laboratorio.
+
+\begin{center}
+\resizebox{\columnwidth}{!}{
+\begin{tabular}{@{}lll@{}}
+& \textbf{\textcolor{blue}{GAN}} & \textbf{\textcolor{red}{VAE}} \\
+\midrule
+\textbf{Dinámica} & Eq. Nash (Minimax) & Inferencia Bayesiana (ELBO) \\
+\textbf{Espacio Latente} & Libre $\bm{z} \sim \mathcal{N}(\bm{0},\bm{I})$ & Constreñido a $\mathcal{N}(\bm{\mu},\bm{\sigma})$ \\
+\textbf{Pérdida ($\mathcal{L}$)} & BCE comp. $\mathcal{V}(D, G)$ & Divergencia $D_{KL} + \mathcal{L}_{\text{recon}}$ \\
+\textbf{Muestreo} & Nítido (riesgo \textit{mode collapse}) & Cobertura total (suavizado/\textit{blurring}) \\
+\textbf{Interpolación} & Inestable (vacíos topológicos) & Continua (vectores de concepto) \\
+\bottomrule
+\end{tabular}
+}
+\end{center}
+\vfill
+
+\section{XII. REINFORCEMENT LEARNING (RL)}
+
+\textbf{DEFINICIÓN Y ENTIDADES}\\
+A diferencia del aprendizaje supervisado, el RL no requiere etiquetas, sino una señal escalar de retroalimentación (\textbf{Reward}). El agente aprende una \textbf{política} $\pi$ optimizando la toma de decisiones secuenciales por ensayo y error.
+\vspace{-2mm}
+\begin{center}
+\begin{tikzpicture}[>={Stealth[scale=0.5]}, font=\tiny, node distance=2.2cm]
+    % Entidades
+    \node[draw, fill=blue!10, rounded corners, minimum width=1.4cm, minimum height=0.3cm] (A) {Agent};
+    \node[draw, fill=green!10, rounded corners, minimum width=1.4cm, minimum height=0.3cm, right=of A] (E) {Environment};
+
+    % Flujos horizontales
+    \draw[->, thick] (A.30) to[bend left=20] node[above] {Action $a_t$} (E.150);
+    \draw[->, thick] (E.210) to[bend left=20] node[above, yshift=0.05cm] {State $s_{t+1}$} (A.330);
+    \draw[->, thick, dashed, red] (E.250) to[bend left=25] node[below] {Reward $r_t$} (A.290);
+
+    % Etiqueta
+    \node[above=0.05cm of A] {$\pi_\theta(a|s)$};
+\end{tikzpicture}
+\end{center}
+\vspace{-2mm}
+\textbf{MARKOV DECISION PROCESS (MDP)}\\
+Formalismo matemático $\{S, A, T, R, \gamma\}$:
+
+$\bullet$ \textbf{State Space ($S$):} Configuración actual del entorno.\\
+$\bullet$ \textbf{Action Space ($A$):} Conjunto de movimientos posibles.\\
+$\bullet$ \textbf{Transition ($T$):} $P(s_{t+1}|s_t, a_t)$. Dinámica del sistema. Si es desconocida $\rightarrow$ \textit{Model-free}.\\
+$\bullet$ \textbf{Reward ($R$):} Señal inmediata $R(s_t, a_t, s_{t+1})$.\\
+$\bullet$ \textbf{Discount ($\gamma\in [0,1]$):} Prioriza rewards inmediatas frente a futuras. Evita sumas $\infty$.
+
+\textbf{CONCEPTOS CLAVE DE TRAYECTORIA}\\
+$\bullet$ \textbf{Trajectory ($\tau$):} Secuencia $(s_0, a_0, r_0, s_1, a_1, \dots)$.\\
+$\bullet$ \textbf{Return ($G_t$):} Suma de recompensas descontadas: $G_t = \sum_{k=0}^{T-t-1} \gamma^k r_{t+k}$.\\
+$\bullet$ \textbf{Objective ($J$):} Maximizar la esperanza del retorno: $J(\pi) = \mathbb{E}_{\tau \sim \pi} [G(\tau)]$.
+
+
+\textbf{ESTIMACIÓN DEL RENDIMIENTO}\\
+$\bullet$ \textbf{State-Value $V^\pi(s)$:} ¿Cómo de bueno es estar en el estado $s$?
+
+$\bullet$ \textbf{Action-Value $Q^\pi(s, a)$:} ¿Cómo de bueno es tomar la acción $a$ en el estado $s$?
+
+
+
+\textbf{EJEMPLO CLÁSICO: EL CORREDOR DISCRETO (GRIDWORLD 1D)}
+
+Entorno lineal de 3 celdas discretas donde el agente busca alcanzar una celda meta ($s_3$).
+\vspace{-2mm}
+\begin{center}
+\begin{tikzpicture}[x=1.8cm, y=1cm, >=Stealth, font=\tiny]
+    % Estados
+    \node[draw, circle, fill=blue!10, minimum size=0.6cm] (s1) at (0,0) {$s_1$};
+    \node[draw, circle, fill=blue!10, minimum size=0.6cm] (s2) at (1,0) {$s_2$};
+    \node[draw, circle, fill=green!20, minimum size=0.6cm] (s3) at (2,0) {$s_3$};
+
+    % Indicadores
+    \node[below=0.1cm of s1, gray] {Inicio};
+    \node[below=0.1cm of s3, green!60!black, font=\bfseries] {META};
+
+    % Transiciones y Recompensas
+    \draw[->, thick, bend left=25, blue] (s1) to node[above, black] {$D \; (r=-1)$} (s2);
+    \draw[->, thick, bend left=25, blue] (s2) to node[above, black] {$D \; (r=+10)$} (s3);
+    \draw[->, thick, bend left=25, red] (s2) to node[below, black] {$I \; (r=-1)$} (s1);
+\end{tikzpicture}
+\end{center}
+\vspace{-2mm}
+$\bullet$ \textbf{$\{S, A, T, R, \gamma\}$}\\
+$-$ \underline{State Space ($S$):} Tres posiciones posibles. $S = \{s_1, s_2, s_3\}$.\\
+$-$ \underline{Action Space ($A$):} Movimientos binarios. $A = \{\text{Derecha } (D), \text{Izquierda } (I)\}$.\\
+$-$ \underline{Transition ($T$):} Determinista, probabilidad de éxito es 1. Ej: $P(s_2 | s_1, D) = 1$.\\ Si fuese \textit{slippery}, el ``hielo'' haría que el movimiento sea incierto. Ej: $P(s_2| s_1, D)= 0.8$, $P(s_1, s_1,D )=0.2$: pese a ``querer'' ir a la derecha, se cae y se queda en la misma celda.\\
+$-$ \underline{Reward ($R$):} Penalización por coste temporal o energético $r = -1$ en transiciones ordinarias; incentivo $r = +10$ únicamente al entrar en la meta $s_3$.\\
+$-$ \underline{Discount ($\gamma$):} Fijamos $\gamma = 0.9$ para ponderar el horizonte temporal.\\
+$\bullet$ \textbf{Trayectoria y rendimiento}\\
+Evaluamos una política determinista hacia la derecha: $\pi(s_1) = D$ y $\pi(s_2) = D$.
+
+$-$ \underline{Trajectory ($\tau$):} Partiendo desde $s_1$, la secuencia exacta de estados, acciones y recompensas hasta el colapso en el estado terminal es:
+$ \tau = (s_1, D, -1, s_2, D, +10, s_3) $
+
+$-$ \underline{Return ($G_t$):} El retorno acumulado descontado desde el estado inicial ($t=0$) deshace la recursividad temporal:
+$ G_0 = r_0 + \gamma r_1 = -1 + 0.9 \cdot (+10) = 8.0 $
+
+$-$ \underline{State-Value $V^\pi(s)$:} Mide la esperanza del retorno desde cada estado. Sabiendo que $s_3$ es terminal y su valor futuro es nulo ($V(s_3)=0$):
+$$ V^\pi(s_2) = R(s_2, D, s_3) + \gamma V^\pi(s_3) = +10 + 0.9 \cdot 0 = 10.0 $$
+$$ V^\pi(s_1) = R(s_1, D, s_2) + \gamma V^\pi(s_2) = -1 + 0.9 \cdot 10.0 = 8.0 $$
+
+$-$ \underline{Action-Value $Q^\pi(s, a)$:} Evalúa el impacto de tomar una acción potencialmente errónea antes de retomar la política original $\pi$. En el estado $s_2$:
+\begin{align*}
+    Q^\pi(s_2, D) &= R(s_2, D, s_3) + \gamma V^\pi(s_3) = +10 + 0 = 10.0 \\
+    Q^\pi(s_2, I) &= R(s_2, I, s_1) + \gamma V^\pi(s_1) = -1 + 0.9 \cdot 8.0 = 6.2
+\end{align*}
+
+Como $Q^\pi(s_2, D) > Q^\pi(s_2, I)$, el operador de optimalidad de Bellman seleccionará la acción $D$, consolidando el sesgo de la política óptima $\pi^*$.
+
+
+\textbf{TAXONOMÍA DE ALGORITMOS RL}
+
+\textbf{1. VALUE-BASED (Q-LEARNING Y SARSA)}\\
+Aprenden el valor de las acciones. La política es implícita ($\epsilon$-greedy).
+
+$\bullet$ \textbf{Temporal Difference (TD) Learning:} Actualiza la estimación basada en la diferencia entre el valor actual y el valor observado + siguiente (\textit{TD-Error}).
+
+$\bullet$ \textbf{SARSA (On-Policy):} Aprende de la acción \textbf{realmente} tomada por la política.
+
+$\bullet$ \textbf{Q-Learning (Off-Policy):} Aprende de la \textbf{mejor} acción posible en el siguiente estado. \\
+$Q^{\rm SARSA}_{\rm new} = Q + \alpha [r + \gamma Q(s', a') - Q]$ \quad $Q^{\rm Q-Learn.}_{\rm new} = Q + \alpha [r + \gamma \max_{a'} Q(s', a') - Q]$.
+
+\textbf{2. POLICY-BASED (REINFORCE)}\\
+Optimiza directamente $\pi_\theta(a|s)$ mediante ascenso de gradiente.
+
+$\bullet$ \textbf{Policy Gradient Theorem:} $\nabla_\theta J(\theta) = \mathbb{E} [G_t \nabla_\theta \ln \pi_\theta(a_t|s_t)]$.
+
+$\bullet$ \textit{Ventaja:} Maneja espacios de acciones continuos y políticas estocásticas.
+
+\textbf{3. COMBINED (ACTOR-CRITIC Y PROXIMAL POLICIY OPTIMIZATION)}\\
+$\bullet$ \textbf{Actor:} Aprende la política (qué hacer).
+
+$\bullet$ \textbf{Critic:} Aprende la función de valor (evalúa al actor).
+
+$\bullet$ \textbf{Advantage ($A$):} $A(s, a) = Q(s, a) - V(s)$. Indica cuánto mejor es una acción respecto al promedio.
+
+% \section{XV. DEEP RL Y CASO FÍSICO (NFRHT)}
+
+% \textbf{DEEP Q-NETWORKS (DQN)}\\
+% Sustituye la tabla Q por una red neuronal $Q(s, a; \theta)$.
+% $\bullet$ \textbf{Experience Replay:} Almacena $(s, a, r, s')$ en memoria para romper la correlación temporal y reutilizar datos (\textit{Off-policy}).
+% $\bullet$ \textbf{Target Network:} Red secundaria con pesos congelados para estabilizar el cálculo del target en Bellman.
+
+% \textbf{APLICACIÓN EN FÍSICA: OPTIMIZACIÓN NFRHT}\\
+% \textbf{Problema:} Transferencia de calor radiativo de campo cercano entre metamateriales hiperbólicos multicapa.
+% $\bullet$ \textbf{Objetivo:} Maximizar el coeficiente de transferencia de calor (HTC) superando el límite del cuerpo negro.
+% $\bullet$ \textbf{Formulación RL:}\\
+% 1) \textbf{State:} Vector binario (16-24 componentes) que define la configuración de capas (Metal=1, Dieléctrico=0).\\
+% 2) \textbf{Action:} Cambiar material de una capa específica.\\
+% 3) \textbf{Reward:} Valor del HTC calculado mediante fluctuaciones electrodinámicas.\\
+% $\bullet$ \textbf{Resultado:} El algoritmo \textbf{Double DQN} supera la intuición física periódica, encontrando "superceldas" que incrementan el HTC en un $21\%$. RL actúa como un buscador eficiente en espacios de configuración masivos ($2^{24} \approx 1.7 \times 10^7$).
+
+% \textbf{EXPLORACIÓN VS. EXPLOTACIÓN}\\
+% $\bullet$ \textbf{$\epsilon$-greedy:} Con prob. $\epsilon$ exploramos (acción aleatoria); con $1-\epsilon$ explotamos (mejor acción Q). $\epsilon$ decae durante el entrenamiento.
+% $\bullet$ \textbf{Slippery Environments:} En entornos estocásticos (como FrozenLake con hielo deslizante), la probabilidad de transición no es 1, forzando a la política a aprender rutas más robustas frente al ruido.
+
+
+% \clearpage
+
+% \section{VII. PYTORCH Y SCIKIT-LEARN}
+
+% \textbf{IMPLEMENTACIÓN ROBUSTA (PIPELINES)}\\
+% $\bullet$ Previenen el \textit{Data Leakage} asegurando secuencialidad del ajuste por \textit{fold} de validación cruzada. Además, gestionan heterogeneidad de datos (físicos vs categóricos) vía \texttt{ColumnTransformer}.
+% \begin{verbatim}
+% pipe = Pipeline([('scaler', StandardScaler()),
+%                  ('pca', PCA(n_components=0.95)),
+%                  ('knn', KNeighborsClassifier(n_neighbors=5))])
+% \end{verbatim}
+
+% \textbf{PYTORCH: TENSORES Y COMPUTACIÓN DE GRAFOS}\\
+% $\bullet$ \textbf{Atributos Universales:} \texttt{.shape}, \texttt{.dtype}, \texttt{.device} (\texttt{'cuda'} / \texttt{'cpu'}).\\
+% $\bullet$ \textbf{Autograd:} El parámetro booleano \texttt{requires\_grad=True} ordena compilar un Árbol de Computación Dinámica. \texttt{.backward()} ejecuta regla de cadena en reversa a velocidad metal y deposita gradientes en el sub-nodo \texttt{.grad}.
+
+% \textbf{ESTRUCTURAS ARQUITECTÓNICAS (nn.Module)}\\
+% Toda ANN física debe heredar de esta superclase para ser inyectada al optimizador.
+% \begin{verbatim}
+% class FFN_Phys(nn.Module):
+%     def __init__(self, in_features, out_features):
+%         super().__init__()
+%         # Definición topológica en memoria paramétrica
+%         self.red = nn.Sequential(
+%             nn.Linear(in_features, 128),
+%             nn.ReLU(),
+%             nn.Dropout(p=0.2), # Regularización
+%             nn.Linear(128, out_features)
+%         )
+%     def forward(self, x): return self.red(x) # Flujo Direccional
+% \end{verbatim}
+
+% \textbf{LOOP DE ENTRENAMIENTO SGD (CANÓNICO)}\\
+% Implementación inmutable requerida para toda optimización de Deep Learning.
+% \begin{verbatim}
+% model.train() # Activa modos de regularización (Dropout/BatchNorm)
+% for X_batch, y_batch in dataloader:
+%     X, y = X_batch.to(device), y_batch.to(device)
+    
+%     optimizer.zero_grad()       # 1. Destruye gradientes previos
+%     y_pred = model(X)           # 2. Computa predicción del manifold
+%     loss = criterion(y_pred, y) # 3. Cuantifica distancia topológica
+%     loss.backward()             # 4. Invocación BPTT (Diferenciación)
+    
+%     # torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
+%     optimizer.step()            # 5. Descenso asintótico en espacio W
+% \end{verbatim}
+% \textit{Nota Operativa: En fases de Inferencia/Testing, se obliga a instanciar \texttt{model.eval()} e inferir bajo el contexto estricto \texttt{with torch.no\_grad():}. Esto congela el rastreo computacional de la RAM de la GPU y deshabilita Dropout, garantizando una estimación de rendimiento invariante y físicamente determinista.}
+\hfill
+
+\hrule
+~\\
+Author: \href{https://www.linkedin.com/in/jorge-acebes-hern%C3%A1ndez/}{Jorge Acebes Hernández}. Code: \href{https://github.com/JorgeAcebes/physics-cheat-sheets/tree/main/Inteligencia%20Artificial%20en%20F%C3%sica}{GitHub}. Last edit: \today  \hfill \href{https://creativecommons.org/licenses/by-nc/4.0/}{CC BY-NC 4.0}
+\end{multicols*}
+\end{document}
