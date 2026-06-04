@@ -1,0 +1,103 @@
+\section*{Integrals%
+\normalfont\scriptsize{$(n\in\mathbb{N}_0,\alpha,\beta,\gamma,\mu,\nu,\sigma,r\in\mathbb{R},x\in\mathbb{R}\cap\mathrm{Dom}_f,a,z\in\mathbb{C},m\in\mathbb{Z})$ +C omitted.}\\ 
+\normalfont\scriptsize{Avoid division by 0. Most results can be extended to $\mathbb{C}$.}%
+}
+
+\footnotesize{
+\underline{Basic} $\int\!(x+\alpha)^rdx{=}\frac{(x+\alpha)^{r+1}}{r+1}$ \ $\int\!\frac{dx}{\alpha x+\beta}{=}\frac{1}{\alpha}\ln|\alpha x+\beta|$ \ $\int\!\mu^xdx{=}\frac{\mu^x}{\ln\mu}$ \ $\int\!x(x+\alpha)^rdx{=}\frac{(x+\alpha)^{r+1}(rx{+}x{-}\alpha)}{(r{+}1)(r{+}2)}$ \ $\int\!\tan x\,dx{=}{-}\ln|\cos x|$ \ $\int\!u\,dv{=}uv{-}\int v\,du$
+
+\underline{Rational} 
+$\int\!\frac{dx}{\alpha x^2+\beta x+\gamma}{=}\frac{2}{\sqrt{4\alpha\gamma{-}\beta^2}}\arctan\frac{2\alpha x{+}\beta}{\sqrt{4\alpha\gamma{-}\beta^2}}$ \ $\int\!\frac{dx}{(x{+}\alpha)(x{+}\beta)}{=}\frac{1}{\beta{-}\alpha}\ln|\frac{\alpha{+}x}{\beta{+}x}|$ $\int\!\frac{dx}{\alpha^2+x^2}{=}\frac{1}{\alpha}\arctan\frac{x}{\alpha}$ \ $\int\!\frac{dx}{\alpha^2-x^2}{=}\frac{1}{2\alpha}\ln|\frac{\alpha{+}x}{\alpha{-}x}|{=}\frac{1}{\alpha}\operatorname{arctanh}\frac{x}{\alpha}$  
+
+\underline{Roots}
+$\int\!\frac{dx}{\sqrt{x^2\pm\alpha^2}}{=}\genfrac{}{}{0pt}{}{\operatorname{arsinh}}{\operatorname{arcosh}}\big(\frac{x}{|\alpha|}\big)$ \ $\int\!\frac{dx}{\sqrt{\alpha^2{-}x^2}}{=}\arcsin(\frac{x}{|\alpha|})$ \\ $\int\!\frac{x}{\sqrt{x^2\pm\alpha^2}}dx{=}\sqrt{x^2\pm\alpha^2}$ \ $\int\!\frac{x}{\sqrt{\alpha^2{-}x^2}}dx{=}{-}\sqrt{\alpha^2{-}x^2}$\\ 
+$\int\!\frac{dx}{(x^2\pm\alpha^2)^{3/2}}{=}\frac{\pm x}{\alpha^2\sqrt{x^2\pm\alpha^2}}$ \ $\int\!\frac{x}{(x^2\pm\alpha^2)^{3/2}}dx{=}\frac{{-}1}{\sqrt{x^2\pm\alpha^2}}$ \
+$\int\!\frac{dx}{x\sqrt{x^2{-}\alpha^2}}{=}\frac{1}{\alpha}\operatorname{arctan}\big(\frac{\sqrt{x^2{-}\alpha^2}}{\alpha}\big)$ \ $\int\!\frac{dx}{x\sqrt{\alpha^2\pm x^2}}{=}{-}\frac{1}{\alpha}\cdot\genfrac{}{}{0pt}{}{\operatorname{arsinh}}{\operatorname{arcosh}}\big(\frac{\alpha}{|x|}\big)$
+$\int\!\sqrt{x^2\pm\alpha^2}dx{=}\frac{x}{2}\sqrt{x^2\pm\alpha^2}\pm\frac{\alpha^2}{2}\cdot\genfrac{}{}{0pt}{}{\operatorname{arsinh}}{\operatorname{arcosh}}\big(\frac{x}{|\alpha|}\big)$ \
+
+
+\underline{Trigonometric} \scriptsize{$(\mu,\nu>0)$}
+$\int\!x\sin\alpha x\,dx{=}\frac{\sin\alpha x}{\alpha^2}{-}\frac{x\cos\alpha x}{\alpha}$ \
+$\int\!x\cos\alpha x\,dx{=}\frac{\cos\alpha x}{\alpha^2}{+}\frac{x\sin\alpha x}{\alpha}$ \
+$\int\!\sin^n\alpha x\,dx{=}{-}\frac{\sin^{n-1}\alpha x\cos\alpha x}{n\alpha}{+}\frac{n-1}{n}\int\!\sin^{n-2}\alpha x\,dx$ \ $\int\!\sinh x\,dx = \cosh x $
+$\int\!\cos^n\alpha x\,dx{=}{+}\frac{\cos^{n-1}\alpha x\sin\alpha x}{n\alpha}{+}\frac{n-1}{n}\int\!\cos^{n-2}\alpha x\,dx$ \ $\int\! \cosh x \, dx = \sinh x$
+
+$\int\!\sin\alpha x\sin\beta x\,dx{=}{-}\frac{\sin((\alpha{+}\beta)x)}{2(\alpha{+}\beta)}{+}\frac{\sin((\alpha{-}\beta)x)}{2(\alpha{-}\beta)}$ \ $\int \! \frac{dx}{\cosh^2 x} = \tanh x $ \ $\int \! \frac{dx}{\sinh^2 x} = -\coth x $\  
+$\int\!\cos\alpha x\cos\beta x\,dx{=}{+}\frac{\sin((\alpha{+}\beta)x)}{2(\alpha{+}\beta)}{+}\frac{\sin((\alpha{-}\beta)x)}{2(\alpha{-}\beta)}$ \
+$\int\!\sin\alpha x\cos\beta x\,dx{=}{-}\frac{\cos((\alpha{+}\beta)x)}{2(\alpha{+}\beta)}{-}\frac{\cos((\alpha{-}\beta)x)}{2(\alpha{-}\beta)}$
+
+$\int\!x\genfrac{}{}{0pt}{}{\sin\alpha x\sin\beta x}{\cos\alpha x\cos\beta x}dx{=}\mp\frac{x\sin((\beta{+}\alpha)x)}{2(\beta{+}\alpha)}{-}\frac{\cos((\beta{+}\alpha)x)}{2(\beta{+}\alpha)^2}\mp\frac{x\sin((\beta{-}\alpha)x)}{2(\beta{-}\alpha)}{+}\frac{\cos((\beta{-}\alpha)x)}{2(\beta{-}\alpha)^2}$ \
+$\int\!x\sin\alpha x\cos\beta x\,dx{=}\frac{\sin((\beta{+}\alpha)x)}{2(\beta{+}\alpha)^2}{-}\frac{x\cos((\beta{+}\alpha)x)}{2(\beta{+}\alpha)}{-}\frac{\sin((\beta{-}\alpha)x)}{2(\beta{-}\alpha)^2}{+}\frac{x\cos((\beta{-}\alpha)x)}{2(\beta{-}\alpha)}$
+
+$\int\!\csc\alpha x\,dx{=}{-}\frac{\ln|\csc\alpha x{+}\cot\alpha x|}{\alpha}$ \
+$\int\!\sec\alpha x\,dx{=}\frac{\ln|\sec\alpha x{+}\tan\alpha x|}{\alpha}$ \
+$\int\!\cot\alpha x\,dx{=}\frac{\ln|\sin\alpha x|}{\alpha}$
+
+$\int\!\tan^2x\,dx{=}\tan x{-}x$ \
+$\int\!\csc^2x\,dx{=}{-}\cot x$ \
+$\int\!\sec^2x\,dx{=}\tan x$ \
+$\int\!\cot^2x\,dx{=}{-}\cot x{-}x$
+
+$\int\!x\genfrac{}{}{0pt}{}{\sin^2}{\cos^2}ax\,dx{=}\mp\frac{2\alpha x\sin{+}\cos(2\alpha x)\mp2\alpha^2x^2}{8\alpha^2}$ \
+$\int_0^{\pi/2}\!\sin^\mu x\cos^\nu x\,dx{=}\frac{1}{2}\operatorname{B}(\frac{\mu-1}{2},\frac{\nu-1}{2})$ \
+$\int_0^{\pi/2}\!\sin^\mu x\,dx{=}\int_0^{\pi/2}\!\cos^\mu x\,dx{=}\frac{1}{2}\operatorname{B}(\frac{\mu+1}{2},\frac{1}{2}){=}\frac{(n-1)!!}{n!!}\begin{cases}\frac{\pi}{2}&\text{if }\mu{=}n\text{ odd}\\1&\text{if }\mu{=}n\text{ even}\end{cases}$
+
+$\int_0^{2\pi}\!(1{-}\cos x)^n\sin nx\,dx{=}0$ \
+$\int_0^{2\pi}\!(1{-}\cos x)^n\sin nx\,dx{=}(-1)^n\frac{\pi}{2^{n-1}}$ \
+$\int_{-1}^{+1}\!\genfrac{}{}{0pt}{}{\sin(m\pi x)\sin(m'\pi x)}{\cos(m\pi x)\cos(m'\pi x)}dx{=}\delta_{m,m'}$ \
+$\int_0^\pi\!\genfrac{}{}{0pt}{}{\sin(m\pi x)\sin(m'\pi x)}{\cos(m\pi x)\cos(m'\pi x)}dx{=}\frac{\pi}{2}\delta_{m,m'}$
+
+$\int_0^\pi\!\sin(mx)\cos(m'x)dx{=}\begin{cases}\frac{2m}{m^2-m'^2}&\text{if }m{+}m'\text{ even}\\0&\text{if }m{+}m'\text{ odd}\end{cases}$ \
+$\int_0^\pi\!\genfrac{}{}{0pt}{}{\sin x\,dx{=}2}{\cos x\,dx{=}0}$ \
+$\int_0^\pi\!\genfrac{}{}{0pt}{}{\sin^3x\,dx{=}\frac{4}{3}}{\cos^3x\,dx{=}0}$ \
+$\int_0^{2\pi}\!\sin x\cos x\,dx{=}0$ \
+$\int_0^{2\pi}\!\genfrac{}{}{0pt}{}{\sin x}{\cos x}dx{=}0$ \
+$\int_0^{2\pi}\!\genfrac{}{}{0pt}{}{\sin^3x}{\cos^3x}dx{=}0$
+
+$\int_0^{\pi\mu}\!\genfrac{}{}{0pt}{}{\sin^2\alpha x}{\cos^2\alpha x}dx{=}\frac{1}{4\alpha}\left[2\pi\alpha\mu\mp\sin(2\pi\alpha\mu)\right]\stackrel{\text{if }\mu{=}n}{=}\frac{\pi n}{\alpha}$ \
+$\int_0^\pi\!\sin^nx\cos^{n'}x\,dx{=}0\ \forall n\text{ odd}$ \
+$\int_0^{2\pi}\!\sin^nx\cos^{n'}\!x\,dx{=}0\text{ if }n,n'\text{ not both even}$
+
+\underline{Parity} 
+$\text{ Even}: f_e(-x) = f_e(x)\text{, sym w.r.t Y-axis}$
+$\text{ Odd}: f_o(-x) = -f_o(x)\text{, sym w.r.t (0,0)}$  
+\
+$\int_{-\alpha}^{+\alpha}\!f_e(x)\,dx{=}2\int_{0}^{\alpha}\!f_e(x)\,dx$
+\;\;  $\int_{-\alpha}^{+\alpha}\!f_o(x)\,dx{=}0$ 
+\\
+\scriptsize{$f_e\!\!: \! \cos x,\; \!\cosh x,\;\! x^{2n},\;\! e^{-x^2}\!,\;\! |x|,\;\! \delta_{ij},\;\! \delta(x),\;\! \mathbb{R}, \;\!  f'_o(x), \; \! f'_e(x),\;\! f_{\!e\!/\!o}\!(x)f_{\!e\!/\!o}\!(x), \;\!\mathcal{F}\{f_e(x)\} (\xi),...$} \\
+\scriptsize{$f_o\!:  \sin x,\; \sinh x,\; x^{2n+1},\; \tan x,\; \operatorname{erf}x,\; \operatorname{sign}x,\; f_e (x) f_o (x), \;\mathcal{F}\{f_o(x)\} (\xi) ,...$}
+
+\underline{Fundamental Theorem of Calculus}
+$\frac{d}{dx}\int_{h(x)}^{g(x)} f(t) \, dt =  f\big(g(x)\big) \cdot g'(x) - f\big(h(x)\big) \cdot h'(x)$
+\underline{Log/Exp} 
+$\int\!x^r\ln x\,dx{=}x^{r+1}\left(\frac{\ln x}{r+1}{-}\frac{1}{(r+1)^2}\right)$ \
+$\int\!\ln^nx\,dx{=}x\ln^n x{-}n\int\!\ln^{n-1}x\,dx$ \
+$\int\!x^ne^{\alpha x}dx{=}\frac{x^ne^{\alpha x}}{\alpha}{-}\frac{n}{\alpha}\int\!x^{n-1}e^{\alpha x}dx$ \
+$\int\!xe^{\alpha x^2}dx{=}\frac{e^{\alpha x^2}}{2\alpha}$ \
+$\int\!\frac{e^{\alpha x}}{x^n}dx{=}\frac{1}{n{-}1}\left({-}\frac{e^{\alpha x}}{x^{n-1}}{+}\alpha\int\!\frac{e^{\alpha x}}{x^{n-1}}dx\right)$ \
+$\frac{2}{\sqrt{\pi}}\int_0^ze^{-t^2}dt{=}\operatorname{erf}(z)$ \ $\operatorname{erf}(\pm \infty){=}\pm1$
+
+$\varphi{=}\frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}$ \ ($\mu{\equiv}$mean, $\sigma^2{\equiv}$variance) \
+$\int\!\varphi dx{=}\frac{1}{2}\operatorname{erf}\left(\frac{x{-}\mu}{\sqrt{2}\sigma}\right)$ \
+$\int\!\sqrt{x}e^{ax}dx{=}\frac{\sqrt{x}e^{ax}}{a}{-}\frac{\sqrt{\pi}\operatorname{erfi}(\sqrt{a}\sqrt{x})}{2a^{3/2}}$ \ $i\operatorname{erfi}(z){=}\operatorname{erf}(iz)$
+
+$m!!{=}m(m{-}2)(m{-}4)\cdots$ \ ${-}1!!{=}0!!{=}1!!{=}1$ \
+$\int_0^\infty\!x^re^{-\alpha x^2}dx{=}\frac{\Gamma\left(\frac{r+1}{2}\right)}{2\alpha^{\frac{r+1}{2}}}{=}\begin{cases}
+\frac{(2n{-}1)!!}{2^{n+1}\alpha^n}\sqrt{\frac{\pi}{a}} & \text{if }r{=}2n \\
+\frac{n!}{2\alpha^{n+1}} & \text{if }r{=}2n{+}1
+\end{cases}$ \ {\scriptsize$(r{>}{-}1,\alpha{>}0)$}
+
+$\int_0^\infty\!x^re^{-ax}dx{=}\frac{\Gamma(r{+}1)}{a^{r+1}}\stackrel{\text{if }r{=}n}{=}\frac{n!}{a^{n+1}}$ \ {\scriptsize$(r{>}{-}1,\Re(a){>}0)$} \
+$\int_0^\infty\!\sqrt{x}e^{-x}dx{=}\frac{\sqrt{\pi}}{2}$ \
+$\int_0^\infty\!e^{-\mu x^2}dx{=}\frac{1}{2}\sqrt{\frac{\pi}{\mu}}$ \
+$\int_0^\infty\!x^2e^{-\mu x^2}dx{=}\frac{1}{4}\sqrt{\frac{\pi}{\mu^3}}$ \ {\scriptsize$(\mu{>}0)$}
+
+$\int\!(e^{-x/a}{+}1)^{-1}dx{=}a\ln(e^{x/a}{+}1)$ \
+$\int_0^{2\pi}\!e^{i(m-m')\phi}d\phi{=}2\pi\delta_{m,m'}$ \
+$\int_0^\infty\!\frac{x}{e^x{-}1}dx{=}\frac{\pi^2}{6}$ \
+$\int_0^\infty\!\frac{\ln x}{e^x}dx{=}\int_1^\infty\!\left(\frac{1}{x}{-}\frac{1}{\lfloor x\rfloor}\right)dx{=}{-}\gamma$ \ ($\gamma{\equiv}$Euler-Mascheroni constant)
+$\int_0^\infty\!e^{-ax^b}dx{=}a^{-1/b}\Gamma\left(\frac{1}{b}{+}1\right)$ \ $\int_{-\infty}^{+\infty}\!e^{-ax^2{+}bx}dx{=}\sqrt{\frac{\pi}{a}}e^{\frac{b^2}{4a}}$\\
+$\int_0^\infty\!e^{-ax}\sin(bx)dx{=}\frac{b}{a^2{+}b^2}$ \
+$\int_0^\infty\!e^{-ax}\cos(bx)dx{=}\frac{a}{a^2{+}b^2}$ 
+}

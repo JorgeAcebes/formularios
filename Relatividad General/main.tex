@@ -1,0 +1,152 @@
+% Minimal-spacing, three-column LaTeX preamble with fixed smallest font size
+\documentclass[8pt,a4paper,fleqn]{extarticle} % use smallest base font available
+
+% --- Geometry settings: minimal margins, landscape orientation ---
+\usepackage[landscape, top=0.0cm, left=0.1cm, right=0.1cm, bottom=0.3cm]{geometry}
+
+% --- No page numbering ---
+\pagestyle{empty}
+
+% --- Math and symbol packages with compact font style ---
+\usepackage{amssymb,amsmath,amsthm,amsfonts,bm,esint,mathtools}
+\usepackage{relsize}    % For \mathlarger
+
+% --- Multicolumn layout setup ---
+\usepackage{multicol}
+\setlength{\columnsep}{0.08cm}    % minimal separation between columns
+\setlength{\multicolsep}{0pt}    % no additional space around multicols
+% --- Hyperlinks set up ---
+\usepackage[colorlinks=true,citecolor=blue,linkcolor=blue]{hyperref}
+
+% --- Enables importing sections, make it easier for working with several .tex
+\usepackage{import}
+
+% --- Paragraph and line spacing adjustments ---
+\setlength{\parindent}{0pt}      % no paragraph indentation
+\setlength{\parskip}{0pt}        % no extra space between paragraphs
+\renewcommand{\baselinestretch}{1}% no extra line spacing
+
+% --- Enforce fixed font metrics to avoid variability ---
+\makeatletter
+\renewcommand\normalsize{%
+  \@setfontsize\normalsize{7}{7}% fixed 7pt font and baselineskip
+  \abovedisplayskip 2pt plus 1pt minus 1pt%
+  \belowdisplayskip \abovedisplayskip%
+  \abovedisplayshortskip 1pt plus 1pt%
+  \belowdisplayshortskip 1pt plus 1pt minus 1pt}
+\makeatother
+
+% --- Compact section headers ---
+\usepackage[compact]{titlesec} 
+\titlespacing*{\section}{0pt}{0.5pt}{0.5pt}
+\titleformat{\section}{\normalfont\bfseries}{}{0em}{}
+
+\usepackage{ragged2e} % For advanced alignment control
+\setlength{\RaggedRightRightskip}{0pt plus 0pt} % Remove line stretching
+\setlength{\RaggedRightParindent}{0pt} % No paragraph indentation
+
+\usepackage{booktabs}
+
+\usepackage{tikz}
+\usetikzlibrary{calc,intersections}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usepgfplotslibrary{groupplots}
+
+
+\usepackage{graphicx}
+
+\usepackage{xcolor}
+
+\usepackage{caption}
+\captionsetup{hypcap=false}
+
+\setlength{\columnseprule}{0.2pt} 
+
+%==================================================
+%Just to check the code
+\usepackage{lipsum}  
+%==================================================
+
+% --- Start document and three-column environment ---
+\begin{document}
+\begin{multicols}{3}
+\raggedright % Force left alignment throughout document
+
+\scriptsize{} 
+\import{sections/}{0_coordinate}
+\import{sections/}{1_vecderiv}
+\import{sections/}{2_taylor}
+ \import{sections/}{2.1_ode} \import{sections/}{3_tensors}
+\import{sections/}{4_geom_diff}
+\import{sections/}{4.1_minkowski}
+\import{sections/}{5_trans_parall}
+\import{sections/}{6_riemman}
+\import{sections/}{6.1_inv_cuadriv}
+\import{sections/}{7_rel_esp}
+\import{sections/}{8_killings}
+\import{sections/}{8.1_metric_induc}
+\import{sections/}{9_ppo_equiv}
+\import{sections/}{10_Schwarzschild}
+\import{sections/}{11_Newton}
+\import{sections/}{11.1_Newton_orbit}
+\import{sections/}{12_orbits_scharzs}
+\import{sections/}{12.1_orbits_draw}
+\import{sections/}{12.2_orbits_cont}
+%%%% \import{sections/}{12.3_orbits_luz}
+\import{sections/}{13_observador_estatico}
+\import{sections/}{14_in_black_hole}
+\import{sections/}{15_diagramas_Penrose}
+\import{sections/}{16_e_mom_tens}
+\import{sections/}{16.1_Gram_Schmidt}
+\import{sections/}{17_accion_hilbert_einstein}
+\import{sections/}{18_einstein_field_equations}
+\vfill
+% \lipsum[1-40]
+
+
+
+
+
+
+% \import{sections/}{trig}
+
+% \import{sections/}{gamma}
+
+% \import{sections/}{taylor}
+
+% \import{sections/}{symbols}
+
+% \import{sections/}{preffixes}
+
+% \import{sections/}{integrals}
+
+% \import{sections/}{lin_algeb}
+
+% \import{sections/}{conics}
+
+% \import{sections/}{complex}
+
+% \import{sections/}{fourier}
+
+% \import{sections/}{real_integrals_complex}
+
+% \import{sections/}{pauli}
+
+
+% \import{sections/}{ode}
+
+% \import{sections/}{quaternions}
+
+% \import{sections/}{magnitudes}
+
+% \import{sections/}{constants}
+
+\import{sections/}{z_acknowledgements}
+\clearpage
+
+
+%\lipsum[1-30]
+
+\end{multicols}
+\end{document}

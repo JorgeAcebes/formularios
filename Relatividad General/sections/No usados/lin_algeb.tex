@@ -1,0 +1,63 @@
+\section*{\normalsize Linear Algebra {\normalfont\scriptsize $(n,m,i,j,k,l\!\in\!\mathbb{N}_0,\;\mathbf{A},\mathbf{B},\mathbf{C},\mathbf{D},\mathbf{L},\mathbf{U},\mathbf{I},\mathbf{P}\!\in\!\mathcal{M}(\mathbb{K}))$}}
+\underline{\text{Matrices}}\normalfont\scriptsize{\text{ (Generalizable to arbitrary linear operators)}}
+\begin{align*}
+&\mathbf{A}_{m\times n}\text{ matrix with $m$ rows and $n$ columns; $m$ and $n$ dimensions of $\mathbf{A}$} \\
+&\mathbf{A}\!=\!(a)_{ij}\;\; \mathbf{A}^{\operatorname{T}}\!=\!(a)_{ji}\!\equiv\!\text{transpose of $\mathbf{A}$}\;\; \mathbf{A}_{n\times n}\!\equiv\!\text{square matrix} \\
+&\mathbf{D}\!=\!\mathbf{D}_{n\times n}:\; i\!\neq\!j\;\forall i,j\Rightarrow d_{ij}\!=\!0,\;\mathbf{D}\!=\!\operatorname{diag}(d_1,\cdots,d_n)\!\equiv\!\text{diagonal matrix} \\
+&\mathbf{L}\!=\!\mathbf{L}_{n\times n}:\; l_{ij}\!=\!0\;\forall i\!<\!j,\;\mathbf{L}\!\equiv\!\text{lower triangular matrix} \\
+&\mathbf{U}\!=\!\mathbf{U}_{n\times n}:\; u_{ij}\!=\!0\;\forall i\!>\!j,\;\mathbf{U}\!\equiv\!\text{upper triangular matrix} \\
+&\mathbf{I}\!=\!\mathbf{I}_n\!=\!\operatorname{diag}(1,\cdots,1)\!\equiv\!\text{identity matrix}\;\;(\mathbf{I}_n)_{ij}\!=\!\delta_{ij} \\
+&\mathbf{A}_{n\times n}\!\equiv\!\text{Invertible}\Leftrightarrow\exists\,\mathbf{B}_{n\times n}\;|\;\mathbf{AB}\!=\!\mathbf{BA}\!=\!\mathbf{I}_n,\;\mathbf{B}\!=\!\mathbf{A}^{-1}\!\equiv\!\text{inverse of $\mathbf{A}$} \\
+&\mathbf{A}_{n\times n}\!\equiv\!\text{singular matrix}\Leftrightarrow\mathbf{A}\text{ not invertible}\Leftrightarrow\det\mathbf{A}\!=\!0 \\
+&\text{Let }\mathbf{A}_{m\times n},\;0\!<\!k\!\leq\!m,n:\text{ minor of degree $k$ of $\mathbf{A}$ is the determinant of} \\
+&\text{a matrix obtained from $\mathbf{A}$ by deleting $m\!-\!k$ rows and $n\!-\!k$ columns} \\
+&\text{Let }\mathbf{A}_{n\times n},\;\mathbf{A}_{ij}\text{ submatrix, by deleting row $i$ and column $j$ from $\mathbf{A}$,} \\
+&c_{ij}\!=\!(-1)^{i+j}\!\cdot\!\det\mathbf{A}_{ij}\;\;\mathbf{C}\!=\!(c)_{ij}\!\equiv\!\text{cofactor matrix} \\
+&\operatorname{adj}\mathbf{A}\!=\!\mathbf{C}^{\operatorname{T}}\!\equiv\!\text{adjugate matrix of $\mathbf{A}$}\;\;\mathbf{A}^{-1}\!=\!\operatorname{adj}\mathbf{A}/{\det\mathbf{A}} \\
+&\mathbf{A}\!=\!\mathbf{A}^{\operatorname{T}}\Leftrightarrow\mathbf{A}\text{ symmetric matrix}\;\;\mathbf{A}\!=\!-\mathbf{A}^{\operatorname{T}}\Leftrightarrow\mathbf{A}\text{ anti-symmetric matrix} \\
+&\mathbf{A}^{\dagger}\!=\!(\overline{\mathbf{A}})^{\operatorname{T}}\!=\!\overline{\mathbf{A}^{\operatorname{T}}}\!\equiv\!\text{conjugate transpose or Hermitian transpose of $\mathbf{A}$} \\
+&\mathbf{A}\!=\!\mathbf{A}^{\dagger}\Leftrightarrow\mathbf{A}\text{ Hermitian matrix}\;\;\mathbf{A}\!=\!-\mathbf{A}^{\dagger}\Leftrightarrow\mathbf{A}\text{ anti-Hermitian matrix} \\
+&\mathbf{A}^{\dagger}\mathbf{A}\!=\!\mathbf{A}\mathbf{A}^{\dagger}\Leftrightarrow\mathbf{A}\text{ normal matrix}\;\;\mathbf{A}^{\dagger}\!=\!\mathbf{A}^{-1}\Leftrightarrow\mathbf{A}\text{ unitary matrix} \\
+&\det\mathbf{A}_{n\times n}\!=\!|\mathbf{A}|\!=\!\sum\nolimits_{i=1}^n a_{ij}c_{ij}\!=\!\sum\nolimits_{j=1}^n a_{ij}c_{ij}\;\;\det\begin{bmatrix}a&b\\c&d\end{bmatrix}\!=\!\begin{vmatrix}a&b\\c&d\end{vmatrix}\!=\!ad\!-\!bc \\
+&\operatorname{tr}\mathbf{A}_{n\times n}\!=\!\sum\nolimits_{i=1}^n a_{ii}\;\;\operatorname{rank}\mathbf{A}\!\coloneqq\!\operatorname{dim}(\operatorname{img}\mathbf{A}_{m\times n})\!\leq\!\min\{m,n\}\\
+&\text{rank of $\mathbf{A}$: number of linearly independent columns (or rows) of $\mathbf{A}$} \\
+&\ker\mathbf{A}\!=\!\{\mathbf{x}\!\in\!\mathbb{K}^n\;|\;\mathbf{Ax}\!=\!\mathbf{0}\}\;\;\ker\mathbf{A}\!+\!\operatorname{rank}\mathbf{A}\!=\!n,\;\mathbf{A}_{m\times n} \\
+&[\mathbf{A},\mathbf{B}]\!=\!\mathbf{AB}\!-\!\mathbf{BA}\!\equiv\!\text{commutator}\;\;[\mathbf{A},\mathbf{B}]\!=\!0\Leftrightarrow\mathbf{A},\mathbf{B}\text{ commute} \\
+&\{\mathbf{A},\mathbf{B}\}\!=\!\mathbf{AB}\!+\!\mathbf{BA}\!\equiv\!\text{anticommutator}\;\;2\mathbf{AB}\!=\![\mathbf{A},\mathbf{B}]\!+\!\{\mathbf{A},\mathbf{B}\} \\
+&\text{Let }\mathbf{A}_{n\times n},\;\mathbf{v}_{n\times1}\!\neq\!\mathbf{0},\;\lambda\!\in\!\mathbb{K},\;\mathbf{Av}\!=\!\lambda\mathbf{v}:\mathbf{v}\!\equiv\!\text{eigenvector},\;\lambda\!\equiv\!\text{eigenvalue} \\
+&p(\lambda)\!=\!|\mathbf{A}\!-\!\lambda\mathbf{I}|\!=\!0\Rightarrow\{\lambda_k\}\;\;(\mathbf{A}\!-\!\lambda_k\mathbf{I})\mathbf{v}_k\!=\!\mathbf{0}\Rightarrow\{\mathbf{v}_k\} \\
+&\mu_{\mathbf{A}}(\lambda_k)\!\equiv\!\text{algebraic multiplicity: }\max\{l\;|\;p(\lambda)\!=\!(\lambda\!-\!\lambda_k)^l\!\cdot\!q(\lambda),\;q(\lambda_k)\!\neq\!0\} \\
+&\gamma_{\mathbf{A}}\!=\!\dim\ker(\mathbf{A}\!-\!\lambda_k\mathbf{I})\!\equiv\!\text{geometric multiplicity}\;\;1\!\leq\!\gamma_{\mathbf{A}}(\lambda_k)\!\leq\!\mu_\mathbf{A}(\lambda_k) \\
+ &\gamma_{\mathbf{A}}(\lambda_k)\!=\!\mu_{\mathbf{A}}(\lambda_k)\;\forall k\Leftrightarrow\exists\mathcal{B'}\!=\!\{\mathbf{v}_1,\cdots,\mathbf{v}_n\}\!\equiv\!\text{eigenbasis}\Rightarrow\exists\mathbf{P}\;|\;\mathbf{P^{-1}AP}\!=\!\mathbf{D} \\
+&\mathbf{P}\!=\!{}_{\mathcal{B'\!}}\mathbf{P}_{\mathcal{B}}\!=\!\mathbf{P}_{\mathcal{B\rightarrow B'}}\!\equiv\!\text{change of basis matrix from $\mathcal{B}$ to $\mathcal{B'}$}\;\;{}_{\mathcal{B}'}D_{\mathcal{B}'}\!=\!{}_{\mathcal{B}}A_{\mathcal{B}} \\
+&\mathbf{P}\!=\![\mathbf{v}_1\cdots\mathbf{v}_n]\;\;\mathbf{D}\!=\!\operatorname{diag}(\lambda_1,\cdots,\lambda_n)\;\;\mathbf{A\!\sim\! D}\Rightarrow|\mathbf{A}|\!=\!|\mathbf{D}|,\;\operatorname{tr}\mathbf{A}\!=\!\operatorname{tr}\mathbf{D}\end{align*}
+ \underline{\text{Properties}} {\normalfont\scriptsize \ ($\theta \in \mathbb{R},\ \eta, \nu, \omega, \tau \in \mathbb{C}, \; \; \vec{u},\vec{v}\!\in\!\mathbb{C}^n$)}
+ \begin{align*}
+ &\mathbf{A}(\nu\!+\!\omega)\!=\!\nu\mathbf{A}\!+\!\omega\mathbf{A}\;\;\tau(\mathbf{A}\!+\!\mathbf{B})\!=\!\tau\mathbf{A}\!+\!\tau\mathbf{B}\;\;\mathbf{A(BC)\!=\!(AB)C} \\ &\mathbf{A(B\!+\!C)\!=\!AB\!+\!CB}\;\;\mathbf{(A\!+\!B)C\!=\!AC\!+\!BC}\;\;\mathbf{AB\!\not\equiv\! BA} \\
+&\text{Let }v,w\text{ arbitrary column vectors, $j^{th}$ column of $\mathbf{A}$ }a_j\!=\!\nu\!\cdot\!v\!+\!\omega\!\cdot\!w: \\
+&|\mathbf{A}|\!=\!\nu\!\cdot\!|a_1,\cdots,a_{j-1},v,a_{j+1},\cdots,a_n|\!+\!\omega\!\cdot\!|a_1,\cdots,a_{j-1},w,a_{j+1},\cdots,a_n| \\
+&|a_1,\cdots,u,\cdots,u,\cdots,a_n|\!=\!0\;\;|\mathbf{A}_\sigma|\!=\!\operatorname{sign}(\sigma)\!\cdot\!|\mathbf{A}|,\;\sigma\!\equiv\!\text{permutation} \\
+&|\tau\mathbf{A}|\!=\!\tau^n|\mathbf{A}|\;\;|\mathbf{A}|^{\operatorname{T}}\!=\!|\mathbf{A}^{\operatorname{T}}|\;\;|\mathbf{A}|^\dagger\!=\!|\mathbf{A}^\dagger|\;\;\overline{|\mathbf{A}|}\!=\!|\overline{\mathbf{A}}|\;\;|\mathbf{A}|^{-1}\!=\!|\mathbf{A}^{-1}| \\
+&\overline{\overline{\mathbf{A}}}\!=\!\mathbf{A}\;\;|\mathbf{AB}|\!=\!|\mathbf{A}||\mathbf{B}|\;\;|\mathbf{U}|\!=\!e^{i\theta}\;\;|\mathbf{U}|\!=\!1\Rightarrow\mathbf{U}\!\in\!SU(n)\;\;|\mathbf{A}|\!=\!\prod\nolimits_{k=1}^n\lambda_k\\
+&\operatorname{tr}(\tau\mathbf{A})\!=\!\tau\operatorname{tr}\mathbf{A}\;\;\operatorname{tr}\mathbf{A}\!=\!\operatorname{tr}\mathbf{A}^{\operatorname{T}}\;\;\operatorname{tr}\mathbf{A}^\dagger\!=\!\operatorname{tr}\overline{\mathbf{A}}\!=\!\overline{\operatorname{tr}\mathbf{A}}\;\;\operatorname{tr}(\mathbf{A\!+\!B})\!=\!\operatorname{tr}\mathbf{A}\!+\!\operatorname{tr}\mathbf{B} \\
+&\operatorname{tr}(\mathbf{AB})\!=\!\operatorname{tr}(\mathbf{BA})\Rightarrow\operatorname{tr}[\mathbf{A},\mathbf{B}]\!=\!0\;\;\operatorname{tr}\mathbf{A}\!=\!\sum\nolimits_{k=1}^n\lambda_k \\
+&\mathrm{tr}(\mathbf{A}_1\mathbf{A}_2\cdots\mathbf{A}_n)\!=\!\mathrm{tr}(\mathbf{A}_n\mathbf{A}_1\cdots\mathbf{A}_{n-1})\!=\!\cdots\!=\!\mathrm{tr}(\mathbf{A}_2\mathbf{A}_3\cdots\mathbf{A}_n\mathbf{A}_1) \\
+&(\mathbf{A}^{\operatorname{T}})^{\operatorname{T}}\!=\!\mathbf{A}\;\;(\mathbf{A\!+\!B})^{\operatorname{T}}\!=\!\mathbf{A}^{\operatorname{T}}\!+\!\mathbf{B}^{\operatorname{T}}\;\;(\eta\mathbf{A})^{\operatorname{T}}\!=\!\eta\mathbf{A}^{\operatorname{T}}\;\;(\mathbf{AB})^{\operatorname{T}}\!=\!(\mathbf{BA})^{\operatorname{T}} \\
+&(\mathbf{A^{-1}})^{\operatorname{T}}\!=\!(\mathbf{A}^{\operatorname{T}})^{-1}\;\;\operatorname{rg}\mathbf{A}\!=\!\operatorname{rg}\mathbf{A}^{\operatorname{T}}\;\;(\mathbf{A^{-1}})^\dagger\!=\!(\mathbf{A}^\dagger)^{-1}\;\;\operatorname{rg}\mathbf{A}\!=\!\operatorname{rg}\mathbf{A}^\dagger \\
+&(\mathbf{A}^\dagger)^\dagger\!=\!\mathbf{A}\;\;(\mathbf{A\!+\!B})^\dagger\!=\!\mathbf{A}^\dagger\!+\!\mathbf{B}^\dagger\;\;(\eta\mathbf{A})^\dagger\!=\!\overline{\eta}\mathbf{A}^\dagger\;\;(\mathbf{AB})^\dagger\!=\!(\mathbf{BA})^\dagger \\
+&\vec{u}\cdot\vec{v}\!=\!\langle\mathbf{u},\mathbf{v}\rangle\!=\!\mathbf{u}^\dagger\mathbf{v}\; \; \; \|\mathbf{u}\|\coloneqq\sqrt{\langle \mathbf{u},\mathbf{u} \rangle}\; \;  \; |\langle  \mathbf{u}, \mathbf{v} \rangle|\leq \|\mathbf{u}\|\|\mathbf{v}\| \; \; \; \|\mathbf{u}+\mathbf{v}\|\leq\|\mathbf{u}\|+\|\mathbf{v}\|\\
+&(\mathbf{A^{-1}})^{-1}\!=\!\mathbf{A}\;\;(\mathbf{AB})^{-1}\!=\!\mathbf{B}^{-1}\mathbf{A}^{-1}\;\;(\eta\mathbf{A})^{-1}\!=\!\mathbf{A}^{-1}\!/\eta\;\;\mathbf{D}^{-1}\!=\!\operatorname{diag}(1/d_i) \\
+&[\mathbf{A},\mathbf{B}]\!=\!-[\mathbf{B},\mathbf{A}]\;\;[\mathbf{A},\mathbf{B\!+\!C}]\!=\![\mathbf{A},\mathbf{B}]\!+\![\mathbf{A},\mathbf{C}]\;\;[\mathbf{A},\mathbf{A}]\!=\!
+[\mathbf{A},\mathbf{A}^n]\!=\!0 \\
+&[\mathbf{A},\mathbf{BC}]\!=\![\mathbf{A},\mathbf{B}]\mathbf{C}\!+\!\mathbf{B}[\mathbf{A},\mathbf{C}]\;\;[\mathbf{A},[\mathbf{B},\mathbf{C}]]\!+\![\mathbf{B},[\mathbf{C},\mathbf{A}]]\!+\![\mathbf{C},[\mathbf{A},\mathbf{B}]]\!=\!0 \\
+ &[\mathbf{A},\mathbf{B}]^\dagger\!=\![\mathbf{B}^\dagger,\mathbf{A}^\dagger]\;\;\mathbf{A}\!=\!\mathbf{A}^\dagger\!\Rightarrow\!\lambda_\mathbf{A}\!\in\!\mathbb{R}\;\;\mathbf{A}\!=\!-\mathbf{A}^\dagger\!\Rightarrow\!\lambda_\mathbf{A}\!\in\!i\mathbb{R} \\
+&\text{if }\mathbf{A}\!=\!\mathbf{A}^\dagger,\mathbf{B}\!=\!\mathbf{B}^\dagger\!:\;\;i[\mathbf{A},\mathbf{B}]\!=\!(i[\mathbf{A},\mathbf{B}])^\dagger,\;\;\{\mathbf{A},\mathbf{B}\}\!=\!\{\mathbf{A},\mathbf{B}\}^\dagger \\
+&\text{if }\mathbf{A}\!=\!\mathbf{A}^\dagger,\mathbf{B}\!=\!\mathbf{B}^\dagger,\text{ and }[\mathbf{A},\mathbf{B}]\!=\!0\!:\;\;\mathbf{AB}\!=\!(\mathbf{AB})^{\operatorname{T}}    
+\end{align*}
+
+
+
+
+
+
+

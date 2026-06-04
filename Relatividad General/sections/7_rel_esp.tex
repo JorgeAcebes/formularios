@@ -1,0 +1,109 @@
+\section*{Relatividad Especial \normalfont{ (S.R. inerciales, espacio-tiempo plano, $ g_{\scalebox{0.8}{Minkowski}}{=}g^{-1}{=}\text{diag}(-1,1)$})}
+    \underline{Transformaciones de Lorentz} \text{($\dot{x}\!=\!dx/dt\; \; \dot{x}'\!=\!dx'/dt'$ \;ídem con $\zeta \!= \!y,z\; \; \; \dot{\vec{r}}=(\dot{x},\dot{y},\dot{z})$)}: 
+\begin{align*}
+\hspace{-15pt}
+&\begin{cases} 
+x^{0'} =\gamma (x^0 -\beta x^1)
+\\
+x^{1'}=\gamma (x^1-\beta x^0)
+\\
+\zeta' \; \; = \zeta
+\end{cases}
+\hspace{-12pt}
+&\begin{cases} 
+x^{0} =\gamma (x^{0'} +\beta x^{1'})
+\\
+x^{1}=\gamma (x^{1'}+\beta x^{0'})
+\\
+\zeta \;\;= \zeta'
+\end{cases}
+\hspace{-5pt}
+&\begin{cases} 
+\dot{x}' =\tfrac{\dot{x}-v}{1-\dot{x}v/c^2 }
+\vspace{3pt} \\
+\dot{\zeta}' =\tfrac{\dot{\zeta}}{1-\dot{\zeta} v/c^2}
+\end{cases}\hspace{-16pt}
+&\begin{cases} 
+\dot{x} =\tfrac{\dot{x}'+v}{1+\dot{x}' v/c^2 }
+\vspace{1pt} \\
+\dot{\zeta} =\tfrac{\dot{\zeta}'}{1+\dot{\zeta}' v/c^2}
+\end{cases}
+\end{align*}
+\vspace{-5pt}
+\begin{align*}
+    &\hspace{45pt}
+\text{$v\equiv$ velocidad del S.R.$'$ respecto al S.R. en reposo.}\\
+    &\text{Matricialmente: }\vec{x}' = M \vec{x} \; \;\; \vec{x}=M^{-1}\;\vec{x}'\; \; \; M=
+    \scalebox{0.8}{$    \begin{pmatrix} \mathbb{B} & 0\;\\ 
+    0 & \mathbb{I}_2\\ 
+   \end{pmatrix}$} \; \; \;
+   M^{-1} = \scalebox{0.8}{$    \begin{pmatrix} \mathbb{B}^{-1} & 0\;\\ 
+    0 & \mathbb{I}_2\\ 
+   \end{pmatrix}$}
+   \\
+    &\mathbb{B} {=} \scalebox{0.8}{$\begin{pmatrix} \gamma \hspace{-5pt}\!& \!-\gamma \beta \; \\ 
+    -\gamma\beta \hspace{-5pt}\!&\! \gamma \\ 
+    \end{pmatrix}$}{=}\scalebox{0.8}{$\begin{pmatrix} \cosh \phi \hspace{-7pt}& -\sinh\phi \; \\ 
+    -\sinh\phi \hspace{-7pt}& \cosh \phi \\ 
+    \end{pmatrix}$}\; \;\;\;  \mathbb{B}^{-1} {=} \scalebox{0.8}{$\begin{pmatrix} \gamma \hspace{-5pt}\!& \!\gamma \beta \; \\ 
+    \gamma\beta \hspace{-5pt}\!&\! \gamma \\ 
+    \end{pmatrix}$}{=}\scalebox{0.8}{$\begin{pmatrix} \cosh \phi \hspace{-7pt}& \sinh\phi \; \\ 
+    \sinh\phi \hspace{-7pt}& \cosh \phi \\ 
+    \end{pmatrix}$}\;\;\; \tanh\phi =\beta
+\end{align*}
+\begin{align*}
+    &d\tau  =\sqrt{1-\dot{x}^2/c^2}  \: dt  \;\;\;\;\underline{u} = \frac{dx^i}{d\tau} e_i = \frac{1}{\sqrt{1-\dot{x}^2/c^2 }}(c,\dot{\vec{r}})\\
+    &\text{Efecto Doppler: } \omega' = \gamma  \; \omega  (1- \beta \cos \theta)\;\;\; \omega': \text{receptor}\;\;\; \omega: \text{emisor} \; \; \; (\beta >0)\\
+    &\text{Aberración relativista: }\cos \theta' = \frac{ \cos \theta- \beta }{1-\beta \cos \theta} \Leftrightarrow \tan\theta' = \frac{\sin \theta }{\gamma (\cos \theta - \beta)}\;\;  (\beta>0)
+\end{align*}
+\underline{Coordenadas de Rindler} \text{ ($\cosh^2 z - \sinh ^2z=1$)}: 
+\begin{align*}
+    &\text{Línea del mundo de una partícula con aceleración constante $a$: } \underline{a}\cdot \underline{a} = a^2\\
+    &x(t)=x_0 - \frac{c^2 }{a}\sqrt{1+\left(\frac{at}{c}\right)^2} \Rightarrow 
+    \left\{
+\begin{array}{l}
+x(t\rightarrow\infty)\approx x_0 - \tfrac{c^2}{a}+ct\leq ct+k\\
+x(t \;| \; at<<c) \approx x_0 + \frac{1}{2}at^2 \;\; (v_0=0)
+\end{array}
+\right. \\
+&\text{en paramétricas:}\left|\hspace{-3pt}
+\begin{array}{l}
+ct=\frac{c^2}{a}\sinh(\tfrac{a}{c}\tau)\\
+x=x_0-\frac{c^2}{a}+\frac{c^2}{a} \cosh(\tfrac{a}{c}\tau)
+\end{array}
+\right.
+\hspace{-7pt}
+\left.
+\begin{array}{l}
+\underline{u}=c\cosh(\frac{a}{c}\tau) \; e_0 + c\sinh(\frac{a}{c}\tau)\; e_1\vspace{2pt} \\
+\underline{a}=a\sinh(\frac{a}{c}\tau)\;e_0+a \cosh (\frac{a}{c}\tau)\; e_1
+\end{array}
+\right.
+\end{align*}
+\begin{align*}
+&\text{Base de sistema de referencia comóvil ($i=1,2,3$): }
+e_{0'}=\frac{\underline{u}}{c} \;\;
+e_{i'}=\frac{1}{\sqrt{\underline{b_i}\cdot\underline{b_i}}}\underline{b_i}
+&\{\underline{b_i}\}\equiv \text{Cuadrivectores espaciales: }  \underline{b_i}\cdot\underline{u} =0\; \;\; \hat{\underline{b_i}}\cdot\hat{\underline{b_j}} = \delta_{ij}\;\;\;
+\\
+&\text{Impongo que la partícula comience en } x=1\Rightarrow \tfrac{c^2}{a}=1 \Rightarrow (\tfrac{a}{c}\tau) \ cT
+\\
+&T\equiv\text{tiempo propio de esa partícula en concreto. El resto de partículas tendrán $T_i$.}\\
+&\scalebox{0.75}{\text{No puedo obtener la métrica a partir de los vectores de la base del sistema de referencia comóvil, debido a que}}\\
+&\scalebox{0.75}{\text{no es una base coordenada $\Leftrightarrow \nexists$ transformación de coordenadas: $(x^0,x^1)\mapsto (x^{0'},x^{1'})$. Defino la transformación:} }
+\end{align*}
+\begin{align*}
+&(ct, x)\mapsto(cT, r):
+&\begin{cases} 
+ct=r\sinh (cT) \vspace{2pt} \\
+\; x=r\cosh(cT) 
+\end{cases}
+&\begin{cases} 
+e_{cT} = r\cosh(cT)\;e_0 + r\sinh(cT)\;e_1\\
+\;\:e_r=\; \sinh(cT)\;e_0 \;\:+ \; \cosh(cT) \; e_1
+\end{cases}
+\end{align*}
+\begin{align*}
+    &\dashv\text{Métrica de Rindler: } ds^2 = -\left(\frac{r}{\varpi}\right)^2 c^2 dT^2 + dr^2  \;\;\; \varpi= 1 \;\text{m}\: (\text{ajuste dimensional})\\ 
+    &\text{Símbolos de Christoffel: } \Gamma^0_{10}=\Gamma^0_{01}= \frac{1}{r}\; \; \; \Gamma^1_{00}  = r\;\; \;\;  \dot{x}= \frac{dx}{dt}=c\frac{u^1}{u^0}=\tanh(\tfrac{a}{c}\tau)\
+\end{align*}

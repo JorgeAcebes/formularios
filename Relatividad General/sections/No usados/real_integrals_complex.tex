@@ -1,0 +1,32 @@
+\section*{Real integrals via residues\\\normalfont\scriptsize{ ($\mathfrak{R}\equiv$ rational function, no essential singularities nor branch cuts inside contour)}}
+\begin{align*}
+    &\underline{\text{Rational trigonometric integrals}} \;  
+    {(\textbf{c.v.}}\!: z=e^{i\theta})\\
+    &\mathfrak{R}\text{ with no singularities on contour $\equiv$ unit circle: $x^2 +y^2 = 1$ }\\
+    &\int_0^{2\pi} \!\mathfrak{R}(\cos\theta, \sin\theta)d\theta = 2\pi \sum_{|z_k|<1} \operatorname{Res}\left[\frac{1}{z}\mathfrak{R}\left(\frac{z+z^{-1}}{2}, \frac{z-z^{-1}}{2i}\right), z_k\right]\in \mathbb{R}\\
+    &\underline{\text{Rational improper integrals}}\\
+    &\mathfrak{R} \text{ with no poles in }\mathbb{R}, \; \lim_{x\rightarrow \infty} x\;\!\mathfrak{R}(x) = 0, \text{ contour $\equiv$ upper/lower half-plane}\\
+    &\int_{-\infty}^{+\infty}\!\mathfrak{R}(x)dx = 2\pi i \sum_{\Im \left[z_k\right] > 0} \operatorname{Res}\left[\mathfrak{R}(z), z_k\right] = -2\pi i \sum_{\Im \left[z_k\right] < 0} \operatorname{Res}\left[\mathfrak{R}(z), z_k\right] \in \mathbb{R}\\
+    &\underline{\text{Cauchy principal value}}\\ &f \text{ continuous on } [a,b]\in \mathbb{R} \text{ except at isolated poles } \{x_k\}, \ m =1\\
+    &\fint\limits_a^b \! f(x) \, dx \equiv \mathbf{P.V.} \int\limits_a^b \! f(x) \, dx \equiv \!\!\!\lim_{\varepsilon \to 0^+} \!\!\left\{ 
+    \int\limits_a^{x_1 - \varepsilon} \!\!\!\!\! f(x) \, dx + \int\limits_{x_1 + \varepsilon}^{x_2 - \varepsilon} \!\!\!\!\! f(x) \, dx + \cdots + \int\limits_{x_n + \varepsilon}^b \!\!\!\!\!f(x) \, dx \right\}\\
+    &\underline{\text{Improper integrals with principal value}}\\
+    &f \text{ holomorphic, except at isolated poles } \{z_k\},\ m=1; \  
+    \lim_{|z|\rightarrow\infty}\!\!\! z\; \! f(z) \!=\! 0 \text{ on } \Im z \!>\!0\Rightarrow\\
+     &\fint\limits_{-\infty}^{+\infty}\!\!f(x)\;\!dx \!=\! 2\pi i\!\!\!\!\!\!\!\!
+    \sum_{\Im \left[z_k\right] > 0}\!\!\! \!\!\!\!\!\operatorname{Res}\left[f(z), z_k\right]\!\! +\!\pi i\!\!\!\!\!\!
+    \sum_{\Im \left[z_k\right] = 0}\!\!\! \!\!\!\!\!\operatorname{Res}\left[f(z), z_k\right]\in \mathbb{R}\; \; 
+    \begin{matrix}
+        \text{Analogous for } \Im z <0, \\\text{ just multiply by $(-1)$} 
+    \end{matrix}\\
+    &\underline{\text{Semi-improper integrals with principal value}}\\
+    &f \text{ holomorphic, except at isolated singularities } \!
+    \{z_k\}\not\in \mathbb{R}^+,  \ \text{and except at}\\
+    &\text{isolated poles } \{x_k\}  \in  \mathbb{R}^+ , m = 1;  \lim_{|z|\rightarrow \infty} z\! \; f(z) \not = \infty ; \ \lim_{z\rightarrow 0} f(z) \not = \infty\Rightarrow \! \forall \alpha \in (0,1)\!:\\
+    &\fint\limits_{0}^{\infty} \frac{f(x)}{x^{\alpha}} dx\! =\! \frac{2\pi i }{1\!-\!e^{-2\pi i \alpha }}\sum_{k}\operatorname{Res}\left[\frac{f(z)}{z^{\alpha}}, z_k\right]+ \frac{\pi i (1\!+\!e^{-2\pi i \alpha })}{1-e^{-2\pi i \alpha}}\sum_{k}\operatorname{Res}\left[\frac{f(z)}{z^{\alpha}}, x_k\right]\!\in\! \mathbb{R}\\
+    &\underline{\text{Fourier-like integrals}}\\
+    &f\text{ holomorphic on }\Im z \stackrel{\scalebox{0.5}{$>$}}{\scalebox{0.5}{$<$}} 0, \text{ except at isolated sigularities } \{z_k\}, \text{ and with isolated}\\
+    &\text{poles } \{x_k\}\in \mathbb{R}, \ m=1; \lim_{|z|\rightarrow\infty, \Im z \stackrel{\scalebox{0.5}{$>$}}{\scalebox{0.5}{$<$}} 0} f(z) =0 \Rightarrow\\
+    &\fint\limits_{-\infty}^{+\infty}f(x)e^{\pm ikx} \;\! dx=\pm 2\pi i \sum_{\Im z_k \stackrel{\scalebox{0.5}{$>$}}{\scalebox{0.5}{$<$}} 0} \operatorname{Res}\left[f(z)e^{\pm ikz}, z_k\right] \pm \pi i \sum_k \operatorname{Res}\left[f(z)e^{\pm ikz}, x_k\right] \\
+     &\underline{\text{Trick}}\;\;  \int_{-\infty}^{+\infty}\!\! \cos x \; \!dx = \Re \left[\int_{-\infty}^{+\infty} e^{ix}\!\; dx\right] \;\;\;\;\int_{-\infty}^{+\infty}\!\! \sin x \; \!dx = \Im \left[\int_{-\infty}^{+\infty} e^{ix} \!\; dx\right]
+\end{align*}

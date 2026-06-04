@@ -1,0 +1,13 @@
+\section*{Gram Schmidt orthonormalization \normalfont{($V$ inner product space, $\textbf{v}_1, ..., \textbf{v}_k$ L.I. vectors)}}
+\begin{align*}
+    &\textbf{u}_1=\textbf{v}_1 &\textbf{e}_1=\frac{\textbf{u}_1}{\|\textbf{u}_1\|}\\
+    &\textbf{u}_2=\textbf{v}_2- \frac{\langle \textbf{v}_2, \textbf{u}_1\rangle}{\langle \textbf{u}_1,\textbf{u}_1\rangle}\textbf{u}_1
+    &\textbf{e}_2=\frac{\textbf{u}_2}{\|\textbf{u}_2\|}\\ 
+    &\textbf{u}_3=\textbf{v}_3- \frac{\langle \textbf{v}_3, \textbf{u}_1\rangle}{\langle \textbf{u}_1,\textbf{u}_1\rangle}\textbf{u}_1 -
+    \frac{\langle \textbf{v}_3, \textbf{u}_2\rangle}{\langle \textbf{u}_2,\textbf{u}_2\rangle}\textbf{u}_2 
+    &\textbf{e}_3=\frac{\textbf{u}_3}{\|\textbf{u}_3\|}\\ 
+    &\hspace{150pt}\cdots 
+    &\\
+    &\textbf{u}_k=\textbf{v}_k- \sum_{j=1}^{k-1} \frac{\langle \textbf{v}_k, \textbf{u}_j\rangle}{\langle \textbf{u}_j,\textbf{u}_j\rangle}\textbf{u}_j
+    &\textbf{e}_k=\frac{\textbf{u}_k}{\|\textbf{u}_k\|}
+\end{align*}

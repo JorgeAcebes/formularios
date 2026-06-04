@@ -1,0 +1,64 @@
+\section*{Métrica inducida por el espacio ambiente ($\mathbb{R}^n$) en una superficie $\Sigma$ ($\mathbb{R}^3$)}
+\underline{Cálculo detallado}:
+\begin{align*}
+    &1.\;  \text{Parametriza superficie mediante inmersión } X:U\subset \mathbb{R}^2 \longrightarrow \mathbb{R}^n, \; (u,v)\mapsto X(u,v)\\
+    &2. \;  \text{Calcula los vectores tangentes: }
+    X_u = \frac{\partial X}{\partial u}, \; X_v= \frac{\partial X}{\partial 
+    v}\\
+    &3.\; \text{Restringe la métrica: } \!E\!=\! \langle X_u,X_u\rangle\;\; F\!=\! \langle X_u,X_v\rangle\; \; G\!=\! \langle X_v,X_v\rangle \;\; \langle\cdot ,\cdot\rangle\!\equiv\!\text{prod.esc.}\\
+    &4.\; \text{Tensor métrico inducido: } g=
+    \begin{pmatrix}
+        E&F\\
+        F&G
+    \end{pmatrix}\; \; \; \; ds^2 = E\,du^2+ 2F\,du\,dv + G\, dv^2\\
+    &5.\;  \text{Elemento de área:} dA= \sqrt{\text{det}\,g} \: du\,dv
+\end{align*}
+\underline{Ejemplo (toroide)} \text{ radio circunferencia: $a$, distancia origen-centro circunferencia: $b$}
+\begin{align*}
+    &\text{Parametrización:}\hspace{-5pt}
+    &\begin{cases} 
+x= (b+a\,\cos\alpha)\cos\theta
+\\
+y= (b+a\,\cos\alpha)\sin\theta
+\\
+z= a\sin\alpha
+\end{cases}
+\left|
+\hspace{-12pt}
+\begin{array}{ll}
+     & \alpha\equiv \text{rotación en circunferencia}\\
+     &\, \theta\equiv \text{rotación eje z} 
+\end{array}
+\right.
+\end{align*}
+\begin{align*}
+X_\alpha= 
+    \left[
+\hspace{-12pt}
+\begin{array}{ccc}
+     & -a\sin\alpha\cos\theta\\
+     &-a\sin\alpha\sin\theta\\
+     &a\cos\alpha
+\end{array}
+\right]\; \;\;
+ X_\theta= 
+    \left[
+\hspace{-12pt}
+\begin{array}{ccc}
+     & -(b+a\cos\alpha)\sin\theta\\
+     &+(b+a\cos\alpha)\cos\theta\\
+     &0
+\end{array}
+\right]\; \; \; 
+    \left.
+\hspace{-12pt}
+\begin{array}{lll}
+     & E=a^2 \\
+     &F=0\\
+     &G=(b+a\cos\alpha)^2
+\end{array}
+\right.
+\end{align*}
+\begin{align*}
+    &ds^2 = a^2 d\alpha^2 + (b+a\cos\alpha)^2 d\theta^2 \; \; \;\; A = \int_{0}^{2\pi}\int_{0}^{2\pi}a(b+a\cos\alpha)\,d\alpha\,d\theta= 4\pi^2  ab
+\end{align*}

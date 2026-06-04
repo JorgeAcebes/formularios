@@ -1,0 +1,142 @@
+\section*{Transporte paralelo y derivadas $(\hat{x}=\vec{e}_x, \hat{y}=\vec{e}_y, \hat{z}=\vec{e}_z)$}
+\underline{Base coordenada en cooordenadas esféricas ($\vec{r}= r\hat{r}$)}:
+\begin{align*}
+    &\begin{cases} 
+\vec{e}_r= \frac{\partial \vec{r}}{\partial r}=\hat{r}\vspace{3pt} \\ 
+\vec{e}_{\theta}= \frac{\partial \vec{r}}{\partial \theta} = R\frac{\partial \hat{r}}{\partial \theta }\vspace{3pt} \\ 
+\vec{e}_\phi = \frac{\partial \vec{r}}{\partial \phi}= R\sin \theta \hat{\phi}
+\end{cases}&\begin{cases} 
+\vec{e}_r= \sin\theta  \cos \phi \; \vec{e}_x +\sin\theta\sin \phi\; \vec{e}_y + \cos \theta \; \vec{e}_z\vspace{3pt} \\ 
+\vec{e}_{\theta}=R\cos\theta \cos \phi \; \vec{e}_x  + R \cos \theta \sin\phi \; \vec{e}_y - R \sin \theta \; \vec{e}_z\vspace{3pt}\\ 
+\vec{e}_\phi = - R \sin \theta \sin \phi \; \vec{e}_x + R \sin \theta \cos \phi \; \vec{e}_y
+\end{cases}
+\end{align*}
+\vspace{-6pt}
+\begin{align*}
+&
+\begin{cases} 
+\vec{e}^{\,R} = \vec{e}_R \vspace{3pt}\\
+\vec{e}^{\,\theta} = \frac{1}{R^2}\, \vec{e}_\theta \vspace{3pt}\\
+\vec{e}^{\,\phi} = \frac{1}{R^2 \sin^2\theta}\, \vec{e}_\phi\; \; 
+\end{cases}
+&\begin{cases} 
+\vec{e}_x = \sin\theta \cos\phi\, \vec{e}_R + \cos\theta \cos\phi\, \frac{\vec{e}_\theta}{R} - \sin\phi\, \frac{\vec{e}_\phi}{R \sin\theta} \vspace{3pt}\\
+ \vec{e}_y = \sin\theta \sin\phi\, \vec{e}_R + \cos\theta \sin\phi\, \frac{\vec{e}_\theta}{R} + \cos\phi\, \frac{\vec{e}_\phi}{R \sin\theta} \vspace{3pt}\\
+\vec{e}_z = \cos\theta\, \vec{e}_R - \sin\theta\, \frac{\vec{e}_\theta}{R}
+\end{cases}
+\end{align*}
+\underline{Símbolos de Christoffel}:    $\frac{\partial e_i}{\partial x^j}{\equiv}\Gamma_{ji}^{k}e_k\; \; \frac{\partial e^i}{\partial x^j}{\equiv}{-} \Gamma^i_{jk} e^k$\; \scalebox{0.7}{\text{(variación de vectores de la base de punto a punto)}}
+\begin{align*}
+&\begin{cases} 
+\Gamma_{\theta \theta}^R = - R \vspace{3pt} \\
+\Gamma_{\phi \phi}^\theta = - \sin \theta \cos \theta \vspace{3pt} \\ 
+\Gamma_{\phi \theta}^\phi = \Gamma_{\theta \phi}^\phi = \frac{\cos \theta }{\sin \theta}
+\end{cases}
+&
+\begin{cases} 
+\Gamma^R_{\phi \phi }=- R \sin^2 \theta \vspace{3pt} \\ 
+\Gamma_{\theta R}^\theta = \Gamma^\theta_{R \theta} = \Gamma_{\phi R}^\phi =\Gamma_{R\phi}^\phi =\frac{1}{R}\vspace{3pt}\\ 
+\text{resto } \Gamma_{ij}^k = 0
+\end{cases}    
+\end{align*}
+\underline{Derivada covariante}: 
+\vspace{-3pt}
+\begin{align*}
+    &\text{Derivada covariante de un vector: } \nabla_iA^k \equiv \tfrac{\partial A^k }{\partial x^i}+\Gamma^k_{ij}A^j\; \; \; \nabla_iA_k\equiv \tfrac{\partial A_k}{\partial x^i}-\Gamma^j_{ik}A_j\\
+    &\text{Derivada covariante de un tensor:}\\
+    &\text{tipo (2,0) }\nabla_\gamma T^{\alpha \beta} \!\equiv\!\partial_\gamma T^{\alpha\beta} + \Gamma_{\sigma\gamma}^\alpha T^{\sigma\beta}+\Gamma ^\beta_{\delta \gamma}T^{\alpha\delta}\\
+    &\text{tipo (0,2) }\nabla_\gamma T_{\alpha \beta} \!\equiv\!\partial_\gamma T_{\alpha\beta} -\Gamma_{\alpha\gamma}^\sigma T_{\sigma\beta}-\Gamma^\delta_{\beta \gamma}T_{\alpha\delta}\\
+&\text{tipo (1,1) }\nabla_\gamma T^{\alpha}_{\;\;\beta} \!\equiv\!\partial_\gamma T^{\alpha}_{\;\;\beta} + \Gamma_{\sigma\gamma}^\alpha T^{\sigma}_{\;\;\beta}-\Gamma ^\delta_{ \beta\gamma}T^{\alpha}_{\;\;\delta}\\
+&\text{tipo (1,2) }\nabla_\gamma T_{\;\; \beta \delta}^\alpha \!\equiv\!\partial_\gamma T_{\;\; \beta\delta}^\alpha +
+\Gamma_{\lambda\gamma}^\alpha T_{\;\;\beta\delta}^\lambda-\Gamma^{\lambda}_{\beta\gamma}T_{\;\;\lambda\delta}^\alpha-\Gamma_{\delta\gamma}^\lambda T^{\alpha}_{\;\;\beta\lambda}\\
+&\text{\textit{Regla}: índices arriba} \rightarrow + \Gamma\;\;\text{ índices abajo } \rightarrow -\Gamma
+\end{align*}
+\begin{align*}
+        &\text{Derivada de un vector a lo largo de una trayectoria: } \tfrac{d \vec{A}}{d\lambda}=(u^i\nabla_iA^k)e_k\\
+    &\vec{A}\text{ campo transportado paralelalmente en trayectoria } \theta(\lambda)\; \phi(\lambda) \Leftrightarrow u^i\nabla_i A^k=0\\
+    &\text{Transporte paralelo: } \tfrac{d A^\alpha}{d\lambda}+ \Gamma^\alpha_{\gamma \delta} u^\gamma A^\delta = 0 \; \;\; \; \nabla g=0\Leftrightarrow  \text{Conexión métrica }\Gamma\\
+    &\text{Geodésica: } \tfrac{d u^\alpha}{d\lambda}+ \Gamma^\alpha_{\gamma \delta} u^\gamma u^\delta \!=\! 0\;\;\text{(vector tangente transp. paralelamente a sí mismo)} \\
+    &\text{Conexión métrica: }
+    \Gamma_{\gamma \delta}^\alpha = \frac{1}{2}g^{\alpha \beta }(\partial_\gamma g_{\beta \delta}+\partial_\delta g_{\beta \gamma}-\partial_{\beta} g_{\gamma\delta}) \text{ (suponiendo no torsión)}\\
+    &\text{Torsión: } T_{\mu \nu }^\rho = \Gamma_{\mu \nu }^\rho - \Gamma_{\nu \mu }^\rho \; \; \; T=0 \Leftrightarrow \text{conexión simétrica y sin torsión: }  \Gamma_{\mu \nu}^\rho = \Gamma _{\nu \mu} ^\rho 
+ \end{align*}
+ \underline{Cálculo detallado transporte paralelo:} 
+ \begin{align*}
+&\text{\textit{Cálculo de símbolos de Christoffel: \;}\scalebox{0.8}{(vía rápida: fórmula conexión métrica)} }\\
+&1. \text{ Calcula la métrica del espacio o espacio-tiempo.}\\
+&2. \text{ Iguala las componentes de la métrica obtenida con  $\vec{e}_i \cdot \vec{e}_j$.}\\
+&3. \text{ Diferencia a ambos lados con $\partial_{x^k}$ (aplicando la regla de la cadena).}\\
+&4. \text{ Identifica los símbolos de Christoffel $\Gamma$ y desarrolla explícitamente el sumatorio.}\\
+&5. \text{ Sustituye los productos $\vec{e}_l\cdot\vec{e}_m$ por las componentes de la métrica y despeja.}\\
+&\text{\textit{Cálculo del vector transportado:}}\\
+&1. \text{ Parametriza la curva sobre la que se transportará: i.e. $r(\lambda), \phi(\lambda),...
+$}\\
+&2. \text{ Deriva las componentes respecto de $\lambda$ para obetener $u^i$.}\\
+&3. \text{ Impón que el vector se transporte paralelamente: }\tfrac{d A^\alpha}{d\lambda}+ \Gamma^\alpha_{\gamma \delta} u^\gamma A^\delta = 0\\
+&4. \text{ Escribe el sistema de EDOS.}\\
+&5. \text{ Deriva una de las ecuaciones y sustituye utilizando la otra ecuación.}\\
+&6. \text{ Resuelve la EDO y aplica condiciones iniciales para obtener componentes de } \vec{A}.
+\end{align*}
+% \begin{align*}
+%  &\text{En la superficie de una esfera $(S^2)$, las coordenadas son $\{\theta, \phi\}$, con base $\{e_\theta,e_\phi\}$,}\\
+%   &\text{métrica: } \text{diag}(R^2, R^2 \sin^2\theta) \text{ y }\Gamma_{\phi \phi}^\theta =-\sin\theta\cos\theta, \; \; \Gamma_{\phi \theta}^\phi =\frac{\cos\theta}{\sin\theta}, \text{ resto } \Gamma_{ij}^k=0.    
+% \end{align*}
+\underline{Derivada de Lie}:
+\vspace{-3pt}
+\begin{align*}
+    \text{Derivada de Lie de un vector contravariante: }&
+    \left|
+\begin{array}{l}
+\mathcal{L}_AB^\alpha=A^\beta\partial_\beta B^\alpha - B^\beta\partial_\beta A^\alpha \\
+\mathcal{L}_AB^\alpha=A^\beta\nabla_\beta B^\alpha - B^\beta\nabla_\beta A^\alpha
+\end{array}
+\right. \\
+    \text{Derivada de Lie de un vector covariante: }&
+    \left|
+\begin{array}{l}
+ \mathcal{L}_AB_\alpha=A^\beta\partial_\beta B_\alpha - B_\beta\partial_\alpha A^\beta\\
+ \mathcal{L}_AB_\alpha=A^\beta\nabla_\beta B_\alpha - B_\beta\nabla_\alpha A^\beta
+\end{array}
+\right.
+\end{align*}
+\begin{align*}
+    &\text{Corchete de Lie: } \vec{A}=A^\beta \tfrac{\partial}{\partial x^\beta}\;\; \; \mathcal{L}_{\vec{A}}\vec{B}=[\vec{A},\vec{B}]=\left(A^\beta\tfrac{\partial B^\alpha}{\partial x^\beta}-B^\beta\tfrac{\partial A^\alpha}{\partial x^\beta}\right)\tfrac{\partial}{\partial x^\alpha}\\
+    &\text{Derivada de Lie de un tensor:}
+\end{align*}
+\begin{align*}
+    \mathcal{T}=T^{\alpha \beta }e_\alpha \otimes e_\beta:&
+    \left|
+\begin{array}{l}
+\mathcal{L}_uT^{\mu\nu}=u^\beta\partial_\beta T^{\mu\nu}-
+T^{\alpha\nu}\partial_\alpha u^\mu-
+T^{\mu \alpha}\partial_\alpha u^\nu\\
+\mathcal{L}_uT^{\mu\nu}=u^\beta\nabla_\beta T^{\mu\nu}-
+T^{\alpha\nu}\nabla_\alpha u^\mu-
+T^{\mu \alpha}\nabla_\alpha u^\nu
+\end{array}
+\right. \\
+       \mathcal{T}=T_{\alpha \beta }e^\alpha \otimes e^\beta:&
+    \left|
+\begin{array}{l}
+ \mathcal{L}_uT_{\mu\nu}=u^\beta\partial_\beta T_{\mu\nu}+
+T_{\beta\nu}\partial_\mu u^\beta+
+T_{\mu \beta}\partial_\nu u^\beta\\
+\mathcal{L}_uT_{\mu\nu}=u^\beta\nabla_\beta T_{\mu\nu}+
+T_{\beta\nu}\nabla_\mu u^\beta+
+T_{\mu \beta}\nabla_\nu u^\beta
+\end{array}
+\right.
+\end{align*}
+\begin{align*}
+    &\text{\textit{Regla}: índices arriba} \rightarrow - T \;\;\text{ índices abajo } \rightarrow + T\\
+    &\text{Dada métrica } g_{\mu \nu}: \text{si } \exists \vec{\xi}  \;|\;\mathcal{ L}_\xi g_{\mu\nu}=0\Rightarrow 
+    \left\{
+    \begin{array}{l}
+\text{hay simetría en dirección dada por }\vec{\xi}\\
+\vec{\xi} \equiv \text{vectores de Killing}
+\end{array}
+\right.
+\\
+&\text{Ecuación de Killing: } \nabla_\mu \xi_\nu + \nabla_\nu  \xi_\mu =0
+\end{align*}
+

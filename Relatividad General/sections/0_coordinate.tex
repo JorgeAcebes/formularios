@@ -1,0 +1,54 @@
+\section*{Coordinate Systems}
+\underline{Spherical} $(\theta \in [0, \pi], \phi \in [0, 2\pi))$
+\begin{align*}
+&\begin{cases} 
+x = r \sin\theta\cos\phi \\ 
+y = r \sin\theta\sin\phi \\ 
+z = r \cos\theta 
+\end{cases}
+&
+\begin{cases} 
+\mathbf{\hat{x}} = \sin\theta\cos\phi\,\mathbf{\hat{r}} + \cos\theta\cos\phi\,\bm{\hat{\theta}} - \sin\phi\,\bm{\hat{\phi}} \\
+\mathbf{\hat{y}} = \sin\theta\sin\phi\,\mathbf{\hat{r}} + \cos\theta\sin\phi\,\bm{\hat{\theta}} + \cos\phi\,\bm{\hat{\phi}} \\
+\mathbf{\hat{z}} = \cos\theta\,\mathbf{\hat{r}} - \sin\theta\,\bm{\hat{\theta}} 
+\end{cases}
+\\[0pt]
+&\begin{cases} 
+r = \sqrt{x^2+y^2+z^2} \\ 
+\theta = \arctan(\sqrt{x^2+y^2}/z) \\ 
+\phi = \arctan(y/x) 
+\end{cases}
+&
+\begin{cases} 
+\mathbf{\hat{r}} = \sin\theta\cos\phi\,\mathbf{\hat{x}} + \sin\theta\sin\phi\,\mathbf{\hat{y}} + \cos\theta\,\mathbf{\hat{z}} \\ 
+\bm{\hat{\theta}} = \cos\theta\cos\phi\,\mathbf{\hat{x}} + \cos\theta\sin\phi\,\mathbf{\hat{y}} - \sin\theta\,\mathbf{\hat{z}} \\ 
+\bm{\hat{\phi}} = -\sin\phi\,\mathbf{\hat{x}} + \cos\phi\,\mathbf{\hat{y}} 
+\end{cases}
+\end{align*}
+
+\underline{Cylindrical}  $(\rho \in [0, \infty), \phi \in [0, 2\pi))$
+\begin{align*}
+&\begin{cases} 
+x = \rho\cos\phi \\ 
+y = \rho\sin\phi \\ 
+z = z 
+\end{cases} & 
+\begin{cases} 
+\mathbf{\hat{x}} = \cos\phi\,\bm{\hat{\rho}} - \sin\phi\,\bm{\hat{\phi}} \\ 
+\mathbf{\hat{y}} = \sin\phi\,\bm{\hat{\rho}} + \cos\phi\,\bm{\hat{\phi}} \ \ \
+\\ 
+\mathbf{\hat{z}} = \mathbf{\hat{z}} 
+\end{cases}
+\\[0pt]
+&\begin{cases} 
+\rho = \sqrt{x^2+y^2} \\ 
+\phi = \arctan(y/x) \\ 
+z = z 
+\end{cases}
+&
+\begin{cases} 
+\bm{\hat{\rho}} = \cos\phi\,\mathbf{\hat{x}} + \sin\phi\,\mathbf{\hat{y}} \\ 
+\bm{\hat{\phi}} = -\sin\phi\,\mathbf{\hat{x}} + \cos\phi\,\mathbf{\hat{y}} \\ 
+\mathbf{\hat{z}} = \mathbf{\hat{z}} 
+\end{cases}
+\end{align*}

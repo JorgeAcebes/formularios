@@ -1,0 +1,127 @@
+\section*{Killings}
+\begin{align*}
+    &\text{Congruencia  de un campo vectorial: conjunto de curvas integrales del campo.}\\
+    &\text{Curva integral: curva cuya tangente coincide con el campo en cada punto.}\\
+    &\text{Fórmula para la congruencia del campo $A$: }x^\alpha (\varepsilon)\approx x^\alpha + \varepsilon A^\alpha (x)\; \; \; \varepsilon^2 \approx 0\\
+    &\text{Geodésicas: } \underline{a}=\tfrac{d\underline{u}}{d\tau}=0\\
+    &\text{Cantidades conservadas (ctes): } \underline{p}\cdot \underline{\xi}\;\; \; \; \underline{k}\cdot \underline{\xi} \\
+    &\text{Espacio-tiempo estático} \Leftrightarrow \exists \;\text{Killing } \underline{\xi} \text{ temporal.}\\
+    &\text{Cuadrimomento: } \underline{p}=m\underline{u}\; \; \; \; \underline{p}\cdot\underline{\xi}^{\text{tiempo}} = -\frac{E}{c}\; \; \; \; \underline{k}\cdot\underline{\xi}^{\text{tiempo}} = -\frac{E}{c}\; \; \;\;  \underline{k}\cdot\underline{k}=0\;\\
+    &\text{Cuadrimomento de la luz: }\underline{k} \!=\!\frac{dx^\alpha}{d\lambda}e_\lambda \!\xrightarrow{g_{\mu \nu} \text{ diag}, \; \underline{\xi}^{\text{tiempo}}=e_0}=\! k^0e_0 \!+\! \sqrt{-g_{00}}|k^0|\hat{k}\\
+    &g_{\mu \nu} \text{ diag}, \: \underline{\xi}^{\text{t}}=e_0:\; \underline{k}=\frac{E}{c}\left(-\frac{1}{g_{00}}e_0+\frac{\hat{k}}{\sqrt{-g_{00}}}\right)\; \; \;  \underline{k}=\frac{h}{\lambda}\left(-\frac{1}{g_{00}}e_0+\frac{\hat{k}}{\sqrt{-g_{00}}}\right)\\
+    &\text{Geodésica de la luz: } ct= \pm \ln\left(\frac{x}{x(t=0)}\right) \\
+    &\text{Ecuación de Poisson: }\nabla^2 \Phi = 0 \; \; \; \; \nabla^2g_{00}=0
+\end{align*}
+\underline{Cálculo detallado de los vectores de Killing}:
+\begin{align*}
+    &1. \text{ Calcula la métrica del espacio o espacio-tiempo.}\\
+&2. \text{ Calcula los símbolos de Chirstoffel.}\\
+&3. \text{ Escribe las ecuaciones de Killing: } \nabla_\mu \xi_\nu \!+\! \nabla_\nu  \xi_\mu\!=\!0\Leftrightarrow \partial_\mu\xi_\nu \!+\! \partial_\nu \xi_\mu \!-\!2\Gamma ^\sigma_{\mu \nu }\xi_\sigma\!=\!0\\
+&4. \text{ Aplica condición de integrabilidad: } \nabla_\mu \nabla_\nu \xi_\rho = R_{\rho \nu \mu }^{\; \; \; \; \;\sigma}\xi_\sigma \text{ ($=0\Leftarrow$ espacio plano).}\\
+&5. \text{ Escribe el sistema de EDPs y resuelve.}\\
+&6. \text{ La solución general será de la forma: }\underline{\xi}=\xi_\lambda \; e^\lambda.\\
+&7. \text{ Reescribe como: }\underline{\xi} = \sum_{i=1}^m \alpha_i \xi^{(i)}\; \; \alpha:i \!\equiv \!\text{cte} \in \mathbb{R}\; \;\; m\leq \frac{n(n+1)}{2} \;\; n\!\equiv\! \text{dims.} \\
+&8. \text{ Identifica los vectores de Killing base: } \{\xi^{(i)}\} \; \; \; \text{(máximo $m$ vectores de Killing).}
+\end{align*}
+\underline{Killings de Interés} \; $(\nearrow\;  \equiv \text{traslación},\; \circlearrowleft \;\equiv \text{rotación},\;\upuparrows\;\equiv\text{boost})$
+\begin{align*}
+    &\bullet \text{Vectores de Killing de Minkowski:}
+    \end{align*}
+\vspace{-10pt}
+    \begin{align*}
+        &\begin{cases} 
+\vec{\xi}=e_1:\; \nearrow \; x\\
+\vec{\xi}=e_2:\; \nearrow \; y\\
+\vec{\xi}=e_3:\; \nearrow \; z
+\end{cases}
+\hspace{-30pt}
+&\begin{cases} 
+\vec{\xi}=x\;e_2-y\;e_1:\; \circlearrowleft \; \text{eje }z\\
+\vec{\xi}=y\;e_3-z\;e_2:\; \circlearrowleft \; \text{eje }x\\
+\vec{\xi}=z\;e_1-x\;e_3:\; \circlearrowleft \; \text{eje }y
+\end{cases}
+&\begin{cases} 
+\underline{\xi}=e_0: \; \nearrow \; \text{tiempo}\\
+\underline{\xi}=x\;e_0+ct\;e_1: \upuparrows \; x\\
+\underline{\xi}=y\;e_0+ct\;e_2: \upuparrows \; y\\
+\underline{\xi}=z\;e_0+ct\;e_3: \upuparrows \; z
+\end{cases}
+\end{align*}
+\vspace{-2pt}
+\begin{align*}
+    &\hspace{5pt}\dashv \text{Métrica: }ds^2 =-c^2 dt^2 + dx^2 +dy^2 +dz^2 \\
+    &\bullet \text{Vectores de Killing de Minkowski en coordenadas esféricas:}
+\end{align*}
+\begin{align*}
+&\begin{cases} 
+\vec{\xi}=e_\phi: \; \circlearrowleft \; \text{eje }z\\
+\vec{\xi}=-\sin\phi\;  e_\theta-\frac{\cos\theta}{\sin\theta}\cos\phi \; e_\phi:\; \circlearrowleft \; \text{eje }x\vspace{2pt}\\
+\vec{\xi}=-\cos\phi\;  e_\theta-\frac{\cos\theta}{\sin\theta}\sin\phi \; e_\phi:\; \circlearrowleft \; \text{eje }y
+\end{cases}
+\end{align*}
+\vspace{-3pt}
+\begin{align*}
+    &\hspace{5pt}\dashv \text{Métrica: }ds^2 =-c^2 dt^2 + dr^2 +r^2(d\theta^2 +\sin^2 \theta d\phi^2)  \\
+    &\bullet \text{Vectores de Killing de Rindler:}
+\end{align*}
+\begin{align*}
+&\begin{cases} 
+    \underline{\xi}^{(1)}=+\frac{1}{r}\cosh (cT )\; e_{cT}-\sinh(cT)\;e_r\\
+\underline{\xi}^{(2)}=-\frac{1}{r}\sinh (cT)\; e_{cT}+\cosh(cT)\;e_r\\
+\underline{\xi}^{(3)}=e_{cT}\\
+\end{cases}
+\end{align*}
+\vspace{-3pt}
+\begin{align*}
+        &\hspace{5pt}\dashv \text{Métrica: }ds^2 =-r^2 c^2 dT^2 +dr^2\; \; \; \text{(puedes renombrar: } cT\mapsto ct, \;r\mapsto x) 
+\end{align*}
+\underline{Momentos conservados para los Killings de Minkowski}:
+\begin{align*}
+&\bullet\text{Coordenadas cartesianas:}\\
+&    \left|
+\begin{array}{l}
+\text{Momento angular}
+\end{array}
+\right.
+\hspace{15pt}
+ \left|
+\begin{array}{l}
+\text{Momento angular relativista}\\
+\hspace{8pt}\text{(tesnor antisimétrico)}
+\end{array}
+\right.
+\end{align*}
+\begin{align*}
+    \begin{cases} 
+   L^1= x^2 p^3-x^3 p^2 \\
+L^2 = x^3 p^1 - x^1p^3\\
+L^3=x^1 p^2 -x^2 p^1\\
+\end{cases}\; \hspace{11pt}
+\begin{cases} 
+M^{\alpha\beta}=x^\alpha p^\beta -x^\beta p^\alpha\\
+\end{cases}
+\end{align*}
+\begin{align*}
+&\bullet\text{Coordenadas esféricas, para un fotón:}\\
+&    \left|
+\begin{array}{l}
+\text{Momento angular}
+\end{array}
+\right.
+\end{align*}
+\begin{align*}
+    \begin{cases} 
+   L_x=-k^\theta r^2 \sin \phi-k ^\phi r^2 \cos\theta \sin \theta \cos\phi\\
+L_y=+k^\theta r^2 \cos \phi-k ^\phi r^2 \cos\theta \sin \theta \sin\phi \\
+L_z= k^\theta r^2 \sin ^2 \theta\\
+\end{cases}\; \xrightarrow[(\theta=\pi/2)]{\text{sim.esf.}}\hspace{11pt}
+\begin{cases} 
+L_x=0\\
+L_y=0\\
+L_z=k^\phi r^2 
+\end{cases}
+\end{align*}
+\underline{Energía de partículas masivas en coordenadas de Rindler}\; \text{(conservada en geodésicas):}
+\begin{align*}
+&E=   mc\; u^0x^2=mc^2 x^2  \frac{dt}{d\tau}= mc^2 x^2 \frac{1}{\sqrt{x^2- \dot{x}^2 /c^2}}\;\; \; \; \:  \hat{E}=\frac{E}{mc^2 }= \frac{x^2}{\sqrt{x^2 - \dot{x}^2 /c^2 }}
+\end{align*}

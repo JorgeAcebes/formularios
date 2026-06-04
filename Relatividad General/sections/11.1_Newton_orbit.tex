@@ -1,0 +1,43 @@
+\begin{center}
+\hspace{-155pt}{\underline{Posibles órbitas en función de la energía}:}\\
+\scalebox{0.65}{
+\begin{tikzpicture}
+\begin{axis}[
+    width=8cm,         % ancho del gráfico
+    height=5cm,        % alto del gráfico
+    axis lines=middle,
+    ticks=none,
+    xlabel={$r$},
+    ylabel={$V_{\text{eff}}(r)$},
+    domain=0.1:10,
+    samples=200,
+    ymin=-1,
+    ymax=0.5,
+    xmin=0,
+    xmax=10,
+    ylabel style={at={(axis description cs:0.15,0.90)}, anchor=south}
+]
+
+\addplot[violet, thick] {(5/(2*2*x^2)) - (2/x)};
+
+\addplot[red, thick, opacity=0.5, domain=0.1:10] {-0.8}
+    node[pos=0.7, above]{E $=$ E$_{\text{mín}}$ (circunferencia)};
+\addplot[only marks, mark=*, red ] coordinates {(1.25,-0.8)};
+
+\addplot[orange, thick, opacity=0.5, domain=0.1:10] {-0.3}
+    node[pos=0.8, below]{E $<$ 0 (elipse)};
+\addplot[only marks, mark=*, orange ] coordinates {(0.6981,-0.3)};
+\addplot[only marks, mark=*, orange ] coordinates {(5.9685,-0.3)};
+
+\addplot[cyan, thick, opacity=0.5, domain=0.1:10] {0}
+    node[pos=0.77, above]{E $=$ 0 (parábola)};
+\addplot[only marks, mark=*, cyan ] coordinates {(0.625,0)};
+
+\addplot[blue, thick, opacity=0.5, domain=0.1:10] {0.25}
+    node[pos=0.77, above]{E $>$ 0 (hipérbola)};
+\addplot[only marks, mark=*, blue ] coordinates {(0.5825,0.25)};
+
+\end{axis}
+\end{tikzpicture}
+}
+\end{center}

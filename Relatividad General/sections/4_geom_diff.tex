@@ -1,0 +1,27 @@
+\section*{Geometría diferencial}
+\begin{align*}
+& \text{Longitud infinitesimal de una curva:} \;\; ds = \sqrt{g_{ij}\, dx^i\, dx^j} \\
+& \text{Parametrización:} \;\; x^i(\lambda)  \rightarrow  ds = \sqrt{g_{ij} \frac{dx^i}{d\lambda} \frac{dx^j}{d\lambda}}\, d\lambda   \rightarrow \ell= \int_{\lambda_1}^{\lambda_2} \sqrt{g_{ij} \frac{dx^i}{d\lambda} \frac{dx^j}{d\lambda}}\, d\lambda\\
+&\text{Cambio coords.: } x^{i'}=x^{i'}(x^j) \Rightarrow \text{Base coordenada: } e_{i'}=\frac{\partial x^j}{\partial x^{i'}}e_j \; \; \; e^{i'}=\frac{\partial x^{i'}}{\partial x^{j}} e^{j}\\
+&\text{Transformación de componentes de tensores: } A^{i'}= \frac{\partial x^{i'}}{\partial x^j}A^j \; \; \; A_{i'}= \frac{\partial x^j}{\partial x^{i'}}A_j\\
+&T_{i'j'}=\frac{\partial x^k}{\partial x^{i'}} \frac{\partial x^l}{\partial x^{j'}} T_{kl}\;\;\;\; T^{i'}_{\; \;j'}=\frac{\partial x^{i'}}{\partial x^k}\frac{\partial x^l}{\partial x^{j'}}T^k_{\;\;l} \; \; \; \; T^{i'j'}=\frac{\partial x^{i'}}{\partial x^k}\frac{\partial x^{j'}}{\partial x^l} T^{kl}\\
+&\text{Contracción de un tensor con un vector: } T_{ij}A^j\\
+&\text{Ecuaciones de Euler-Lagrange: } \frac{\partial f}{\partial x^i} = \frac{d}{d\lambda} \left(\frac{\partial f}{\partial u^i}\right)\text{ donde } u^i=\frac{dx^i}{d \lambda}
+\end{align*}
+\underline{\text{Parametrización de una curva}}:
+\begin{align*}
+   &\bullet \textit{Curva definida mediante ecuaciones diferenciales (líneas de flujo):}\\
+   &\text{La curva es la solución de un campo vectorial: } v=(v^1, v^2, ...).\\
+   &1. \text{ Plantea el sistema de EDOS: } \frac{dx^i}{d\lambda} = v^i (x^1,x^2, ...).\\
+   &2. \text{ Resuelve el sistema para obtener } x^i (\lambda).\\
+   &3. \text{ Aplica las condiciones iniciales para encontrar las constantes de integración.} \\[0.5mm]
+   &\bullet \textit{Curva dada por una ecuación cartesiana explícita:}\\
+   &\text{La curva viene definida por una expresión del tipo: } x^j = f(x^i).\\
+   &1. \text{ Escoge una de las coordenadas, por ejemplo, $x^1$, como parámetro: } \lambda=x^1.\\
+   &2. \text{ Expresa todas las coordenadas en función de }\lambda.\\
+   &\text{    (Si hay múltiples variables, considera un conjunto de ellas como parámetros).}\\[0.5mm]
+   &\bullet \textit{Curva dada por una ecuación cartesiana implícita:}\\
+   &\text{La curva viene definida por una expresión del tipo: } F(x^1, x^2, ...) = C.\\
+   &1. \text{ Si es posible, despeja una de las coordenadas en función de las demás. }\\
+   &2. \text{ Parametriza como en el caso anterior.}\hspace{5pt}
+\end{align*}

@@ -1,0 +1,98 @@
+\section*{\normalsize Tensors {\normalfont\scriptsize (generalizable to $\mathbb{R}^n$)}}
+\underline{\text{Definition and Operations}}\text{ Vectors can expressed in different bases: } $\{e_1, e_2\}, \{e_{1'}, e_{2'}\}, ... $
+\begin{align*}
+&\vec{A} = A^1 e_1\! +\! A^2 e_2 = (e_1\!, e_2\!) (A^1, A^2)^\mathrm{T} = A^{1'} e_{1'} \!+ \!A^{2'} e_{2'} = (e_{1'}\!, e_{2'}\!) (A\!^{1'}\!,\ A\!^{2'}\!)^\mathrm{T}\\
+&\textbf{Einstein convention: } \text{summation over repeated indices (up - down)} \\
+&\text{inverse: primed $\leftrightarrow$ unprimed,  transpose: upper $\leftrightarrow$ lower} \\
+&M = (M^{i'}_j) = 
+\scalebox{0.7}{$
+\begin{pmatrix} M^{1'}_1 & M^{2'}_1 \vspace{2pt} \\ M^{1'}_2 & 
+M^{2'}_2 \end{pmatrix} $}
+\; \;\; \;  (M^{-1})^\mathrm{T}=(M^j_{i'}) =
+\scalebox{0.7}{$\begin{pmatrix} M^{1}_{1'} & M^{2}_{1'}  \vspace{2pt} \\ M^{1}_{2'} & 
+M^{2}_{2'} \end{pmatrix}$}
+\; \;\; \;   M^j_{i'} M^{i'}_k= \delta^j_k \\
+&\textbf{Change of basis: } A^{i'} = M^{i'}_j A^j, \;\; e_{i'} = M^j_{i'} e_j,\;\; \det M \neq 0 \\
+&\text{Covariant $v^i$: transform against basis vectors $\{e_i\},$ with ${M_{j}^{i'}}$}\\
+&\text{Covariant $w_i$: transform with basis vectors $\{e_i\},$ with ${M_{i'}^j}$}\\
+&\textbf{Dot product via metric: } g_{ij} = e_i \cdot e_j\ \;\;\; g=g^\mathrm{T} \;\;\;\; g^{-1} \rightarrow \text{raises indices} \\
+&\vec{A} \cdot \vec{B} = A^1\! B^1\! g_{11} \!+\! A^1\! B^2\! g_{12} \!+\! A^2\! B^1\! g_{21} \!+\! A^2\! B^2\! g_{22} \!= \! A^i\! g_{ij} B^j \!= \! \vec{A}^\mathrm{T}\! g\! \vec{B} \;\;\; \|\vec{A}\| \!= \!\sqrt{\vec{A} \!\cdot\! \vec{A}}\\
+&\textbf{Coordinate metrics in flat euclidean metric: } \\
+&g_{\text{cartesian}}\! = \!\delta\!_{i\!j} \!=\! \mathbb{I}_n\; \; g_{\text{spherical}} \!=\! \operatorname{diag} (1, r^2 , r^2 \sin ^2 \theta)\; \;  g_{\text{cylindrical}}\! =\! \operatorname{diag}(1,\rho^2,1) \\
+&\textbf{Inverses: }g^{-1}_{\text{cart}}=\delta_{ij}\; \; g^{-1}_{\text{sph}}=\text{diag}(1,1/r^2,1/r^2 sin^2\theta)\;\; g^{-1}_{\text{cyl}}=\text{diag}(1,1/\rho^2,1)
+\end{align*}
+\underline{\text{Dual Basis}} $\{e^1, e^2\}$ \text{ dual to } $\{e_1, e_2\}$ \; \; $e^i\cdot e_j = \delta^i_j$
+\begin{align*}
+&\textbf{Relation with metric:} \;\;  e^i = g^{ij} e_j \;\; \;\;g^{ij}\equiv \text{inverse of the metric}\\
+&\vec{A} = A^i e_i = A_i g^{ij} e_j \; \; \textbf{ Index lowering:} \;\;  A_i = g_{ij} A^j \;\;  \textbf{Index raising:} \;\;  A^i = g^{ij} A_j \\
+&\textbf{Metric under change of basis: } g_{i'j'} = M^i_{i'} M^j_{j'} g_{ij} \Leftrightarrow  g' = (M^{-1})^T g M^{-1} \\
+&\text{Dot product is invariant under change of basis}
+\end{align*}
+\underline{Tensor}:\; \text{Any object that transforms as: }$T'_{i'j'} = M^i_{i'} M^j_{j'} T_{ij}$\; \text{is a tensor}
+\begin{align*}
+&\textbf{Tensor product properties:} \;\;  (\vec{A}, \vec{B}, \vec{C} \text{ vectors, } \lambda \in \mathbb{R}, \ V, V\otimes V \text{vector spaces})\\
+&\begin{array}{rlrl}
+\text{1.} & (\lambda \vec{A}) \otimes \vec{B} = \lambda (\vec{A} \otimes \vec{B}) & 
+\text{4.} & (\vec{A} + \vec{B}) \otimes \vec{C} = \vec{A} \otimes \vec{C} + \vec{B} \otimes \vec{C} \\
+\text{2.} & \vec{A} \otimes (\lambda \vec{B}) = \lambda (\vec{A} \otimes \vec{B}) & 
+\text{5.} & \vec{A} \otimes (\vec{B} + \vec{C}) = \vec{A} \otimes \vec{B} + \vec{A} \otimes \vec{C} \\
+\text{3.} & \vec{A} \otimes \vec{B} \neq \vec{B} \otimes \vec{A} & 
+\text{6.} & (\vec{A} \otimes \vec{B})(\vec{C} \otimes \vec{D}) = (\vec{A} \cdot \vec{C})(\vec{B} \cdot \vec{D}) \\
+\end{array}\\
+&\textbf{Bases of tensor product space } V \otimes V:\; \{e_i \!\otimes\! e^j\},\;  \{e^i\! \otimes\! e_j\},\;  \{e^i \!\otimes \!e^j\},\; \{e_i \!\otimes \!e_j\} \\
+&\textbf{Equivalent definition of tensor:} \text{ Element of } V \otimes V \text{ formed as a linear combination} \\
+&\text{of the basis elements: } \mathcal{T} = T_{11}\, e^1 \otimes e^1 + T_{12}\, e^1 \otimes e^2 + T_{21}\, e^2 \otimes e^1 + T_{22}\, e^2 \otimes e^2 \\
+&\text{In compact and general notation:} \;\; \mathcal{T} = T_{ij}\, e^i \otimes e^j \text{ (generalizable to the other bases).}\\
+&\text{A tensor of type $(r,s)$ has $r$ contravariant and $s$ covariant indexes.}\\
+&\mathcal{T}\cdot\mathcal{V} = T_{ij}V_{kl}g^{ik}V^{jl}=T_{ij}V^{ij} \;\; \;\;\;\;  T_{ljk}=g_{il}T^i_{\;\;jk}\;\;\;\;\;\;  T^{i}_{\;\;j} \,^{l} = g^{kl}T^i_{\; \; jk}\\
+&\text{Symmetric: } S_{\alpha \beta} = S_{\beta \alpha }\; \; S^{\alpha \beta} = S^{\beta\alpha}\; \Rightarrow \; 2S^{\alpha \beta}T_{\alpha \beta}= S^{\alpha \beta}(T_{\alpha\beta}+ T_{\beta \alpha})\\
+&\text{Antisymmetric: } A_{\alpha \beta} = -A_{\beta \alpha }\; \; A^{\alpha \beta} = -A^{\beta\alpha} \; \Rightarrow \; 2A^{\alpha \beta}T_{\alpha \beta}= A^{\alpha \beta}(T_{\alpha\beta}- T_{\beta \alpha})
+\end{align*}
+\underline{Tensor Extension to a Manifold}
+\begin{align*}
+&\textbf{Manifold $\mathcal{M}$: } \text{a surface (or hypersurface) embedded in a higher-dimensional space,} \\
+&\text{Cartesian or Lorentzian. Before we were on the tangent plane to the manifold $T_P\mathcal{M}$.}\\
+& \text{The tangent bundle of } \mathcal{M}\text{ is } \text{\scalebox{0.7}{$\displaystyle \bigcup_{P \in \mathcal{M}}$}} T_P\mathcal{M}
+\text{ and it has double the dimension of } \mathcal{M}.  \\[-1.8ex]
+&\textbf{1.} \text{ We need the expression for the coordinate change: } x^{i'} = x^{i'}(x^1, \dots, x^n) \\
+&\text{This function can be understood as a parametrization over the manifold.} \\
+&\text{It allows tensors to be consistently defined over the whole manifold.} \\
+&\textbf{2.} \text{ Compute the Jacobian matrix of the transformation and its inverse:} \\
+&M= M^{i'}_j  =
+\scalebox{0.7}{$
+\begin{pmatrix} 
+\frac{\partial x^{1'}}{\partial x^1} &  \text{···} & \frac{\partial x^{1'}}{\partial x^n} \\
+\!\! \text{···}\!\! & \! ^.\text{·}.\! & \!\! \text{···}\!\! \\ 
+\frac{\partial x^{n'}}{\partial x^1} &  \text{···} & \frac{\partial x^{n'}}{\partial x^n} 
+\end{pmatrix} $}
+\;\;\;\;
+M^{-1}= M^i_{j'}= 
+\scalebox{0.7}{$
+\begin{pmatrix} 
+\frac{\partial x^1}{\partial x^{1'}} &  \text{···} & \frac{\partial x^1}{\partial x^{n'}} \\ 
+\!\! \text{···} \!\!& \!^.\text{·}.\! \!& \!\! \text{···}\!\! \\ 
+\frac{\partial x^n}{\partial x^{1'}} &  \text{···} & \frac{\partial x^n}{\partial x^{n'}} 
+\end{pmatrix}$} \\
+&\text{Change of coordinate matrices behave as a change of basis matrices.}\\
+&\textbf{3.} \text{ We can construct the basis vectors as before: } 
+e_{i'} = M^{j}_{i'} e_j. \text{ In this way, each} \\
+& \text{vector } e_{i'} \text{ moves in the direction of change of } x^{i'}\!, 
+\text{ and is constant in } x^{j} \; \forall j \neq i. \\
+&\textbf{NOTE:} 
+\text{ When computing the basis vectors, use } M^j_{i'} = (M^{-1})^\mathrm{T}, \text{ not } M^{i'}_j = M.\\
+&\textbf{How to obtain the metric?} \text{ We need to parametrize the surface by embedding it in} \\
+&\text{a Cartesian space of higher dimension. This space has coordinates } X^i \\
+&\textbf{1.} \text{ We parametrize the surface: }X^i = X^i(x^j). \\
+&\textbf{2.} \text{ The tangent vectors to the surface will be:} \;\;  e_i = \tfrac{\partial X^i}{\partial x^i} e_{X^i} \\
+&\textbf{3.} \text{ By the very definition of the metric:} \;\;  g_{ij} = e_i \cdot e_j \;\; \;\; e_{X^i}\cdot e_{X^j} = \delta_{X^iX^j}
+\end{align*}
+
+% &\text{Recall, for 2 dimensions:} \; \; \; M = \begin{pmatrix} 
+% \frac{\partial x'}{\partial x} & \frac{\partial x'}{\partial y} \\ 
+% \frac{\partial y'}{\partial x} & \frac{\partial y'}{\partial y} 
+% \end{pmatrix}
+% \;\;\;\;
+% M^{-1} = \begin{pmatrix} 
+% \frac{\partial x}{\partial x'} & \frac{\partial x}{\partial y'} \\ 
+% \frac{\partial y}{\partial x'} & \frac{\partial y}{\partial y'} 
+% \end{pmatrix}\\

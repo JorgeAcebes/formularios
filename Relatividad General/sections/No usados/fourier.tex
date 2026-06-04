@@ -1,0 +1,25 @@
+\section*{\normalsize Fourier Analysis{\normalfont\scriptsize \; ($\xi, x\in \mathbb{R}$)}}
+\begin{align*}
+&\mathcal{F}\{f(x)\}(\xi) \!=\!\hat f(\xi) \!= \!\int_{-\infty}^{+\infty}\!f(x)e^{-i 2\pi \xi x}  dx \; \;\; \; \mathcal{F}^{-1}\{f(\xi)\}(x) = \int_{-\infty}^{+\infty}\! f(\xi)e^{+i2\pi\xi x}d\xi \\
+&f(x-x_0)\stackrel{\mathcal{F}}{\Longleftrightarrow} e^{-i2\pi x_0\xi} \hat f(\xi)\; \; \;\;  e^{i2\pi\xi_0 x}f(x) \stackrel{\mathcal{F}}{\Longleftrightarrow} \hat{f}(\xi-\xi_0)\; \; \; \; f(ax) \stackrel{\mathcal{F}}{\Longleftrightarrow}\frac{1}{|a|}\hat{f}\left( \frac{\xi}{a}\right)\\
+&f(x)\!\in\! \mathbb{R}\!\Rightarrow \!\hat{f}(-\xi)\!=\! \overline{\hat{f}(\xi)} \; \; \mathcal{F}^{-\!1}\!f(x) \!=\! \mathcal{F}(f(-x)\!) \;\; \mathcal{F}(f(-x)\!)\!=\!(\mathcal{F}f)(-x)\; \; \mathcal{F}^2\!f(x)\!=\!f(-x)
+\end{align*}
+\underline{Convolution}
+\begin{align*}
+    &(f*g)(x)= \int_{-\infty}^{+\infty}f(x-y)g(y)\;\!dy \; \; \; f*g = g*f \; \; \; (f*g)*h=f(g*h) \\
+    &f*(g+h)=f*g+f*h \; \; \;  \mathcal{F}(f*g)=(\mathcal{F}f)(\mathcal{F}g)\; \; \;  \mathcal{F}(fg)= \mathcal{F}f*\mathcal{F}g
+\end{align*}
+\underline{\text{Dirac Delta}}
+\begin{align*}
+&\delta(x) = \begin{cases}
+0, & x \ne 0 \\
+\infty, & x = 0
+\end{cases}\;\;\;
+\int_{-\infty}^{+\infty} \delta(x) \, dx = 1 \; \; \; \mathcal{F}\{\delta(x)\}(\xi) = 1\Leftrightarrow \mathcal{F}^{-1}\{1\}(x)=\delta(x)\\
+&\delta(ax) = \frac{1}{|a|} \delta(x) \; \; \;
+h(x) \delta(x) = h(0) \delta(x) \; \; \; 
+\delta(x) * f(x) = f(x) \\&    \delta(x - a) * f(x) = f(x - a)\; \; \;\delta(x - a) * \delta(x - b) = \delta(x - (a + b))\\
+& \int_{-\infty}^{+\infty} \delta(x - a)\, f(x)\, dx = f(a) \; \; \; 
+ \int_{-\infty}^{+\infty} \delta(x)\, f(x + a)\, dx = f(a)
+\end{align*}
+

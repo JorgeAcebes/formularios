@@ -1,0 +1,34 @@
+\section*{Acción de Hilbert-Einstein \normalfont{(métrica espacio-temporal, $g\equiv \det g, \; \delta\equiv$ variación)}}
+\begin{align*}
+    &\delta(\sqrt{-g})=\frac{\sqrt{-g}}{2}\,g^{\alpha \beta}\delta \, g_{\alpha \beta} = - \frac{\sqrt{-g}}{2}\,g_{\alpha \beta}\delta \, g^{\alpha \beta}\; \; \; \; \Gamma_{\mu\nu}^\mu=\frac{1}{\sqrt{-g}}\partial_\nu \sqrt{-g}\\
+    &\delta R_{\alpha\beta}= \nabla_\lambda(\delta \Gamma^\lambda_{\alpha\beta})- \nabla_\beta(\delta \Gamma^\lambda_{\lambda \alpha}) \; \; \; \; \delta R= R_{\alpha \beta} \,\delta\, g^{\alpha \beta}+ \nabla_a( g^{\alpha \lambda}\delta\,\Gamma^a_{\alpha\beta}- g^{aa}\delta\,\Gamma^\lambda_{\lambda\alpha})\\
+    &J^a \equiv g^{\alpha \lambda}\delta\,\Gamma^a_{\alpha\beta}-g^{aa}\delta\,\Gamma^\lambda_{\lambda\alpha}\;  \;\; S [g] = \int d^4 x \sqrt{-g} R\equiv \text{Acción Hilbert-Einstein}
+    \\& \delta S=\int d^4x\left\{\sqrt{-g}\, \left[R_{\alpha \beta} -\frac{1}{2} g_{\alpha \beta}R\right]\delta \, g^{\alpha\beta}\!+\partial_\lambda(\sqrt{-g}\,J^\lambda)\right\}\\
+    &\text{Espacio-tiempo sin frontera (variedad cerrada): } \int d^4x \,\partial_\lambda(\sqrt{-g}\, J^\lambda)=0\\
+    &\text{Imponiendo $\delta S=0$ cuando $\nexists$  frontera}\Rightarrow R_{\alpha\beta}\!-\!\frac{1}{2}g_{\alpha \beta}R\!=\!0\;  \text{(ec. de campo en vacío)}\\
+    &\text{Hipersuperficie $n$-dimensional: } f(x^0, x^1, \cdots, x^n) = \text{cte}\\
+    &\text{Vector normal a la hipersuperficie, normalizado: }\underline{n}= \frac{\partial_\mu f}{\sqrt{\partial_\alpha f\partial_\beta f g^{\alpha\beta}}}e^\mu\\
+    &\text{Base asociada a parametrización $(p^a)$ de la hipersuperficie: }e_a= \frac{\partial x^\mu}{\partial p^a}e_\mu\\
+    &\text{Métrica inducida: } h_{ab}=\frac{\partial x^\mu}{\partial p^a}\frac{\partial x^\nu}{\partial p^b}g_{\mu \nu}\;\;\;\;  \text{Proyector: obtiene vector $\perp$ a $\underline{n}$}\\
+    &\text{Métrica transversa (o proyector): } h_{\alpha \beta}= g_{\alpha \beta}- n_\alpha n_\beta\; \; \; \; h^\alpha_{\; \; \beta}=   \delta^\alpha_{\beta}- n^\alpha n_\beta\\
+    &\delta g_{\alpha \beta}=0 \Leftrightarrow h_{\alpha\beta} \equiv \text{cte}\; \;\; \; \text{Proyección ortogonal: } e_\mu^\perp = h_\mu^{\; \; \beta}e_\beta\\
+    &\text{Tensor ortogonal: }T^{\mu\nu}_\perp= h^\mu_{\;\; \alpha}h^\nu_{\;\;\beta}T^{\alpha\beta}_\perp\; \; \;\; 
+    T_{\mu\nu}^\perp= h_\mu^{\;\; \alpha}h_\nu^{\;\;\beta}T_{\alpha\beta}\\
+    &\text{Tensor de curvatura extrínseco: } K_{\mu\nu} = h_\mu^{\; \; \alpha}h_\nu^{\; \; \beta}\nabla_\alpha n^\beta=\nabla_\mu n_\nu - n_\mu n^\alpha \nabla_\alpha n_\nu\\
+    &\text{Curvatura extrínseca: }K=\text{tr}(K_{\mu\nu})=\nabla_\mu n^\mu
+\end{align*}
+\underline{Acción de Hilbert-Einstein-Gibbons-Hawking-York}\\
+\begin{align*}
+    &S[g]=S_{HE} + S_{GHY} = \int_M d^4 x\sqrt{g} R + 2 \int_{\partial M} d^3 p \sqrt{|h|}K \begin{array}{c}
+        \text{curvatura extrínsica $K$} \\
+        \text{métrica inducida $h$} 
+    \end{array}\\
+    & \delta S[g]= \int_M d^4 x \sqrt{-g} (R_{\alpha \beta} - \frac{1}{2} g_{\alpha \beta} R)\delta g^{\alpha \beta}
+\end{align*}
+\underline{Hipervolumen}
+\begin{align*}
+    \text{Val. absoluto Jacobiano: } |J|= \det \left(\frac{\partial x^\mu }{\partial x^\nu }\right) = \begin{array}{lc}
+         \sqrt{g}& \text{Geometrías Riemannianas}  \\
+         \sqrt{-g} & \text{Geometráis Lorentzianas}
+    \end{array}
+\end{align*}

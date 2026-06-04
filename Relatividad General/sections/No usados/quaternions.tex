@@ -1,0 +1,25 @@
+\section*{Quaternions $\mathbb{H}$\normalfont\scriptsize{ ($\alpha, \beta, \gamma, \delta, \lambda  , \mu \in \mathbb{R}, \;\{1,\mathbf{i},\mathbf{j},\mathbf{k}\} \text{ basis of } \mathbb{H}, \; q,p \in \mathbb{H}$)}}
+\begin{align*}
+&q = \alpha+ \beta \; \!\mathbf{i} + \gamma \; \! \mathbf{j} + \; \! \delta \; \! \mathbf{k} \; \; \; \Re\;\![q] \!=\!\alpha \!\equiv\! \text{real part} \; \; \; \Im \; \![q]\!=\!\beta \; \!\mathbf{i}  + \gamma \; \! \mathbf{j} + \; \! \delta \; \! \mathbf{k}\!\equiv \!\text{vector part}\\
+&\overline{q}=\alpha- \beta \; \!\mathbf{i} - \gamma \; \! \mathbf{j} - \; \! \delta \; \! \mathbf{k} \; \; \; \ \|q\|^2=q\overline{q}=\overline{q}q =\alpha ^2 +\beta ^2 + \gamma ^2 + \delta ^2  \;\;\; q^{-1}= \frac{1}{\|q\|^2}\overline{q}\\
+& \mathbf{U}_q = \frac{q}{\|q\|} \equiv \text{versor of }q, \; \; \|\mathbf{U}_q\|=1 \Rightarrow \mathbf{U}_q\equiv \text{unit quaternion}\; \; \; \alpha q = q\alpha \\
+& \lambda (\alpha_1+ \beta_1 \; \!\mathbf{i} + \gamma_1 \; \! \mathbf{j} + \; \! \delta_1 \; \! \mathbf{k} ) + \mu (\alpha_2+ \beta_2 \; \!\mathbf{i} + \gamma_2\; \! \mathbf{j} + \; \! \delta_2 \; \! \mathbf{k}) = \\
+&\hspace{1cm}=(\lambda\alpha_1+\mu\alpha_2) + (\lambda\beta_1+\mu\beta_2)]\mathbf{i}+(\lambda\gamma_1+\mu\gamma_2)\mathbf{j}+(\lambda\delta_1+\mu\delta_2)\mathbf{k}\\
+&\mathbf{i}1 = 1\mathbf{i} = \mathbf{i}\; \; \; \mathbf{j}1=1\mathbf{j} = \mathbf{j}\; \; \;  \mathbf{k}1=1\mathbf{k}=\mathbf{k}\; \; \mathbf{i}^2 = \mathbf{j}^2=\mathbf{k}^2 = -1\\
+&\mathbf{ij}=-\mathbf{ji}=\mathbf{k}\;\; \; \mathbf{jk}=-\mathbf{kj}=\mathbf{i} \; \; \; \mathbf{ki}=-\mathbf{ik}=\mathbf{j}\;\; \; \mathbf{ijk} = -1 \\
+& q = (r,\vec{v}), \;\! q\in \mathbb{H},\;\! r = \Re [q], \;\!\vec{v} = \Im [q]\;\; \; \; 
+(r_1,\vec{v}_1)+(r_2,\vec{v}_2) = (r_1+r_2,\vec{v}_1+\vec{v}_2)\\
+&(r_1,\vec{v}_1)(r_2,\vec{v}_2) = (r_1r_2-\vec{v}_1\cdot \vec{v}_2, r_1\vec{v_2}+r_2\vec{v}_1+\vec{v}_1\times \vec{v}_2)\;\;\;\; \|pq\|=\|p\|\|q\|\\
+&\overline{pq} = \overline{q} \;\overline{p}\; \; \; \overline{q}\!= \!-\tfrac{1}{2}(q+\mathbf{i}q\mathbf{i}+\mathbf{j}q\mathbf{j}+\mathbf{k}q\mathbf{k})\; \; \; 
+\Re[q]= \!\tfrac{1}{2} (q+\overline{q})\; \; \; \Im [q]= \!\tfrac{1}{2} (q-\overline{q})\\
+&\text{Matrix representation: } \{1,\mathbf{i}, \mathbf{j}, \mathbf{k}\}\mapsto  \{\mathbf{I}, \sigma_1, \sigma_2, \sigma_3\}, \ \sigma \equiv\text{ Pauli matrices}\\
+&q\!=\!\!\begin{bmatrix}\ \ \alpha\!+\!\beta\;\!\mathbf{i}\!& \!\gamma \!+\!\delta \;\! \mathbf{i}\\
+-\gamma \!+\! \delta \;\!\mathbf{i} \!&\!
+\alpha\!-\!\beta\;\! \mathbf{i}
+\end{bmatrix} \!\!=\! \alpha\mathbf{I}\!+\!\beta i\sigma_3 \!+\! \gamma i \sigma_2 \!+\! \delta i \sigma_1\; \; \;
+\|q\|^2\! \! = \!\det q \; \; \; \Re [q]\! = \!\tfrac{1}{2}\! \operatorname{tr}q\; \; \;\overline{q}\!=\! q^{\dagger}
+\end{align*}
+
+
+
+

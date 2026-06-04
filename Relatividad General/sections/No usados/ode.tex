@@ -1,0 +1,121 @@
+\section*{ODEs \normalfont{($\alpha,\beta, c \in \mathbb{R}, \;  \lambda\in \mathbb{C} \Leftrightarrow \lambda = \alpha + i \beta , \; y' = \tfrac{dy}{dx}$, sol $\equiv$ solution, const $\equiv$ constant)}}
+\textbf{First Order Equations}
+\begin{align*}
+&\underline{\text{Separable}}\; 
+y'= f(x)g(y)\Rightarrow \int\tfrac{dy}{g(y)}= \int f(x)\! \; dx\\
+&\underline{\text{Linear}} \; y'+a(x)y= r(x)\Rightarrow y(x) = \left[ \int r(x)\;\!e^{\int a(x)\;\!dx}\; \!dx + C\right]e^{-\int a(x)\;\! dx}\\
+&\underline{\text{Exact}} \;\! M(x,y)\;\! dx+N(x,y)\;\! dy=0; \text{ if } \partial_y M = \partial_x N \Rightarrow \exists f(x,y)\equiv\text{const, with:}\\
+&\partial_x f = M \; \; \partial_y f = N \; \; \text{(Solve for $f$)}\\[-2ex]
+&\underline{\text{Non-Exact}} \;\! M(x,y)\;\! dx + N(x,y)\;\! dy \neq 0;  \text{ if } 
+\left\{
+\substack{
+\tfrac{\partial_y M -\partial_x N}{N} =g(x) \Rightarrow \mu = e^{\int g\; \! dx}\\
+\tfrac{\partial_x N - \partial_y M}{M} =h(y) \Rightarrow \mu = e^{\int h\; \! dy}
+}\Rightarrow
+\right.\\[-1ex]
+&\Rightarrow \;\! \mu [M(x,y)\;\! dx + N(x,y)\;\! dy] = 0 \Rightarrow \text{Exact} \\
+&\underline{\text{Bernoulli}} \; \! y' + a(x)y = r(x)y^n \rightarrow \text{ c.v. }z\coloneqq y^{1-n} \Rightarrow \text{Linear}
+\end{align*}
+\textbf{Important Concepts}
+\begin{align*}
+&\text{Linear: } y^{(n)} + a_1(x)y^{(n-1)}+\cdots+ a_{n-1}(x)y'+a_{n}(x)y=r(x)\\ 
+& r(x) = 0 \forall x \Rightarrow \text{Homogeneous (homo)}\;\;
+r(x) \not \equiv 0 \Rightarrow \text{Inhomogeneous (inhomo)}\\
+&\left\{y_i (x) \right\}_{1}^n \text{ Linearly Independent (LI)} \Leftrightarrow \mathcal{W}(\left\{y_i (x) \right\}) \coloneqq 
+\scalebox{0.7}{$
+\left|
+\begin{smallmatrix}
+y_1 & \cdots & y_n \\
+y_1' & \cdots & y_n' \\
+\vdots & & \vdots \\
+y_1^{(n-1)} & \cdots & y_n^{(n-1)}
+\end{smallmatrix}
+\right|
+$}
+\neq 0\\
+&\left\{y_i (x) \right\} \; \text{LI sols of homo  ODE} \Rightarrow \!y_h{=}c_1y_1 + {\cdots} + c_n y_n\\
+&y_p \equiv \text{ particular sol of inhomo ODE} \ \ y=y_h + y_p \equiv \text{ general sol of the ODE}
+\end{align*}
+\textbf{Higher Order Linear ODEs}
+\begin{align*}
+    &\underline{\text{Constant Coefficients}} \text{ (for homo sol)} \ \{a_i\}_1^n\equiv \text{const} \Rightarrow \text{Let }y_p=e^{\lambda x}, \text{ substitute}\Rightarrow\\
+    &\Rightarrow\text{solve for $\{\lambda_i\}$:} \ \lambda^{n} + a_1 \lambda^{n-1}+\cdots+ a_{n-1}\lambda+a_{n}=0\\
+    &\bullet \{\lambda_i\} \in \mathbb{R}, \text{no repetition: }y_h= C_1e^{\lambda_1x}+ \cdots+C_ne^{\lambda_n x}\\
+    &\bullet  \{\lambda_i\} \in \mathbb{R}, k\text{ multiplicity: }y_h=(C_1+C_2x+\cdots+C_kx^{k-1})e^{\lambda_1x}+\!\cdots\!+C_ne^{\lambda_nx}\\
+    &\bullet  \{\lambda_i\} \in \mathbb{C}, k\text{ multiplicity}: y_h=e^{\alpha x}\Big[(A_1+A_2 x +\cdots + A_kx^{k-1})\cos(\beta x) + \\
+    &+(B_1+B_2x + \cdots+ B_kx^{k-1})\sin (\beta x)\Big] + \cdots + C_ne^{\lambda_n x}\\
+    &\underline{\text{Undetermined coefficients method}} \text{ (for inhomo sol) }\{a_i\}_1^n\equiv \text{const} \Rightarrow \\
+    &\Rightarrow \text{Let $ y_p$ be the function shown in the table, substitute, and find the consts}
+    \end{align*} 
+    \vspace{-15pt}
+\begin{center}
+\resizebox{\columnwidth}{!}{%
+    \hspace{3pt}
+\begin{tabular}{|l|l|l|}
+\hline
+{\textbf{\textit{r}(\textit{x})}} & \textbf{Roots} & \textbf{Form of $y_p$} \\ 
+\hline
+
+$P_m(x)$ & 
+\begin{tabular}[c]{@{}l@{}}1. $0$ is not a root \\ 2. $0$ is a root of multiplicity $s$\end{tabular} & 
+\begin{tabular}[c]{@{}l@{}}$Q_m(x)$ \\ $x^s Q_m(x)$\end{tabular} \\ 
+\hline
+
+$P_m(x)e^{\alpha x}$ & 
+\begin{tabular}[c]{@{}l@{}}1. $\alpha$ is not a root \\ 2. $\alpha$ is a root of multiplicity $s$\end{tabular} & 
+\begin{tabular}[c]{@{}l@{}}$Q_m(x)e^{\alpha x}$ \\ $x^s Q_m(x)e^{\alpha x}$\end{tabular} \\
+\hline
+
+$P_m(x)\cos\beta x + T_n(x)\sin\beta x$ & 
+\begin{tabular}[c]{@{}l@{}}1. $\pm i\beta$ are not roots \\ 2. $\pm i\beta$ are roots of multiplicity $s$\end{tabular} & 
+\begin{tabular}[c]{@{}l@{}}$Q_k(x)\cos\beta x + R_k(x)\sin\beta x$ \\
+$x^s(Q_k(x)\cos\beta x + R_k(x)\sin\beta x)$
+\end{tabular} \\
+\hline
+
+$e^{\alpha x}(P_m(x)\cos\beta x + T_n(x)\sin\beta x)$ & 
+\begin{tabular}[c]{@{}l@{}}1. $\alpha \pm i\beta$ are not roots \\
+2. $\alpha \pm i\beta$ are roots of multiplicity $s$\end{tabular} & 
+\begin{tabular}[c]{@{}l@{}}$(Q_k(x)\cos\beta x + R_k(x)\sin\beta x)e^{\alpha x}$ \\
+$x^s(Q_k(x)\cos\beta x + R_k(x)\sin\beta x)e^{\alpha x}$ \\
+\end{tabular} \\
+\hline
+\end{tabular}
+}
+\end{center}
+    \vspace{-5pt}
+\begin{align*}
+    &m, n, k \equiv \text{degree of polynomes} \; \;  k = \max\{m,n\}\\
+   &Q(x), R(x) \text{ must have all the terms: } i.e. \ Q_m(x)= A_1 +A_2x+ \cdots+ A_{n+1}x^n\\
+   &\underline{\text{Variation of parameters}} \ \text{(for inhomo sol, $r(x)$ not in table)} \ \{a_i\}_1^n\equiv \text{const} \Rightarrow \\
+    &\Rightarrow \text{Let: } y_p = u_1(x)y_1(x) + u_2(x)y_2(x) + \cdots + u_n(x)y_n(x); \ \{y_i\} \text{ LI sols of homo}\\
+    &\text{Impose: } 
+  \scalebox{0.8}{$
+\left\{
+\begin{array}{l}
+u_1'y_1 + u_2'y_2 + \cdots + u_n'y_n = 0 \\[-0.8ex]
+u_1'y_1' + u_2'y_2' + \cdots + u_n'y_n' = 0 \\
+\cdots \\
+u_1'y_1^{(n-2)} + \cdots + u_n'y_n^{(n-2)} = 0 \\[-0.8ex]
+u_1'y_1^{(n-1)} + \cdots + u_n'y_n^{(n-1)} = r(x)
+\end{array}
+\right.
+$}
+ \Rightarrow \text{(system of $n$ equations)}\\
+    &u_i'(x) = \tfrac{\mathcal{W}(x)}{\mathcal{W}_i (x)} \;\;  \mathcal{W}_i (x) \!\equiv \! \mathcal{W}(x) \text{ with i-th column: } (0,0, \cdots, r(x))^{\text{T}} \; \; u_i(x)= \int \!u_i' \;\! dx\\
+     &\underline{\text{Euler Equation}} \;\; x^n y^{(n)} + a_1 x^{n-1} y^{(n-1)} + \cdots + a_n y = 0\\
+    &\text{c.v. } x = e^t \Rightarrow y(x) = u(t), \text{ then } x \frac{d}{dx} \to \frac{d}{dt} \Rightarrow \text{Transformed to const coeff eq in } t:\\
+    &y = u(t), \;\! \frac{dy}{dx} \!=\! \frac{1}{x}\frac{du}{dt}, \;\! \frac{d^2y}{dx^2} \!=\! \frac{1}{x^2}\left(\frac{d^2u}{dt^2} \!-\! \frac{du}{dt} \right), \;\!\cdots \!\Rightarrow \text{Solve in } t,\; \text{then } y(x) \!=\! u(\ln x)\\ 
+    &\text{Alternative: } y_h = x^\lambda\text{, substitute } x^n[\lambda(\lambda-1)\cdots(\lambda-n+1)] + \cdots + a_n = 0\\
+&\bullet \{\lambda_i\} \in \mathbb{R}, \text{no repetition: }y_h = C_1x^{\lambda_1} + \cdots + C_nx^{\lambda_n}\\
+&\bullet  \{\lambda_i\} \in \mathbb{R}, k\text{ multiplicity:}\;\! y_h {=} (C_1 + C_2\ln x + \!\!\cdots\!\! + C_k(\ln x)^{k-1})x^{\lambda_1} +\!\!\cdots\!\! + C_nx^{\lambda_n}\\
+&\bullet  \{\lambda_i\} \in \mathbb{C}, k\text{ multiplicity:} y_h {=} 
+x^{\alpha} \Big[\left(A_1 + A_2 \ln x + \cdots + A_{k}(\ln x)^{k-1}\right)\cos(\beta \ln x) +\\
+& + \left(B_1 + B_2 \ln x + \cdots + B_{k}(\ln x)^{k-1}\right)\sin(\beta \ln x)\Big] + \cdots + C_nx^{\lambda_n}
+\end{align*}
+\textbf{Systems of First-Order Linear ODEs} \; \;$ e^{Ax} = I + Ax + (Ax)^2/2!+(Ax)^3/3!+...$
+\begin{align*}
+&\text{(homo)} \; \vec{y}' = A\vec{y} \Rightarrow \vec{y}_h(x) = e^{Ax} \vec{c} \;\; A_{n\times n}\text{ const; if diagonalizable: } A = PDP^{-1} \Rightarrow\\
+&\Rightarrow e^{Ax} = P e^{Dx} P^{-1} \;\; \text{with } e^{Dx} = \text{diag}(e^{\lambda_1 x}, \dots, e^{\lambda_n x})\\
+&\text{(inhomo)} \; \vec{y}' = A\vec{y} + \vec{r}(x) \Rightarrow \vec{y}_p(x) = e^{Ax} \int e^{-Ax} \vec{r}(x)\;\! dx \Rightarrow \vec{y}(x) = \vec{y}_h(x) + \vec{y}_p(x)
+\end{align*}

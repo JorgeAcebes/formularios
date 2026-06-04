@@ -1,0 +1,65 @@
+\section*{Vector Derivatives}
+\underline{Cartesian} ($d\mathbf{l} = dx\,\hat{\mathbf{x}} + dy\,\hat{\mathbf{y}} + dz\,\hat{\mathbf{z}}$, $dV = dx\,dy\,dz$)
+\begin{align*}
+\text{Gradient:}   \;\; &\nabla f = \partial_x f\,\hat{\mathbf{x}} 
+                                 + \partial_y f\,\hat{\mathbf{y}} 
+                                 + \partial_z f\,\hat{\mathbf{z}} \\
+\text{Divergence:} \;\; &\nabla \cdot \mathbf{F} = \partial_x F_x 
+                                 + \partial_y F_y 
+                                 + \partial_z F_z \\
+\text{Curl:}       \;\; &\nabla \times \mathbf{F} = \begin{cases}
+                                  \partial_y F_z - \partial_z F_y \\[2pt]
+                                  \partial_z F_x - \partial_x F_z \\[2pt]
+                                  \partial_x F_y - \partial_y F_x
+                                  \end{cases} 
+                                  \begin{matrix}
+                                  \text{in } \hat{\mathbf{x}} \\[2pt]
+                                  \text{in } \hat{\mathbf{y}} \\[2pt]
+                                  \text{in } \hat{\mathbf{z}}
+                                  \end{matrix} \\
+\text{Laplacian:}  \;\; &\nabla^2 f = \partial^2_x f + \partial^2_y f + \partial^2_z f
+\end{align*}
+\underline{Spherical} ($d\mathbf{l} = dr\,\hat{\mathbf{r}} + r\,d\theta\,\bm{\hat{\theta}} + r\sin\theta\,d\phi\,\bm{\hat{\phi}}$, $dV = r^2\sin\theta\,dr\,d\theta\,d\phi$)
+\begin{align*}
+\text{Gradient:}   \;\; &\nabla f = \partial_r f\,\hat{\mathbf{r}} 
+                                 + \frac{1}{r}\partial_\theta f\,\bm{\hat{\theta}} 
+                                 + \frac{1}{r\sin\theta}\partial_\phi f\,\bm{\hat{\phi}} \\
+\text{Divergence:} \;\; &\nabla \cdot \mathbf{F} = \frac{1}{r^2}\partial_r (r^2 F_r) 
+                                 + \frac{1}{r\sin\theta}\partial_\theta (\sin\theta\,F_\theta) 
+                                 + \frac{1}{r\sin\theta}\partial_\phi F_\phi \\
+\text{Curl:}       \;\; &\nabla \times \mathbf{F} = \begin{cases}
+                                  \frac{1}{r\sin\theta}\left[\partial_\theta (\sin\theta\,F_\phi) - \partial_\phi F_\theta\right] \\[3pt]
+                                  \frac{1}{r}\left[\frac{1}{\sin\theta}\partial_\phi F_r - \partial_r (r F_\phi)\right] \\[3pt]
+                                  \frac{1}{r}\left[\partial_r (r F_\theta) - \partial_\theta F_r\right]
+                                  \end{cases}
+                                  \begin{matrix}
+                                  \text{in } \hat{\mathbf{r}} \\[3pt]
+                                  \text{in } \bm{\hat{\theta}} \\[3pt]
+                                  \text{in } \bm{\hat{\phi}}
+                                  \end{matrix} \\
+\text{Laplacian:}  \;\; &\nabla^2 f = \frac{1}{r^2}\partial_r \left(r^2\partial_r f\right) 
+                                 + \frac{1}{r^2\sin\theta}\partial_\theta \left(\sin\theta\,\partial_\theta f\right) 
+                                 + \frac{\partial^2_\phi f}{r^2\sin^2\theta}
+\end{align*}
+\underline{Cylindrical} ($d\mathbf{l} = d\rho\,\bm{\hat{\rho}} + \rho\,d\phi\,\bm{\hat{\phi}} + dz\,\hat{\mathbf{z}}$, $dV = \rho\,d\rho\,d\phi\,dz$)
+\begin{align*}
+\text{Gradient:}   \;\; &\nabla f = \partial_\rho f\,\bm{\hat{\rho}} 
+                                 + \frac{1}{\rho}\partial_\phi f\,\bm{\hat{\phi}} 
+                                 + \partial_z f\,\hat{\mathbf{z}} \\
+\text{Divergence:} \;\; &\nabla \cdot \mathbf{F} = \frac{1}{\rho}\partial_\rho (\rho F_\rho) 
+                                 + \frac{1}{\rho}\partial_\phi F_\phi 
+                                 + \partial_z F_z \\
+\text{Curl:}       \;\; &\nabla \times \mathbf{F} = \begin{cases}
+                                  \frac{1}{\rho}\partial_\phi F_z - \partial_z F_\phi \\[3pt]
+                                  \partial_z F_\rho - \partial_\rho F_z \\[3pt]
+                                  \frac{1}{\rho}\left[\partial_\rho (\rho F_\phi) - \partial_\phi F_\rho\right]
+                                  \end{cases}
+                                  \begin{matrix}
+                                  \text{in } \bm{\hat{\rho}} \\[3pt]
+                                  \text{in } \bm{\hat{\phi}} \\[3pt]
+                                  \text{in } \hat{\mathbf{z}}
+                                  \end{matrix} \\
+\text{Laplacian:}  \;\; &\nabla^2 f = \frac{1}{\rho}\partial_\rho \left(\rho\,\partial_\rho f\right) 
+                                 + \frac{1}{\rho^2}\partial^2_\phi f 
+                                 + \partial^2_z f
+\end{align*}
