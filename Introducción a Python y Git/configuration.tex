@@ -80,18 +80,20 @@ Correr Python (propio)}{Ctrl+R}
 \textbf{Ajustes}: \texttt{Auto-Save:\,After Delay, Format on save:\,\checkmark, Python Language Server:\,Pylance, Line Numbers:\,\checkmark}
 
 
+
+
 \section{GESTIÓN DE ENTORNOS (venv) -- \normalfont{\scalebox{0.8}{\text{desde VS CODE}}}}
-Entorno virtual para cada proyecto: aisla dependencias y evita problemas de compatibilidad.\\
-Créalo al iniciar el proyecto, abre cuando estés trabajando y cierra al finalizar de trabajar.\\
-\textbf{Crear}: \texttt{Abre dir proyecto → Ctrl+Ñ → python -m venv .venv → Ctrl+Shift+P → Python Interpreter → .venv}\\
+Aisla dependencias por proyecto. Créalo al inicio, actívalo al trabajar y ciérralo al salir.\\
+\textbf{Crear}: \texttt{Abre dir $\rightarrow$ Ctrl+Ñ $\rightarrow$ python -m venv .venv $\rightarrow$ Ctrl+Shift+P $\rightarrow$ Python Interpreter $\rightarrow$ .venv}\\
+\textbf{Auto-Activar}: \texttt{PowerShell Admin $\rightarrow$ Set-ExecutionPolicy RemoteSigned -Scope CurrentUser}\\
+En \texttt{VS Code (Ctrl+,)} marcar $\rightarrow$ \texttt{Python: Terminal: Activate Environment}\\
 \hypertarget{pip_venv}{
-\text{Actualizar Pip Local}}: \texttt{python -m pip install --upgrade pip} \textit{(Ejecutar siempre tras activar el venv)}\\
+\text{Actualizar Pip}}: \texttt{python -m pip install --upgrade pip} \textit{(Ejecutar tras activar el venv)}\\
 \text{Verificar Ruta}: \texttt{where pip} debe apuntar a la carpeta \texttt{.venv}\\
-\text{Tras crear el entorno virtual, configura lo siguiente}:\\
-\text{Formato}: \texttt{pip install black → Ctrl+, → Python Formattixng Provider → black}\\
-\text{Instala básicos}: \texttt{pip install matplotlib numpy scipy pandas scikit-learn jupyter}\\
+\text{Formato}: \texttt{pip install black $\rightarrow$ Ctrl+, $\rightarrow$ Python Formatting Provider $\rightarrow$ black}\\
+\text{Básicos}: \texttt{pip install matplotlib numpy scipy pandas scikit-learn jupyter}\\
 \text{Persistencia}: \texttt{pip freeze > requirements.txt} \textit{(Documenta versiones)}\\
-\textbf{Activar}: \texttt{Ctrl+Ñ → .venv\textbackslash Scripts\textbackslash activate} \;\;\; \textbf{Desactivar}: \texttt{Ctrl+Ñ → deactivate}\\ 
+\textbf{Activar Manual}: \texttt{.venv\textbackslash Scripts\textbackslash activate} \;\;\; \textbf{Desactivar}: \texttt{deactivate}\\ 
 \text{Replicar entorno}: \texttt{pip install -r requirements.txt} \textit{(En un nuevo PC/clon)}
 
 
